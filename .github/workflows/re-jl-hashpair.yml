@@ -1,0 +1,59 @@
+name: Reverse engineer JieLi HashPair
+
+on:
+  push:
+    paths:
+      - '.github/workflows/re-jl-hashpair.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  dump:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download official JieLi HashPair binary
+        run: |
+          set -euxo pipefail
+          URL='https://raw.githubusercontent.com/Jieli-Tech/iOS-JL_OTA/9ce53d85213748e9aaca074d42048d458afe45ff/code/JL_OTA/Frameworks/JL_HashPair.xcframework/ios-arm64/JL_HashPair.framework/JL_HashPair'
+          curl -fL "$URL" -o /tmp/JL_HashPair
+          test -s /tmp/JL_HashPair
+          file /tmp/JL_HashPair
+
+      - name: Dump symbols strings ObjC metadata and ARM64 disassembly
+        run: |
+          set -euxo pipefail
+          OUT='re/jl_hashpair'
+          mkdir -p "$OUT"
+          file /tmp/JL_HashPair > "$OUT/file.txt"
+          shasum -a 256 /tmp/JL_HashPair > "$OUT/sha256.txt"
+          strings -a -t x /tmp/JL_HashPair > "$OUT/strings.txt" || true
+          nm -nm /tmp/JL_HashPair > "$OUT/nm.txt" 2>&1 || true
+          otool -l /tmp/JL_HashPair > "$OUT/load_commands.txt" 2>&1 || true
+          otool -Iv /tmp/JL_HashPair > "$OUT/indirect_symbols.txt" 2>&1 || true
+          otool -ov /tmp/JL_HashPair > "$OUT/objc.txt" 2>&1 || true
+          otool -tvV /tmp/JL_HashPair > "$OUT/disassembly.txt" 2>&1 || true
+          {
+            echo '=== INTERESTING STRINGS ==='
+            grep -Ein 'pair|hash|auth|encrypt|decrypt|random|aes|sha|md5|crc|key|output|input|delegate|fail|success' "$OUT/strings.txt" || true
+            echo
+            echo '=== INTERESTING SYMBOLS ==='
+            grep -Ein 'pair|hash|auth|crypt|random|sha|md5|aes|crc' "$OUT/nm.txt" || true
+            echo
+            echo '=== OBJC JLHashHandler ==='
+            grep -Ein -A12 -B4 'JLHashHandler|bluetoothPairingKey|inputPairData|hashOnPairOutputData|hashResetPair' "$OUT/objc.txt" || true
+          } > "$OUT/interesting.txt"
+
+      - name: Commit analysis output
+        run: |
+          set -euxo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add re/jl_hashpair
+          git commit -m 'Add JieLi HashPair binary analysis' || exit 0
+          git push
