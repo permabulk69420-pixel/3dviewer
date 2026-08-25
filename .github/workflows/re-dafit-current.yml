@@ -1,0 +1,228 @@
+name: Reverse engineer current Da Fit updater
+
+on:
+  push:
+    paths:
+      - '.github/workflows/re-dafit-current.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch current signed Da Fit bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          PAGE='https://da-fit.apk.watch/2.9.19-68-g52f85d16b5'
+          UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/131 Safari/537.36'
+          curl -fL --retry 3 -A "$UA" "$PAGE" -o /tmp/dafit-page.html
+
+          python3 - <<'PY' > /tmp/download-page-url.txt
+          import re
+          from pathlib import Path
+
+          page = Path('/tmp/dafit-page.html').read_text(errors='replace')
+          match = re.search(r'href="http://apk\.watch/download\?split=([^\"]+)"', page)
+          if not match:
+              raise SystemExit('current APKS download link not found')
+          print('http://da-fit.apk.watch/download?split=' + match.group(1))
+          PY
+
+          DOWNLOAD_PAGE="$(cat /tmp/download-page-url.txt)"
+          curl -fL --retry 3 -A "$UA" -e "$PAGE" "$DOWNLOAD_PAGE" -o /tmp/dafit-download.html
+
+          python3 - <<'PY' > /tmp/bundle-url.txt
+          import base64
+          import html
+          import re
+          from pathlib import Path
+
+          page = html.unescape(Path('/tmp/dafit-download.html').read_text(errors='replace'))
+          match = re.search(r'href="http://apk\.watch/go/\?[^\"]*&b=([^\"]+)"', page)
+          if not match:
+              raise SystemExit('signed bundle URL not found')
+          encoded = match.group(1)
+          url = base64.b64decode(encoded + '=' * (-len(encoded) % 4)).decode()
+          print(url.replace(' ', '%20'))
+          PY
+
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq aria2
+          BUNDLE_URL="$(cat /tmp/bundle-url.txt)"
+          aria2c --allow-overwrite=true --auto-file-renaming=false \
+            --max-connection-per-server=16 --split=16 --min-split-size=1M \
+            --retry-wait=2 --max-tries=5 --timeout=60 \
+            --dir=/tmp --out=dafit-bundle.zip "$BUNDLE_URL"
+          test -s /tmp/dafit-bundle.zip
+
+      - name: Extract base APK and inventory bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/dafit-bundle /tmp/dafit-base
+          mkdir -p /tmp/dafit-bundle /tmp/dafit-base re/dafit_current
+          unzip -q /tmp/dafit-bundle.zip -d /tmp/dafit-bundle
+
+          while IFS= read -r nested; do
+            dir="${nested%.*}-contents"
+            mkdir -p "$dir"
+            unzip -q "$nested" -d "$dir" || true
+          done < <(find /tmp/dafit-bundle -type f \( -iname '*.apks' -o -iname '*.xapk' \) -print)
+
+          python3 - <<'PY' > /tmp/base-apk-path.txt
+          from pathlib import Path
+          import zipfile
+
+          candidates = []
+          for path in Path('/tmp/dafit-bundle').rglob('*'):
+              if not path.is_file() or path.suffix.lower() != '.apk':
+                  continue
+              try:
+                  with zipfile.ZipFile(path) as zf:
+                      dex = [n for n in zf.namelist() if n.startswith('classes') and n.endswith('.dex')]
+                  if dex:
+                      candidates.append((path.stat().st_size, len(dex), path))
+              except zipfile.BadZipFile:
+                  pass
+          if not candidates:
+              raise SystemExit('no APK containing classes*.dex found')
+          candidates.sort(reverse=True)
+          print(candidates[0][2])
+          PY
+
+          BASE_APK="$(cat /tmp/base-apk-path.txt)"
+          cp "$BASE_APK" /tmp/dafit-base/base.apk
+          unzip -q /tmp/dafit-base/base.apk -d /tmp/dafit-base/unpacked
+
+          {
+            echo '===== ACQUISITION ====='
+            echo 'Da Fit page: https://da-fit.apk.watch/2.9.19-68-g52f85d16b5'
+            echo "selected base APK: $BASE_APK"
+            stat -c 'bundle_size=%s' /tmp/dafit-bundle.zip
+            stat -c 'base_apk_size=%s' /tmp/dafit-base/base.apk
+            sha256sum /tmp/dafit-bundle.zip /tmp/dafit-base/base.apk
+            md5sum /tmp/dafit-base/base.apk
+            echo
+            echo '===== BUNDLE FILES ====='
+            find /tmp/dafit-bundle -type f -printf '%s %p\n' | sort -nr
+            echo
+            echo '===== BASE APK TOP-LEVEL ====='
+            find /tmp/dafit-base/unpacked -maxdepth 2 -type f -printf '%s %p\n' | sort -nr
+            echo
+            echo '===== EMBEDDED FIRMWARE-LIKE FILES ====='
+            find /tmp/dafit-base/unpacked -type f \
+              \( -iname '*.ufw' -o -iname '*.bin' -o -iname '*.fw' -o -iname '*firmware*' -o -iname '*upgrade*' \) \
+              -printf '%s %p\n' | sort -nr || true
+          } > re/dafit_current/package-inventory.txt
+
+      - name: Extract raw updater strings
+        shell: bash
+        run: |
+          set -euo pipefail
+          OUT='re/dafit_current/raw-updater-strings.txt'
+          : > "$OUT"
+          {
+            echo '===== DEX / RESOURCE / NATIVE HITS ====='
+            find /tmp/dafit-base/unpacked -type f \
+              \( -name '*.dex' -o -name '*.so' -o -name '*.xml' -o -name '*.json' -o -name '*.txt' \) \
+              -print0 | while IFS= read -r -d '' file; do
+                hits="$(strings -a -n 4 "$file" | grep -Eai \
+                  'MOY-8H62|api\.moyoung\.com|p\.moyoung\.com|qn-hscdn|/upgrade/|firmware|\.ufw|JLUFW|Jieli|JL_OTA|FirmwareUpgrade|downloadNewFirmware|tp_bin|app_version|proj_code|auth_key' \
+                  | head -n 400 || true)"
+                if [[ -n "$hits" ]]; then
+                  echo
+                  echo "===== $file ====="
+                  printf '%s\n' "$hits"
+                fi
+              done
+            echo
+            echo '===== ALL HTTP URL STRINGS ====='
+            find /tmp/dafit-base/unpacked -type f \
+              \( -name '*.dex' -o -name '*.so' -o -name '*.xml' -o -name '*.json' -o -name '*.txt' \) \
+              -print0 | xargs -0 strings -a -n 7 \
+              | grep -Eao 'https?://[^[:space:]"<>]+' | sort -u || true
+          } >> "$OUT"
+
+      - name: Decompile and isolate firmware code
+        shell: bash
+        run: |
+          set -euo pipefail
+          JVER='1.5.3'
+          curl -fL --retry 3 \
+            "https://github.com/skylot/jadx/releases/download/v${JVER}/jadx-${JVER}.zip" \
+            -o /tmp/jadx.zip
+          rm -rf /tmp/jadx-tool /tmp/dafit-jadx
+          mkdir -p /tmp/jadx-tool /tmp/dafit-jadx
+          unzip -q /tmp/jadx.zip -d /tmp/jadx-tool
+          /tmp/jadx-tool/bin/jadx --no-res --no-imports --threads-count 4 \
+            -d /tmp/dafit-jadx /tmp/dafit-base/base.apk || true
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          root = Path('/tmp/dafit-jadx')
+          out = Path('re/dafit_current/firmware-matched-sources.txt')
+          strong = re.compile(
+              r'MOY-8H62|api\.moyoung\.com|p\.moyoung\.com|/upgrade/(?:factory|beta)|'
+              r'FirmwareUpgradePresenter|downloadNewFirmware|JieliDfu|\.ufw|JLUFW|'
+              r'tp_bin|app_version|proj_code|auth_key',
+              re.I,
+          )
+          weak = re.compile(r'firmware|upgrade|jieli|ota', re.I)
+          matches = []
+          for path in root.rglob('*'):
+              if not path.is_file() or path.suffix not in {'.java', '.kt', '.xml', '.json'}:
+                  continue
+              try:
+                  text = path.read_text(errors='replace')
+              except OSError:
+                  continue
+              if strong.search(text):
+                  matches.append((0, path, text))
+              elif weak.search(text) and len(matches) < 300:
+                  matches.append((1, path, text))
+          matches.sort(key=lambda item: (item[0], str(item[1])))
+          total = 0
+          with out.open('w') as fh:
+              for priority, path, text in matches:
+                  if priority and total > 3_000_000:
+                      continue
+                  if len(text) > 300_000:
+                      text = text[:300_000] + '\n[TRUNCATED]\n'
+                  block = f'\n===== {path.relative_to(root)} priority={priority} =====\n{text}\n'
+                  if total + len(block) > 8_000_000:
+                      break
+                  fh.write(block)
+                  total += len(block)
+              fh.write(f'\n===== SUMMARY =====\nmatched_files={len(matches)} emitted_bytes={total}\n')
+          PY
+
+          {
+            echo '===== DECOMPILED URLS ====='
+            rg -o -i 'https?://[^[:space:]"<>]+' /tmp/dafit-jadx | sed 's/^.*://' | sort -u || true
+            echo
+            echo '===== STRONG HIT LOCATIONS ====='
+            rg -n -i -C 4 \
+              'MOY-8H62|api\.moyoung\.com|p\.moyoung\.com|/upgrade/(factory|beta)|FirmwareUpgradePresenter|downloadNewFirmware|JieliDfu|\.ufw|JLUFW|tp_bin|app_version|proj_code|auth_key' \
+              /tmp/dafit-jadx | head -n 30000 || true
+          } > re/dafit_current/decompiled-index.txt
+
+      - name: Commit analysis only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add re/dafit_current
+          git commit -m 'Add current Da Fit firmware updater analysis' || exit 0
+          git push
