@@ -1,4 +1,4 @@
-name: Trace Da Fit target identification and OTA file flow
+name: Trace Da Fit forced update and target builders
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Trace exact commands and file flow
+      - name: Extract focused classes
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
@@ -30,63 +30,26 @@ jobs:
           cd /tmp/crp && unzip -q /tmp/crp.aar
           cd /tmp/classes && jar xf /tmp/crp/classes.jar
 
-          OUT="$GITHUB_WORKSPACE/re/dafit_crp/target-and-ota-trace.txt"
+          OUT="$GITHUB_WORKSPACE/re/dafit_crp/forced-update-and-builders.txt"
           : > "$OUT"
-
-          echo '===== TARGET / UPDATE QUERY CALLERS =====' >> "$OUT"
-          mapfile -t MATCHES < <(grep -aRl -E 'queryDfuType|queryDeviceVersion|queryDeviceDfuStatus|getProtocolVersion|CRPDeviceDfuTypeCallback|CRPDeviceVersionCallback|CRPDeviceDfuStatusCallback' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
-          for f in "${MATCHES[@]}"; do
-            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
-            echo >> "$OUT"
-            echo "===== $c =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
-          done
-
-          echo >> "$OUT"
-          echo '===== CALLBACKS / TYPES =====' >> "$OUT"
           for c in \
-            com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback \
-            com.crrepa.ble.conn.callback.CRPDeviceVersionCallback \
-            com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback \
+            com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter \
+            com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo \
             com.crrepa.ble.conn.type.CRPFirmwareUpgradeType \
-            com.crrepa.ble.conn.type.CRPDeviceVersionType \
-            com.crrepa.ble.conn.type.CRPProtocolVersion; do
+            com.crrepa.f.w \
+            com.crrepa.f.u \
+            com.crrepa.e.e \
+            com.crrepa.e.c; do
             echo >> "$OUT"
             echo "===== $c =====" >> "$OUT"
             javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
           done
-
-          echo >> "$OUT"
-          echo '===== OTA TRANSFER CORE =====' >> "$OUT"
-          for c in \
-            com.crrepa.i0.b \
-            com.crrepa.c0.c \
-            com.crrepa.c0.d \
-            com.crrepa.c0.e \
-            com.crrepa.m.f \
-            com.crrepa.q.b \
-            com.crrepa.f.u1; do
-            echo >> "$OUT"
-            echo "===== $c =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
-          done
-
-          echo >> "$OUT"
-          echo '===== CLASSES REFERENCING OTA COMMAND 0x63 OR FEE5 PATH =====' >> "$OUT"
-          mapfile -t OTAM < <(grep -aRl -E 'sendFileCheckResult|createFileManager|startTrans|setPacketLength|FEE5|fee5' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
-          for f in "${OTAM[@]}"; do
-            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
-            echo >> "$OUT"
-            echo "===== $c =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
-          done
-
           wc -l "$OUT"
-      - name: Commit focused trace
+      - name: Commit focused dump
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/target-and-ota-trace.txt
-          git commit -m 'Add target identification and OTA file-flow trace' || exit 0
+          git add re/dafit_crp/forced-update-and-builders.txt
+          git commit -m 'Add forced-update and target-builder trace' || exit 0
           git push
