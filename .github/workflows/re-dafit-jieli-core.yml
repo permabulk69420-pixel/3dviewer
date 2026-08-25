@@ -44,8 +44,13 @@ jobs:
             com.crrepa.p.a \
             com.crrepa.f.u1 \
             com.crrepa.l.a \
+            com.crrepa.p0.e \
+            com.crrepa.p0.n \
+            com.crrepa.r.a \
+            com.crrepa.s.a \
             com.crrepa.ble.ota.jieli.JieliDfuController \
             com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter \
+            com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo \
             com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo \
             com.crrepa.ble.conn.type.CRPFirmwareUpgradeType \
             com.crrepa.h0.a; do
@@ -57,7 +62,7 @@ jobs:
           echo '===== URL-like strings in firmware/upgrade classes =====' >> "$OUT"
           mkdir -p /tmp/classes && cd /tmp/classes && jar xf /tmp/crp/classes.jar
           find com/crrepa -type f -name '*.class' | grep -Ei '(firmware|upgrade|jieli|dfu)' | while read -r f; do
-            strings "$f" | grep -E 'https?://|\.bin|\.zip|firmware|upgrade|version' | sed "s#^#$f: #" || true
+            strings "$f" | grep -E 'https?://|\.bin|\.zip|firmware|upgrade|version|md5|url|mac|app_version' | sed "s#^#$f: #" || true
           done >> "$OUT"
       - name: Commit focused dump
         run: |
@@ -65,5 +70,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp/jieli-core.txt
-          git commit -m 'Add Da Fit firmware download-path analysis' || exit 0
+          git commit -m 'Add MoYoung firmware API analysis' || exit 0
           git push
