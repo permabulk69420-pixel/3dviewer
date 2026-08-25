@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>Anko OTA firmware version</h1>
-<div class="sub">v10.1 — exact read-only Da Fit firmware-version query: CRP command 0x5A, payload 0x01. No DFU command and no firmware data.</div>
+<div class="sub">v10.2 — exact read-only Da Fit queryFirmwareVersion packet. No DFU command and no firmware data.</div>
 <div class="card">
 <button id="connect">1. Connect watch</button>
 <button id="query" disabled>2. Get OTA version</button>
@@ -28,17 +28,24 @@ const $=id=>document.getElementById(id);
 function log(s){const line=`[${new Date().toLocaleTimeString()}] ${s}`;lines.push(line);$('log').textContent=lines.join('\n');$('log').scrollTop=$('log').scrollHeight;}
 function hex(a){return Array.from(a,b=>b.toString(16).padStart(2,'0')).join(' ');}
 function shortUuid(u){const m=u.toLowerCase().match(/^0000([0-9a-f]{4})-/);return m?m[1]:u;}
-function ascii(a){return Array.from(a,b=>(b>=32&&b<=126)?String.fromCharCode(b):'.').join('');}
+function text(a){return new TextDecoder().decode(a).replace(/\0+$/g,'');}
 function onNotify(ev){
   const ch=ev.target,v=ch.value,d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);
   log(`RX ${shortUuid(ch.uuid).toUpperCase()}: ${hex(d)}`);
   if(d.length>=5&&d[0]===0xfe&&d[1]===0xea){
     const cmd=d[4],p=d.slice(5);
     log(`  decoded cmd=0x${cmd.toString(16).padStart(2,'0')} payload=${hex(p)}`);
-    if(cmd===0x5a){
-      log(`  payload ASCII: ${ascii(p)}`);
-      $('status').textContent='OTA version reply received — copy report';
-      $('status').className='ok';
+    if(cmd===0x5a&&p.length>=1){
+      const subtype=p[0];
+      if(subtype===0x01){
+        const version=text(p.slice(1));
+        log(`FIRMWARE VERSION: ${version || '(empty)'}`);
+        $('status').textContent='Firmware version received — copy report';
+        $('status').className='ok';
+        $('query').disabled=false;
+      } else {
+        log(`  0x5A subtype=0x${subtype.toString(16).padStart(2,'0')} text=${text(p.slice(1))}`);
+      }
     }
   }
 }
@@ -68,20 +75,20 @@ async function connect(){
 }
 async function queryVersion(){
   try{
-    $('query').disabled=true;$('status').textContent='Reading OTA firmware version…';$('status').className='warn';
+    $('query').disabled=true;$('status').textContent='Reading firmware version…';$('status').className='warn';
     const packet=Uint8Array.from([0xfe,0xea,0x20,0x06,0x5a,0x01]);
-    log('TX FEE2 OTA VERSION QUERY: '+hex(packet));
+    log('TX FEE2 queryFirmwareVersion: '+hex(packet));
     if(fee2.properties.writeWithoutResponse)await fee2.writeValueWithoutResponse(packet);
     else if(fee2.properties.write)await fee2.writeValueWithResponse(packet);
     else throw Error('FEE2 is not writable');
     log('  ATT write accepted');
-    setTimeout(()=>{if($('status').textContent==='Reading OTA firmware version…'){$('status').textContent='Query sent — copy report';$('status').className='warn';$('query').disabled=false;}},2500);
+    setTimeout(()=>{if($('status').textContent==='Reading firmware version…'){$('status').textContent='No version reply yet — copy report';$('status').className='warn';$('query').disabled=false;}},3000);
   }catch(e){$('status').textContent='Query error — copy report';$('status').className='bad';log('QUERY ERROR: '+(e.message||e));$('query').disabled=false;}
 }
 $('connect').onclick=connect;
 $('query').onclick=queryVersion;
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied';}catch(e){log('Clipboard failed; long-press log to copy');}};
-log('Ready — v10.1 exact read-only OTA firmware version query.');
+log('Ready — v10.2 exact read-only queryFirmwareVersion.');
 })();
 </script>
 </body>
