@@ -1,0 +1,4 @@
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback {
+  public abstract void onUIVersionCode(java.lang.String);
+}

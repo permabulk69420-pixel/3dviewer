@@ -1,0 +1,10 @@
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback {
+  public static final int DEVICE_STATUS_NORMAL = 0;
+
+  public static final int DEVICE_STATUS_DFU = 1;
+
+  public static final int DEVICE_STATUS_NULL = 2;
+
+  public abstract void onDeviceDfuStatus(int);
+}

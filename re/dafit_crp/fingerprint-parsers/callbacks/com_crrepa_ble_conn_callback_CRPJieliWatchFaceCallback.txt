@@ -1,0 +1,4 @@
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback {
+  public abstract void onWatchFaceInfo(com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo);
+}

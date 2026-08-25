@@ -1,0 +1,4 @@
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback {
+  public abstract void onTestMode(boolean);
+}

@@ -1,0 +1,75 @@
+Compiled from "SourceFile"
+public final class com.crrepa.ble.conn.type.CRPProtocolVersion extends java.lang.Enum<com.crrepa.ble.conn.type.CRPProtocolVersion> {
+  public static final com.crrepa.ble.conn.type.CRPProtocolVersion V1;
+
+  public static final com.crrepa.ble.conn.type.CRPProtocolVersion V2;
+
+  public static final com.crrepa.ble.conn.type.CRPProtocolVersion V3;
+
+  private static final com.crrepa.ble.conn.type.CRPProtocolVersion[] $VALUES;
+
+  public static com.crrepa.ble.conn.type.CRPProtocolVersion[] values();
+    Code:
+       0: getstatic     #18                 // Field $VALUES:[Lcom/crrepa/ble/conn/type/CRPProtocolVersion;
+       3: invokevirtual #23                 // Method "[Lcom/crrepa/ble/conn/type/CRPProtocolVersion;".clone:()Ljava/lang/Object;
+       6: checkcast     #19                 // class "[Lcom/crrepa/ble/conn/type/CRPProtocolVersion;"
+       9: areturn
+
+  public static com.crrepa.ble.conn.type.CRPProtocolVersion valueOf(java.lang.String);
+    Code:
+       0: ldc           #5                  // class com/crrepa/ble/conn/type/CRPProtocolVersion
+       2: aload_0
+       3: invokestatic  #28                 // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       6: checkcast     #5                  // class com/crrepa/ble/conn/type/CRPProtocolVersion
+       9: areturn
+
+  private com.crrepa.ble.conn.type.CRPProtocolVersion();
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #33                 // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: return
+
+  static {};
+    Code:
+       0: new           #5                  // class com/crrepa/ble/conn/type/CRPProtocolVersion
+       3: dup
+       4: dup
+       5: astore_0
+       6: ldc           #35                 // String V1
+       8: iconst_0
+       9: invokespecial #36                 // Method "<init>":(Ljava/lang/String;I)V
+      12: putstatic     #38                 // Field V1:Lcom/crrepa/ble/conn/type/CRPProtocolVersion;
+      15: new           #5                  // class com/crrepa/ble/conn/type/CRPProtocolVersion
+      18: dup
+      19: dup
+      20: astore_1
+      21: ldc           #39                 // String V2
+      23: iconst_1
+      24: invokespecial #36                 // Method "<init>":(Ljava/lang/String;I)V
+      27: putstatic     #41                 // Field V2:Lcom/crrepa/ble/conn/type/CRPProtocolVersion;
+      30: new           #5                  // class com/crrepa/ble/conn/type/CRPProtocolVersion
+      33: dup
+      34: dup
+      35: astore_2
+      36: ldc           #42                 // String V3
+      38: iconst_2
+      39: invokespecial #36                 // Method "<init>":(Ljava/lang/String;I)V
+      42: putstatic     #44                 // Field V3:Lcom/crrepa/ble/conn/type/CRPProtocolVersion;
+      45: iconst_3
+      46: anewarray     #5                  // class com/crrepa/ble/conn/type/CRPProtocolVersion
+      49: dup
+      50: dup2
+      51: iconst_0
+      52: aload_0
+      53: aastore
+      54: iconst_1
+      55: aload_1
+      56: aastore
+      57: iconst_2
+      58: aload_2
+      59: aastore
+      60: putstatic     #18                 // Field $VALUES:[Lcom/crrepa/ble/conn/type/CRPProtocolVersion;
+      63: return
+}
