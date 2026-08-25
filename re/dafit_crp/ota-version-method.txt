@@ -1,0 +1,120 @@
+===== queryFrimwareVersion method =====
+       7: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      10: return
+
+  public void queryFrimwareVersion(com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: invokestatic  #208                // Method com/crrepa/e/e.a:()Lcom/crrepa/e/e;
+       5: aload_1
+       6: invokevirtual #210                // Method com/crrepa/e/e.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceFirmwareVersionCallback;)V
+       9: getfield      #129                // Field c:Lcom/crrepa/m/e;
+      12: invokevirtual #214                // Method com/crrepa/m/e.e:()V
+      15: invokestatic  #218                // Method com/crrepa/f/w.d:()[B
+      18: invokespecial #73                 // Method a:([B)V
+      21: return
+
+  public void checkFirmwareVersion(com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback, java.lang.String, int);
+    Code:
+       0: invokestatic  #226                // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.getInstance:()Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+       3: aload_2
+       4: iload_3
+       5: aload_1
+       6: invokevirtual #229                // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.checkFirmwareVersion:(Ljava/lang/String;ILcom/crrepa/ble/conn/callback/CRPDeviceNewFirmwareVersionCallback;)V
+       9: return
+
+  public void queryDeviceBattery();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field c:Lcom/crrepa/m/e;
+       4: invokevirtual #232                // Method com/crrepa/m/e.c:()V
+       7: return
+
+  public void setDeviceBatteryListener(com.crrepa.ble.conn.listener.CRPDeviceBatteryListener);
+    Code:
+       0: invokestatic  #239                // Method com/crrepa/n/a.a:()Lcom/crrepa/n/a;
+       3: aload_1
+       4: invokevirtual #241                // Method com/crrepa/n/a.a:(Lcom/crrepa/ble/conn/listener/CRPDeviceBatteryListener;)V
+       7: return
+
+===== firmware callback decode sites =====
+      98: goto          103
+     101: iconst_0
+     102: istore_1
+     103: aload_0
+     104: iload_1
+     105: invokeinterface #1614,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPDeviceTestModeCallback.onTestMode:(Z)V
+     110: goto          186
+     113: aload_0
+     114: getfield      #1616               // Field J0:Lcom/crrepa/ble/conn/callback/CRPAvailableStorageCallback;
+     117: dup
+     118: astore_0
+     119: ifnull        186
+     122: aload_0
+     123: aload_3
+     124: invokestatic  #1619               // Method com/crrepa/j/d.a:([B)I
+     127: invokeinterface #1624,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPAvailableStorageCallback.onAvailableSize:(I)V
+     132: goto          186
+     135: aload_0
+     136: invokestatic  #1629               // Method com/crrepa/y/c.b:()Lcom/crrepa/y/c;
+     139: aload_1
+     140: invokevirtual #1631               // Method com/crrepa/y/c.a:(Ljava/lang/String;)V
+     143: getfield      #1633               // Field N0:Lcom/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback;
+     146: dup
+     147: astore_0
+     148: ifnull        186
+     151: aload_0
+     152: aload_1
+     153: invokeinterface #1638,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback.onUIVersionCode:(Ljava/lang/String;)V
+     158: goto          186
+     161: aload_0
+     162: aload_3
+     163: invokespecial #1640               // Method K:([B)V
+     166: goto          186
+     169: invokestatic  #1645               // Method com/crrepa/e/e.a:()Lcom/crrepa/e/e;
+     172: aload_1
+     173: invokevirtual #1646               // Method com/crrepa/e/e.a:(Ljava/lang/String;)V
+     176: goto          186
+     179: invokestatic  #1651               // Method com/crrepa/e/g.a:()Lcom/crrepa/e/g;
+     182: aload_1
+     183: invokevirtual #1652               // Method com/crrepa/e/g.a:(Ljava/lang/String;)V
+     186: return
+     187: return
+
+  private void K(byte[]);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: istore_0
+       3: arraylength
+       4: iconst_1
+       5: swap
+===== all e/e references in parser =====
+     143: getfield      #1633               // Field N0:Lcom/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback;
+     146: dup
+     147: astore_0
+     148: ifnull        186
+     151: aload_0
+     152: aload_1
+     153: invokeinterface #1638,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback.onUIVersionCode:(Ljava/lang/String;)V
+     158: goto          186
+     161: aload_0
+     162: aload_3
+     163: invokespecial #1640               // Method K:([B)V
+     166: goto          186
+     169: invokestatic  #1645               // Method com/crrepa/e/e.a:()Lcom/crrepa/e/e;
+     172: aload_1
+     173: invokevirtual #1646               // Method com/crrepa/e/e.a:(Ljava/lang/String;)V
+     176: goto          186
+     179: invokestatic  #1651               // Method com/crrepa/e/g.a:()Lcom/crrepa/e/g;
+     182: aload_1
+     183: invokevirtual #1652               // Method com/crrepa/e/g.a:(Ljava/lang/String;)V
+     186: return
+     187: return
+
+  private void K(byte[]);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: istore_0
