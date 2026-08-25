@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Anko MOYOUNG-V2 Watchface Uploader</title>
+<style>
+  :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}
+  *{box-sizing:border-box} body{margin:0;padding:20px;max-width:720px;margin-inline:auto}
+  h1{font-size:1.45rem;margin:.2rem 0 .4rem}.sub{color:#aeb7c4;margin:0 0 1.2rem;line-height:1.45}
+  .card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;cursor:pointer}
+  button.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px;font-size:.95rem}.k{color:#9ca8b8}.v{word-break:break-word}
+  progress{width:100%;height:16px;margin-top:12px}.warn{color:#ffd37a}.ok{color:#78e7a2}.bad{color:#ff8c8c}
+  pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:110px;max-height:260px;overflow:auto;font-size:.82rem}
+  small{color:#9ca8b8;line-height:1.45;display:block}
+</style>
+</head>
+<body>
+<h1>Anko watchface uploader</h1>
+<p class="sub">Direct BLE uploader for this MOYOUNG-V2 watch. No Da Fit required during upload.</p>
+
+<div class="card">
+  <strong>1. Connect</strong>
+  <p><small>Force-stop Da Fit, Gadgetbridge and nRF Connect first. Then tap Connect and choose <b>Anko43568185</b>.</small></p>
+  <div class="row"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div>
+  <div class="kv">
+    <div class="k">Status</div><div class="v" id="status">Not connected</div>
+    <div class="k">Manufacturer</div><div class="v" id="manufacturer">—</div>
+    <div class="k">Software</div><div class="v" id="software">—</div>
+    <div class="k">Battery</div><div class="v" id="battery">—</div>
+  </div>
+</div>
+
+<div class="card">
+  <strong>2. Choose our test .bin</strong>
+  <p><small>For this first test the page only accepts the exact 444,576-byte face format we reconstructed.</small></p>
+  <div class="row"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div>
+</div>
+
+<div class="card">
+  <strong>3. Upload</strong>
+  <p class="warn"><small>Keep the watch close and do not power it off during the transfer. This writes the watchface slot, not the OS/bootloader.</small></p>
+  <button id="upload" disabled>Send to watch</button>
+  <progress id="progress" value="0" max="100"></progress>
+  <div id="progressText">0%</div>
+</div>
+
+<div class="card">
+  <strong>Log</strong>
+  <pre id="log"></pre>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  const SERVICE = 0xFEEA;
+  const SEND_CHAR = 0xFEE2;
+  const SENDFILE_CHAR = 0xFEE6;
+  const NOTIFY_CHAR = 0xFEE3;
+  const DEVINFO_SERVICE = 0x180A;
+  const MANUFACTURER_CHAR = 0x2A29;
+  const SOFTWARE_CHAR = 0x2A28;
+  const BATTERY_SERVICE = 0x180F;
+  const BATTERY_CHAR = 0x2A19;
+
+  const CHUNK_SIZE = 244;
+  const EXPECTED_SIZE = 444576;
+  const SLOT = 0x74;
+  const PREP_HEADER = new Uint8Array([0xFE,0xEA,0x20,0x09,SLOT]);
+  const READY_HEADER = new Uint8Array([0xFE,0xEA,0x20,0x07,SLOT]);
+  const APPLY = new Uint8Array([0xFE,0xEA,0x20,0x06,0x19,0x0D]);
+
+  let device = null, server = null, sendChar = null, sendFileChar = null, notifyChar = null;
+  let chosenFile = null, uploading = false;
+
+  const $ = id => document.getElementById(id);
+  const connectBtn = $('connect'), disconnectBtn = $('disconnect'), uploadBtn = $('upload');
+  const fileInput = $('file'), logEl = $('log'), progress = $('progress'), progressText = $('progressText');
+
+  function log(msg, cls='') {
+    const stamp = new Date().toLocaleTimeString();
+    logEl.textContent += `[${stamp}] ${msg}\n`;
+    logEl.scrollTop = logEl.scrollHeight;
+    if (cls) $('status').className = cls;
+  }
+  function hex(bytes) { return Array.from(bytes, b => b.toString(16).padStart(2,'0')).join(' '); }
+  function startsWith(data, header) {
+    if (data.length < header.length) return false;
+    for (let i=0;i<header.length;i++) if (data[i] !== header[i]) return false;
+    return true;
+  }
+  function text(view) { return new TextDecoder().decode(view).replace(/\0+$/,''); }
+  function updateUploadEnabled() {
+    uploadBtn.disabled = !(device?.gatt?.connected && chosenFile && chosenFile.size === EXPECTED_SIZE && !uploading);
+  }
+
+  async function connectWatch() {
+    try {
+      if (!('bluetooth' in navigator)) throw new Error('Web Bluetooth is unavailable. Use Android Chrome on this HTTPS page.');
+      $('status').textContent = 'Choose the Anko watch…';
+      log('Opening Bluetooth chooser…');
+      device = await navigator.bluetooth.requestDevice({
+        acceptAllDevices: true,
+        optionalServices: [SERVICE, DEVINFO_SERVICE, BATTERY_SERVICE]
+      });
+      device.addEventListener('gattserverdisconnected', onDisconnected);
+      $('status').textContent = 'Connecting…';
+      server = await device.gatt.connect();
+
+      const infoService = await server.getPrimaryService(DEVINFO_SERVICE);
+      const batteryService = await server.getPrimaryService(BATTERY_SERVICE);
+      const moyoungService = await server.getPrimaryService(SERVICE);
+
+      const manufacturerChar = await infoService.getCharacteristic(MANUFACTURER_CHAR);
+      const softwareChar = await infoService.getCharacteristic(SOFTWARE_CHAR);
+      const batteryChar = await batteryService.getCharacteristic(BATTERY_CHAR);
+      sendChar = await moyoungService.getCharacteristic(SEND_CHAR);
+      sendFileChar = await moyoungService.getCharacteristic(SENDFILE_CHAR);
+      notifyChar = await moyoungService.getCharacteristic(NOTIFY_CHAR);
+
+      const manufacturer = text(await manufacturerChar.readValue());
+      const software = text(await softwareChar.readValue());
+      const battery = (await batteryChar.readValue()).getUint8(0);
+
+      $('manufacturer').textContent = manufacturer;
+      $('software').textContent = software;
+      $('battery').textContent = battery + '%';
+
+      if (manufacturer !== 'MOYOUNG-V2') {
+        device.gatt.disconnect();
+        throw new Error(`Wrong device: manufacturer is ${manufacturer || '(blank)'}, expected MOYOUNG-V2.`);
+      }
+
+      $('status').textContent = `Connected to ${device.name || 'watch'}`;
+      $('status').className = 'ok';
+      connectBtn.disabled = true;
+      disconnectBtn.disabled = false;
+      log(`Connected: ${device.name || '(unnamed)'} / ${manufacturer} / ${software} / battery ${battery}%`, 'ok');
+      updateUploadEnabled();
+    } catch (err) {
+      $('status').textContent = 'Connection failed';
+      $('status').className = 'bad';
+      log('ERROR: ' + (err?.message || err), 'bad');
+      cleanupConnection(false);
+    }
+  }
+
+  function onDisconnected() {
+    log('Watch disconnected.');
+    cleanupConnection(false);
+  }
+
+  function cleanupConnection(doDisconnect=true) {
+    if (doDisconnect && device?.gatt?.connected) device.gatt.disconnect();
+    sendChar = sendFileChar = notifyChar = server = null;
+    connectBtn.disabled = false;
+    disconnectBtn.disabled = true;
+    $('status').textContent = 'Not connected';
+    $('status').className = '';
+    updateUploadEnabled();
+  }
+
+  async function uploadFace() {
+    if (!chosenFile || chosenFile.size !== EXPECTED_SIZE) return;
+    if (!sendChar || !sendFileChar || !notifyChar) return;
+
+    uploading = true;
+    updateUploadEnabled();
+    progress.value = 0; progressText.textContent = '0%';
+    log(`Starting upload: ${chosenFile.name} (${chosenFile.size.toLocaleString()} bytes)`);
+
+    try {
+      const fileBytes = new Uint8Array(await chosenFile.arrayBuffer());
+      const totalChunks = Math.ceil(fileBytes.length / CHUNK_SIZE);
+      let settled = false;
+
+      await notifyChar.startNotifications();
+
+      await new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => finish(new Error('Timed out waiting for the watch.')), 180000);
+
+        function finish(err, result) {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timeout);
+          notifyChar.removeEventListener('characteristicvaluechanged', onValue);
+          notifyChar.stopNotifications().catch(()=>{});
+          err ? reject(err) : resolve(result);
+        }
+
+        function onValue(event) {
+          const view = event.target.value;
+          if (!view) return;
+          const data = new Uint8Array(view.buffer, view.byteOffset, view.byteLength);
+
+          if (startsWith(data, READY_HEADER) && data.length >= 7) {
+            const chunkNum = (data[5] << 8) | data[6];
+            const start = chunkNum * CHUNK_SIZE;
+            if (start >= fileBytes.length) return finish(new Error(`Watch requested invalid chunk ${chunkNum}.`));
+            const end = Math.min(start + CHUNK_SIZE, fileBytes.length);
+            const chunk = fileBytes.subarray(start, end);
+            sendFileChar.writeValueWithoutResponse(chunk).then(() => {
+              const pct = Math.round(end * 100 / fileBytes.length);
+              progress.value = pct;
+              progressText.textContent = `${pct}% — chunk ${chunkNum+1}/${totalChunks}`;
+            }).catch(finish);
+            return;
+          }
+
+          if (startsWith(data, PREP_HEADER) && data.length >= 9) {
+            const checksum = (((data[5]<<24) | (data[6]<<16) | (data[7]<<8) | data[8]) >>> 0);
+            log(`Watch received file. Checksum 0x${checksum.toString(16).padStart(8,'0')}. Applying…`);
+            (async () => {
+              try {
+                await sendChar.writeValueWithoutResponse(new Uint8Array([...PREP_HEADER,0,0,0,0]));
+                await sendChar.writeValueWithoutResponse(APPLY);
+                progress.value = 100; progressText.textContent = '100% — applied';
+                finish(null, checksum);
+              } catch (e) { finish(e); }
+            })();
+            return;
+          }
+
+          log('Watch → ' + hex(data));
+        }
+
+        notifyChar.addEventListener('characteristicvaluechanged', onValue);
+
+        const prep = new Uint8Array(9);
+        prep.set(PREP_HEADER);
+        new DataView(prep.buffer).setUint32(5, fileBytes.length, false);
+        log('Sending prep command: ' + hex(prep));
+        sendChar.writeValueWithoutResponse(prep).catch(finish);
+      });
+
+      log('DONE. The modified watch face should now be active.', 'ok');
+    } catch (err) {
+      log('UPLOAD ERROR: ' + (err?.message || err), 'bad');
+    } finally {
+      uploading = false;
+      updateUploadEnabled();
+    }
+  }
+
+  connectBtn.addEventListener('click', connectWatch);
+  disconnectBtn.addEventListener('click', () => cleanupConnection(true));
+  uploadBtn.addEventListener('click', uploadFace);
+  fileInput.addEventListener('change', () => {
+    chosenFile = fileInput.files?.[0] || null;
+    if (!chosenFile) {
+      $('fileName').textContent = 'No file selected';
+    } else {
+      $('fileName').textContent = `${chosenFile.name} — ${chosenFile.size.toLocaleString()} bytes`;
+      if (chosenFile.size !== EXPECTED_SIZE) log(`Refusing this file: expected ${EXPECTED_SIZE.toLocaleString()} bytes, got ${chosenFile.size.toLocaleString()}.`, 'bad');
+      else log('Test .bin accepted.');
+    }
+    updateUploadEnabled();
+  });
+
+  log('Ready.');
+})();
+</script>
+</body>
+</html>
