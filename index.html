@@ -4,34 +4,132 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Anko Watchface Uploader</title>
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}*{box-sizing:border-box}body{margin:0;padding:18px;max-width:720px;margin-inline:auto}h1{font-size:1.4rem;margin:.2rem 0}.sub{color:#aeb7c4;margin:.2rem 0 1rem}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:#fff}.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}button:disabled{opacity:.45}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px}.k{color:#9ca8b8}.ok{color:#78e7a2}.bad{color:#ff8c8c}.warn{color:#ffd37a}progress{width:100%;height:16px;margin-top:12px}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:130px;max-height:300px;overflow:auto;font-size:.82rem}small{color:#aeb7c4;line-height:1.45;display:block}
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}
+*{box-sizing:border-box}body{margin:0;padding:18px;max-width:720px;margin-inline:auto}
+h1{font-size:1.4rem;margin:.2rem 0}.sub{color:#aeb7c4;margin:.2rem 0 1rem}
+.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}
+button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:#fff}
+.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}button:disabled{opacity:.45}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px}
+.k{color:#9ca8b8}.ok{color:#78e7a2}.bad{color:#ff8c8c}.warn{color:#ffd37a}
+progress{width:100%;height:16px;margin-top:12px}
+pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:150px;max-height:340px;overflow:auto;font-size:.82rem}
+small{color:#aeb7c4;line-height:1.45;display:block}
 </style></head><body>
-<h1>Anko MOYOUNG-V2 uploader</h1><div class="sub">Protocol fix v3 — finalisation now follows the timing in your captured Da Fit transfer.</div>
-<div class="card"><strong>1. Connect</strong><div class="row" style="margin-top:12px"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div><div class="kv"><div class="k">Status</div><div id="status">Not connected</div><div class="k">Manufacturer</div><div id="manufacturer">—</div><div class="k">Software</div><div id="software">—</div><div class="k">Battery</div><div id="battery">—</div></div></div>
-<div class="card"><strong>2. Test file</strong><div class="row" style="margin-top:12px"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div></div>
-<div class="card"><strong>3. Write / finalise</strong><small class="warn">The previous version sent the register/select commands back-to-back. Da Fit waits about 1.0 s after committing the file, then about 0.6 s before selecting face index 8. This version mirrors that sequence.</small><div class="row" style="margin-top:12px"><button id="upload" disabled>Upload + finalise</button><button id="finalise" class="secondary" disabled>Finalise last upload</button></div><progress id="progress" value="0" max="100"></progress><div id="progressText">0%</div></div>
+<h1>Anko MOYOUNG-V2 uploader</h1>
+<div class="sub">Protocol fix v4 — CRC-verified. It will not activate a face unless the watch actually accepts the uploaded file.</div>
+
+<div class="card"><strong>1. Connect</strong>
+<div class="row" style="margin-top:12px"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div>
+<div class="kv"><div class="k">Status</div><div id="status">Not connected</div><div class="k">Manufacturer</div><div id="manufacturer">—</div><div class="k">Software</div><div id="software">—</div><div class="k">Battery</div><div id="battery">—</div></div></div>
+
+<div class="card"><strong>2. Choose .bin</strong>
+<div class="row" style="margin-top:12px"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div>
+<div class="kv"><div class="k">Expected CRC</div><div id="expectedCrc">—</div></div></div>
+
+<div class="card"><strong>3. Upload</strong>
+<small class="warn">This version checks the watch's final CRC before sending the success/registration commands. A 0000 CRC is treated as rejection, not success.</small>
+<div class="row" style="margin-top:12px"><button id="upload" disabled>Upload + verify</button></div>
+<progress id="progress" value="0" max="100"></progress><div id="progressText">0%</div></div>
+
 <div class="card"><strong>Log</strong><pre id="log"></pre></div>
+
 <script>
 (()=>{'use strict';
 const SERVICE=0xFEEA,SEND=0xFEE2,SENDFILE=0xFEE6,NOTIFY=0xFEE3,INFO=0x180A,MAN=0x2A29,SOFT=0x2A28,BATT=0x180F,BATTLVL=0x2A19;
-const CHUNK=244,SIZE=444576,SLOT=0x74;
+const CHUNK=244,SIZE=444576;
 const PREP=new Uint8Array([0xFE,0xEA,0x20,0x09,0x74]);
 const READY=new Uint8Array([0xFE,0xEA,0x20,0x07,0x74]);
+const SUCCESS=new Uint8Array([0xFE,0xEA,0x20,0x09,0x74,0x00,0x00,0x00,0x00]);
 const REGISTER=new Uint8Array([0xFE,0xEA,0x20,0x0A,0xB4,0x11,0x52,0x28,0x00,0x00]);
 const SELECT8=new Uint8Array([0xFE,0xEA,0x20,0x06,0x19,0x08]);
 const QUERYFACE=new Uint8Array([0xFE,0xEA,0x20,0x05,0x29]);
-let device=null,send=null,sendFile=null,notify=null,file=null,busy=false;
-const $=x=>document.getElementById(x),logEl=$('log');
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+let device=null,send=null,sendFile=null,notify=null,file=null,busy=false,fileBytes=null,expectedCrc=null;
+const $=x=>document.getElementById(x),logEl=$('log'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function log(s){logEl.textContent+=`[${new Date().toLocaleTimeString()}] ${s}\n`;logEl.scrollTop=logEl.scrollHeight}
 function text(v){return new TextDecoder().decode(v).replace(/\0+$/,'')}
 function starts(a,h){if(a.length<h.length)return false;for(let i=0;i<h.length;i++)if(a[i]!==h[i])return false;return true}
-function buttons(){const c=!!device?.gatt?.connected;$('upload').disabled=!(c&&file?.size===SIZE&&!busy);$('finalise').disabled=!(c&&!busy)}
+function crc16(data,initial=0xFEEA){let value=initial;for(const byte of data){let swapped=((((value&0x00ff)<<8)|((value&0xff00)>>8))^byte)&0xffff;let mixed=(swapped^((swapped&0xff)>>4))&0xffff;mixed=(mixed^(((mixed&0xff)<<8)<<4))&0xffff;value=(mixed^(((mixed&0xff)<<4)<<1))&0xffff}return value}
+function hx(n){return '0x'+n.toString(16).padStart(4,'0').toUpperCase()}
+function buttons(){const c=!!device?.gatt?.connected;$('upload').disabled=!(c&&file?.size===SIZE&&fileBytes&&expectedCrc!==null&&!busy)}
 function cleanup(disconnect=true){if(disconnect&&device?.gatt?.connected)device.gatt.disconnect();send=sendFile=notify=null;$('connect').disabled=false;$('disconnect').disabled=true;$('status').textContent='Not connected';buttons()}
-async function connect(){try{if(!('bluetooth'in navigator))throw Error('Web Bluetooth unavailable');log('Opening Bluetooth chooser…');device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SERVICE,INFO,BATT]});device.addEventListener('gattserverdisconnected',()=>cleanup(false));const s=await device.gatt.connect(),is=await s.getPrimaryService(INFO),bs=await s.getPrimaryService(BATT),ms=await s.getPrimaryService(SERVICE);const man=text(await(await is.getCharacteristic(MAN)).readValue()),soft=text(await(await is.getCharacteristic(SOFT)).readValue()),bat=(await(await bs.getCharacteristic(BATTLVL)).readValue()).getUint8(0);send=await ms.getCharacteristic(SEND);sendFile=await ms.getCharacteristic(SENDFILE);notify=await ms.getCharacteristic(NOTIFY);if(man!=='MOYOUNG-V2')throw Error('Wrong device: '+man);$('manufacturer').textContent=man;$('software').textContent=soft;$('battery').textContent=bat+'%';$('status').textContent='Connected to '+(device.name||'watch');$('status').className='ok';$('connect').disabled=true;$('disconnect').disabled=false;log(`Connected: ${man} / ${soft} / ${bat}%`);buttons()}catch(e){$('status').textContent='Connection failed';$('status').className='bad';log('ERROR: '+(e.message||e));cleanup(false)}}
-async function finishRegistration(sendCommit){if(!send)return;busy=true;buttons();try{if(sendCommit){log('Committing completed file: 74 00 00 00 00');await send.writeValueWithoutResponse(new Uint8Array([...PREP,0,0,0,0]));log('Waiting 1.05 s — Da Fit capture waited 1.02 s here.');await sleep(1050)}else{log('Using already-committed last upload; not sending another transfer-success packet.')}log('Registering captured face id: B4 11 52 28 00 00');await send.writeValueWithoutResponse(REGISTER);log('Waiting 650 ms — Da Fit capture waited 625 ms here.');await sleep(650);log('Selecting active face index 8');await send.writeValueWithoutResponse(SELECT8);await sleep(250);await send.writeValueWithoutResponse(QUERYFACE);log('Queried active face index (0x29). Watch reply will appear below if received.')}finally{busy=false;buttons()}}
-async function finaliseOnly(){if(!send||!notify)return;try{busy=true;buttons();await notify.startNotifications();const listener=ev=>{const v=ev.target.value;if(!v)return;const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);if(d.length>=6&&d[0]===0xFE&&d[1]===0xEA&&d[4]===0x29)log('WATCH CONFIRMS active face index = '+d[5]);};notify.addEventListener('characteristicvaluechanged',listener);busy=false;await finishRegistration(false);await sleep(500);notify.removeEventListener('characteristicvaluechanged',listener);notify.stopNotifications().catch(()=>{})}catch(e){log('FINALISE ERROR: '+(e.message||e));busy=false;buttons()}}
-async function upload(){if(!file||file.size!==SIZE||!send||!sendFile||!notify)return;busy=true;buttons();$('progress').value=0;$('progressText').textContent='0%';try{const bytes=new Uint8Array(await file.arrayBuffer()),total=Math.ceil(bytes.length/CHUNK);await notify.startNotifications();await new Promise((resolve,reject)=>{let done=false;const timer=setTimeout(()=>end(Error('Timed out')),180000);function end(err){if(done)return;done=true;clearTimeout(timer);notify.removeEventListener('characteristicvaluechanged',onv);err?reject(err):resolve()}function onv(ev){const v=ev.target.value;if(!v)return;const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);if(starts(d,READY)&&d.length>=7){const n=(d[5]<<8)|d[6],st=n*CHUNK;if(st>=bytes.length)return end(Error('Invalid chunk '+n));const en=Math.min(st+CHUNK,bytes.length);sendFile.writeValueWithoutResponse(bytes.subarray(st,en)).then(()=>{const p=Math.round(en*100/bytes.length);$('progress').value=p;$('progressText').textContent=`${p}% — ${n+1}/${total}`}).catch(end);return}if(starts(d,PREP)&&d.length>=9){log('Watch reports complete file received; checksum bytes '+Array.from(d.slice(5,9),x=>x.toString(16).padStart(2,'0')).join(' '));end();return}if(d.length>=6&&d[0]===0xFE&&d[1]===0xEA&&d[4]===0x29)log('WATCH CONFIRMS active face index = '+d[5])}notify.addEventListener('characteristicvaluechanged',onv);const p=new Uint8Array(9);p.set(PREP);new DataView(p.buffer).setUint32(5,bytes.length,false);log('Starting 444,576-byte transfer…');send.writeValueWithoutResponse(p).catch(end)});busy=false;await finishRegistration(true);$('progress').value=100;$('progressText').textContent='100% — finalisation sent';await sleep(500);notify.stopNotifications().catch(()=>{});log('DONE.')}catch(e){log('UPLOAD ERROR: '+(e.message||e))}finally{busy=false;buttons()}}
-$('connect').onclick=connect;$('disconnect').onclick=()=>cleanup(true);$('finalise').onclick=finaliseOnly;$('upload').onclick=upload;$('file').onchange=()=>{file=$('file').files?.[0]||null;$('fileName').textContent=file?`${file.name} — ${file.size.toLocaleString()} bytes`:'No file selected';if(file&&file.size!==SIZE)log(`Wrong size: ${file.size}; expected ${SIZE}`);buttons()};log('Ready — protocol fix v3.');
+async function connect(){try{
+ if(!('bluetooth'in navigator))throw Error('Web Bluetooth unavailable');
+ log('Opening Bluetooth chooser…');
+ device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SERVICE,INFO,BATT]});
+ device.addEventListener('gattserverdisconnected',()=>cleanup(false));
+ const s=await device.gatt.connect(),is=await s.getPrimaryService(INFO),bs=await s.getPrimaryService(BATT),ms=await s.getPrimaryService(SERVICE);
+ const man=text(await(await is.getCharacteristic(MAN)).readValue()),soft=text(await(await is.getCharacteristic(SOFT)).readValue()),bat=(await(await bs.getCharacteristic(BATTLVL)).readValue()).getUint8(0);
+ send=await ms.getCharacteristic(SEND);sendFile=await ms.getCharacteristic(SENDFILE);notify=await ms.getCharacteristic(NOTIFY);
+ if(man!=='MOYOUNG-V2')throw Error('Wrong device: '+man);
+ $('manufacturer').textContent=man;$('software').textContent=soft;$('battery').textContent=bat+'%';
+ $('status').textContent='Connected to '+(device.name||'watch');$('status').className='ok';$('connect').disabled=true;$('disconnect').disabled=false;
+ log(`Connected: ${man} / ${soft} / ${bat}%`);buttons();
+}catch(e){$('status').textContent='Connection failed';$('status').className='bad';log('ERROR: '+(e.message||e));cleanup(false)}}
+
+async function upload(){
+ if(!fileBytes||fileBytes.length!==SIZE||!send||!sendFile||!notify||expectedCrc===null)return;
+ busy=true;buttons();$('progress').value=0;$('progressText').textContent='0%';
+ try{
+  const bytes=fileBytes,total=Math.ceil(bytes.length/CHUNK);
+  log(`Starting ${bytes.length.toLocaleString()}-byte transfer; expected full-file CRC ${hx(expectedCrc)}.`);
+  await notify.startNotifications();
+  const watchCrc=await new Promise((resolve,reject)=>{
+   let done=false;const timer=setTimeout(()=>end(Error('Timed out')),180000);
+   function end(err,result){if(done)return;done=true;clearTimeout(timer);notify.removeEventListener('characteristicvaluechanged',onv);err?reject(err):resolve(result)}
+   function onv(ev){
+    const v=ev.target.value;if(!v)return;const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);
+    if(starts(d,READY)&&d.length>=7){
+      const n=(d[5]<<8)|d[6],st=n*CHUNK;if(st>=bytes.length)return end(Error('Invalid chunk '+n));
+      const en=Math.min(st+CHUNK,bytes.length);
+      sendFile.writeValueWithoutResponse(bytes.subarray(st,en)).then(()=>{const p=Math.round(en*100/bytes.length);$('progress').value=p;$('progressText').textContent=`${p}% — chunk ${n+1}/${total}`}).catch(e=>end(e));
+      return;
+    }
+    if(starts(d,PREP)&&d.length>=9&&d[5]===0xFF&&d[6]===0xFF){
+      const crc=(d[7]<<8)|d[8];
+      log(`Watch final frame: FF FF ${d[7].toString(16).padStart(2,'0')} ${d[8].toString(16).padStart(2,'0')} → CRC ${hx(crc)}.`);
+      return end(null,crc);
+    }
+    if(d.length>=6&&d[0]===0xFE&&d[1]===0xEA&&d[4]===0x29)log('WATCH CONFIRMS active face index = '+d[5]);
+   }
+   notify.addEventListener('characteristicvaluechanged',onv);
+   const p=new Uint8Array(9);p.set(PREP);new DataView(p.buffer).setUint32(5,bytes.length,false);
+   send.writeValueWithoutResponse(p).catch(e=>end(e));
+  });
+
+  if(watchCrc!==expectedCrc){
+    $('progressText').textContent=`REJECTED — watch ${hx(watchCrc)}, file ${hx(expectedCrc)}`;
+    log(`REJECTED. Watch CRC ${hx(watchCrc)} does not match file CRC ${hx(expectedCrc)}. Not committing and not changing the active face.`);
+    return;
+  }
+
+  log(`CRC MATCH ${hx(watchCrc)}. Watch accepted the exact uploaded bytes.`);
+  await send.writeValueWithoutResponse(SUCCESS);
+  log('Success packet sent. Waiting 1.05 s before registration.');
+  await sleep(1050);
+  await send.writeValueWithoutResponse(REGISTER);
+  log('Registration sent. Waiting 650 ms before selecting face index 8.');
+  await sleep(650);
+  await send.writeValueWithoutResponse(SELECT8);
+  await sleep(250);
+  await send.writeValueWithoutResponse(QUERYFACE);
+  $('progress').value=100;$('progressText').textContent=`100% — ACCEPTED ${hx(watchCrc)}`;
+  log('ACCEPTED + activated. Querying the watch for active face index.');
+  await sleep(500);
+ }catch(e){log('UPLOAD ERROR: '+(e.message||e));$('progressText').textContent='ERROR'}
+ finally{notify?.stopNotifications().catch(()=>{});busy=false;buttons()}
+}
+
+$('connect').onclick=connect;$('disconnect').onclick=()=>cleanup(true);$('upload').onclick=upload;
+$('file').onchange=async()=>{
+ file=$('file').files?.[0]||null;fileBytes=null;expectedCrc=null;$('expectedCrc').textContent='—';
+ $('fileName').textContent=file?`${file.name} — ${file.size.toLocaleString()} bytes`:'No file selected';
+ if(file){
+  if(file.size!==SIZE){log(`Wrong size: ${file.size}; expected ${SIZE}`)}
+  else{fileBytes=new Uint8Array(await file.arrayBuffer());expectedCrc=crc16(fileBytes);$('expectedCrc').textContent=hx(expectedCrc);log(`File loaded. CRC ${hx(expectedCrc)}.`)}
+ }
+ buttons();
+};
+log('Ready — protocol fix v4 (CRC-verified).');
 })();
 </script></body></html>
