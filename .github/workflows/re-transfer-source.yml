@@ -24,26 +24,32 @@ jobs:
         run: |
           set -euxo pipefail
           curl -fL 'https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar' -o /tmp/crp.aar
-          mkdir -p /tmp/crp /tmp/classes /tmp/cfr-out "$GITHUB_WORKSPACE/re/dafit_crp/transfer-src"
+          rm -rf /tmp/crp /tmp/classes /tmp/cfr-out "$GITHUB_WORKSPACE/re/dafit_crp/transfer-src-tree"
+          mkdir -p /tmp/crp /tmp/classes /tmp/cfr-out "$GITHUB_WORKSPACE/re/dafit_crp/transfer-src-tree"
           cd /tmp/crp && unzip -q /tmp/crp.aar
           cd /tmp/classes && jar xf /tmp/crp/classes.jar
           curl -fL 'https://www.benf.org/other/cfr/cfr-0.152.jar' -o /tmp/cfr.jar
           for cls in \
+            com.crrepa.c0.b \
             com.crrepa.c0.c \
             com.crrepa.c0.d \
             com.crrepa.c0.e \
             com.crrepa.i0.a \
             com.crrepa.i0.b \
-            com.crrepa.m.f; do
+            com.crrepa.m.f \
+            com.crrepa.f.u1 \
+            com.crrepa.p0.d \
+            com.crrepa.p0.j \
+            com.crrepa.q.b \
+            com.crrepa.l.a; do
             path="/tmp/classes/${cls//.//}.class"
-            java -jar /tmp/cfr.jar "$path" --outputdir /tmp/cfr-out --silent true || true
+            java -jar /tmp/cfr.jar "$path" --outputdir "$GITHUB_WORKSPACE/re/dafit_crp/transfer-src-tree" --silent true || true
           done
-          find /tmp/cfr-out -type f -name '*.java' -print -exec cp {} "$GITHUB_WORKSPACE/re/dafit_crp/transfer-src/" \;
       - name: Commit readable sources
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/transfer-src
-          git commit -m 'Add readable JieLi transfer core decompilation' || exit 0
+          git add re/dafit_crp/transfer-src-tree
+          git commit -m 'Expand readable JieLi transfer core decompilation' || exit 0
           git push
