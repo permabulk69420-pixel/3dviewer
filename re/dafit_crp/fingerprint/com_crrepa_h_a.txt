@@ -1,0 +1,3465 @@
+Compiled from "SourceFile"
+public class com.crrepa.h.a implements com.crrepa.ble.conn.CRPBleConnection {
+  private com.crrepa.h.d a;
+
+  private com.crrepa.m.f b;
+
+  private com.crrepa.m.e c;
+
+  private com.crrepa.m.a d;
+
+  public com.crrepa.h.a();
+    Code:
+       0: aload_0
+       1: dup
+       2: invokespecial #51                 // Method java/lang/Object."<init>":()V
+       5: invokestatic  #56                 // Method com/crrepa/m/f.d:()Lcom/crrepa/m/f;
+       8: putfield      #58                 // Field b:Lcom/crrepa/m/f;
+      11: return
+
+  private void a(boolean);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup
+       3: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       6: iload_1
+       7: invokevirtual #65                 // Method com/crrepa/m/a.b:(Z)V
+      10: invokestatic  #70                 // Method com/crrepa/f/f1.b:()[B
+      13: invokespecial #73                 // Method a:([B)V
+      16: getstatic     #79                 // Field com/crrepa/ble/conn/type/CRPHistoryDay.TODAY:Lcom/crrepa/ble/conn/type/CRPHistoryDay;
+      19: invokevirtual #83                 // Method com/crrepa/ble/conn/type/CRPHistoryDay.getValue:()B
+      22: invokestatic  #86                 // Method com/crrepa/f/f1.b:(B)[B
+      25: invokespecial #73                 // Method a:([B)V
+      28: return
+
+  private void a(boolean, com.crrepa.ble.conn.type.CRPHistoryDay);
+    Code:
+       0: aload_0
+       1: dup
+       2: aload_2
+       3: aload_0
+       4: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       7: iload_1
+       8: invokevirtual #89                 // Method com/crrepa/m/a.a:(Z)V
+      11: invokevirtual #83                 // Method com/crrepa/ble/conn/type/CRPHistoryDay.getValue:()B
+      14: dup
+      15: istore_0
+      16: invokestatic  #91                 // Method com/crrepa/f/f1.a:(B)[B
+      19: invokespecial #73                 // Method a:([B)V
+      22: iload_0
+      23: invokestatic  #86                 // Method com/crrepa/f/f1.b:(B)[B
+      26: invokespecial #73                 // Method a:([B)V
+      29: return
+
+  private void g(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #97                 // Method com/crrepa/f/l0.b:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void c(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #101                // Method com/crrepa/f/e.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void a(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #107                // Method com/crrepa/f/b0.b:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void b(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #110                // Method com/crrepa/f/m1.b:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void h(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #113                // Method com/crrepa/f/m1.c:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void c(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #115                // Method com/crrepa/f/e.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void b(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #118                // Method com/crrepa/f/m0.b:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void e(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #122                // Method com/crrepa/f/f.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void d(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #123                // Method com/crrepa/f/e.b:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void f(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #125                // Method com/crrepa/f/m1.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  private void a(byte[]);
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: aload_1
+       5: invokevirtual #126                // Method com/crrepa/m/f.a:([B)V
+       8: return
+
+  static com.crrepa.m.e a(com.crrepa.h.a);
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field c:Lcom/crrepa/m/e;
+       4: areturn
+
+  protected void a(com.crrepa.h.d);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup
+       3: aload_1
+       4: aload_0
+       5: aload_1
+       6: putfield      #132                // Field a:Lcom/crrepa/h/d;
+       9: invokevirtual #137                // Method com/crrepa/h/d.b:()Lcom/crrepa/m/e;
+      12: putfield      #129                // Field c:Lcom/crrepa/m/e;
+      15: getfield      #132                // Field a:Lcom/crrepa/h/d;
+      18: invokevirtual #140                // Method com/crrepa/h/d.a:()Lcom/crrepa/m/a;
+      21: putfield      #61                 // Field d:Lcom/crrepa/m/a;
+      24: invokestatic  #145                // Method com/crrepa/p/c.b:()Lcom/crrepa/p/c;
+      27: aload_0
+      28: getfield      #129                // Field c:Lcom/crrepa/m/e;
+      31: invokevirtual #148                // Method com/crrepa/p/c.a:(Lcom/crrepa/m/e;)V
+      34: return
+
+  public boolean connect();
+    Code:
+       0: invokestatic  #158                // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       3: invokevirtual #161                // Method com/crrepa/l/a.a:()Landroid/bluetooth/BluetoothGatt;
+       6: dup
+       7: astore_0
+       8: ifnonnull     13
+      11: iconst_0
+      12: ireturn
+      13: aload_0
+      14: invokevirtual #165                // Method android/bluetooth/BluetoothGatt.connect:()Z
+      17: ireturn
+
+  public void close();
+    Code:
+       0: invokestatic  #158                // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       3: invokevirtual #161                // Method com/crrepa/l/a.a:()Landroid/bluetooth/BluetoothGatt;
+       6: invokestatic  #171                // Method com/crrepa/m/b.b:(Landroid/bluetooth/BluetoothGatt;)V
+       9: return
+
+  public void setConnectionStateListener(com.crrepa.ble.conn.listener.CRPBleConnectionStateListener);
+    Code:
+       0: aload_0
+       1: getfield      #132                // Field a:Lcom/crrepa/h/d;
+       4: aload_1
+       5: invokevirtual #175                // Method com/crrepa/h/d.a:(Lcom/crrepa/ble/conn/listener/CRPBleConnectionStateListener;)V
+       8: return
+
+  public void setPhoneOperationListener(com.crrepa.ble.conn.listener.CRPPhoneOperationListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #179                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPPhoneOperationListener;)V
+       8: return
+
+  public void setCameraOperationListener(com.crrepa.ble.conn.listener.CRPCameraOperationListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #183                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPCameraOperationListener;)V
+       8: return
+
+  public void setWeatherChangeListener(com.crrepa.ble.conn.listener.CRPWeatherChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #187                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPWeatherChangeListener;)V
+       8: return
+
+  public void setDeviceRssiListener(com.crrepa.ble.conn.listener.CRPDeviceRssiListener);
+    Code:
+       0: aload_0
+       1: getfield      #132                // Field a:Lcom/crrepa/h/d;
+       4: aload_1
+       5: invokevirtual #191                // Method com/crrepa/h/d.a:(Lcom/crrepa/ble/conn/listener/CRPDeviceRssiListener;)V
+       8: return
+
+  public void setFindPhoneListener(com.crrepa.ble.conn.listener.CRPFindPhoneListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #195                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPFindPhoneListener;)V
+       8: return
+
+  public void syncTime();
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: invokestatic  #199                // Method com/crrepa/f/o1.b:()[B
+       7: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      10: return
+
+  public void queryFrimwareVersion(com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: invokestatic  #208                // Method com/crrepa/e/e.a:()Lcom/crrepa/e/e;
+       5: aload_1
+       6: invokevirtual #210                // Method com/crrepa/e/e.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceFirmwareVersionCallback;)V
+       9: getfield      #129                // Field c:Lcom/crrepa/m/e;
+      12: invokevirtual #214                // Method com/crrepa/m/e.e:()V
+      15: invokestatic  #218                // Method com/crrepa/f/w.d:()[B
+      18: invokespecial #73                 // Method a:([B)V
+      21: return
+
+  public void checkFirmwareVersion(com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback, java.lang.String, int);
+    Code:
+       0: invokestatic  #226                // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.getInstance:()Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+       3: aload_2
+       4: iload_3
+       5: aload_1
+       6: invokevirtual #229                // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.checkFirmwareVersion:(Ljava/lang/String;ILcom/crrepa/ble/conn/callback/CRPDeviceNewFirmwareVersionCallback;)V
+       9: return
+
+  public void queryDeviceBattery();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field c:Lcom/crrepa/m/e;
+       4: invokevirtual #232                // Method com/crrepa/m/e.c:()V
+       7: return
+
+  public void setDeviceBatteryListener(com.crrepa.ble.conn.listener.CRPDeviceBatteryListener);
+    Code:
+       0: invokestatic  #239                // Method com/crrepa/n/a.a:()Lcom/crrepa/n/a;
+       3: aload_1
+       4: invokevirtual #241                // Method com/crrepa/n/a.a:(Lcom/crrepa/ble/conn/listener/CRPDeviceBatteryListener;)V
+       7: return
+
+  public void subscribeDeviceBattery();
+    Code:
+       0: iconst_1
+       1: newarray       byte
+       3: dup
+       4: astore_0
+       5: iconst_0
+       6: bipush        32
+       8: bastore
+       9: new           #244                // class com/crrepa/p/a
+      12: dup
+      13: astore_1
+      14: iconst_4
+      15: aload_0
+      16: invokespecial #247                // Method com/crrepa/p/a."<init>":(I[B)V
+      19: invokestatic  #145                // Method com/crrepa/p/c.b:()Lcom/crrepa/p/c;
+      22: aload_1
+      23: invokevirtual #250                // Method com/crrepa/p/c.a:(Lcom/crrepa/p/a;)V
+      26: return
+
+  public void sendUserInfo(com.crrepa.ble.conn.bean.CRPUserInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #257                // Method com/crrepa/f/q1.a:(Lcom/crrepa/ble/conn/bean/CRPUserInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendTodayWeather(com.crrepa.ble.conn.bean.CRPTodayWeatherInfo);
+    Code:
+       0: aload_1
+       1: ifnull        30
+       4: aload_1
+       5: invokevirtual #265                // Method com/crrepa/ble/conn/bean/CRPTodayWeatherInfo.getCity:()Ljava/lang/String;
+       8: invokestatic  #271                // Method android/text/TextUtils.isEmpty:(Ljava/lang/CharSequence;)Z
+      11: ifne          30
+      14: aload_0
+      15: aload_1
+      16: aload_0
+      17: aload_1
+      18: invokestatic  #276                // Method com/crrepa/f/t1.b:(Lcom/crrepa/ble/conn/bean/CRPTodayWeatherInfo;)[B
+      21: invokespecial #73                 // Method a:([B)V
+      24: invokestatic  #278                // Method com/crrepa/f/t1.a:(Lcom/crrepa/ble/conn/bean/CRPTodayWeatherInfo;)[B
+      27: invokespecial #73                 // Method a:([B)V
+      30: return
+
+  public void sendFutureWeather(com.crrepa.ble.conn.bean.CRPFutureWeatherInfo);
+    Code:
+       0: aload_1
+       1: ifnull        12
+       4: aload_0
+       5: aload_1
+       6: invokestatic  #283                // Method com/crrepa/f/t1.a:(Lcom/crrepa/ble/conn/bean/CRPFutureWeatherInfo;)[B
+       9: invokespecial #73                 // Method a:([B)V
+      12: return
+
+  public void setStepChangeListener(com.crrepa.ble.conn.listener.CRPStepChangeListener);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #287                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPStepChangeListener;)V
+       9: getfield      #129                // Field c:Lcom/crrepa/m/e;
+      12: aload_1
+      13: invokevirtual #288                // Method com/crrepa/m/e.a:(Lcom/crrepa/ble/conn/listener/CRPStepChangeListener;)V
+      16: return
+
+  public void syncStep();
+    Code:
+       0: aload_0
+       1: getfield      #129                // Field c:Lcom/crrepa/m/e;
+       4: invokevirtual #291                // Method com/crrepa/m/e.g:()V
+       7: return
+
+  public void queryHistoryStep(com.crrepa.ble.conn.type.CRPHistoryDay);
+    Code:
+       0: aload_0
+       1: dup
+       2: aload_1
+       3: invokevirtual #83                 // Method com/crrepa/ble/conn/type/CRPHistoryDay.getValue:()B
+       6: dup
+       7: istore_0
+       8: invokestatic  #296                // Method com/crrepa/f/i1.a:(B)[B
+      11: invokespecial #73                 // Method a:([B)V
+      14: iload_0
+      15: invokestatic  #297                // Method com/crrepa/f/i1.b:(B)[B
+      18: invokespecial #73                 // Method a:([B)V
+      21: return
+
+  public void setSleepChangeListener(com.crrepa.ble.conn.listener.CRPSleepChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #301                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPSleepChangeListener;)V
+       8: return
+
+  public void syncSleep();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #303                // Method a:(Z)V
+       5: return
+
+  public void syncRemSleep();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #303                // Method a:(Z)V
+       5: return
+
+  public void queryHistorySleep(com.crrepa.ble.conn.type.CRPHistoryDay);
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: aload_1
+       3: invokespecial #307                // Method a:(ZLcom/crrepa/ble/conn/type/CRPHistoryDay;)V
+       6: return
+
+  public void queryHistoryRemSleep(com.crrepa.ble.conn.type.CRPHistoryDay);
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: aload_1
+       3: invokespecial #307                // Method a:(ZLcom/crrepa/ble/conn/type/CRPHistoryDay;)V
+       6: return
+
+  public void sendMetricSystem(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #313                // Method com/crrepa/f/r0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryMetricSystem(com.crrepa.ble.conn.callback.CRPDeviceMetricSystemCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #317                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceMetricSystemCallback;)V
+       9: invokestatic  #319                // Method com/crrepa/f/r0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendTimeSystem(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #321                // Method com/crrepa/f/o1.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTimeSystem(com.crrepa.ble.conn.callback.CRPDeviceTimeSystemCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #325                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceTimeSystemCallback;)V
+       9: invokestatic  #326                // Method com/crrepa/f/o1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendQuickView(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #330                // Method com/crrepa/f/a1.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryQuickView(com.crrepa.ble.conn.callback.CRPDeviceQuickViewCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #334                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceQuickViewCallback;)V
+       9: invokestatic  #335                // Method com/crrepa/f/a1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendDominantHand(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #339                // Method com/crrepa/f/z.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryDominantHand(com.crrepa.ble.conn.callback.CRPDeviceDominantHandCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #343                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceDominantHandCallback;)V
+       9: invokestatic  #344                // Method com/crrepa/f/z.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendGoalSteps(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #348                // Method com/crrepa/f/g0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryGoalStep(com.crrepa.ble.conn.callback.CRPDeviceGoalStepCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #352                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceGoalStepCallback;)V
+       9: invokestatic  #353                // Method com/crrepa/f/g0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendDisplayWatchFace(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #357                // Method com/crrepa/f/a2.b:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryDisplayWatchFace(com.crrepa.ble.conn.callback.CRPDeviceDisplayWatchFaceCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #361                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceDisplayWatchFaceCallback;)V
+       9: invokestatic  #363                // Method com/crrepa/f/a2.e:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendAlarm(com.crrepa.ble.conn.bean.CRPAlarmInfo);
+    Code:
+       0: aload_1
+       1: ifnull        12
+       4: aload_0
+       5: aload_1
+       6: invokestatic  #370                // Method com/crrepa/f/c.b:(Lcom/crrepa/ble/conn/bean/CRPAlarmInfo;)[B
+       9: invokespecial #73                 // Method a:([B)V
+      12: return
+
+  public void queryAllAlarm(com.crrepa.ble.conn.callback.CRPAlarmCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #374                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPAlarmCallback;)V
+       9: invokestatic  #375                // Method com/crrepa/f/c.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendNewAlarm(com.crrepa.ble.conn.bean.CRPAlarmInfo);
+    Code:
+       0: aload_1
+       1: ifnull        12
+       4: aload_0
+       5: aload_1
+       6: invokestatic  #378                // Method com/crrepa/f/c.a:(Lcom/crrepa/ble/conn/bean/CRPAlarmInfo;)[B
+       9: invokespecial #73                 // Method a:([B)V
+      12: return
+
+  public void deleteNewAlarm(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #380                // Method com/crrepa/f/c.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void deleteAllNewAlarm();
+    Code:
+       0: aload_0
+       1: invokestatic  #382                // Method com/crrepa/f/c.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryAllNewAlarm(com.crrepa.ble.conn.callback.CRPAlarmCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #374                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPAlarmCallback;)V
+       9: invokestatic  #385                // Method com/crrepa/f/c.c:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendDeviceLanguage(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #389                // Method com/crrepa/f/o0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryDeviceLanguage(com.crrepa.ble.conn.callback.CRPDeviceLanguageCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #393                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceLanguageCallback;)V
+       9: invokestatic  #394                // Method com/crrepa/f/o0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendOtherMessageState(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #398                // Method com/crrepa/f/v0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryOtherMessageState(com.crrepa.ble.conn.callback.CRPDeviceOtherMessageCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #402                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceOtherMessageCallback;)V
+       9: invokestatic  #403                // Method com/crrepa/f/v0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendSedentaryReminder(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #407                // Method com/crrepa/f/d1.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void querySedentaryReminder(com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #411                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceSedentaryReminderCallback;)V
+       9: invokestatic  #412                // Method com/crrepa/f/d1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void findDevice();
+    Code:
+       0: aload_0
+       1: bipush        97
+       3: aconst_null
+       4: invokestatic  #418                // Method com/crrepa/f/u1.a:(I[B)[B
+       7: invokespecial #73                 // Method a:([B)V
+      10: return
+
+  public void sendMessage(com.crrepa.ble.conn.bean.CRPMessageInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #425                // Method com/crrepa/i/a.a:(Lcom/crrepa/ble/conn/bean/CRPMessageInfo;)[B
+       5: astore_0
+       6: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       9: aload_0
+      10: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      13: return
+
+  public void queryMessageLength(com.crrepa.ble.conn.callback.CRPMessageLengthCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #429                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPMessageLengthCallback;)V
+       9: invokestatic  #430                // Method com/crrepa/i/a.b:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendCall0ffHook();
+    Code:
+       0: aload_0
+       1: invokestatic  #432                // Method com/crrepa/i/a.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendDeviceVersion(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #436                // Method com/crrepa/f/u.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryDeviceVersion(com.crrepa.ble.conn.callback.CRPDeviceVersionCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #440                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceVersionCallback;)V
+       9: invokestatic  #441                // Method com/crrepa/f/u.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void startMeasureDynamicRate();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokestatic  #443                // Method com/crrepa/f/l0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryLastDynamicRate(com.crrepa.ble.conn.type.CRPHistoryDynamicRateType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #448                // Method com/crrepa/ble/conn/type/CRPHistoryDynamicRateType.getValue:()B
+       5: invokestatic  #449                // Method com/crrepa/f/l0.b:(B)[B
+       8: invokespecial #73                 // Method a:([B)V
+      11: return
+
+  public void setHeartRateChangeListener(com.crrepa.ble.conn.listener.CRPHeartRateChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #453                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPHeartRateChangeListener;)V
+       8: return
+
+  public void stopMeasureDynamicRtae();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #443                // Method com/crrepa/f/l0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setBloodPressureChangeListener(com.crrepa.ble.conn.listener.CRPBloodPressureChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #458                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPBloodPressureChangeListener;)V
+       8: return
+
+  public void startMeasureBloodPressure();
+    Code:
+       0: aload_0
+       1: invokestatic  #460                // Method com/crrepa/f/f.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void stopMeasureBloodPressure();
+    Code:
+       0: aload_0
+       1: invokestatic  #462                // Method com/crrepa/f/f.d:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void startFirmwareUpgrade(boolean, com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener);
+    Code:
+       0: invokestatic  #469                // Method com/crrepa/g0/b.c:()Lcom/crrepa/g0/b;
+       3: iload_1
+       4: aload_2
+       5: invokevirtual #471                // Method com/crrepa/g0/b.a:(ZLcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;)V
+       8: return
+
+  public void abortFirmwareUpgrade();
+    Code:
+       0: invokestatic  #469                // Method com/crrepa/g0/b.c:()Lcom/crrepa/g0/b;
+       3: invokevirtual #474                // Method com/crrepa/g0/b.a:()V
+       6: return
+
+  public void enableTimingMeasureHeartRate(int);
+    Code:
+       0: iload_1
+       1: ifgt          5
+       4: return
+       5: aload_0
+       6: iload_1
+       7: invokestatic  #476                // Method com/crrepa/f/l0.a:(I)[B
+      10: invokespecial #73                 // Method a:([B)V
+      13: return
+
+  public void disableTimingMeasureHeartRate();
+    Code:
+       0: aload_0
+       1: iconst_m1
+       2: invokestatic  #476                // Method com/crrepa/f/l0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTimingMeasureHeartRate(com.crrepa.ble.conn.callback.CRPDeviceTimingMeasureHeartRateCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #481                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceTimingMeasureHeartRateCallback;)V
+       9: invokestatic  #482                // Method com/crrepa/f/l0.c:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryTodayHeartRate(int);
+    Code:
+       0: iload_1
+       1: aconst_null
+       2: astore_2
+       3: iconst_1
+       4: if_icmpne     22
+       7: aload_0
+       8: iconst_0
+       9: invokestatic  #485                // Method com/crrepa/f/l0.d:(B)[B
+      12: astore_2
+      13: getstatic     #79                 // Field com/crrepa/ble/conn/type/CRPHistoryDay.TODAY:Lcom/crrepa/ble/conn/type/CRPHistoryDay;
+      16: invokevirtual #488                // Method queryHistoryTimingHeartRate:(Lcom/crrepa/ble/conn/type/CRPHistoryDay;)V
+      19: goto          32
+      22: iload_1
+      23: iconst_2
+      24: if_icmpne     32
+      27: iconst_0
+      28: invokestatic  #492                // Method com/crrepa/f/l0.c:(B)[B
+      31: astore_2
+      32: aload_0
+      33: aload_2
+      34: invokespecial #73                 // Method a:([B)V
+      37: return
+
+  public void queryHistoryTimingHeartRate(com.crrepa.ble.conn.type.CRPHistoryDay);
+    Code:
+       0: aload_1
+       1: getstatic     #495                // Field com/crrepa/ble/conn/type/CRPHistoryDay.YESTERDAY:Lcom/crrepa/ble/conn/type/CRPHistoryDay;
+       4: if_acmpne     15
+       7: aload_0
+       8: iconst_4
+       9: invokestatic  #485                // Method com/crrepa/f/l0.d:(B)[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: aload_0
+      16: aload_1
+      17: invokevirtual #83                 // Method com/crrepa/ble/conn/type/CRPHistoryDay.getValue:()B
+      20: iconst_0
+      21: invokestatic  #498                // Method com/crrepa/f/l0.a:(BB)[B
+      24: invokespecial #73                 // Method a:([B)V
+      27: return
+
+  public void queryMovementHeartRate();
+    Code:
+       0: aload_0
+       1: invokestatic  #500                // Method com/crrepa/f/l0.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void startMeasureOnceHeartRate();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #503                // Method g:(Z)V
+       5: return
+
+  public void stopMeasureOnceHeartRate();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #503                // Method g:(Z)V
+       5: return
+
+  public void startMeasureBloodOxygen();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #507                // Method c:(Z)V
+       5: return
+
+  public void stopMeasureBloodOxygen();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #507                // Method c:(Z)V
+       5: return
+
+  public void setBloodOxygenChangeListener(com.crrepa.ble.conn.listener.CRPBloodOxygenChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #512                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPBloodOxygenChangeListener;)V
+       8: return
+
+  public void queryDeviceSupportFunction(com.crrepa.ble.conn.callback.CRPDeviceFunctionCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #516                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceFunctionCallback;)V
+       9: invokestatic  #519                // Method com/crrepa/f/e0.b:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendDislpayDeviceFunction(com.crrepa.ble.conn.bean.CRPFunctionInfo);
+    Code:
+       0: aload_1
+       1: ifnonnull     5
+       4: return
+       5: aload_0
+       6: aload_1
+       7: invokestatic  #524                // Method com/crrepa/f/e0.a:(Lcom/crrepa/ble/conn/bean/CRPFunctionInfo;)[B
+      10: invokespecial #73                 // Method a:([B)V
+      13: return
+
+  public void queryDisplayDeviceFunction(com.crrepa.ble.conn.callback.CRPDeviceFunctionCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #516                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceFunctionCallback;)V
+       9: invokestatic  #526                // Method com/crrepa/f/e0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendGsensorCalibration();
+    Code:
+       0: aload_0
+       1: invokestatic  #530                // Method com/crrepa/f/f0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void enterCameraView();
+    Code:
+       0: aload_0
+       1: invokestatic  #534                // Method com/crrepa/f/p.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void exitCameraView();
+    Code:
+       0: aload_0
+       1: invokestatic  #536                // Method com/crrepa/f/p.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void readDeviceRssi();
+    Code:
+       0: invokestatic  #158                // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       3: invokevirtual #161                // Method com/crrepa/l/a.a:()Landroid/bluetooth/BluetoothGatt;
+       6: dup
+       7: astore_0
+       8: ifnull        16
+      11: aload_0
+      12: invokevirtual #540                // Method android/bluetooth/BluetoothGatt.readRemoteRssi:()Z
+      15: pop
+      16: return
+
+  public void shutDown();
+    Code:
+       0: aload_0
+       1: invokestatic  #544                // Method com/crrepa/f/t.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendDoNotDistrubTime(com.crrepa.ble.conn.bean.CRPPeriodTimeInfo);
+    Code:
+       0: aload_1
+       1: ifnonnull     5
+       4: return
+       5: aload_0
+       6: aload_1
+       7: invokestatic  #551                // Method com/crrepa/f/y.a:(Lcom/crrepa/ble/conn/bean/CRPPeriodTimeInfo;)[B
+      10: invokespecial #73                 // Method a:([B)V
+      13: return
+
+  public void queryDoNotDistrubTime(com.crrepa.ble.conn.callback.CRPDevicePeriodTimeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #555                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDevicePeriodTimeCallback;)V
+       9: invokestatic  #556                // Method com/crrepa/f/y.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendQuickViewTime(com.crrepa.ble.conn.bean.CRPPeriodTimeInfo);
+    Code:
+       0: aload_1
+       1: ifnonnull     5
+       4: return
+       5: aload_0
+       6: aload_1
+       7: invokestatic  #560                // Method com/crrepa/f/b1.a:(Lcom/crrepa/ble/conn/bean/CRPPeriodTimeInfo;)[B
+      10: invokespecial #73                 // Method a:([B)V
+      13: return
+
+  public void queryQuickViewTime(com.crrepa.ble.conn.callback.CRPDevicePeriodTimeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #555                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDevicePeriodTimeCallback;)V
+       9: invokestatic  #562                // Method com/crrepa/f/b1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendBreathingLight(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #566                // Method com/crrepa/f/j.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryBreathingLight(com.crrepa.ble.conn.callback.CRPDeviceBreathingLightCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #570                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceBreathingLightCallback;)V
+       9: invokestatic  #571                // Method com/crrepa/f/j.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendWatchFaceBackground(com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo, com.crrepa.ble.conn.listener.CRPFileTransListener);
+    Code:
+       0: aload_1
+       1: invokestatic  #577                // Method com/crrepa/k0/e.b:()V
+       4: invokevirtual #583                // Method com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.getType:()Lcom/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo$CompressionType;
+       7: invokestatic  #586                // Method com/crrepa/l0/f.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo$CompressionType;)Lcom/crrepa/l0/f$b;
+      10: invokestatic  #589                // Method com/crrepa/l0/f.a:(Lcom/crrepa/l0/f$b;)Lcom/crrepa/c0/a;
+      13: dup
+      14: dup
+      15: astore_0
+      16: aload_2
+      17: aload_0
+      18: aload_1
+      19: aload_0
+      20: dup
+      21: iconst_2
+      22: anewarray     #591                // class android/graphics/Bitmap
+      25: dup
+      26: dup
+      27: aload_1
+      28: swap
+      29: aload_1
+      30: invokevirtual #595                // Method com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.getBitmap:()Landroid/graphics/Bitmap;
+      33: iconst_0
+      34: swap
+      35: aastore
+      36: invokevirtual #598                // Method com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.getThumBitmap:()Landroid/graphics/Bitmap;
+      39: iconst_1
+      40: swap
+      41: aastore
+      42: invokevirtual #603                // Method com/crrepa/c0/a.a:([Landroid/graphics/Bitmap;)V
+      45: iconst_0
+      46: invokevirtual #604                // Method com/crrepa/c0/a.c:(Z)V
+      49: invokevirtual #608                // Method com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.getTimeout:()I
+      52: invokevirtual #611                // Method com/crrepa/c0/a.j:(I)V
+      55: invokevirtual #614                // Method com/crrepa/c0/a.a:(Lcom/crrepa/ble/conn/listener/CRPFileTransListener;)V
+      58: invokevirtual #616                // Method com/crrepa/c0/a.j:()V
+      61: return
+
+  public void abortWatchFaceBackground();
+    Code:
+       0: invokestatic  #620                // Method com/crrepa/l0/f.a:()Lcom/crrepa/c0/a;
+       3: dup
+       4: astore_0
+       5: ifnull        12
+       8: aload_0
+       9: invokevirtual #621                // Method com/crrepa/c0/a.a:()V
+      12: return
+
+  public void sendWatchFaceLayout(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo);
+    Code:
+       0: aload_1
+       1: ifnonnull     5
+       4: return
+       5: aload_0
+       6: aload_1
+       7: invokestatic  #628                // Method com/crrepa/f/s1.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo;)[B
+      10: invokespecial #73                 // Method a:([B)V
+      13: return
+
+  public void queryWatchFaceLayout(com.crrepa.ble.conn.callback.CRPDeviceWatchFaceLayoutCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #632                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceWatchFaceLayoutCallback;)V
+       9: invokestatic  #633                // Method com/crrepa/f/s1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryDeviceDfuStatus(com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback);
+    Code:
+       0: aload_0
+       1: invokestatic  #640                // Method com/crrepa/e/c.a:()Lcom/crrepa/e/c;
+       4: aload_1
+       5: invokevirtual #642                // Method com/crrepa/e/c.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceDfuStatusCallback;)V
+       8: invokestatic  #643                // Method com/crrepa/f/w.c:()[B
+      11: invokespecial #73                 // Method a:([B)V
+      14: new           #11                 // class com/crrepa/h/a$a
+      17: dup
+      18: aload_0
+      19: invokespecial #646                // Method com/crrepa/h/a$a."<init>":(Lcom/crrepa/h/a;)V
+      22: ldc2_w        #647                // long 2000l
+      25: invokestatic  #653                // Method com/crrepa/g/a.a:(Ljava/lang/Runnable;J)V
+      28: return
+
+  public void sendStepLength(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #657                // Method com/crrepa/f/j1.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void startECGMeasure();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #660                // Method a:(I)V
+       5: return
+
+  public void stopECGMeasure();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #660                // Method a:(I)V
+       5: return
+
+  public void queryLastMeasureECGData();
+    Code:
+       0: aload_0
+       1: iconst_2
+       2: invokespecial #660                // Method a:(I)V
+       5: return
+
+  public boolean isNewECGMeasurementVersion();
+    Code:
+       0: invokestatic  #667                // Method com/crrepa/q/a.a:()Z
+       3: ireturn
+
+  public void setECGChangeListener(com.crrepa.ble.conn.listener.CRPBleECGChangeListener, com.crrepa.ble.conn.type.CRPEcgMeasureType);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: aload_2
+       6: invokevirtual #671                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPBleECGChangeListener;Lcom/crrepa/ble/conn/type/CRPEcgMeasureType;)V
+       9: return
+
+  public void sendECGHeartRate(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #673                // Method com/crrepa/f/b0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendSedentaryReminderPeriod(com.crrepa.ble.conn.bean.CRPSedentaryReminderPeriodInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #680                // Method com/crrepa/f/c1.a:(Lcom/crrepa/ble/conn/bean/CRPSedentaryReminderPeriodInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void querySedentaryReminderPeriod(com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderPeriodCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #684                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceSedentaryReminderPeriodCallback;)V
+       9: invokestatic  #685                // Method com/crrepa/f/c1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void querySupportWatchFace(com.crrepa.ble.conn.callback.CRPDeviceSupportWatchFaceCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup
+       3: dup2
+       4: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       7: aload_1
+       8: invokevirtual #689                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceSupportWatchFaceCallback;)V
+      11: invokestatic  #690                // Method com/crrepa/f/a2.d:()[B
+      14: invokespecial #73                 // Method a:([B)V
+      17: invokestatic  #691                // Method com/crrepa/f/a2.c:()[B
+      20: invokespecial #73                 // Method a:([B)V
+      23: invokestatic  #692                // Method com/crrepa/f/a2.a:()[B
+      26: invokespecial #73                 // Method a:([B)V
+      29: invokestatic  #693                // Method com/crrepa/f/a2.b:()[B
+      32: invokespecial #73                 // Method a:([B)V
+      35: return
+
+  public void queryWatchFaceStore(java.util.List<java.lang.Integer>, java.lang.String, int, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+    Code:
+       0: new           #698                // class com/crrepa/o0/c
+       3: dup
+       4: aload         5
+       6: invokespecial #701                // Method com/crrepa/o0/c."<init>":(Lcom/crrepa/ble/conn/callback/CRPWatchFaceStoreCallback;)V
+       9: aload_1
+      10: aload_2
+      11: iload_3
+      12: iload         4
+      14: invokevirtual #704                // Method com/crrepa/o0/c.a:(Ljava/util/List;Ljava/lang/String;II)V
+      17: return
+
+  public void querySifliWatchFaceStore(int, java.lang.String, int, int, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+    Code:
+       0: new           #698                // class com/crrepa/o0/c
+       3: dup
+       4: aload         6
+       6: invokespecial #701                // Method com/crrepa/o0/c."<init>":(Lcom/crrepa/ble/conn/callback/CRPWatchFaceStoreCallback;)V
+       9: iload_1
+      10: aload_2
+      11: iload_3
+      12: iload         4
+      14: iload         5
+      16: invokevirtual #709                // Method com/crrepa/o0/c.a:(ILjava/lang/String;III)V
+      19: return
+
+  public void queryWatchFaceOfID(int, com.crrepa.ble.conn.callback.CRPWatchFaceDetailsCallback);
+    Code:
+       0: new           #713                // class com/crrepa/o0/b
+       3: dup
+       4: aload_2
+       5: invokespecial #716                // Method com/crrepa/o0/b."<init>":(Lcom/crrepa/ble/conn/callback/CRPWatchFaceDetailsCallback;)V
+       8: iload_1
+       9: invokevirtual #717                // Method com/crrepa/o0/b.a:(I)V
+      12: return
+
+  public void queryWatchFaceStoreTagList(com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo, com.crrepa.ble.conn.callback.CRPWatchFaceStoreTagCallback);
+    Code:
+       0: new           #721                // class com/crrepa/o0/a
+       3: dup
+       4: invokespecial #722                // Method com/crrepa/o0/a."<init>":()V
+       7: aload_1
+       8: aload_2
+       9: invokevirtual #724                // Method com/crrepa/o0/a.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceStoreRequestInfo;Lcom/crrepa/ble/conn/callback/CRPWatchFaceStoreTagCallback;)V
+      12: return
+
+  public void queryWatchFaceStoreList(com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+    Code:
+       0: new           #721                // class com/crrepa/o0/a
+       3: dup
+       4: invokespecial #722                // Method com/crrepa/o0/a."<init>":()V
+       7: aload_1
+       8: iload_2
+       9: aload_3
+      10: invokevirtual #728                // Method com/crrepa/o0/a.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceStoreRequestInfo;ILcom/crrepa/ble/conn/callback/CRPWatchFaceStoreCallback;)V
+      13: return
+
+  public void queryWatchFaceDetail(com.crrepa.ble.conn.bean.CRPWatchFaceDetailsRequestInfo, com.crrepa.ble.conn.callback.CRPWatchFaceDetailsCallback);
+    Code:
+       0: new           #721                // class com/crrepa/o0/a
+       3: dup
+       4: invokespecial #722                // Method com/crrepa/o0/a."<init>":()V
+       7: aload_1
+       8: aload_2
+       9: invokevirtual #732                // Method com/crrepa/o0/a.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceDetailsRequestInfo;Lcom/crrepa/ble/conn/callback/CRPWatchFaceDetailsCallback;)V
+      12: return
+
+  public void sendWatchFace(com.crrepa.ble.conn.bean.CRPWatchFaceInfo, com.crrepa.ble.conn.listener.CRPWatchFaceTransListener, int);
+    Code:
+       0: aload_1
+       1: invokestatic  #735                // Method com/crrepa/l0/f.b:()V
+       4: invokevirtual #738                // Method com/crrepa/ble/conn/bean/CRPWatchFaceInfo.getType:()Lcom/crrepa/ble/conn/bean/CRPWatchFaceInfo$WacthFaceType;
+       7: invokestatic  #741                // Method com/crrepa/k0/e.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceInfo$WacthFaceType;)Lcom/crrepa/k0/f;
+      10: dup
+      11: astore_0
+      12: aload_1
+      13: aload_0
+      14: iload_3
+      15: aload_0
+      16: aload_2
+      17: invokevirtual #746                // Method com/crrepa/k0/f.a:(Lcom/crrepa/ble/conn/listener/CRPWatchFaceTransListener;)V
+      20: invokevirtual #747                // Method com/crrepa/k0/f.a:(I)V
+      23: invokevirtual #751                // Method com/crrepa/ble/conn/bean/CRPWatchFaceInfo.getFile:()Ljava/io/File;
+      26: invokevirtual #754                // Method com/crrepa/k0/f.a:(Ljava/io/File;)V
+      29: return
+
+  public void sendJieliWatchFaceId(int, boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: invokestatic  #759                // Method com/crrepa/f/a2.a:(IZ)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void abortWatchFace();
+    Code:
+       0: invokestatic  #763                // Method com/crrepa/k0/e.a:()Lcom/crrepa/k0/f;
+       3: dup
+       4: astore_0
+       5: ifnull        12
+       8: aload_0
+       9: invokevirtual #766                // Method com/crrepa/k0/f.abort:()V
+      12: return
+
+  public void deleteWatchFace(int, com.crrepa.ble.conn.callback.CRPWatchFaceDeleteCallback);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_0
+       3: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       6: aload_2
+       7: invokevirtual #771                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPWatchFaceDeleteCallback;)V
+      10: invokestatic  #772                // Method com/crrepa/f/a2.a:(I)[B
+      13: invokespecial #73                 // Method a:([B)V
+      16: return
+
+  public void deleteJieliWatchFace(int[], com.crrepa.ble.conn.callback.CRPWatchFaceDeleteCallback);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       6: aload_2
+       7: invokevirtual #771                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPWatchFaceDeleteCallback;)V
+      10: invokestatic  #777                // Method com/crrepa/f/a2.a:([I)[B
+      13: invokespecial #73                 // Method a:([B)V
+      16: return
+
+  public void queryJieliWatchFaceInfo(com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #781                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPJieliWatchFaceCallback;)V
+       9: invokestatic  #783                // Method com/crrepa/f/a2.g:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryHsDfuAddress(com.crrepa.ble.conn.callback.CRPDeviceDfuAddressCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #787                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceDfuAddressCallback;)V
+       9: iconst_1
+      10: newarray       byte
+      12: dup
+      13: astore_0
+      14: iconst_0
+      15: iconst_0
+      16: bastore
+      17: bipush        99
+      19: aload_0
+      20: invokestatic  #418                // Method com/crrepa/f/u1.a:(I[B)[B
+      23: invokespecial #73                 // Method a:([B)V
+      26: return
+
+  public void enableHsDfu();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: newarray       byte
+       4: dup
+       5: astore_0
+       6: iconst_0
+       7: iconst_1
+       8: bastore
+       9: bipush        99
+      11: aload_0
+      12: invokestatic  #418                // Method com/crrepa/f/u1.a:(I[B)[B
+      15: invokespecial #73                 // Method a:([B)V
+      18: return
+
+  public void queryStepsCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #795                // Method com/crrepa/f/q.c:(Lcom/crrepa/ble/conn/type/CRPCategoryHistoryDay;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setStepsCategoryListener(com.crrepa.ble.conn.listener.CRPStepsCategoryChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #799                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPStepsCategoryChangeListener;)V
+       8: return
+
+  public void setCaloriesCategoryListener(com.crrepa.ble.conn.listener.CRPCaloriesCategoryChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #803                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPCaloriesCategoryChangeListener;)V
+       8: return
+
+  public void queryCaloriesCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #806                // Method com/crrepa/f/q.a:(Lcom/crrepa/ble/conn/type/CRPCategoryHistoryDay;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setDistanceCategoryListener(com.crrepa.ble.conn.listener.CRPDistanceCategoryChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #810                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPDistanceCategoryChangeListener;)V
+       8: return
+
+  public void queryDistanceCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #813                // Method com/crrepa/f/q.b:(Lcom/crrepa/ble/conn/type/CRPCategoryHistoryDay;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendPhysiologcalPeriod(com.crrepa.ble.conn.bean.CRPPhysiologcalPeriodInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #820                // Method com/crrepa/f/w0.a:(Lcom/crrepa/ble/conn/bean/CRPPhysiologcalPeriodInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryPhysiologcalPeriod(com.crrepa.ble.conn.callback.CRPDevicePhysiologcalPeriodCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #824                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDevicePhysiologcalPeriodCallback;)V
+       9: invokestatic  #825                // Method com/crrepa/f/w0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void setMtu(com.crrepa.ble.conn.callback.CRPMtuChangeCallback, int);
+    Code:
+       0: iload_2
+       1: aload_0
+       2: getfield      #132                // Field a:Lcom/crrepa/h/d;
+       5: aload_1
+       6: invokevirtual #837                // Method com/crrepa/h/d.a:(Lcom/crrepa/ble/conn/callback/CRPMtuChangeCallback;)V
+       9: invokestatic  #840                // Method com/crrepa/p0/d.b:(I)[B
+      12: astore_0
+      13: new           #244                // class com/crrepa/p/a
+      16: dup
+      17: astore_1
+      18: iconst_5
+      19: aload_0
+      20: invokespecial #247                // Method com/crrepa/p/a."<init>":(I[B)V
+      23: invokestatic  #145                // Method com/crrepa/p/c.b:()Lcom/crrepa/p/c;
+      26: aload_1
+      27: invokevirtual #250                // Method com/crrepa/p/c.a:(Lcom/crrepa/p/a;)V
+      30: return
+
+  public void querySleepAction(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #844                // Method com/crrepa/f/e1.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setSleepActionChangeListener(com.crrepa.ble.conn.listener.CRPSleepActionChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #848                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPSleepActionChangeListener;)V
+       8: return
+
+  public void startFindPhone();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokestatic  #852                // Method com/crrepa/f/d0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void stopFindPhone();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #852                // Method com/crrepa/f/d0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setMusicPlayerState(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #857                // Method com/crrepa/f/s0.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendSongTitle(java.lang.String);
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: aload_1
+       3: invokestatic  #864                // Method com/crrepa/f/g1.a:(BLjava/lang/String;)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void sendLyrics(java.lang.String);
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: aload_1
+       3: invokestatic  #864                // Method com/crrepa/f/g1.a:(BLjava/lang/String;)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void closeMusicControl();
+    Code:
+       0: aload_0
+       1: invokestatic  #867                // Method com/crrepa/f/g1.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendDrinkWaterReminder(com.crrepa.ble.conn.bean.CRPDrinkWaterPeriodInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #874                // Method com/crrepa/f/a0.a:(Lcom/crrepa/ble/conn/bean/CRPDrinkWaterPeriodInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryDrinkWaterReminderPeriod();
+    Code:
+       0: aload_0
+       1: invokestatic  #876                // Method com/crrepa/f/a0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void setDrinkWaterListener(com.crrepa.ble.conn.listener.CRPDeviceDrinkWaterListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #880                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPDeviceDrinkWaterListener;)V
+       8: return
+
+  public void queryNewDrinkWaterReminderPeriod();
+    Code:
+       0: aload_0
+       1: invokestatic  #882                // Method com/crrepa/f/a0.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendNewDrinkWaterReminder(com.crrepa.ble.conn.bean.CRPNewDrinkWaterPeriodInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #887                // Method com/crrepa/f/a0.a:(Lcom/crrepa/ble/conn/bean/CRPNewDrinkWaterPeriodInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendDrinkWaterGoals(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #889                // Method com/crrepa/f/a0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryDrinkWaterGoals();
+    Code:
+       0: aload_0
+       1: invokestatic  #891                // Method com/crrepa/f/a0.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendTodayWaterIntake(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #893                // Method com/crrepa/f/a0.b:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTodayWaterIntake();
+    Code:
+       0: aload_0
+       1: invokestatic  #895                // Method com/crrepa/f/a0.d:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void addWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #900                // Method com/crrepa/f/a0.a:(Lcom/crrepa/ble/conn/bean/CRPWaterIntakeInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void updateWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #903                // Method com/crrepa/f/a0.b:(Lcom/crrepa/ble/conn/bean/CRPWaterIntakeInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void deleteWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo$WaterIntakeType, int);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokestatic  #908                // Method com/crrepa/f/a0.a:(Lcom/crrepa/ble/conn/bean/CRPWaterIntakeInfo$WaterIntakeType;I)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void queryTodayWaterIntakeHistory();
+    Code:
+       0: aload_0
+       1: invokestatic  #910                // Method com/crrepa/f/a0.e:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendTodayWaterIntakeHistory(java.util.List<com.crrepa.ble.conn.bean.CRPWaterIntakeInfo>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #916                // Method com/crrepa/f/a0.a:(Ljava/util/List;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setMaxHeartRate(byte, boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: invokestatic  #923                // Method com/crrepa/f/k0.a:(BZ)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void queryMaxHeartRate(com.crrepa.ble.conn.callback.CRPDeviceMaxHeartRateCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #927                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceMaxHeartRateCallback;)V
+       9: invokestatic  #928                // Method com/crrepa/f/k0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void startMovement(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #930                // Method com/crrepa/f/l0.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setMovementState(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #930                // Method com/crrepa/f/l0.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setMovementStateListener(com.crrepa.ble.conn.listener.CRPMovementStateListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #935                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPMovementStateListener;)V
+       8: return
+
+  public com.crrepa.ble.conn.type.CRPProtocolVersion getProtocolVersion();
+    Code:
+       0: invokestatic  #158                // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       3: invokevirtual #939                // Method com/crrepa/l/a.e:()Lcom/crrepa/ble/conn/type/CRPProtocolVersion;
+       6: areturn
+
+  public void startMeasureTemp();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #941                // Method b:(Z)V
+       5: return
+
+  public void stopMeasureTemp();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #941                // Method b:(Z)V
+       5: return
+
+  public void enableTimingMeasureTemp();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #945                // Method h:(Z)V
+       5: return
+
+  public void disableTimingMeasureTemp();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #945                // Method h:(Z)V
+       5: return
+
+  public void queryTimingMeasureTempState(com.crrepa.ble.conn.callback.CRPTimingTempStateCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #950                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPTimingTempStateCallback;)V
+       9: invokestatic  #951                // Method com/crrepa/f/m1.b:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryTimingMeasureTemp(com.crrepa.ble.conn.type.CRPTempTimeType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #956                // Method com/crrepa/f/m1.a:(Lcom/crrepa/ble/conn/type/CRPTempTimeType;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setTempChangeListener(com.crrepa.ble.conn.listener.CRPTempChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #960                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPTempChangeListener;)V
+       8: return
+
+  public void sendDisplayTime(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: i2b
+       3: invokestatic  #964                // Method com/crrepa/f/x.a:(B)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void queryDisplayTime(com.crrepa.ble.conn.callback.CRPDeviceDisplayTimeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #968                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceDisplayTimeCallback;)V
+       9: invokestatic  #969                // Method com/crrepa/f/x.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendHandWashingReminder(com.crrepa.ble.conn.bean.CRPHandWashingPeriodInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #976                // Method com/crrepa/f/j0.a:(Lcom/crrepa/ble/conn/bean/CRPHandWashingPeriodInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryHandWashingReminderPeriod(com.crrepa.ble.conn.callback.CRPDeviceHandWashingPeriodCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #980                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceHandWashingPeriodCallback;)V
+       9: invokestatic  #981                // Method com/crrepa/f/j0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendLocalCity(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #987                // Method com/crrepa/f/p0.a:(Ljava/lang/String;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendBoundVibration();
+    Code:
+       0: aload_0
+       1: invokestatic  #991                // Method com/crrepa/f/h.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendTempUnit(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #995                // Method com/crrepa/f/n1.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTempUnit();
+    Code:
+       0: aload_0
+       1: invokestatic  #997                // Method com/crrepa/f/n1.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendBrightness(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1001               // Method com/crrepa/f/l.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryBrightness(com.crrepa.ble.conn.callback.CRPDeviceBrightnessCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1005               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceBrightnessCallback;)V
+       9: invokestatic  #1006               // Method com/crrepa/f/l.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryBtAddress(com.crrepa.ble.conn.callback.CRPBtAddressCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1010               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPBtAddressCallback;)V
+       9: invokestatic  #1013               // Method com/crrepa/f/m.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void clearContact();
+    Code:
+       0: aload_0
+       1: invokestatic  #1017               // Method com/crrepa/f/y0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void checkSupportQuickContact(com.crrepa.ble.conn.callback.CRPContactConfigCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1021               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPContactConfigCallback;)V
+       9: invokestatic  #1022               // Method com/crrepa/f/y0.c:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void deleteContact(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: i2b
+       3: invokestatic  #1024               // Method com/crrepa/f/y0.b:(B)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void sendContact(com.crrepa.ble.conn.bean.CRPContactInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1029               // Method com/crrepa/f/y0.a:(Lcom/crrepa/ble/conn/bean/CRPContactInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void deleteContactAvatar(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: i2b
+       3: invokestatic  #1031               // Method com/crrepa/f/y0.a:(B)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void sendContactAvatar(int, android.graphics.Bitmap, int, com.crrepa.ble.conn.listener.CRPFileTransListener);
+    Code:
+       0: invokestatic  #577                // Method com/crrepa/k0/e.b:()V
+       3: getstatic     #1036               // Field com/crrepa/l0/f$b.d:Lcom/crrepa/l0/f$b;
+       6: invokestatic  #589                // Method com/crrepa/l0/f.a:(Lcom/crrepa/l0/f$b;)Lcom/crrepa/c0/a;
+       9: checkcast     #1038               // class com/crrepa/e0/a
+      12: dup
+      13: dup
+      14: astore_0
+      15: aload         4
+      17: aload_0
+      18: iload_3
+      19: aload_0
+      20: iload_1
+      21: i2b
+      22: aload_2
+      23: invokevirtual #1041               // Method com/crrepa/e0/a.a:(BLandroid/graphics/Bitmap;)V
+      26: invokevirtual #611                // Method com/crrepa/c0/a.j:(I)V
+      29: invokevirtual #614                // Method com/crrepa/c0/a.a:(Lcom/crrepa/ble/conn/listener/CRPFileTransListener;)V
+      32: invokevirtual #616                // Method com/crrepa/c0/a.j:()V
+      35: return
+
+  public void setContactListener(com.crrepa.ble.conn.listener.CRPContactListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1045               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPContactListener;)V
+       8: return
+
+  public void queryContactCount(com.crrepa.ble.conn.callback.CRPContactCountCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1049               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPContactCountCallback;)V
+       9: invokestatic  #1050               // Method com/crrepa/f/y0.b:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void enableTimingMeasureBloodOxygen(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokespecial #1053               // Method c:(I)V
+       5: return
+
+  public void disableTimingMeasureBloodOxygen();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #1053               // Method c:(I)V
+       5: return
+
+  public void queryTimingBloodOxygenMeasureState();
+    Code:
+       0: aload_0
+       1: invokestatic  #1056               // Method com/crrepa/f/e.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryTimingBloodOxygen(com.crrepa.ble.conn.type.CRPBloodOxygenTimeType);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #1062               // Method com/crrepa/ble/conn/type/CRPBloodOxygenTimeType.getValue:()I
+       5: invokestatic  #1063               // Method com/crrepa/f/e.b:(I)[B
+       8: invokespecial #73                 // Method a:([B)V
+      11: return
+
+  public void queryDfuType(com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback);
+    Code:
+       0: aload_0
+       1: invokestatic  #640                // Method com/crrepa/e/c.a:()Lcom/crrepa/e/c;
+       4: aload_1
+       5: invokevirtual #1067               // Method com/crrepa/e/c.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceDfuTypeCallback;)V
+       8: invokestatic  #643                // Method com/crrepa/f/w.c:()[B
+      11: invokespecial #73                 // Method a:([B)V
+      14: return
+
+  public void reset();
+    Code:
+       0: aload_0
+       1: invokestatic  #1069               // Method com/crrepa/f/t.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendCurrentVolume(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1073               // Method com/crrepa/f/r1.a:(I)[B
+       5: astore_0
+       6: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       9: aload_0
+      10: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      13: return
+
+  public void sendMaxVolume(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1075               // Method com/crrepa/f/r1.b:(I)[B
+       5: astore_0
+       6: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       9: aload_0
+      10: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      13: return
+
+  public void setSosChangeListener(com.crrepa.ble.conn.listener.CRPSosChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1079               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPSosChangeListener;)V
+       8: return
+
+  public void sendSosPresetInfo(com.crrepa.ble.conn.bean.CRPSosInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1086               // Method com/crrepa/f/h1.a:(Lcom/crrepa/ble/conn/bean/CRPSosInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void enableSos(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1088               // Method com/crrepa/f/h1.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void querySosState(com.crrepa.ble.conn.callback.CRPSosStateCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1092               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPSosStateCallback;)V
+       9: invokestatic  #1093               // Method com/crrepa/f/h1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void setBatterySavingListener(com.crrepa.ble.conn.listener.CRPBatterySavingChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1097               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPBatterySavingChangeListener;)V
+       8: return
+
+  public void sendBatterySaving(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1101               // Method com/crrepa/f/d.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryBatterySaving();
+    Code:
+       0: aload_0
+       1: invokestatic  #1103               // Method com/crrepa/f/d.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void createBond(byte[], com.crrepa.ble.conn.callback.CRPDeviceBondStateCallback);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_0
+       3: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       6: aload_2
+       7: invokevirtual #1108               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceBondStateCallback;)V
+      10: invokestatic  #1113               // Method com/crrepa/f/g.a:([B)[B
+      13: invokespecial #73                 // Method a:([B)V
+      16: return
+
+  public void createBond(byte[], boolean, int, com.crrepa.ble.conn.callback.CRPDeviceBondStateCallback);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: aload_0
+       4: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       7: aload         4
+       9: invokevirtual #1108               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceBondStateCallback;)V
+      12: iload_3
+      13: invokestatic  #1117               // Method com/crrepa/f/g.a:([BZI)[B
+      16: invokespecial #73                 // Method a:([B)V
+      19: return
+
+  public void sendBondState(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1119               // Method com/crrepa/f/g.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void connectivityCheck(boolean, byte[], com.crrepa.ble.conn.callback.CRPConnectivityCheckCallback);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_2
+       3: aload_0
+       4: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       7: aload_3
+       8: invokevirtual #1124               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPConnectivityCheckCallback;)V
+      11: invokestatic  #1127               // Method com/crrepa/f/g.a:(Z[B)[B
+      14: invokespecial #73                 // Method a:([B)V
+      17: return
+
+  public void enableHrvMeasure(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokespecial #1130               // Method b:(I)V
+       5: return
+
+  public void disableHrvMeasure();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #1130               // Method b:(I)V
+       5: return
+
+  public void queryHrvMeasureInterval();
+    Code:
+       0: aload_0
+       1: invokestatic  #1133               // Method com/crrepa/f/m0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void setHrvChangeListener(com.crrepa.ble.conn.listener.CRPHrvChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1137               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPHrvChangeListener;)V
+       8: return
+
+  public void queryHrvMeasureCount(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1139               // Method com/crrepa/f/m0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryHrv(int, int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: invokestatic  #1144               // Method com/crrepa/f/m0.a:(II)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void startMeasureHrv();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokestatic  #1146               // Method com/crrepa/f/m0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void stopMeasureHrv();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1146               // Method com/crrepa/f/m0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryWatchFaceList(com.crrepa.ble.conn.callback.CRPDeviceWatchFaceListCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1151               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceWatchFaceListCallback;)V
+       9: invokestatic  #1153               // Method com/crrepa/f/a2.f:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void setCallNumberListener(com.crrepa.ble.conn.listener.CRPCallNumberListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1157               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPCallNumberListener;)V
+       8: return
+
+  public void sendCallContactName(java.lang.String);
+    Code:
+       0: aload_1
+       1: invokestatic  #271                // Method android/text/TextUtils.isEmpty:(Ljava/lang/CharSequence;)Z
+       4: ifne          15
+       7: aload_0
+       8: aload_1
+       9: invokestatic  #1159               // Method com/crrepa/i/a.a:(Ljava/lang/String;)[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void enableContinueBloodPressure();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #1162               // Method e:(Z)V
+       5: return
+
+  public void disableContinueBloodPressure();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #1162               // Method e:(Z)V
+       5: return
+
+  public void queryContinueBloodPressureState();
+    Code:
+       0: aload_0
+       1: invokestatic  #1165               // Method com/crrepa/f/f.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryLast24HourBloodPressure();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1167               // Method com/crrepa/f/f.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void enableContinueBloodOxygen();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #1170               // Method d:(Z)V
+       5: return
+
+  public void disableContinueBloodOxygen();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #1170               // Method d:(Z)V
+       5: return
+
+  public void queryContinueBloodOxygenState();
+    Code:
+       0: aload_0
+       1: invokestatic  #1173               // Method com/crrepa/f/e.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryLast24HourBloodOxygen();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1176               // Method com/crrepa/f/e.c:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void enableContinueTemp();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokespecial #1179               // Method f:(Z)V
+       5: return
+
+  public void disableContinueTemp();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokespecial #1179               // Method f:(Z)V
+       5: return
+
+  public void queryContinueTempState();
+    Code:
+       0: aload_0
+       1: invokestatic  #1182               // Method com/crrepa/f/m1.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryLast24HourTemp();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1184               // Method com/crrepa/f/m1.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendPillReminder(com.crrepa.ble.conn.bean.CRPPillReminderInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1191               // Method com/crrepa/f/x0.a:(Lcom/crrepa/ble/conn/bean/CRPPillReminderInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void deletePillReminder(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1193               // Method com/crrepa/f/x0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void clearPillReminder();
+    Code:
+       0: aload_0
+       1: sipush        255
+       4: invokestatic  #1193               // Method com/crrepa/f/x0.a:(I)[B
+       7: invokespecial #73                 // Method a:([B)V
+      10: return
+
+  public void queryPillReminder(com.crrepa.ble.conn.callback.CRPPillReminderCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1198               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPPillReminderCallback;)V
+       9: invokestatic  #1199               // Method com/crrepa/f/x0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryHistoryHeartRate();
+    Code:
+       0: aload_0
+       1: invokestatic  #1201               // Method com/crrepa/f/l0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryHistoryBloodPressure();
+    Code:
+       0: aload_0
+       1: invokestatic  #1203               // Method com/crrepa/f/f.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryHistoryBloodOxygen();
+    Code:
+       0: aload_0
+       1: invokestatic  #1205               // Method com/crrepa/f/e.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendTapToWakeState(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1209               // Method com/crrepa/f/l1.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTapToWakeState(com.crrepa.ble.conn.callback.CRPTapToWakeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1213               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPTapToWakeCallback;)V
+       9: invokestatic  #1214               // Method com/crrepa/f/l1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void setTrainingListener(com.crrepa.ble.conn.listener.CRPTrainingChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1218               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPTrainingChangeListener;)V
+       8: return
+
+  public void queryHistoryTraining();
+    Code:
+       0: aload_0
+       1: invokestatic  #1222               // Method com/crrepa/f/p1.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryTraining(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1224               // Method com/crrepa/f/p1.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTrainingRealtimeData();
+    Code:
+       0: aload_0
+       1: invokestatic  #1226               // Method com/crrepa/f/p1.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void setA2DPConnectStateListener(com.crrepa.ble.conn.listener.CRPA2DPConnectStateListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1230               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPA2DPConnectStateListener;)V
+       8: return
+
+  public void queryA2DPState();
+    Code:
+       0: aload_0
+       1: invokestatic  #1234               // Method com/crrepa/f/b.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendA2DPState(com.crrepa.ble.conn.listener.CRPA2DPConnectStateListener$A2DPConnectState);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1239               // Method com/crrepa/f/b.a:(Lcom/crrepa/ble/conn/listener/CRPA2DPConnectStateListener$A2DPConnectState;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendDailyGoals(com.crrepa.ble.conn.bean.CRPDailyGoalsInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1246               // Method com/crrepa/f/s.a:(Lcom/crrepa/ble/conn/bean/CRPDailyGoalsInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryDailyGoals(com.crrepa.ble.conn.callback.CRPDailyGoalsCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1250               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDailyGoalsCallback;)V
+       9: invokestatic  #1251               // Method com/crrepa/f/s.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendTrainingDayGoals(com.crrepa.ble.conn.bean.CRPDailyGoalsInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1254               // Method com/crrepa/f/s.b:(Lcom/crrepa/ble/conn/bean/CRPDailyGoalsInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTrainingDayGoals(com.crrepa.ble.conn.callback.CRPTrainingDayGoalsCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1258               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPTrainingDayGoalsCallback;)V
+       9: invokestatic  #1259               // Method com/crrepa/f/s.b:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendTrainingDays(com.crrepa.ble.conn.bean.CRPTrainingDayInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1264               // Method com/crrepa/f/s.a:(Lcom/crrepa/ble/conn/bean/CRPTrainingDayInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTrainingDay(com.crrepa.ble.conn.callback.CRPTrainingDayGoalsCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1258               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPTrainingDayGoalsCallback;)V
+       9: invokestatic  #1266               // Method com/crrepa/f/s.c:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void querySupportStress();
+    Code:
+       0: aload_0
+       1: invokestatic  #1270               // Method com/crrepa/f/k1.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void startMeasureStress();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokestatic  #1272               // Method com/crrepa/f/k1.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void stopMeasureStress();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1272               // Method com/crrepa/f/k1.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryHistoryStress();
+    Code:
+       0: aload_0
+       1: invokestatic  #1275               // Method com/crrepa/f/k1.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void setStressListener(com.crrepa.ble.conn.listener.CRPStressListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1279               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPStressListener;)V
+       8: return
+
+  public void enableTimingStress();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokestatic  #1281               // Method com/crrepa/f/k1.b:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void disableTimingStress();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1281               // Method com/crrepa/f/k1.b:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTimingStressState();
+    Code:
+       0: aload_0
+       1: invokestatic  #1284               // Method com/crrepa/f/k1.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryTimingStress(com.crrepa.ble.conn.type.CRPStressDate);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #1289               // Method com/crrepa/ble/conn/type/CRPStressDate.getValue:()B
+       5: invokestatic  #1290               // Method com/crrepa/f/k1.a:(B)[B
+       8: invokespecial #73                 // Method a:([B)V
+      11: return
+
+  public void sendElectronicCard(com.crrepa.ble.conn.bean.CRPElectronicCardInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1297               // Method com/crrepa/f/c0.a:(Lcom/crrepa/ble/conn/bean/CRPElectronicCardInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void deleteElectronicCard(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1299               // Method com/crrepa/f/c0.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryElectronicCardCount(com.crrepa.ble.conn.callback.CRPElectronicCardCountCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1303               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPElectronicCardCountCallback;)V
+       9: invokestatic  #1304               // Method com/crrepa/f/c0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryElectronicCard(int, com.crrepa.ble.conn.callback.CRPElectronicCardCallback);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_0
+       3: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       6: aload_2
+       7: invokevirtual #1309               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPElectronicCardCallback;)V
+      10: invokestatic  #1310               // Method com/crrepa/f/c0.b:(I)[B
+      13: invokespecial #73                 // Method a:([B)V
+      16: return
+
+  public void sendElectronicCardList(java.util.List<java.lang.Integer>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1313               // Method com/crrepa/f/c0.a:(Ljava/util/List;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void startBreathingTraining(com.crrepa.ble.conn.bean.CRPBreathingTrainingInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1320               // Method com/crrepa/f/k.a:(Lcom/crrepa/ble/conn/bean/CRPBreathingTrainingInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryMessageList(com.crrepa.ble.conn.callback.CRPMessageListCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1324               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPMessageListCallback;)V
+       9: invokestatic  #1327               // Method com/crrepa/f/q0.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryContactNumberSymbol(com.crrepa.ble.conn.callback.CRPContactNumberSymbolCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1331               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPContactNumberSymbolCallback;)V
+       9: invokestatic  #1332               // Method com/crrepa/f/y0.d:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void setNewHrvListener(com.crrepa.ble.conn.listener.CRPNewHrvChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1336               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPNewHrvChangeListener;)V
+       8: return
+
+  public void querySupportNewHrv();
+    Code:
+       0: aload_0
+       1: invokestatic  #1340               // Method com/crrepa/f/u0.d:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void startMeasureNewHrv();
+    Code:
+       0: aload_0
+       1: invokestatic  #1342               // Method com/crrepa/f/u0.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void stopMeasureNewHrv();
+    Code:
+       0: aload_0
+       1: invokestatic  #1344               // Method com/crrepa/f/u0.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryHistoryNewHrv();
+    Code:
+       0: aload_0
+       1: invokestatic  #1346               // Method com/crrepa/f/u0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void setCalendarEventListener(com.crrepa.ble.conn.listener.CRPCalendarEventListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1350               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPCalendarEventListener;)V
+       8: return
+
+  public void sendCalendarEvent(com.crrepa.ble.conn.bean.CRPCalendarEventInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1357               // Method com/crrepa/f/o.a:(Lcom/crrepa/ble/conn/bean/CRPCalendarEventInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryCalendarEvent(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1359               // Method com/crrepa/f/o.b:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void deleteCalendarEvent(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1361               // Method com/crrepa/f/o.a:(I)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void querySupportCalendarEvent();
+    Code:
+       0: aload_0
+       1: invokestatic  #1363               // Method com/crrepa/f/o.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendCalendarEventReminderTime(boolean, int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: invokestatic  #1368               // Method com/crrepa/f/o.a:(ZI)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void queryCalendarEventReminderTime();
+    Code:
+       0: aload_0
+       1: invokestatic  #1370               // Method com/crrepa/f/o.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void clearCalendarEvent();
+    Code:
+       0: aload_0
+       1: invokestatic  #1372               // Method com/crrepa/f/o.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryAvailableStorage(com.crrepa.ble.conn.callback.CRPAvailableStorageCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup
+       3: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       6: aload_1
+       7: invokevirtual #1376               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPAvailableStorageCallback;)V
+      10: invokestatic  #1377               // Method com/crrepa/f/w.a:()[B
+      13: invokespecial #73                 // Method a:([B)V
+      16: invokestatic  #1378               // Method com/crrepa/f/w.b:()[B
+      19: invokespecial #73                 // Method a:([B)V
+      22: return
+
+  public void setGpsChangeListener(com.crrepa.ble.conn.listener.CRPGpsChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1382               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPGpsChangeListener;)V
+       8: return
+
+  public void queryHistoryGps();
+    Code:
+       0: aload_0
+       1: invokestatic  #1386               // Method com/crrepa/f/i0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryGpsDetail(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iconst_0
+       3: invokestatic  #1388               // Method com/crrepa/f/i0.a:(II)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void sendEpoFile(java.io.File, com.crrepa.ble.conn.type.CRPEpoType, com.crrepa.ble.conn.listener.CRPFileTransListener);
+    Code:
+       0: invokestatic  #1395               // Method com/crrepa/f0/a.a:()Lcom/crrepa/f0/a;
+       3: dup
+       4: aload_3
+       5: invokevirtual #1396               // Method com/crrepa/f0/a.a:(Lcom/crrepa/ble/conn/listener/CRPFileTransListener;)V
+       8: aload_2
+       9: aload_1
+      10: invokevirtual #1399               // Method com/crrepa/f0/a.a:(Lcom/crrepa/ble/conn/type/CRPEpoType;Ljava/io/File;)V
+      13: return
+
+  public void sendLocalLocation(double, double);
+    Code:
+       0: aload_0
+       1: dload_1
+       2: dload_3
+       3: invokestatic  #1404               // Method com/crrepa/f/i0.a:(DD)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void setBreathRateListener(com.crrepa.ble.conn.listener.CRPBreathRateChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1408               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPBreathRateChangeListener;)V
+       8: return
+
+  public void startMeatureBreathRate();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokestatic  #1412               // Method com/crrepa/f/i.b:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void stopMeatureBreathRate();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1412               // Method com/crrepa/f/i.b:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryHistoryBreathRate();
+    Code:
+       0: aload_0
+       1: invokestatic  #1415               // Method com/crrepa/f/i.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void enableTimingBreathRate();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokestatic  #1417               // Method com/crrepa/f/i.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void disableTimingBreathRate();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1417               // Method com/crrepa/f/i.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryTimingBreathRateState();
+    Code:
+       0: aload_0
+       1: invokestatic  #1420               // Method com/crrepa/f/i.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryTimingBreathRate(com.crrepa.ble.conn.type.CRPHistoryDay);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1424               // Method com/crrepa/f/i.a:(Lcom/crrepa/ble/conn/type/CRPHistoryDay;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setQuickResponsesListener(com.crrepa.ble.conn.listener.CRPQuickResponsesChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1428               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPQuickResponsesChangeListener;)V
+       8: return
+
+  public void queryQuickResponsesCount();
+    Code:
+       0: aload_0
+       1: invokestatic  #1432               // Method com/crrepa/f/z0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void enableQuickResponses();
+    Code:
+       0: aload_0
+       1: iconst_1
+       2: invokestatic  #1434               // Method com/crrepa/f/z0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void disableQuickResponses();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1434               // Method com/crrepa/f/z0.a:(Z)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryQuickResponses(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1437               // Method com/crrepa/f/z0.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendQuickResponses(com.crrepa.ble.conn.bean.CRPQuickResponsesDetailInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1442               // Method com/crrepa/f/z0.a:(Lcom/crrepa/ble/conn/bean/CRPQuickResponsesDetailInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendVibrationStrength(com.crrepa.ble.conn.type.CRPVibrationStrength);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1449               // Method com/crrepa/f/z1.a:(Lcom/crrepa/ble/conn/type/CRPVibrationStrength;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryVibrationStrength(com.crrepa.ble.conn.callback.CRPVibrationStrengthCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1453               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPVibrationStrengthCallback;)V
+       9: invokestatic  #1454               // Method com/crrepa/f/z1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendSleepTime(byte, byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: iload_2
+       3: invokestatic  #1457               // Method com/crrepa/f/f1.a:(BB)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void querySleepTime(com.crrepa.ble.conn.callback.CRPSleepTimeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1461               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPSleepTimeCallback;)V
+       9: invokestatic  #1462               // Method com/crrepa/f/f1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void queryUIVersionCode(com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1466               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback;)V
+       9: invokestatic  #1467               // Method com/crrepa/f/w.g:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void removeBond(com.crrepa.ble.conn.callback.CRPRemoveBondCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       5: aload_1
+       6: invokevirtual #1471               // Method com/crrepa/m/f.a:(Lcom/crrepa/ble/conn/callback/CRPRemoveBondCallback;)V
+       9: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+      12: invokestatic  #1474               // Method com/crrepa/f/n.a:()[B
+      15: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      18: return
+
+  public void queryTestModeState(com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1478               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceTestModeCallback;)V
+       9: invokestatic  #1479               // Method com/crrepa/f/w.f:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void sendUserMode();
+    Code:
+       0: aload_0
+       1: invokestatic  #1481               // Method com/crrepa/f/t.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void setCustomKeyListener(com.crrepa.ble.conn.listener.CRPCustomKeyChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1485               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPCustomKeyChangeListener;)V
+       8: return
+
+  public void querySupportCustomTrainingList();
+    Code:
+       0: aload_0
+       1: invokestatic  #1489               // Method com/crrepa/f/r.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void querySupportCustomFeatureList();
+    Code:
+       0: aload_0
+       1: invokestatic  #1491               // Method com/crrepa/f/r.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void querySupportCustomGameList();
+    Code:
+       0: aload_0
+       1: invokestatic  #1493               // Method com/crrepa/f/r.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendCustomKey(com.crrepa.ble.conn.bean.CRPCustomKeyInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1498               // Method com/crrepa/f/r.a:(Lcom/crrepa/ble/conn/bean/CRPCustomKeyInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setWorldClockListener(com.crrepa.ble.conn.listener.CRPWorldClockListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1502               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPWorldClockListener;)V
+       8: return
+
+  public void querySupportWorldClock();
+    Code:
+       0: aload_0
+       1: invokestatic  #1506               // Method com/crrepa/f/b2.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryWorldClock(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1508               // Method com/crrepa/f/b2.b:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendWorldClock(com.crrepa.ble.conn.bean.CRPWorldClockInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1513               // Method com/crrepa/f/b2.a:(Lcom/crrepa/ble/conn/bean/CRPWorldClockInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void deleteWorldClock(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1515               // Method com/crrepa/f/b2.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void resetWorldClockList(byte[]);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1517               // Method com/crrepa/f/b2.a:([B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setStockListener(com.crrepa.ble.conn.listener.CRPStockChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1521               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPStockChangeListener;)V
+       8: return
+
+  public void querySupportStock();
+    Code:
+       0: aload_0
+       1: invokestatic  #1525               // Method com/crrepa/f/y1.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void clearStock();
+    Code:
+       0: aload_0
+       1: invokestatic  #1527               // Method com/crrepa/f/y1.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendStock(com.crrepa.ble.conn.bean.CRPStockInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1532               // Method com/crrepa/f/y1.a:(Lcom/crrepa/ble/conn/bean/CRPStockInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendStockPrice(com.crrepa.ble.conn.bean.CRPStockPriceInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1537               // Method com/crrepa/f/y1.a:(Lcom/crrepa/ble/conn/bean/CRPStockPriceInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void deleteStock(byte);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: invokestatic  #1539               // Method com/crrepa/f/y1.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void resetStockList(byte[]);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1541               // Method com/crrepa/f/y1.a:([B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void querySupportAi(com.crrepa.ble.conn.callback.CRPAiCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: invokestatic  #1548               // Method com/crrepa/e/a.a:()Lcom/crrepa/e/a;
+       5: aload_1
+       6: invokevirtual #1550               // Method com/crrepa/e/a.a:(Lcom/crrepa/ble/conn/callback/CRPAiCallback;)V
+       9: invokestatic  #1553               // Method com/crrepa/f/v1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: invokestatic  #1556               // Method com/crrepa/f/a.b:()[B
+      18: invokespecial #73                 // Method a:([B)V
+      21: return
+
+  public void setChatListener(com.crrepa.ble.conn.listener.CRPChatChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1560               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPChatChangeListener;)V
+       8: return
+
+  public void sendChatError(com.crrepa.ble.conn.type.CRPChatErrorCode);
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: aload_1
+       5: invokestatic  #1565               // Method com/crrepa/f/v1.a:(Lcom/crrepa/ble/conn/type/CRPChatErrorCode;)[B
+       8: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      11: return
+
+  public void sendChatActivateRecording();
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: invokestatic  #1567               // Method com/crrepa/f/v1.b:()[B
+       7: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      10: return
+
+  public void sendChatQuestion(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: aload_1
+       5: invokestatic  #1569               // Method com/crrepa/f/v1.a:(Ljava/lang/String;)[B
+       8: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      11: return
+
+  public void sendChatResponse(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: aload_1
+       5: invokestatic  #1573               // Method com/crrepa/f/v1.a:(Lcom/crrepa/m/f;Ljava/lang/String;)V
+       8: return
+
+  public void setAiWatchFaceListener(com.crrepa.ble.conn.listener.CRPAiWatchFaceChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1577               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPAiWatchFaceChangeListener;)V
+       8: return
+
+  public void sendAiWatchFaceError(com.crrepa.ble.conn.type.CRPChatErrorCode);
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: aload_1
+       5: invokestatic  #1579               // Method com/crrepa/f/a.a:(Lcom/crrepa/ble/conn/type/CRPChatErrorCode;)[B
+       8: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      11: return
+
+  public void sendAiWatchFaceActivateRecording();
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: invokestatic  #1581               // Method com/crrepa/f/a.c:()[B
+       7: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      10: return
+
+  public void sendAiWatchFaceDescribe(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: aload_1
+       5: invokestatic  #1583               // Method com/crrepa/f/a.a:(Ljava/lang/String;)[B
+       8: invokevirtual #201                // Method com/crrepa/m/f.b:([B)V
+      11: return
+
+  public void sendAiWatchFacePreview(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType, android.graphics.Bitmap, com.crrepa.ble.conn.listener.CRPFileTransListener);
+    Code:
+       0: aload_1
+       1: invokestatic  #577                // Method com/crrepa/k0/e.b:()V
+       4: invokestatic  #735                // Method com/crrepa/l0/f.b:()V
+       7: invokestatic  #1588               // Method com/crrepa/m0/d.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo$CompressionType;)Lcom/crrepa/m0/d$b;
+      10: iconst_1
+      11: invokestatic  #1591               // Method com/crrepa/m0/d.a:(Lcom/crrepa/m0/d$b;Z)Lcom/crrepa/c0/a;
+      14: dup
+      15: dup
+      16: aload_3
+      17: swap
+      18: dup
+      19: dup
+      20: iconst_1
+      21: anewarray     #591                // class android/graphics/Bitmap
+      24: dup
+      25: iconst_0
+      26: aload_2
+      27: aastore
+      28: invokevirtual #603                // Method com/crrepa/c0/a.a:([Landroid/graphics/Bitmap;)V
+      31: iconst_0
+      32: invokevirtual #604                // Method com/crrepa/c0/a.c:(Z)V
+      35: bipush        30
+      37: invokevirtual #611                // Method com/crrepa/c0/a.j:(I)V
+      40: invokevirtual #614                // Method com/crrepa/c0/a.a:(Lcom/crrepa/ble/conn/listener/CRPFileTransListener;)V
+      43: invokevirtual #616                // Method com/crrepa/c0/a.j:()V
+      46: return
+
+  public void sendAiWatchFace(com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo, com.crrepa.ble.conn.listener.CRPFileTransListener);
+    Code:
+       0: aload_1
+       1: invokestatic  #577                // Method com/crrepa/k0/e.b:()V
+       4: invokestatic  #735                // Method com/crrepa/l0/f.b:()V
+       7: invokevirtual #583                // Method com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.getType:()Lcom/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo$CompressionType;
+      10: invokestatic  #1588               // Method com/crrepa/m0/d.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo$CompressionType;)Lcom/crrepa/m0/d$b;
+      13: iconst_0
+      14: invokestatic  #1591               // Method com/crrepa/m0/d.a:(Lcom/crrepa/m0/d$b;Z)Lcom/crrepa/c0/a;
+      17: dup
+      18: dup
+      19: astore_0
+      20: aload_2
+      21: aload_0
+      22: aload_1
+      23: aload_0
+      24: dup
+      25: iconst_2
+      26: anewarray     #591                // class android/graphics/Bitmap
+      29: dup
+      30: dup
+      31: aload_1
+      32: swap
+      33: aload_1
+      34: invokevirtual #595                // Method com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.getBitmap:()Landroid/graphics/Bitmap;
+      37: iconst_0
+      38: swap
+      39: aastore
+      40: invokevirtual #598                // Method com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.getThumBitmap:()Landroid/graphics/Bitmap;
+      43: iconst_1
+      44: swap
+      45: aastore
+      46: invokevirtual #603                // Method com/crrepa/c0/a.a:([Landroid/graphics/Bitmap;)V
+      49: iconst_0
+      50: invokevirtual #604                // Method com/crrepa/c0/a.c:(Z)V
+      53: invokevirtual #608                // Method com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.getTimeout:()I
+      56: invokevirtual #611                // Method com/crrepa/c0/a.j:(I)V
+      59: invokevirtual #614                // Method com/crrepa/c0/a.a:(Lcom/crrepa/ble/conn/listener/CRPFileTransListener;)V
+      62: invokevirtual #616                // Method com/crrepa/c0/a.j:()V
+      65: return
+
+  public void queryAiWatchFaceLayout();
+    Code:
+       0: aload_0
+       1: invokestatic  #1594               // Method com/crrepa/f/a.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendAiWatchFaceLayout(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1596               // Method com/crrepa/f/a.a:(Lcom/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendMuslimTasbihSetting(com.crrepa.ble.conn.bean.CRPMuslimTasbihSettingInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1603               // Method com/crrepa/f/t0.a:(Lcom/crrepa/ble/conn/bean/CRPMuslimTasbihSettingInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryMuslimTasbihSetting(com.crrepa.ble.conn.callback.CRPMuslimTasbihSettingCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1607               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPMuslimTasbihSettingCallback;)V
+       9: invokestatic  #1608               // Method com/crrepa/f/t0.e:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+  public void setMuslimPrayerSettingListener(com.crrepa.ble.conn.listener.CRPMuslimPrayerSettingListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1612               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPMuslimPrayerSettingListener;)V
+       8: return
+
+  public void sendMuslimPrayersState(boolean, java.util.List<java.lang.Integer>);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_2
+       3: invokestatic  #1618               // Method com/crrepa/f/t0.b:(ZLjava/util/List;)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void queryMuslimSavedPrayers();
+    Code:
+       0: aload_0
+       1: invokestatic  #1620               // Method com/crrepa/f/t0.d:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendMuslimPrayerNotification(boolean, java.util.Map<com.crrepa.ble.conn.type.CRPMuslimPrayerNotifcationType, java.lang.Boolean>);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_2
+       3: invokestatic  #1626               // Method com/crrepa/f/t0.a:(ZLjava/util/Map;)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void queryMuslimPrayerNotification();
+    Code:
+       0: aload_0
+       1: invokestatic  #1628               // Method com/crrepa/f/t0.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendMuslimPrayerCalculationType(com.crrepa.ble.conn.bean.CRPMuslimPrayerCalculationInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1633               // Method com/crrepa/f/t0.a:(Lcom/crrepa/ble/conn/bean/CRPMuslimPrayerCalculationInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryMuslimPrayerCalculationType();
+    Code:
+       0: aload_0
+       1: invokestatic  #1635               // Method com/crrepa/f/t0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void setMuslimNameListener(com.crrepa.ble.conn.listener.CRPMuslimNameListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1639               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPMuslimNameListener;)V
+       8: return
+
+  public void sendMuslimNameState(boolean, java.util.List<java.lang.Integer>);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: aload_2
+       3: invokestatic  #1642               // Method com/crrepa/f/t0.a:(ZLjava/util/List;)[B
+       6: invokespecial #73                 // Method a:([B)V
+       9: return
+
+  public void queryMuslimSavedName();
+    Code:
+       0: aload_0
+       1: invokestatic  #1644               // Method com/crrepa/f/t0.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendMuslimLocation(com.crrepa.ble.conn.bean.CRPMuslimLocationInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1649               // Method com/crrepa/f/t0.a:(Lcom/crrepa/ble/conn/bean/CRPMuslimLocationInfo;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void setEmojiChangeListener(com.crrepa.ble.conn.listener.CRPEmojiChangeListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1653               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPEmojiChangeListener;)V
+       8: return
+
+  public void querySupportEmojiCount();
+    Code:
+       0: aload_0
+       1: invokestatic  #1657               // Method com/crrepa/f/w1.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void querySupportEmojiList();
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: invokestatic  #1659               // Method com/crrepa/f/w1.a:(B)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendCurrentTimezone();
+    Code:
+       0: aload_0
+       1: invokestatic  #1661               // Method com/crrepa/f/o1.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void setOfflineVoiceListener(com.crrepa.ble.conn.listener.CRPOfflineVoiceListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1665               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPOfflineVoiceListener;)V
+       8: return
+
+  public void sendOfflineVoiceCertification(byte[]);
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field b:Lcom/crrepa/m/f;
+       4: aload_1
+       5: invokevirtual #1668               // Method com/crrepa/m/f.e:([B)V
+       8: return
+
+  public void setGomoreListener(com.crrepa.ble.conn.listener.CRPGomoreListener);
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       4: aload_1
+       5: invokevirtual #1672               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/listener/CRPGomoreListener;)V
+       8: return
+
+  public void querySupportGomore();
+    Code:
+       0: aload_0
+       1: invokestatic  #1676               // Method com/crrepa/f/h0.c:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void querySavedGomoreKey();
+    Code:
+       0: aload_0
+       1: invokestatic  #1678               // Method com/crrepa/f/h0.b:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void queryGomoreEUID();
+    Code:
+       0: aload_0
+       1: invokestatic  #1680               // Method com/crrepa/f/h0.a:()[B
+       4: invokespecial #73                 // Method a:([B)V
+       7: return
+
+  public void sendGomoreKey(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1682               // Method com/crrepa/f/h0.a:(Ljava/lang/String;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void sendFlashNotification(java.lang.Boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #1689               // Method com/crrepa/f/x1.a:(Ljava/lang/Boolean;)[B
+       5: invokespecial #73                 // Method a:([B)V
+       8: return
+
+  public void queryFlashNotification(com.crrepa.ble.conn.callback.CRPFlashNotificationCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1693               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPFlashNotificationCallback;)V
+       9: invokestatic  #1694               // Method com/crrepa/f/x1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+}

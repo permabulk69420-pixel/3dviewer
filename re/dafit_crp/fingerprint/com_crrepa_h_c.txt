@@ -1,0 +1,141 @@
+Compiled from "SourceFile"
+public class com.crrepa.h.c implements com.crrepa.ble.conn.CRPBleDevice {
+  private android.bluetooth.BluetoothDevice a;
+
+  private android.bluetooth.BluetoothManager b;
+
+  private com.crrepa.b.a c;
+
+  private com.crrepa.h.d d;
+
+  public com.crrepa.h.c(android.content.Context, android.bluetooth.BluetoothDevice, android.bluetooth.BluetoothManager);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup
+       3: dup2
+       4: invokespecial #22                 // Method java/lang/Object."<init>":()V
+       7: new           #24                 // class com/crrepa/h/d
+      10: dup
+      11: astore_0
+      12: invokespecial #25                 // Method com/crrepa/h/d."<init>":()V
+      15: aload_0
+      16: putfield      #27                 // Field d:Lcom/crrepa/h/d;
+      19: aload_2
+      20: putfield      #29                 // Field a:Landroid/bluetooth/BluetoothDevice;
+      23: aload_3
+      24: putfield      #31                 // Field b:Landroid/bluetooth/BluetoothManager;
+      27: new           #33                 // class com/crrepa/h/b
+      30: dup
+      31: astore_0
+      32: aload_1
+      33: aload_2
+      34: invokespecial #36                 // Method com/crrepa/h/b."<init>":(Landroid/content/Context;Landroid/bluetooth/BluetoothDevice;)V
+      37: aload_0
+      38: putfield      #38                 // Field c:Lcom/crrepa/b/a;
+      41: return
+
+  public com.crrepa.ble.conn.CRPBleConnection connect();
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #29                 // Field a:Landroid/bluetooth/BluetoothDevice;
+       5: invokevirtual #46                 // Method android/bluetooth/BluetoothDevice.getAddress:()Ljava/lang/String;
+       8: invokestatic  #51                 // Method com/crrepa/p0/e.a:(Ljava/lang/String;)V
+      11: getfield      #38                 // Field c:Lcom/crrepa/b/a;
+      14: aload_0
+      15: getfield      #27                 // Field d:Lcom/crrepa/h/d;
+      18: invokeinterface #56,  2           // InterfaceMethod com/crrepa/b/a.a:(Lcom/crrepa/h/d;)Lcom/crrepa/ble/conn/CRPBleConnection;
+      23: areturn
+
+  public com.crrepa.v.b connectDfu();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field c:Lcom/crrepa/b/a;
+       4: new           #60                 // class com/crrepa/v/d
+       7: dup
+       8: invokespecial #61                 // Method com/crrepa/v/d."<init>":()V
+      11: invokeinterface #64,  2           // InterfaceMethod com/crrepa/b/a.a:(Lcom/crrepa/v/d;)Lcom/crrepa/v/b;
+      16: areturn
+
+  public com.crrepa.ble.ota.goodix.BleRestoreConnection connectRestore();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field c:Lcom/crrepa/b/a;
+       4: new           #68                 // class com/crrepa/ble/ota/goodix/BleRestoreGattCallback
+       7: dup
+       8: invokespecial #69                 // Method com/crrepa/ble/ota/goodix/BleRestoreGattCallback."<init>":()V
+      11: invokeinterface #72,  2           // InterfaceMethod com/crrepa/b/a.a:(Lcom/crrepa/ble/ota/goodix/BleRestoreGattCallback;)Lcom/crrepa/ble/ota/goodix/BleRestoreConnection;
+      16: areturn
+
+  public void disconnect();
+    Code:
+       0: aload_0
+       1: getfield      #38                 // Field c:Lcom/crrepa/b/a;
+       4: invokeinterface #75,  1           // InterfaceMethod com/crrepa/b/a.disconnect:()V
+       9: return
+
+  public boolean isConnected();
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field b:Landroid/bluetooth/BluetoothManager;
+       4: aload_0
+       5: getfield      #29                 // Field a:Landroid/bluetooth/BluetoothDevice;
+       8: bipush        7
+      10: invokevirtual #86                 // Method android/bluetooth/BluetoothManager.getConnectionState:(Landroid/bluetooth/BluetoothDevice;I)I
+      13: iconst_2
+      14: if_icmpne     21
+      17: iconst_1
+      18: goto          22
+      21: iconst_0
+      22: ireturn
+
+  public java.lang.String getName();
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field a:Landroid/bluetooth/BluetoothDevice;
+       4: invokevirtual #89                 // Method android/bluetooth/BluetoothDevice.getName:()Ljava/lang/String;
+       7: areturn
+
+  public java.lang.String getMacAddress();
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field a:Landroid/bluetooth/BluetoothDevice;
+       4: invokevirtual #46                 // Method android/bluetooth/BluetoothDevice.getAddress:()Ljava/lang/String;
+       7: areturn
+
+  public android.bluetooth.BluetoothDevice getBluetoothDevice();
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field a:Landroid/bluetooth/BluetoothDevice;
+       4: areturn
+
+  public boolean equals(java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: if_acmpne     7
+       5: iconst_1
+       6: ireturn
+       7: aload_1
+       8: instanceof    #5                  // class com/crrepa/h/c
+      11: ifne          16
+      14: iconst_0
+      15: ireturn
+      16: aload_0
+      17: aload_1
+      18: checkcast     #5                  // class com/crrepa/h/c
+      21: astore_0
+      22: getfield      #29                 // Field a:Landroid/bluetooth/BluetoothDevice;
+      25: aload_0
+      26: invokevirtual #96                 // Method getBluetoothDevice:()Landroid/bluetooth/BluetoothDevice;
+      29: invokevirtual #98                 // Method android/bluetooth/BluetoothDevice.equals:(Ljava/lang/Object;)Z
+      32: ireturn
+
+  public int hashCode();
+    Code:
+       0: aload_0
+       1: getfield      #29                 // Field a:Landroid/bluetooth/BluetoothDevice;
+       4: invokevirtual #102                // Method android/bluetooth/BluetoothDevice.hashCode:()I
+       7: ireturn
+}

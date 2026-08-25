@@ -1,0 +1,98 @@
+Compiled from "SourceFile"
+public class com.crrepa.h.b implements com.crrepa.b.a {
+  private android.content.Context a;
+
+  private android.bluetooth.BluetoothDevice b;
+
+  private com.crrepa.h.a c;
+
+  public com.crrepa.h.b(android.content.Context, android.bluetooth.BluetoothDevice);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup2
+       3: invokespecial #28                 // Method java/lang/Object."<init>":()V
+       6: new           #30                 // class com/crrepa/h/a
+       9: dup
+      10: astore_0
+      11: invokespecial #31                 // Method com/crrepa/h/a."<init>":()V
+      14: aload_0
+      15: putfield      #33                 // Field c:Lcom/crrepa/h/a;
+      18: aload_1
+      19: putfield      #35                 // Field a:Landroid/content/Context;
+      22: aload_2
+      23: putfield      #37                 // Field b:Landroid/bluetooth/BluetoothDevice;
+      26: return
+
+  private android.bluetooth.BluetoothGatt a(android.bluetooth.BluetoothGattCallback);
+    Code:
+       0: getstatic     #42                 // Field android/os/Build$VERSION.SDK_INT:I
+       3: bipush        23
+       5: if_icmplt     25
+       8: aload_0
+       9: getfield      #37                 // Field b:Landroid/bluetooth/BluetoothDevice;
+      12: aload_0
+      13: getfield      #35                 // Field a:Landroid/content/Context;
+      16: iconst_0
+      17: aload_1
+      18: iconst_2
+      19: invokevirtual #48                 // Method android/bluetooth/BluetoothDevice.connectGatt:(Landroid/content/Context;ZLandroid/bluetooth/BluetoothGattCallback;I)Landroid/bluetooth/BluetoothGatt;
+      22: goto          38
+      25: aload_0
+      26: getfield      #37                 // Field b:Landroid/bluetooth/BluetoothDevice;
+      29: aload_0
+      30: getfield      #35                 // Field a:Landroid/content/Context;
+      33: iconst_0
+      34: aload_1
+      35: invokevirtual #51                 // Method android/bluetooth/BluetoothDevice.connectGatt:(Landroid/content/Context;ZLandroid/bluetooth/BluetoothGattCallback;)Landroid/bluetooth/BluetoothGatt;
+      38: areturn
+
+  public com.crrepa.ble.conn.CRPBleConnection a(com.crrepa.h.d);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup
+       3: aload_1
+       4: invokespecial #56                 // Method a:(Landroid/bluetooth/BluetoothGattCallback;)Landroid/bluetooth/BluetoothGatt;
+       7: invokestatic  #61                 // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+      10: swap
+      11: invokevirtual #64                 // Method com/crrepa/l/a.a:(Landroid/bluetooth/BluetoothGatt;)V
+      14: getfield      #33                 // Field c:Lcom/crrepa/h/a;
+      17: aload_1
+      18: invokevirtual #67                 // Method com/crrepa/h/a.a:(Lcom/crrepa/h/d;)V
+      21: getfield      #33                 // Field c:Lcom/crrepa/h/a;
+      24: areturn
+
+  public com.crrepa.v.b a(com.crrepa.v.d);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #56                 // Method a:(Landroid/bluetooth/BluetoothGattCallback;)Landroid/bluetooth/BluetoothGatt;
+       5: invokestatic  #61                 // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       8: swap
+       9: invokevirtual #70                 // Method com/crrepa/l/a.b:(Landroid/bluetooth/BluetoothGatt;)V
+      12: new           #72                 // class com/crrepa/v/c
+      15: dup
+      16: aload_1
+      17: invokespecial #75                 // Method com/crrepa/v/c."<init>":(Lcom/crrepa/v/d;)V
+      20: areturn
+
+  public com.crrepa.ble.ota.goodix.BleRestoreConnection a(com.crrepa.ble.ota.goodix.BleRestoreGattCallback);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #56                 // Method a:(Landroid/bluetooth/BluetoothGattCallback;)Landroid/bluetooth/BluetoothGatt;
+       5: invokestatic  #61                 // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       8: swap
+       9: invokevirtual #78                 // Method com/crrepa/l/a.c:(Landroid/bluetooth/BluetoothGatt;)V
+      12: new           #80                 // class com/crrepa/ble/ota/goodix/BleRestoreConnectionImpl
+      15: dup
+      16: aload_1
+      17: invokespecial #83                 // Method com/crrepa/ble/ota/goodix/BleRestoreConnectionImpl."<init>":(Lcom/crrepa/ble/ota/goodix/BleRestoreGattCallback;)V
+      20: areturn
+
+  public void disconnect();
+    Code:
+       0: invokestatic  #88                 // Method com/crrepa/m/c.a:()V
+       3: return
+}
