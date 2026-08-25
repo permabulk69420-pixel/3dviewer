@@ -20,53 +20,36 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Extract JieLi DFU controller and data path
+      - name: Extract exact JieLi DFU classes
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
           rm -rf /tmp/crp /tmp/classes
-          mkdir -p /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp"
+          mkdir -p /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp/dfu"
           cd /tmp/crp && unzip -q /tmp/crp.aar
           cd /tmp/classes && jar xf /tmp/crp/classes.jar
 
-          OUT="$GITHUB_WORKSPACE/re/dafit_crp/jieli-dfu-full.txt"
-          : > "$OUT"
-          classes=(
-            com.crrepa.ble.ota.jieli.JieliDfuController
-            com.crrepa.i0.a
-            com.crrepa.i0.b
-            com.crrepa.c0.c
-            com.crrepa.c0.d
-            com.crrepa.c0.e
-            com.crrepa.m.f
-            com.crrepa.q.b
-            com.crrepa.f.u1
+          declare -A classes=(
+            [controller]='com.crrepa.ble.ota.jieli.JieliDfuController'
+            [i0-a]='com.crrepa.i0.a'
+            [i0-b]='com.crrepa.i0.b'
+            [c0-c]='com.crrepa.c0.c'
+            [c0-d]='com.crrepa.c0.d'
+            [c0-e]='com.crrepa.c0.e'
+            [m-f]='com.crrepa.m.f'
+            [q-b]='com.crrepa.q.b'
+            [u1]='com.crrepa.f.u1'
           )
-          for c in "${classes[@]}"; do
-            echo "===== $c =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
-            echo >> "$OUT"
+          for name in "${!classes[@]}"; do
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "${classes[$name]}" > "$GITHUB_WORKSPACE/re/dafit_crp/dfu/$name.txt" 2>&1 || true
           done
 
-          echo '===== CLASSES REFERENCING JieliDfuController =====' >> "$OUT"
-          mapfile -t MATCHES < <(grep -aRl 'JieliDfuController' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
-          for f in "${MATCHES[@]}"; do
-            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
-            echo "===== $c =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
-            echo >> "$OUT"
-          done
-
-          echo '===== DFU/UFw/CRC/FILE STRING HITS =====' >> "$OUT"
-          strings -a /tmp/crp/classes.jar | grep -Ei 'jieli|dfu|firmware|\.ufw|crc|md5|offset|fee5|fee2|0x63|upgrade' | sort -u >> "$OUT" || true
-          wc -l "$OUT"
-
-      - name: Commit exact DFU dump
+      - name: Commit split DFU dump
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/jieli-dfu-full.txt
-          git commit -m 'Add exact JieLi DFU data-path dump' || exit 0
+          git add re/dafit_crp/dfu
+          git commit -m 'Add split JieLi DFU decompile' || exit 0
           git push
