@@ -1,0 +1,146 @@
+===== public void queryFrimwareVersion(com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback); =====
+  public void queryFrimwareVersion(com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: invokestatic  #208                // Method com/crrepa/e/e.a:()Lcom/crrepa/e/e;
+       5: aload_1
+       6: invokevirtual #210                // Method com/crrepa/e/e.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceFirmwareVersionCallback;)V
+       9: getfield      #129                // Field c:Lcom/crrepa/m/e;
+      12: invokevirtual #214                // Method com/crrepa/m/e.e:()V
+      15: invokestatic  #218                // Method com/crrepa/f/w.d:()[B
+      18: invokespecial #73                 // Method a:([B)V
+      21: return
+
+
+===== public void queryDeviceVersion(com.crrepa.ble.conn.callback.CRPDeviceVersionCallback); =====
+  public void queryDeviceVersion(com.crrepa.ble.conn.callback.CRPDeviceVersionCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #440                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceVersionCallback;)V
+       9: invokestatic  #441                // Method com/crrepa/f/u.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+
+===== public void queryDeviceDfuStatus(com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback); =====
+  public void queryDeviceDfuStatus(com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback);
+    Code:
+       0: aload_0
+       1: invokestatic  #640                // Method com/crrepa/e/c.a:()Lcom/crrepa/e/c;
+       4: aload_1
+       5: invokevirtual #642                // Method com/crrepa/e/c.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceDfuStatusCallback;)V
+       8: invokestatic  #643                // Method com/crrepa/f/w.c:()[B
+      11: invokespecial #73                 // Method a:([B)V
+      14: new           #11                 // class com/crrepa/h/a$a
+      17: dup
+      18: aload_0
+      19: invokespecial #646                // Method com/crrepa/h/a$a."<init>":(Lcom/crrepa/h/a;)V
+      22: ldc2_w        #647                // long 2000l
+      25: invokestatic  #653                // Method com/crrepa/g/a.a:(Ljava/lang/Runnable;J)V
+      28: return
+
+
+===== public void queryJieliWatchFaceInfo(com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback); =====
+  public void queryJieliWatchFaceInfo(com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #781                // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPJieliWatchFaceCallback;)V
+       9: invokestatic  #783                // Method com/crrepa/f/a2.g:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+
+===== public com.crrepa.ble.conn.type.CRPProtocolVersion getProtocolVersion(); =====
+  public com.crrepa.ble.conn.type.CRPProtocolVersion getProtocolVersion();
+    Code:
+       0: invokestatic  #158                // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       3: invokevirtual #939                // Method com/crrepa/l/a.e:()Lcom/crrepa/ble/conn/type/CRPProtocolVersion;
+       6: areturn
+
+
+===== public void queryBtAddress(com.crrepa.ble.conn.callback.CRPBtAddressCallback); =====
+  public void queryBtAddress(com.crrepa.ble.conn.callback.CRPBtAddressCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1010               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPBtAddressCallback;)V
+       9: invokestatic  #1013               // Method com/crrepa/f/m.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+
+===== public void queryDfuType(com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback); =====
+  public void queryDfuType(com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback);
+    Code:
+       0: aload_0
+       1: invokestatic  #640                // Method com/crrepa/e/c.a:()Lcom/crrepa/e/c;
+       4: aload_1
+       5: invokevirtual #1067               // Method com/crrepa/e/c.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceDfuTypeCallback;)V
+       8: invokestatic  #643                // Method com/crrepa/f/w.c:()[B
+      11: invokespecial #73                 // Method a:([B)V
+      14: return
+
+
+===== public void queryAvailableStorage(com.crrepa.ble.conn.callback.CRPAvailableStorageCallback); =====
+  public void queryAvailableStorage(com.crrepa.ble.conn.callback.CRPAvailableStorageCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup
+       3: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       6: aload_1
+       7: invokevirtual #1376               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPAvailableStorageCallback;)V
+      10: invokestatic  #1377               // Method com/crrepa/f/w.a:()[B
+      13: invokespecial #73                 // Method a:([B)V
+      16: invokestatic  #1378               // Method com/crrepa/f/w.b:()[B
+      19: invokespecial #73                 // Method a:([B)V
+      22: return
+
+
+===== public void queryUIVersionCode(com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback); =====
+  public void queryUIVersionCode(com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1466               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback;)V
+       9: invokestatic  #1467               // Method com/crrepa/f/w.g:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+
+===== public void queryTestModeState(com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback); =====
+  public void queryTestModeState(com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1478               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPDeviceTestModeCallback;)V
+       9: invokestatic  #1479               // Method com/crrepa/f/w.f:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+
+
+===== public void queryFlashNotification(com.crrepa.ble.conn.callback.CRPFlashNotificationCallback); =====
+  public void queryFlashNotification(com.crrepa.ble.conn.callback.CRPFlashNotificationCallback);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #61                 // Field d:Lcom/crrepa/m/a;
+       5: aload_1
+       6: invokevirtual #1693               // Method com/crrepa/m/a.a:(Lcom/crrepa/ble/conn/callback/CRPFlashNotificationCallback;)V
+       9: invokestatic  #1694               // Method com/crrepa/f/x1.a:()[B
+      12: invokespecial #73                 // Method a:([B)V
+      15: return
+}

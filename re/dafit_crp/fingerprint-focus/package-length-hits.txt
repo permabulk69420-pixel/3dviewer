@@ -1,0 +1,2 @@
+com/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback.classPK
+com/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback.classU
