@@ -1,0 +1,160 @@
+Compiled from "SourceFile"
+public class com.crrepa.ble.CRPBleClient {
+  private static com.crrepa.ble.CRPBleClient mClient;
+
+  private com.crrepa.z.a mBleScanManager;
+
+  private android.bluetooth.BluetoothManager mBluetoothManager;
+
+  private com.crrepa.q0.a mBleAdapter;
+
+  private com.crrepa.g0.a mFirmwareFixManager;
+
+  private com.crrepa.ble.CRPBleClient(android.content.Context);
+    Code:
+       0: aload_0
+       1: dup
+       2: aload_1
+       3: dup
+       4: aload_0
+       5: invokespecial #22                 // Method java/lang/Object."<init>":()V
+       8: invokestatic  #27                 // Method com/crrepa/p0/e.a:(Landroid/content/Context;)V
+      11: ldc           #29                 // String bluetooth
+      13: invokevirtual #35                 // Method android/content/Context.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+      16: checkcast     #37                 // class android/bluetooth/BluetoothManager
+      19: dup
+      20: aload_0
+      21: swap
+      22: putfield      #39                 // Field mBluetoothManager:Landroid/bluetooth/BluetoothManager;
+      25: invokevirtual #43                 // Method android/bluetooth/BluetoothManager.getAdapter:()Landroid/bluetooth/BluetoothAdapter;
+      28: astore_0
+      29: new           #45                 // class com/crrepa/q0/a
+      32: dup
+      33: aload_0
+      34: invokespecial #48                 // Method com/crrepa/q0/a."<init>":(Landroid/bluetooth/BluetoothAdapter;)V
+      37: putfield      #50                 // Field mBleAdapter:Lcom/crrepa/q0/a;
+      40: new           #52                 // class com/crrepa/z/a
+      43: dup
+      44: aload_0
+      45: invokespecial #53                 // Method com/crrepa/z/a."<init>":(Landroid/bluetooth/BluetoothAdapter;)V
+      48: putfield      #55                 // Field mBleScanManager:Lcom/crrepa/z/a;
+      51: return
+
+  public static com.crrepa.ble.CRPBleClient create(android.content.Context);
+    Code:
+       0: getstatic     #60                 // Field mClient:Lcom/crrepa/ble/CRPBleClient;
+       3: ifnonnull     56
+       6: ldc           #5                  // class com/crrepa/ble/CRPBleClient
+       8: dup
+       9: astore_1
+      10: monitorenter
+      11: getstatic     #60                 // Field mClient:Lcom/crrepa/ble/CRPBleClient;
+      14: ifnonnull     48
+      17: aload_0
+      18: ifnull        38
+      21: new           #5                  // class com/crrepa/ble/CRPBleClient
+      24: dup
+      25: aload_0
+      26: invokevirtual #64                 // Method android/content/Context.getApplicationContext:()Landroid/content/Context;
+      29: invokespecial #66                 // Method "<init>":(Landroid/content/Context;)V
+      32: putstatic     #60                 // Field mClient:Lcom/crrepa/ble/CRPBleClient;
+      35: goto          48
+      38: new           #70                 // class java/lang/IllegalArgumentException
+      41: dup
+      42: ldc           #72                 // String the provided context must not be null!
+      44: invokespecial #75                 // Method java/lang/IllegalArgumentException."<init>":(Ljava/lang/String;)V
+      47: athrow
+      48: aload_1
+      49: monitorexit
+      50: goto          56
+      53: aload_1
+      54: monitorexit
+      55: athrow
+      56: getstatic     #60                 // Field mClient:Lcom/crrepa/ble/CRPBleClient;
+      59: areturn
+    Exception table:
+       from    to  target type
+          11    14    53   any
+          21    53    53   any
+          53    55    53   any
+
+  public boolean isBluetoothEnable();
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field mBleAdapter:Lcom/crrepa/q0/a;
+       4: invokevirtual #82                 // Method com/crrepa/q0/a.c:()Z
+       7: ireturn
+
+  public java.util.Set<android.bluetooth.BluetoothDevice> getBondedDevices();
+    Code:
+       0: aload_0
+       1: getfield      #50                 // Field mBleAdapter:Lcom/crrepa/q0/a;
+       4: invokevirtual #87                 // Method com/crrepa/q0/a.a:()Ljava/util/Set;
+       7: areturn
+
+  public boolean scanDevice(com.crrepa.ble.scan.callback.CRPScanCallback, long);
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field mBleScanManager:Lcom/crrepa/z/a;
+       4: aload_1
+       5: lload_2
+       6: invokevirtual #91                 // Method com/crrepa/z/a.a:(Lcom/crrepa/ble/scan/callback/CRPScanCallback;J)Z
+       9: ireturn
+
+  public void cancelScan();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field mBleScanManager:Lcom/crrepa/z/a;
+       4: invokevirtual #94                 // Method com/crrepa/z/a.a:()V
+       7: return
+
+  public com.crrepa.ble.conn.CRPBleDevice getBleDevice(java.lang.String);
+    Code:
+       0: aload_1
+       1: invokestatic  #102                // Method android/text/TextUtils.isEmpty:(Ljava/lang/CharSequence;)Z
+       4: ifeq          9
+       7: aconst_null
+       8: areturn
+       9: aload_0
+      10: getfield      #50                 // Field mBleAdapter:Lcom/crrepa/q0/a;
+      13: aload_1
+      14: invokevirtual #105                // Method com/crrepa/q0/a.a:(Ljava/lang/String;)Landroid/bluetooth/BluetoothDevice;
+      17: dup
+      18: astore_1
+      19: ifnonnull     24
+      22: aconst_null
+      23: areturn
+      24: new           #109                // class com/crrepa/h/c
+      27: dup
+      28: aload_0
+      29: invokestatic  #111                // Method com/crrepa/p0/e.a:()Landroid/content/Context;
+      32: astore_0
+      33: getfield      #39                 // Field mBluetoothManager:Landroid/bluetooth/BluetoothManager;
+      36: astore_2
+      37: aload_0
+      38: aload_1
+      39: aload_2
+      40: invokespecial #114                // Method com/crrepa/h/c."<init>":(Landroid/content/Context;Landroid/bluetooth/BluetoothDevice;Landroid/bluetooth/BluetoothManager;)V
+      43: areturn
+
+  public void fixOtaDevice(java.lang.String, java.lang.String, boolean, com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener);
+    Code:
+       0: aload_0
+       1: getfield      #118                // Field mFirmwareFixManager:Lcom/crrepa/g0/a;
+       4: ifnonnull     22
+       7: aload_0
+       8: new           #120                // class com/crrepa/g0/a
+      11: dup
+      12: astore        5
+      14: invokespecial #121                // Method com/crrepa/g0/a."<init>":()V
+      17: aload         5
+      19: putfield      #118                // Field mFirmwareFixManager:Lcom/crrepa/g0/a;
+      22: aload_0
+      23: getfield      #118                // Field mFirmwareFixManager:Lcom/crrepa/g0/a;
+      26: aload_1
+      27: aload_2
+      28: iload_3
+      29: aload         4
+      31: invokevirtual #123                // Method com/crrepa/g0/a.a:(Ljava/lang/String;Ljava/lang/String;ZLcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;)V
+      34: return
+}

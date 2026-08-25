@@ -1,0 +1,724 @@
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.CRPBleConnection {
+  public abstract boolean connect();
+
+  public abstract void close();
+
+  public abstract void setConnectionStateListener(com.crrepa.ble.conn.listener.CRPBleConnectionStateListener);
+
+  public abstract void setPhoneOperationListener(com.crrepa.ble.conn.listener.CRPPhoneOperationListener);
+
+  public abstract void setCameraOperationListener(com.crrepa.ble.conn.listener.CRPCameraOperationListener);
+
+  public abstract void setWeatherChangeListener(com.crrepa.ble.conn.listener.CRPWeatherChangeListener);
+
+  public abstract void setDeviceRssiListener(com.crrepa.ble.conn.listener.CRPDeviceRssiListener);
+
+  public abstract void setFindPhoneListener(com.crrepa.ble.conn.listener.CRPFindPhoneListener);
+
+  public abstract void syncTime();
+
+  public abstract void queryFrimwareVersion(com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback);
+
+  public abstract void checkFirmwareVersion(com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback, java.lang.String, int);
+
+  public abstract void queryDeviceBattery();
+
+  public abstract void setDeviceBatteryListener(com.crrepa.ble.conn.listener.CRPDeviceBatteryListener);
+
+  public abstract void subscribeDeviceBattery();
+
+  public abstract void sendUserInfo(com.crrepa.ble.conn.bean.CRPUserInfo);
+
+  public abstract void sendTodayWeather(com.crrepa.ble.conn.bean.CRPTodayWeatherInfo);
+
+  public abstract void sendFutureWeather(com.crrepa.ble.conn.bean.CRPFutureWeatherInfo);
+
+  public abstract void setStepChangeListener(com.crrepa.ble.conn.listener.CRPStepChangeListener);
+
+  public abstract void syncStep();
+
+  public abstract void queryHistoryStep(com.crrepa.ble.conn.type.CRPHistoryDay);
+
+  public abstract void setSleepChangeListener(com.crrepa.ble.conn.listener.CRPSleepChangeListener);
+
+  public abstract void syncSleep();
+
+  public abstract void syncRemSleep();
+
+  public abstract void queryHistorySleep(com.crrepa.ble.conn.type.CRPHistoryDay);
+
+  public abstract void queryHistoryRemSleep(com.crrepa.ble.conn.type.CRPHistoryDay);
+
+  public abstract void sendMetricSystem(byte);
+
+  public abstract void queryMetricSystem(com.crrepa.ble.conn.callback.CRPDeviceMetricSystemCallback);
+
+  public abstract void sendTimeSystem(byte);
+
+  public abstract void queryTimeSystem(com.crrepa.ble.conn.callback.CRPDeviceTimeSystemCallback);
+
+  public abstract void sendQuickView(boolean);
+
+  public abstract void queryQuickView(com.crrepa.ble.conn.callback.CRPDeviceQuickViewCallback);
+
+  public abstract void sendDominantHand(byte);
+
+  public abstract void queryDominantHand(com.crrepa.ble.conn.callback.CRPDeviceDominantHandCallback);
+
+  public abstract void sendGoalSteps(int);
+
+  public abstract void queryGoalStep(com.crrepa.ble.conn.callback.CRPDeviceGoalStepCallback);
+
+  public abstract void sendDisplayWatchFace(byte);
+
+  public abstract void queryDisplayWatchFace(com.crrepa.ble.conn.callback.CRPDeviceDisplayWatchFaceCallback);
+
+  public abstract void sendAlarm(com.crrepa.ble.conn.bean.CRPAlarmInfo);
+
+  public abstract void queryAllAlarm(com.crrepa.ble.conn.callback.CRPAlarmCallback);
+
+  public abstract void sendNewAlarm(com.crrepa.ble.conn.bean.CRPAlarmInfo);
+
+  public abstract void deleteNewAlarm(int);
+
+  public abstract void deleteAllNewAlarm();
+
+  public abstract void queryAllNewAlarm(com.crrepa.ble.conn.callback.CRPAlarmCallback);
+
+  public abstract void sendDeviceLanguage(byte);
+
+  public abstract void queryDeviceLanguage(com.crrepa.ble.conn.callback.CRPDeviceLanguageCallback);
+
+  public abstract void sendOtherMessageState(boolean);
+
+  public abstract void queryOtherMessageState(com.crrepa.ble.conn.callback.CRPDeviceOtherMessageCallback);
+
+  public abstract void sendSedentaryReminder(boolean);
+
+  public abstract void querySedentaryReminder(com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderCallback);
+
+  public abstract void findDevice();
+
+  public abstract void sendMessage(com.crrepa.ble.conn.bean.CRPMessageInfo);
+
+  public abstract void queryMessageLength(com.crrepa.ble.conn.callback.CRPMessageLengthCallback);
+
+  public abstract void sendCall0ffHook();
+
+  public abstract void sendDeviceVersion(byte);
+
+  public abstract void queryDeviceVersion(com.crrepa.ble.conn.callback.CRPDeviceVersionCallback);
+
+  public abstract void setHeartRateChangeListener(com.crrepa.ble.conn.listener.CRPHeartRateChangeListener);
+
+  public abstract void startMeasureDynamicRate();
+
+  public abstract void queryLastDynamicRate(com.crrepa.ble.conn.type.CRPHistoryDynamicRateType);
+
+  public abstract void stopMeasureDynamicRtae();
+
+  public abstract void setBloodPressureChangeListener(com.crrepa.ble.conn.listener.CRPBloodPressureChangeListener);
+
+  public abstract void startMeasureBloodPressure();
+
+  public abstract void stopMeasureBloodPressure();
+
+  public abstract void startFirmwareUpgrade(boolean, com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener);
+
+  public abstract void abortFirmwareUpgrade();
+
+  public abstract void enableTimingMeasureHeartRate(int);
+
+  public abstract void disableTimingMeasureHeartRate();
+
+  public abstract void queryTimingMeasureHeartRate(com.crrepa.ble.conn.callback.CRPDeviceTimingMeasureHeartRateCallback);
+
+  public abstract void queryTodayHeartRate(int);
+
+  public abstract void queryHistoryTimingHeartRate(com.crrepa.ble.conn.type.CRPHistoryDay);
+
+  public abstract void queryMovementHeartRate();
+
+  public abstract void startMeasureOnceHeartRate();
+
+  public abstract void stopMeasureOnceHeartRate();
+
+  public abstract void startMeasureBloodOxygen();
+
+  public abstract void stopMeasureBloodOxygen();
+
+  public abstract void setBloodOxygenChangeListener(com.crrepa.ble.conn.listener.CRPBloodOxygenChangeListener);
+
+  public abstract void queryDeviceSupportFunction(com.crrepa.ble.conn.callback.CRPDeviceFunctionCallback);
+
+  public abstract void sendDislpayDeviceFunction(com.crrepa.ble.conn.bean.CRPFunctionInfo);
+
+  public abstract void queryDisplayDeviceFunction(com.crrepa.ble.conn.callback.CRPDeviceFunctionCallback);
+
+  public abstract void sendGsensorCalibration();
+
+  public abstract void enterCameraView();
+
+  public abstract void exitCameraView();
+
+  public abstract void readDeviceRssi();
+
+  public abstract void shutDown();
+
+  public abstract void sendDoNotDistrubTime(com.crrepa.ble.conn.bean.CRPPeriodTimeInfo);
+
+  public abstract void queryDoNotDistrubTime(com.crrepa.ble.conn.callback.CRPDevicePeriodTimeCallback);
+
+  public abstract void sendQuickViewTime(com.crrepa.ble.conn.bean.CRPPeriodTimeInfo);
+
+  public abstract void queryQuickViewTime(com.crrepa.ble.conn.callback.CRPDevicePeriodTimeCallback);
+
+  public abstract void sendBreathingLight(boolean);
+
+  public abstract void queryBreathingLight(com.crrepa.ble.conn.callback.CRPDeviceBreathingLightCallback);
+
+  public abstract void sendWatchFaceBackground(com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo, com.crrepa.ble.conn.listener.CRPFileTransListener);
+
+  public abstract void abortWatchFaceBackground();
+
+  public abstract void sendWatchFaceLayout(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo);
+
+  public abstract void queryWatchFaceLayout(com.crrepa.ble.conn.callback.CRPDeviceWatchFaceLayoutCallback);
+
+  public abstract void queryDeviceDfuStatus(com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback);
+
+  public abstract void sendStepLength(byte);
+
+  public abstract void startECGMeasure();
+
+  public abstract void stopECGMeasure();
+
+  public abstract void queryLastMeasureECGData();
+
+  public abstract boolean isNewECGMeasurementVersion();
+
+  public abstract void setECGChangeListener(com.crrepa.ble.conn.listener.CRPBleECGChangeListener, com.crrepa.ble.conn.type.CRPEcgMeasureType);
+
+  public abstract void sendECGHeartRate(int);
+
+  public abstract void sendSedentaryReminderPeriod(com.crrepa.ble.conn.bean.CRPSedentaryReminderPeriodInfo);
+
+  public abstract void querySedentaryReminderPeriod(com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderPeriodCallback);
+
+  public abstract void querySupportWatchFace(com.crrepa.ble.conn.callback.CRPDeviceSupportWatchFaceCallback);
+
+  public abstract void queryWatchFaceStore(java.util.List<java.lang.Integer>, java.lang.String, int, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+
+  public abstract void querySifliWatchFaceStore(int, java.lang.String, int, int, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+
+  public abstract void queryWatchFaceOfID(int, com.crrepa.ble.conn.callback.CRPWatchFaceDetailsCallback);
+
+  public abstract void queryWatchFaceStoreTagList(com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo, com.crrepa.ble.conn.callback.CRPWatchFaceStoreTagCallback);
+
+  public abstract void queryWatchFaceStoreList(com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+
+  public abstract void queryWatchFaceDetail(com.crrepa.ble.conn.bean.CRPWatchFaceDetailsRequestInfo, com.crrepa.ble.conn.callback.CRPWatchFaceDetailsCallback);
+
+  public abstract void sendWatchFace(com.crrepa.ble.conn.bean.CRPWatchFaceInfo, com.crrepa.ble.conn.listener.CRPWatchFaceTransListener, int);
+
+  public abstract void sendJieliWatchFaceId(int, boolean);
+
+  public abstract void abortWatchFace();
+
+  public abstract void deleteWatchFace(int, com.crrepa.ble.conn.callback.CRPWatchFaceDeleteCallback);
+
+  public abstract void deleteJieliWatchFace(int[], com.crrepa.ble.conn.callback.CRPWatchFaceDeleteCallback);
+
+  public abstract void queryJieliWatchFaceInfo(com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback);
+
+  public abstract void queryHsDfuAddress(com.crrepa.ble.conn.callback.CRPDeviceDfuAddressCallback);
+
+  public abstract void enableHsDfu();
+
+  public abstract void queryStepsCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+
+  public abstract void setStepsCategoryListener(com.crrepa.ble.conn.listener.CRPStepsCategoryChangeListener);
+
+  public abstract void setCaloriesCategoryListener(com.crrepa.ble.conn.listener.CRPCaloriesCategoryChangeListener);
+
+  public abstract void queryCaloriesCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+
+  public abstract void setDistanceCategoryListener(com.crrepa.ble.conn.listener.CRPDistanceCategoryChangeListener);
+
+  public abstract void queryDistanceCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+
+  public abstract void sendPhysiologcalPeriod(com.crrepa.ble.conn.bean.CRPPhysiologcalPeriodInfo);
+
+  public abstract void queryPhysiologcalPeriod(com.crrepa.ble.conn.callback.CRPDevicePhysiologcalPeriodCallback);
+
+  public abstract void setMtu(com.crrepa.ble.conn.callback.CRPMtuChangeCallback, int);
+
+  public abstract void querySleepAction(int);
+
+  public abstract void setSleepActionChangeListener(com.crrepa.ble.conn.listener.CRPSleepActionChangeListener);
+
+  public abstract void startFindPhone();
+
+  public abstract void stopFindPhone();
+
+  public abstract void setMusicPlayerState(byte);
+
+  public abstract void sendSongTitle(java.lang.String);
+
+  public abstract void sendLyrics(java.lang.String);
+
+  public abstract void closeMusicControl();
+
+  public abstract void sendDrinkWaterReminder(com.crrepa.ble.conn.bean.CRPDrinkWaterPeriodInfo);
+
+  public abstract void queryDrinkWaterReminderPeriod();
+
+  public abstract void setDrinkWaterListener(com.crrepa.ble.conn.listener.CRPDeviceDrinkWaterListener);
+
+  public abstract void queryNewDrinkWaterReminderPeriod();
+
+  public abstract void sendNewDrinkWaterReminder(com.crrepa.ble.conn.bean.CRPNewDrinkWaterPeriodInfo);
+
+  public abstract void sendDrinkWaterGoals(int);
+
+  public abstract void queryDrinkWaterGoals();
+
+  public abstract void sendTodayWaterIntake(int);
+
+  public abstract void queryTodayWaterIntake();
+
+  public abstract void addWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo);
+
+  public abstract void updateWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo);
+
+  public abstract void deleteWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo$WaterIntakeType, int);
+
+  public abstract void queryTodayWaterIntakeHistory();
+
+  public abstract void sendTodayWaterIntakeHistory(java.util.List<com.crrepa.ble.conn.bean.CRPWaterIntakeInfo>);
+
+  public abstract void setMaxHeartRate(byte, boolean);
+
+  public abstract void queryMaxHeartRate(com.crrepa.ble.conn.callback.CRPDeviceMaxHeartRateCallback);
+
+  public abstract void startMovement(byte);
+
+  public abstract void setMovementState(byte);
+
+  public abstract void setMovementStateListener(com.crrepa.ble.conn.listener.CRPMovementStateListener);
+
+  public abstract com.crrepa.ble.conn.type.CRPProtocolVersion getProtocolVersion();
+
+  public abstract void startMeasureTemp();
+
+  public abstract void stopMeasureTemp();
+
+  public abstract void enableTimingMeasureTemp();
+
+  public abstract void disableTimingMeasureTemp();
+
+  public abstract void queryTimingMeasureTempState(com.crrepa.ble.conn.callback.CRPTimingTempStateCallback);
+
+  public abstract void queryTimingMeasureTemp(com.crrepa.ble.conn.type.CRPTempTimeType);
+
+  public abstract void setTempChangeListener(com.crrepa.ble.conn.listener.CRPTempChangeListener);
+
+  public abstract void sendDisplayTime(int);
+
+  public abstract void queryDisplayTime(com.crrepa.ble.conn.callback.CRPDeviceDisplayTimeCallback);
+
+  public abstract void sendHandWashingReminder(com.crrepa.ble.conn.bean.CRPHandWashingPeriodInfo);
+
+  public abstract void queryHandWashingReminderPeriod(com.crrepa.ble.conn.callback.CRPDeviceHandWashingPeriodCallback);
+
+  public abstract void sendLocalCity(java.lang.String);
+
+  public abstract void sendBoundVibration();
+
+  public abstract void sendTempUnit(byte);
+
+  public abstract void queryTempUnit();
+
+  public abstract void sendBrightness(int);
+
+  public abstract void queryBrightness(com.crrepa.ble.conn.callback.CRPDeviceBrightnessCallback);
+
+  public abstract void queryBtAddress(com.crrepa.ble.conn.callback.CRPBtAddressCallback);
+
+  public abstract void clearContact();
+
+  public abstract void checkSupportQuickContact(com.crrepa.ble.conn.callback.CRPContactConfigCallback);
+
+  public abstract void deleteContact(int);
+
+  public abstract void sendContact(com.crrepa.ble.conn.bean.CRPContactInfo);
+
+  public abstract void deleteContactAvatar(int);
+
+  public abstract void sendContactAvatar(int, android.graphics.Bitmap, int, com.crrepa.ble.conn.listener.CRPFileTransListener);
+
+  public abstract void setContactListener(com.crrepa.ble.conn.listener.CRPContactListener);
+
+  public abstract void queryContactCount(com.crrepa.ble.conn.callback.CRPContactCountCallback);
+
+  public abstract void enableTimingMeasureBloodOxygen(int);
+
+  public abstract void disableTimingMeasureBloodOxygen();
+
+  public abstract void queryTimingBloodOxygenMeasureState();
+
+  public abstract void queryTimingBloodOxygen(com.crrepa.ble.conn.type.CRPBloodOxygenTimeType);
+
+  public abstract void queryDfuType(com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback);
+
+  public abstract void reset();
+
+  public abstract void sendCurrentVolume(int);
+
+  public abstract void sendMaxVolume(int);
+
+  public abstract void setSosChangeListener(com.crrepa.ble.conn.listener.CRPSosChangeListener);
+
+  public abstract void sendSosPresetInfo(com.crrepa.ble.conn.bean.CRPSosInfo);
+
+  public abstract void enableSos(boolean);
+
+  public abstract void querySosState(com.crrepa.ble.conn.callback.CRPSosStateCallback);
+
+  public abstract void setBatterySavingListener(com.crrepa.ble.conn.listener.CRPBatterySavingChangeListener);
+
+  public abstract void sendBatterySaving(boolean);
+
+  public abstract void queryBatterySaving();
+
+  public abstract void createBond(byte[], com.crrepa.ble.conn.callback.CRPDeviceBondStateCallback);
+
+  public abstract void createBond(byte[], boolean, int, com.crrepa.ble.conn.callback.CRPDeviceBondStateCallback);
+
+  public abstract void sendBondState(boolean);
+
+  public abstract void connectivityCheck(boolean, byte[], com.crrepa.ble.conn.callback.CRPConnectivityCheckCallback);
+
+  public abstract void enableHrvMeasure(int);
+
+  public abstract void disableHrvMeasure();
+
+  public abstract void queryHrvMeasureInterval();
+
+  public abstract void setHrvChangeListener(com.crrepa.ble.conn.listener.CRPHrvChangeListener);
+
+  public abstract void queryHrvMeasureCount(int);
+
+  public abstract void queryHrv(int, int);
+
+  public abstract void startMeasureHrv();
+
+  public abstract void stopMeasureHrv();
+
+  public abstract void queryWatchFaceList(com.crrepa.ble.conn.callback.CRPDeviceWatchFaceListCallback);
+
+  public abstract void setCallNumberListener(com.crrepa.ble.conn.listener.CRPCallNumberListener);
+
+  public abstract void sendCallContactName(java.lang.String);
+
+  public abstract void enableContinueBloodPressure();
+
+  public abstract void disableContinueBloodPressure();
+
+  public abstract void queryContinueBloodPressureState();
+
+  public abstract void queryLast24HourBloodPressure();
+
+  public abstract void enableContinueBloodOxygen();
+
+  public abstract void disableContinueBloodOxygen();
+
+  public abstract void queryContinueBloodOxygenState();
+
+  public abstract void queryLast24HourBloodOxygen();
+
+  public abstract void enableContinueTemp();
+
+  public abstract void disableContinueTemp();
+
+  public abstract void queryContinueTempState();
+
+  public abstract void queryLast24HourTemp();
+
+  public abstract void sendPillReminder(com.crrepa.ble.conn.bean.CRPPillReminderInfo);
+
+  public abstract void deletePillReminder(int);
+
+  public abstract void clearPillReminder();
+
+  public abstract void queryPillReminder(com.crrepa.ble.conn.callback.CRPPillReminderCallback);
+
+  public abstract void queryHistoryHeartRate();
+
+  public abstract void queryHistoryBloodPressure();
+
+  public abstract void queryHistoryBloodOxygen();
+
+  public abstract void sendTapToWakeState(boolean);
+
+  public abstract void queryTapToWakeState(com.crrepa.ble.conn.callback.CRPTapToWakeCallback);
+
+  public abstract void setTrainingListener(com.crrepa.ble.conn.listener.CRPTrainingChangeListener);
+
+  public abstract void queryHistoryTraining();
+
+  public abstract void queryTraining(int);
+
+  public abstract void queryTrainingRealtimeData();
+
+  public abstract void setA2DPConnectStateListener(com.crrepa.ble.conn.listener.CRPA2DPConnectStateListener);
+
+  public abstract void queryA2DPState();
+
+  public abstract void sendA2DPState(com.crrepa.ble.conn.listener.CRPA2DPConnectStateListener$A2DPConnectState);
+
+  public abstract void sendDailyGoals(com.crrepa.ble.conn.bean.CRPDailyGoalsInfo);
+
+  public abstract void queryDailyGoals(com.crrepa.ble.conn.callback.CRPDailyGoalsCallback);
+
+  public abstract void sendTrainingDayGoals(com.crrepa.ble.conn.bean.CRPDailyGoalsInfo);
+
+  public abstract void queryTrainingDayGoals(com.crrepa.ble.conn.callback.CRPTrainingDayGoalsCallback);
+
+  public abstract void sendTrainingDays(com.crrepa.ble.conn.bean.CRPTrainingDayInfo);
+
+  public abstract void queryTrainingDay(com.crrepa.ble.conn.callback.CRPTrainingDayGoalsCallback);
+
+  public abstract void querySupportStress();
+
+  public abstract void startMeasureStress();
+
+  public abstract void stopMeasureStress();
+
+  public abstract void queryHistoryStress();
+
+  public abstract void setStressListener(com.crrepa.ble.conn.listener.CRPStressListener);
+
+  public abstract void enableTimingStress();
+
+  public abstract void disableTimingStress();
+
+  public abstract void queryTimingStressState();
+
+  public abstract void queryTimingStress(com.crrepa.ble.conn.type.CRPStressDate);
+
+  public abstract void sendElectronicCard(com.crrepa.ble.conn.bean.CRPElectronicCardInfo);
+
+  public abstract void deleteElectronicCard(int);
+
+  public abstract void queryElectronicCardCount(com.crrepa.ble.conn.callback.CRPElectronicCardCountCallback);
+
+  public abstract void queryElectronicCard(int, com.crrepa.ble.conn.callback.CRPElectronicCardCallback);
+
+  public abstract void sendElectronicCardList(java.util.List<java.lang.Integer>);
+
+  public abstract void startBreathingTraining(com.crrepa.ble.conn.bean.CRPBreathingTrainingInfo);
+
+  public abstract void queryMessageList(com.crrepa.ble.conn.callback.CRPMessageListCallback);
+
+  public abstract void queryContactNumberSymbol(com.crrepa.ble.conn.callback.CRPContactNumberSymbolCallback);
+
+  public abstract void setNewHrvListener(com.crrepa.ble.conn.listener.CRPNewHrvChangeListener);
+
+  public abstract void querySupportNewHrv();
+
+  public abstract void startMeasureNewHrv();
+
+  public abstract void stopMeasureNewHrv();
+
+  public abstract void queryHistoryNewHrv();
+
+  public abstract void setCalendarEventListener(com.crrepa.ble.conn.listener.CRPCalendarEventListener);
+
+  public abstract void sendCalendarEvent(com.crrepa.ble.conn.bean.CRPCalendarEventInfo);
+
+  public abstract void queryCalendarEvent(int);
+
+  public abstract void deleteCalendarEvent(int);
+
+  public abstract void querySupportCalendarEvent();
+
+  public abstract void sendCalendarEventReminderTime(boolean, int);
+
+  public abstract void queryCalendarEventReminderTime();
+
+  public abstract void clearCalendarEvent();
+
+  public abstract void queryAvailableStorage(com.crrepa.ble.conn.callback.CRPAvailableStorageCallback);
+
+  public abstract void setGpsChangeListener(com.crrepa.ble.conn.listener.CRPGpsChangeListener);
+
+  public abstract void queryHistoryGps();
+
+  public abstract void queryGpsDetail(int);
+
+  public abstract void sendEpoFile(java.io.File, com.crrepa.ble.conn.type.CRPEpoType, com.crrepa.ble.conn.listener.CRPFileTransListener);
+
+  public abstract void sendLocalLocation(double, double);
+
+  public abstract void setBreathRateListener(com.crrepa.ble.conn.listener.CRPBreathRateChangeListener);
+
+  public abstract void startMeatureBreathRate();
+
+  public abstract void stopMeatureBreathRate();
+
+  public abstract void queryHistoryBreathRate();
+
+  public abstract void enableTimingBreathRate();
+
+  public abstract void disableTimingBreathRate();
+
+  public abstract void queryTimingBreathRateState();
+
+  public abstract void queryTimingBreathRate(com.crrepa.ble.conn.type.CRPHistoryDay);
+
+  public abstract void setQuickResponsesListener(com.crrepa.ble.conn.listener.CRPQuickResponsesChangeListener);
+
+  public abstract void queryQuickResponsesCount();
+
+  public abstract void enableQuickResponses();
+
+  public abstract void disableQuickResponses();
+
+  public abstract void queryQuickResponses(byte);
+
+  public abstract void sendQuickResponses(com.crrepa.ble.conn.bean.CRPQuickResponsesDetailInfo);
+
+  public abstract void sendVibrationStrength(com.crrepa.ble.conn.type.CRPVibrationStrength);
+
+  public abstract void queryVibrationStrength(com.crrepa.ble.conn.callback.CRPVibrationStrengthCallback);
+
+  public abstract void sendSleepTime(byte, byte);
+
+  public abstract void querySleepTime(com.crrepa.ble.conn.callback.CRPSleepTimeCallback);
+
+  public abstract void queryUIVersionCode(com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback);
+
+  public abstract void removeBond(com.crrepa.ble.conn.callback.CRPRemoveBondCallback);
+
+  public abstract void queryTestModeState(com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback);
+
+  public abstract void sendUserMode();
+
+  public abstract void setCustomKeyListener(com.crrepa.ble.conn.listener.CRPCustomKeyChangeListener);
+
+  public abstract void querySupportCustomTrainingList();
+
+  public abstract void querySupportCustomFeatureList();
+
+  public abstract void querySupportCustomGameList();
+
+  public abstract void sendCustomKey(com.crrepa.ble.conn.bean.CRPCustomKeyInfo);
+
+  public abstract void setWorldClockListener(com.crrepa.ble.conn.listener.CRPWorldClockListener);
+
+  public abstract void querySupportWorldClock();
+
+  public abstract void queryWorldClock(byte);
+
+  public abstract void sendWorldClock(com.crrepa.ble.conn.bean.CRPWorldClockInfo);
+
+  public abstract void deleteWorldClock(byte);
+
+  public abstract void resetWorldClockList(byte[]);
+
+  public abstract void setStockListener(com.crrepa.ble.conn.listener.CRPStockChangeListener);
+
+  public abstract void querySupportStock();
+
+  public abstract void clearStock();
+
+  public abstract void sendStock(com.crrepa.ble.conn.bean.CRPStockInfo);
+
+  public abstract void sendStockPrice(com.crrepa.ble.conn.bean.CRPStockPriceInfo);
+
+  public abstract void deleteStock(byte);
+
+  public abstract void resetStockList(byte[]);
+
+  public abstract void querySupportAi(com.crrepa.ble.conn.callback.CRPAiCallback);
+
+  public abstract void setChatListener(com.crrepa.ble.conn.listener.CRPChatChangeListener);
+
+  public abstract void sendChatError(com.crrepa.ble.conn.type.CRPChatErrorCode);
+
+  public abstract void sendChatActivateRecording();
+
+  public abstract void sendChatQuestion(java.lang.String);
+
+  public abstract void sendChatResponse(java.lang.String);
+
+  public abstract void setAiWatchFaceListener(com.crrepa.ble.conn.listener.CRPAiWatchFaceChangeListener);
+
+  public abstract void sendAiWatchFaceError(com.crrepa.ble.conn.type.CRPChatErrorCode);
+
+  public abstract void sendAiWatchFaceActivateRecording();
+
+  public abstract void sendAiWatchFaceDescribe(java.lang.String);
+
+  public abstract void sendAiWatchFacePreview(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType, android.graphics.Bitmap, com.crrepa.ble.conn.listener.CRPFileTransListener);
+
+  public abstract void sendAiWatchFace(com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo, com.crrepa.ble.conn.listener.CRPFileTransListener);
+
+  public abstract void queryAiWatchFaceLayout();
+
+  public abstract void sendAiWatchFaceLayout(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo);
+
+  public abstract void sendMuslimTasbihSetting(com.crrepa.ble.conn.bean.CRPMuslimTasbihSettingInfo);
+
+  public abstract void queryMuslimTasbihSetting(com.crrepa.ble.conn.callback.CRPMuslimTasbihSettingCallback);
+
+  public abstract void setMuslimPrayerSettingListener(com.crrepa.ble.conn.listener.CRPMuslimPrayerSettingListener);
+
+  public abstract void sendMuslimPrayersState(boolean, java.util.List<java.lang.Integer>);
+
+  public abstract void queryMuslimSavedPrayers();
+
+  public abstract void sendMuslimPrayerNotification(boolean, java.util.Map<com.crrepa.ble.conn.type.CRPMuslimPrayerNotifcationType, java.lang.Boolean>);
+
+  public abstract void queryMuslimPrayerNotification();
+
+  public abstract void sendMuslimPrayerCalculationType(com.crrepa.ble.conn.bean.CRPMuslimPrayerCalculationInfo);
+
+  public abstract void queryMuslimPrayerCalculationType();
+
+  public abstract void setMuslimNameListener(com.crrepa.ble.conn.listener.CRPMuslimNameListener);
+
+  public abstract void sendMuslimNameState(boolean, java.util.List<java.lang.Integer>);
+
+  public abstract void queryMuslimSavedName();
+
+  public abstract void sendMuslimLocation(com.crrepa.ble.conn.bean.CRPMuslimLocationInfo);
+
+  public abstract void setEmojiChangeListener(com.crrepa.ble.conn.listener.CRPEmojiChangeListener);
+
+  public abstract void querySupportEmojiCount();
+
+  public abstract void querySupportEmojiList();
+
+  public abstract void sendCurrentTimezone();
+
+  public abstract void setOfflineVoiceListener(com.crrepa.ble.conn.listener.CRPOfflineVoiceListener);
+
+  public abstract void sendOfflineVoiceCertification(byte[]);
+
+  public abstract void setGomoreListener(com.crrepa.ble.conn.listener.CRPGomoreListener);
+
+  public abstract void querySupportGomore();
+
+  public abstract void querySavedGomoreKey();
+
+  public abstract void queryGomoreEUID();
+
+  public abstract void sendGomoreKey(java.lang.String);
+
+  public abstract void sendFlashNotification(java.lang.Boolean);
+
+  public abstract void queryFlashNotification(com.crrepa.ble.conn.callback.CRPFlashNotificationCallback);
+}
