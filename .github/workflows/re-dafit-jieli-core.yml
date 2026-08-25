@@ -1,4 +1,4 @@
-name: Extract Da Fit JieLi BLE core
+name: Extract Da Fit firmware network surface
 
 on:
   push:
@@ -20,26 +20,51 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Extract exact firmware-version protocol
+      - name: Extract every MoYoung firmware endpoint and caller
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
-          mkdir -p /tmp/crp && cd /tmp/crp && unzip -q /tmp/crp.aar
-          mkdir -p /tmp/classes && cd /tmp/classes && jar xf /tmp/crp/classes.jar
-          mkdir -p "$GITHUB_WORKSPACE/re/dafit_crp"
-          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.f.w > "$GITHUB_WORKSPACE/re/dafit_crp/firmware-version-builder.txt"
-          : > "$GITHUB_WORKSPACE/re/dafit_crp/queryFirmwareVersion-implementation.txt"
-          grep -aRl -E 'queryFrimwareVersion|queryFirmwareVersion' /tmp/classes/com/crrepa --include='*.class' | while read f; do
+          rm -rf /tmp/crp /tmp/classes
+          mkdir -p /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp"
+          cd /tmp/crp && unzip -q /tmp/crp.aar
+          cd /tmp/classes && jar xf /tmp/crp/classes.jar
+
+          OUT="$GITHUB_WORKSPACE/re/dafit_crp/firmware-network-surface.txt"
+          : > "$OUT"
+
+          echo '===== URL / DOMAIN STRINGS =====' >> "$OUT"
+          strings -a /tmp/crp/classes.jar | grep -Eio 'https?://[^[:space:]"<>]+' | sort -u >> "$OUT" || true
+          grep -aRhoE 'https?://[^[:space:]"<>]+' /tmp/classes | sort -u >> "$OUT" || true
+
+          echo >> "$OUT"
+          echo '===== MOYOUNG / UPGRADE / FIRMWARE STRING HITS =====' >> "$OUT"
+          strings -a /tmp/crp/classes.jar | grep -Ei 'moyoung|upgrade|firmware|factory|beta|download|\.ufw|uploads/jieli' | sort -u >> "$OUT" || true
+
+          echo >> "$OUT"
+          echo '===== MATCHING CLASSES (FULL JAVAP) =====' >> "$OUT"
+          grep -aRIl -E 'moyoung|upgrade|factory|beta|FirmwareVersionInfo|FirmwareUpgradePresenter|downloadNewFirmware' /tmp/classes/com/crrepa --include='*.class' | sort -u | while read f; do
             c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
-            echo "===== $c =====" >> "$GITHUB_WORKSPACE/re/dafit_crp/queryFirmwareVersion-implementation.txt"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$GITHUB_WORKSPACE/re/dafit_crp/queryFirmwareVersion-implementation.txt"
+            echo >> "$OUT"
+            echo "===== $c =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
           done
-      - name: Commit focused dump
+
+          echo >> "$OUT"
+          echo '===== ALL com.crrepa.r NETWORK HELPERS =====' >> "$OUT"
+          find /tmp/classes/com/crrepa/r -name '*.class' -type f 2>/dev/null | sort | while read f; do
+            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
+            echo >> "$OUT"
+            echo "===== $c =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
+          done
+
+          wc -l "$OUT"
+      - name: Commit firmware network surface
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
-          git config user.email '4189827+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/firmware-version-builder.txt re/dafit_crp/queryFirmwareVersion-implementation.txt
-          git commit -m 'Add exact queryFirmwareVersion implementation' || exit 0
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add re/dafit_crp/firmware-network-surface.txt
+          git commit -m 'Add complete MoYoung firmware network surface' || exit 0
           git push
