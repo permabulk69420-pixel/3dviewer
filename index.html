@@ -1,95 +1,32 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Anko OTA version query</title>
-<style>
-:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}
-*{box-sizing:border-box}body{margin:0;padding:18px;max-width:760px;margin:auto}h1{font-size:1.45rem}.sub{color:#aeb7c4}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button.secondary{background:#283246}button:disabled{opacity:.45}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:260px;max-height:560px;overflow:auto;font-size:.78rem}
-</style>
-</head>
-<body>
-<h1>Anko OTA firmware version</h1>
-<div class="sub">v10.2 — exact read-only Da Fit queryFirmwareVersion packet. No DFU command and no firmware data.</div>
-<div class="card">
-<button id="connect">1. Connect watch</button>
-<button id="query" disabled>2. Get OTA version</button>
-<button id="copy" class="secondary" disabled>Copy report</button>
-<div id="status" class="warn" style="margin-top:12px">Not connected</div>
-</div>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Anko firmware readback probe</title>
+<style>:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}*{box-sizing:border-box}body{margin:0;padding:18px;max-width:820px;margin:auto}h1{font-size:1.45rem}.sub{color:#aeb7c4}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button.secondary{background:#283246}button:disabled{opacity:.45}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:300px;max-height:620px;overflow:auto;font-size:.78rem}</style></head>
+<body><h1>Anko firmware readback probe</h1>
+<div class="sub">v11 — software-only readback attempt. Reads every exposed readable GATT characteristic and sends only the validated read-only MAC (0xF1) and firmware-version (0x5A/0x01) queries. No DFU, no 0x63, no FEE5 writes.</div>
+<div class="card"><button id="run">Connect + probe readback</button><button id="copy" class="secondary" disabled>Copy report</button><button id="save" class="secondary" disabled>Save capture</button><div id="status" class="warn" style="margin-top:12px">Ready</div></div>
 <div class="card"><strong>Log</strong><pre id="log"></pre></div>
-<script>
-(()=>{
-'use strict';
-const SVC=0xFEEA;
-let dev,server,svc,fee2,lines=[],connecting=false;
+<script>(()=>{'use strict';
+const OPT=[0xFEEA,0xAE00,0x180A,0x180F];
+let dev,server,fee2=null,lines=[],records=[],running=false;
 const $=id=>document.getElementById(id);
+const hex=a=>Array.from(a,b=>b.toString(16).padStart(2,'0')).join(' ');
+const short=u=>{const m=u.toLowerCase().match(/^0000([0-9a-f]{4})-/);return m?m[1]:u};
+const txt=a=>{try{return new TextDecoder().decode(a).replace(/\0+$/g,'')}catch{return ''}};
 function log(s){const line=`[${new Date().toLocaleTimeString()}] ${s}`;lines.push(line);$('log').textContent=lines.join('\n');$('log').scrollTop=$('log').scrollHeight;}
-function hex(a){return Array.from(a,b=>b.toString(16).padStart(2,'0')).join(' ');}
-function shortUuid(u){const m=u.toLowerCase().match(/^0000([0-9a-f]{4})-/);return m?m[1]:u;}
-function text(a){return new TextDecoder().decode(a).replace(/\0+$/g,'');}
-function onNotify(ev){
-  const ch=ev.target,v=ch.value,d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);
-  log(`RX ${shortUuid(ch.uuid).toUpperCase()}: ${hex(d)}`);
-  if(d.length>=5&&d[0]===0xfe&&d[1]===0xea){
-    const cmd=d[4],p=d.slice(5);
-    log(`  decoded cmd=0x${cmd.toString(16).padStart(2,'0')} payload=${hex(p)}`);
-    if(cmd===0x5a&&p.length>=1){
-      const subtype=p[0];
-      if(subtype===0x01){
-        const version=text(p.slice(1));
-        log(`FIRMWARE VERSION: ${version || '(empty)'}`);
-        $('status').textContent='Firmware version received — copy report';
-        $('status').className='ok';
-        $('query').disabled=false;
-      } else {
-        log(`  0x5A subtype=0x${subtype.toString(16).padStart(2,'0')} text=${text(p.slice(1))}`);
-      }
-    }
-  }
-}
-async function connect(){
-  if(connecting||dev?.gatt?.connected)return;
-  connecting=true;$('connect').disabled=true;
-  try{
-    log('Opening Bluetooth chooser…');
-    dev=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SVC]});
-    server=await dev.gatt.connect();
-    svc=await server.getPrimaryService(SVC);
-    const chars=await svc.getCharacteristics();
-    for(const ch of chars){
-      const id=shortUuid(ch.uuid).toLowerCase();
-      log(`${id.toUpperCase()} props: read=${!!ch.properties.read} write=${!!ch.properties.write} writeNR=${!!ch.properties.writeWithoutResponse} notify=${!!ch.properties.notify} indicate=${!!ch.properties.indicate}`);
-      if(id==='fee2')fee2=ch;
-      if(ch.properties.notify||ch.properties.indicate){
-        try{await ch.startNotifications();ch.addEventListener('characteristicvaluechanged',onNotify);log(`Notifications enabled on ${id.toUpperCase()}`);}catch(e){log(`Could not enable ${id.toUpperCase()}: ${e.message}`);}
-      }
-    }
-    if(!fee2)throw Error('FEE2 missing');
-    $('query').disabled=false;$('copy').disabled=false;
-    $('status').textContent='Connected: '+(dev.name||'watch');$('status').className='ok';
-  }catch(e){
-    $('connect').disabled=false;$('status').textContent='Connect failed';$('status').className='bad';log('CONNECT ERROR: '+(e.message||e));
-  }finally{connecting=false;}
-}
-async function queryVersion(){
-  try{
-    $('query').disabled=true;$('status').textContent='Reading firmware version…';$('status').className='warn';
-    const packet=Uint8Array.from([0xfe,0xea,0x20,0x06,0x5a,0x01]);
-    log('TX FEE2 queryFirmwareVersion: '+hex(packet));
-    if(fee2.properties.writeWithoutResponse)await fee2.writeValueWithoutResponse(packet);
-    else if(fee2.properties.write)await fee2.writeValueWithResponse(packet);
-    else throw Error('FEE2 is not writable');
-    log('  ATT write accepted');
-    setTimeout(()=>{if($('status').textContent==='Reading firmware version…'){$('status').textContent='No version reply yet — copy report';$('status').className='warn';$('query').disabled=false;}},3000);
-  }catch(e){$('status').textContent='Query error — copy report';$('status').className='bad';log('QUERY ERROR: '+(e.message||e));$('query').disabled=false;}
-}
-$('connect').onclick=connect;
-$('query').onclick=queryVersion;
-$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied';}catch(e){log('Clipboard failed; long-press log to copy');}};
-log('Ready — v10.2 exact read-only queryFirmwareVersion.');
-})();
-</script>
-</body>
-</html>
+function keep(kind,svc,ch,data){const a=new Uint8Array(data);records.push({kind,service:svc,characteristic:ch,length:a.length,hex:hex(a),text:txt(a)});}
+function notify(ev){const ch=ev.target,v=ch.value,d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength),id=short(ch.uuid).toUpperCase();log(`RX ${id}: ${hex(d)}`);keep('notify','',id,d);if(d.length>=5&&d[0]===0xfe&&d[1]===0xea){const cmd=d[4],p=d.slice(5);log(`  CRP cmd=0x${cmd.toString(16).padStart(2,'0')} payload=${hex(p)}`);if(cmd===0xf1&&p.length===6)log(`  WATCH ADDRESS: ${Array.from(p,b=>b.toString(16).padStart(2,'0').toUpperCase()).join(':')}`);if(cmd===0x5a&&p[0]===1)log(`  FIRMWARE VERSION RAW: ${txt(p.slice(1))}`);}}
+async function writeReadOnly(packet,label){if(!fee2){log(`${label}: skipped (FEE2 unavailable)`);return;}log(`TX FEE2 ${label}: ${hex(packet)}`);if(fee2.properties.writeWithoutResponse)await fee2.writeValueWithoutResponse(packet);else if(fee2.properties.write)await fee2.writeValueWithResponse(packet);else throw Error('FEE2 is not writable');log('  ATT write accepted');}
+async function run(){if(running)return;running=true;$('run').disabled=true;records=[];lines=[];$('log').textContent='';$('status').textContent='Connecting…';$('status').className='warn';try{
+ log('Opening Bluetooth chooser…');dev=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:OPT});server=await dev.gatt.connect();log(`Connected: ${dev.name||'watch'}`);
+ let services=[];try{services=await server.getPrimaryServices();}catch(e){log(`getPrimaryServices failed: ${e.message}`);for(const s of OPT){try{services.push(await server.getPrimaryService(s))}catch{}}}
+ log(`Accessible primary services: ${services.length}`);
+ let totalRead=0,maxRead=0;
+ for(const svc of services){const sid=short(svc.uuid).toUpperCase();log(`SERVICE ${sid}`);let chars=[];try{chars=await svc.getCharacteristics();}catch(e){log(`  enumerate failed: ${e.message}`);continue;}for(const ch of chars){const cid=short(ch.uuid).toUpperCase(),p=ch.properties;log(`  ${cid} read=${!!p.read} write=${!!p.write} writeNR=${!!p.writeWithoutResponse} notify=${!!p.notify} indicate=${!!p.indicate}`);if(sid==='FEEA'&&cid==='FEE2')fee2=ch;if(p.notify||p.indicate){try{await ch.startNotifications();ch.addEventListener('characteristicvaluechanged',notify);log(`    notifications enabled`);}catch(e){log(`    notification enable failed: ${e.message}`);}}if(p.read){try{const v=await ch.readValue(),d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);keep('read',sid,cid,d);totalRead+=d.length;maxRead=Math.max(maxRead,d.length);log(`    READ ${d.length} B: ${hex(d)}${d.length&&txt(d).trim()?` | ${JSON.stringify(txt(d))}`:''}`);}catch(e){log(`    READ failed: ${e.message}`);}}}}
+ await writeReadOnly(Uint8Array.from([0xfe,0xea,0x20,0x06,0xf1,0x00]),'BT ADDRESS QUERY');
+ await new Promise(r=>setTimeout(r,500));
+ await writeReadOnly(Uint8Array.from([0xfe,0xea,0x20,0x06,0x5a,0x01]),'FIRMWARE VERSION QUERY');
+ await new Promise(r=>setTimeout(r,3000));
+ const notifyBytes=records.filter(r=>r.kind==='notify').reduce((n,r)=>n+r.length,0);log(`=== READBACK SUMMARY ===`);log(`Direct characteristic bytes read: ${totalRead}`);log(`Largest direct read: ${maxRead} bytes`);log(`Notification bytes captured: ${notifyBytes}`);if(maxRead>=4096){log('RESULT: a large readback surface exists; capture may contain firmware/file data.');$('status').textContent='Large readback found — save capture';$('status').className='ok';}else{log('RESULT: no raw flash-sized GATT readback was exposed by normal firmware.');log('NEXT: software-only DFU is upload-only so far; direct firmware extraction will require a bootloader/debug readback path rather than more server-version guessing.');$('status').textContent='Probe complete — copy report';$('status').className='warn';}
+ $('copy').disabled=false;$('save').disabled=false;
+ }catch(e){log(`ERROR: ${e.message||e}`);$('status').textContent='Probe error — copy report';$('status').className='bad';$('copy').disabled=false;}finally{running=false;$('run').disabled=false;}}
+$('run').onclick=run;$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied';}catch(e){log(`Clipboard failed: ${e.message}`)}};$('save').onclick=()=>{const out={device:dev?.name||null,created:new Date().toISOString(),records,log:lines};const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='anko-readback-capture.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};log('Ready — v11 firmware readback probe.');})();</script></body></html>
