@@ -34,12 +34,17 @@ jobs:
             [controller]='com.crrepa.ble.ota.jieli.JieliDfuController'
             [i0-a]='com.crrepa.i0.a'
             [i0-b]='com.crrepa.i0.b'
+            [c0-b]='com.crrepa.c0.b'
             [c0-c]='com.crrepa.c0.c'
             [c0-d]='com.crrepa.c0.d'
             [c0-e]='com.crrepa.c0.e'
             [m-f]='com.crrepa.m.f'
             [q-b]='com.crrepa.q.b'
             [u1]='com.crrepa.f.u1'
+            [p0-d]='com.crrepa.p0.d'
+            [p0-j]='com.crrepa.p0.j'
+            [x-a]='com.crrepa.x.a'
+            [l-a]='com.crrepa.l.a'
           )
           for name in "${!classes[@]}"; do
             javap -classpath /tmp/crp/classes.jar -c -p -constants "${classes[$name]}" > "$GITHUB_WORKSPACE/re/dafit_crp/dfu/$name.txt" 2>&1 || true
@@ -51,5 +56,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp/dfu
-          git commit -m 'Add split JieLi DFU decompile' || exit 0
+          git commit -m 'Add DFU CRC and packet helper decompile' || exit 0
           git push
