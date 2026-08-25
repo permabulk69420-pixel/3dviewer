@@ -1,151 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Anko Watchface Uploader</title>
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}
-*{box-sizing:border-box}body{margin:0;padding:18px;max-width:720px;margin-inline:auto}
-h1{font-size:1.4rem}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}
-button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:#fff}
-button.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}button:disabled{opacity:.45}
-.row{display:flex;gap:10px;flex-wrap:wrap}.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px}
-.k{color:#9ca8b8}.ok{color:#78e7a2}.bad{color:#ff8c8c}.warn{color:#ffd37a}progress{width:100%;height:16px;margin-top:12px}
-pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:120px;max-height:280px;overflow:auto;font-size:.82rem}
-small{color:#aeb7c4;line-height:1.45;display:block}
-</style>
-</head>
-<body>
-<h1>Anko MOYOUNG-V2 uploader</h1>
-<div class="card">
-<strong>1. Connect</strong>
-<div class="row" style="margin-top:12px"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div>
-<div class="kv">
-<div class="k">Status</div><div id="status">Not connected</div>
-<div class="k">Manufacturer</div><div id="manufacturer">—</div>
-<div class="k">Software</div><div id="software">—</div>
-<div class="k">Battery</div><div id="battery">—</div>
-</div>
-</div>
-
-<div class="card">
-<strong>2. Choose test .bin</strong>
-<div class="row" style="margin-top:12px"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div>
-</div>
-
-<div class="card">
-<strong>3. Upload / activate</strong>
-<small class="warn">This now mirrors the exact activation slot observed in your Da Fit Bluetooth capture: slot 8. The old page used slot 13, which is why it selected another stored face.</small>
-<div class="row" style="margin-top:12px"><button id="upload" disabled>Upload + activate</button><button id="activate" class="secondary" disabled>Activate last upload</button></div>
-<progress id="progress" value="0" max="100"></progress><div id="progressText">0%</div>
-</div>
-
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}*{box-sizing:border-box}body{margin:0;padding:18px;max-width:720px;margin-inline:auto}h1{font-size:1.4rem;margin:.2rem 0}.sub{color:#aeb7c4;margin:.2rem 0 1rem}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:#fff}.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}button:disabled{opacity:.45}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px}.k{color:#9ca8b8}.ok{color:#78e7a2}.bad{color:#ff8c8c}.warn{color:#ffd37a}progress{width:100%;height:16px;margin-top:12px}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:130px;max-height:300px;overflow:auto;font-size:.82rem}small{color:#aeb7c4;line-height:1.45;display:block}
+</style></head><body>
+<h1>Anko MOYOUNG-V2 uploader</h1><div class="sub">Protocol fix v3 — finalisation now follows the timing in your captured Da Fit transfer.</div>
+<div class="card"><strong>1. Connect</strong><div class="row" style="margin-top:12px"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div><div class="kv"><div class="k">Status</div><div id="status">Not connected</div><div class="k">Manufacturer</div><div id="manufacturer">—</div><div class="k">Software</div><div id="software">—</div><div class="k">Battery</div><div id="battery">—</div></div></div>
+<div class="card"><strong>2. Test file</strong><div class="row" style="margin-top:12px"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div></div>
+<div class="card"><strong>3. Write / finalise</strong><small class="warn">The previous version sent the register/select commands back-to-back. Da Fit waits about 1.0 s after committing the file, then about 0.6 s before selecting face index 8. This version mirrors that sequence.</small><div class="row" style="margin-top:12px"><button id="upload" disabled>Upload + finalise</button><button id="finalise" class="secondary" disabled>Finalise last upload</button></div><progress id="progress" value="0" max="100"></progress><div id="progressText">0%</div></div>
 <div class="card"><strong>Log</strong><pre id="log"></pre></div>
-
 <script>
-(() => {
-'use strict';
-const SERVICE=0xFEEA,SEND_CHAR=0xFEE2,SENDFILE_CHAR=0xFEE6,NOTIFY_CHAR=0xFEE3;
-const DEVINFO_SERVICE=0x180A,MANUFACTURER_CHAR=0x2A29,SOFTWARE_CHAR=0x2A28,BATTERY_SERVICE=0x180F,BATTERY_CHAR=0x2A19;
-const CHUNK_SIZE=244,EXPECTED_SIZE=444576,SLOT=0x74;
-const PREP_HEADER=new Uint8Array([0xFE,0xEA,0x20,0x09,SLOT]);
-const READY_HEADER=new Uint8Array([0xFE,0xEA,0x20,0x07,SLOT]);
-const POST_TRANSFER=new Uint8Array([0xFE,0xEA,0x20,0x0A,0xB4,0x11,0x52,0x28,0x00,0x00]);
-const APPLY_SLOT_8=new Uint8Array([0xFE,0xEA,0x20,0x06,0x19,0x08]);
-
-let device=null,sendChar=null,sendFileChar=null,notifyChar=null,chosenFile=null,uploading=false;
-const $=id=>document.getElementById(id);
-const logEl=$('log'),connectBtn=$('connect'),disconnectBtn=$('disconnect'),uploadBtn=$('upload'),activateBtn=$('activate');
-
+(()=>{'use strict';
+const SERVICE=0xFEEA,SEND=0xFEE2,SENDFILE=0xFEE6,NOTIFY=0xFEE3,INFO=0x180A,MAN=0x2A29,SOFT=0x2A28,BATT=0x180F,BATTLVL=0x2A19;
+const CHUNK=244,SIZE=444576,SLOT=0x74;
+const PREP=new Uint8Array([0xFE,0xEA,0x20,0x09,0x74]);
+const READY=new Uint8Array([0xFE,0xEA,0x20,0x07,0x74]);
+const REGISTER=new Uint8Array([0xFE,0xEA,0x20,0x0A,0xB4,0x11,0x52,0x28,0x00,0x00]);
+const SELECT8=new Uint8Array([0xFE,0xEA,0x20,0x06,0x19,0x08]);
+const QUERYFACE=new Uint8Array([0xFE,0xEA,0x20,0x05,0x29]);
+let device=null,send=null,sendFile=null,notify=null,file=null,busy=false;
+const $=x=>document.getElementById(x),logEl=$('log');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function log(s){logEl.textContent+=`[${new Date().toLocaleTimeString()}] ${s}\n`;logEl.scrollTop=logEl.scrollHeight}
 function text(v){return new TextDecoder().decode(v).replace(/\0+$/,'')}
-function startsWith(a,h){if(a.length<h.length)return false;for(let i=0;i<h.length;i++)if(a[i]!==h[i])return false;return true}
-function updateButtons(){
- const connected=!!device?.gatt?.connected;
- uploadBtn.disabled=!(connected&&chosenFile?.size===EXPECTED_SIZE&&!uploading);
- activateBtn.disabled=!(connected&&!uploading);
-}
-function cleanup(doDisconnect=true){
- if(doDisconnect&&device?.gatt?.connected)device.gatt.disconnect();
- sendChar=sendFileChar=notifyChar=null; connectBtn.disabled=false;disconnectBtn.disabled=true;
- $('status').textContent='Not connected'; updateButtons();
-}
-async function connectWatch(){
- try{
-  if(!('bluetooth' in navigator))throw new Error('Web Bluetooth unavailable.');
-  log('Opening Bluetooth chooser…');
-  device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SERVICE,DEVINFO_SERVICE,BATTERY_SERVICE]});
-  device.addEventListener('gattserverdisconnected',()=>cleanup(false));
-  const server=await device.gatt.connect();
-  const info=await server.getPrimaryService(DEVINFO_SERVICE);
-  const batt=await server.getPrimaryService(BATTERY_SERVICE);
-  const moy=await server.getPrimaryService(SERVICE);
-  const manufacturer=text(await (await info.getCharacteristic(MANUFACTURER_CHAR)).readValue());
-  const software=text(await (await info.getCharacteristic(SOFTWARE_CHAR)).readValue());
-  const battery=(await (await batt.getCharacteristic(BATTERY_CHAR)).readValue()).getUint8(0);
-  sendChar=await moy.getCharacteristic(SEND_CHAR);
-  sendFileChar=await moy.getCharacteristic(SENDFILE_CHAR);
-  notifyChar=await moy.getCharacteristic(NOTIFY_CHAR);
-  if(manufacturer!=='MOYOUNG-V2')throw new Error(`Wrong device: ${manufacturer}`);
-  $('manufacturer').textContent=manufacturer;$('software').textContent=software;$('battery').textContent=battery+'%';
-  $('status').textContent='Connected to '+(device.name||'watch');$('status').className='ok';
-  connectBtn.disabled=true;disconnectBtn.disabled=false;log(`Connected: ${manufacturer} / ${software} / ${battery}%`);updateButtons();
- }catch(e){$('status').textContent='Connection failed';$('status').className='bad';log('ERROR: '+(e.message||e));cleanup(false)}
-}
-
-async function activateUploaded(){
- if(!sendChar)return;
- try{
-  uploading=true;updateButtons();
-  log('Activating captured Da Fit watchface slot 8…');
-  await sendChar.writeValueWithoutResponse(new Uint8Array([...PREP_HEADER,0,0,0,0]));
-  await sendChar.writeValueWithoutResponse(POST_TRANSFER);
-  await sendChar.writeValueWithoutResponse(APPLY_SLOT_8);
-  log('Activation command sent: FE EA 20 06 19 08');
- }catch(e){log('ACTIVATE ERROR: '+(e.message||e))}
- finally{uploading=false;updateButtons()}
-}
-
-async function uploadFace(){
- if(!chosenFile||chosenFile.size!==EXPECTED_SIZE||!sendChar||!sendFileChar||!notifyChar)return;
- uploading=true;updateButtons();$('progress').value=0;$('progressText').textContent='0%';
- try{
-  const bytes=new Uint8Array(await chosenFile.arrayBuffer()),totalChunks=Math.ceil(bytes.length/CHUNK_SIZE);
-  await notifyChar.startNotifications();
-  await new Promise((resolve,reject)=>{
-   let settled=false; const timeout=setTimeout(()=>finish(new Error('Timed out')),180000);
-   function finish(err){if(settled)return;settled=true;clearTimeout(timeout);notifyChar.removeEventListener('characteristicvaluechanged',onValue);notifyChar.stopNotifications().catch(()=>{});err?reject(err):resolve()}
-   function onValue(ev){
-    const v=ev.target.value;if(!v)return;const data=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);
-    if(startsWith(data,READY_HEADER)&&data.length>=7){
-      const n=(data[5]<<8)|data[6],start=n*CHUNK_SIZE;if(start>=bytes.length)return finish(new Error('Invalid chunk '+n));
-      const end=Math.min(start+CHUNK_SIZE,bytes.length);
-      sendFileChar.writeValueWithoutResponse(bytes.subarray(start,end)).then(()=>{const p=Math.round(end*100/bytes.length);$('progress').value=p;$('progressText').textContent=`${p}% — ${n+1}/${totalChunks}`}).catch(finish);return;
-    }
-    if(startsWith(data,PREP_HEADER)&&data.length>=9){
-      log('Watch accepted full file; applying exact captured slot 8…');
-      (async()=>{try{
-        await sendChar.writeValueWithoutResponse(new Uint8Array([...PREP_HEADER,0,0,0,0]));
-        await sendChar.writeValueWithoutResponse(POST_TRANSFER);
-        await sendChar.writeValueWithoutResponse(APPLY_SLOT_8);
-        $('progress').value=100;$('progressText').textContent='100% — slot 8 activated';finish();
-      }catch(e){finish(e)}})();return;
-    }
-   }
-   notifyChar.addEventListener('characteristicvaluechanged',onValue);
-   const prep=new Uint8Array(9);prep.set(PREP_HEADER);new DataView(prep.buffer).setUint32(5,bytes.length,false);
-   log('Starting 444,576-byte transfer…');sendChar.writeValueWithoutResponse(prep).catch(finish);
-  });
-  log('DONE. Uploaded face written and slot 8 selected.');
- }catch(e){log('UPLOAD ERROR: '+(e.message||e))}
- finally{uploading=false;updateButtons()}
-}
-
-connectBtn.onclick=connectWatch;disconnectBtn.onclick=()=>cleanup(true);activateBtn.onclick=activateUploaded;uploadBtn.onclick=uploadFace;
-$('file').onchange=()=>{chosenFile=$('file').files?.[0]||null;$('fileName').textContent=chosenFile?`${chosenFile.name} — ${chosenFile.size.toLocaleString()} bytes`:'No file selected';if(chosenFile&&chosenFile.size!==EXPECTED_SIZE)log(`Wrong size: ${chosenFile.size}`);updateButtons()};
-log('Ready — fixed activation slot is 8.');
+function starts(a,h){if(a.length<h.length)return false;for(let i=0;i<h.length;i++)if(a[i]!==h[i])return false;return true}
+function buttons(){const c=!!device?.gatt?.connected;$('upload').disabled=!(c&&file?.size===SIZE&&!busy);$('finalise').disabled=!(c&&!busy)}
+function cleanup(disconnect=true){if(disconnect&&device?.gatt?.connected)device.gatt.disconnect();send=sendFile=notify=null;$('connect').disabled=false;$('disconnect').disabled=true;$('status').textContent='Not connected';buttons()}
+async function connect(){try{if(!('bluetooth'in navigator))throw Error('Web Bluetooth unavailable');log('Opening Bluetooth chooser…');device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SERVICE,INFO,BATT]});device.addEventListener('gattserverdisconnected',()=>cleanup(false));const s=await device.gatt.connect(),is=await s.getPrimaryService(INFO),bs=await s.getPrimaryService(BATT),ms=await s.getPrimaryService(SERVICE);const man=text(await(await is.getCharacteristic(MAN)).readValue()),soft=text(await(await is.getCharacteristic(SOFT)).readValue()),bat=(await(await bs.getCharacteristic(BATTLVL)).readValue()).getUint8(0);send=await ms.getCharacteristic(SEND);sendFile=await ms.getCharacteristic(SENDFILE);notify=await ms.getCharacteristic(NOTIFY);if(man!=='MOYOUNG-V2')throw Error('Wrong device: '+man);$('manufacturer').textContent=man;$('software').textContent=soft;$('battery').textContent=bat+'%';$('status').textContent='Connected to '+(device.name||'watch');$('status').className='ok';$('connect').disabled=true;$('disconnect').disabled=false;log(`Connected: ${man} / ${soft} / ${bat}%`);buttons()}catch(e){$('status').textContent='Connection failed';$('status').className='bad';log('ERROR: '+(e.message||e));cleanup(false)}}
+async function finishRegistration(sendCommit){if(!send)return;busy=true;buttons();try{if(sendCommit){log('Committing completed file: 74 00 00 00 00');await send.writeValueWithoutResponse(new Uint8Array([...PREP,0,0,0,0]));log('Waiting 1.05 s — Da Fit capture waited 1.02 s here.');await sleep(1050)}else{log('Using already-committed last upload; not sending another transfer-success packet.')}log('Registering captured face id: B4 11 52 28 00 00');await send.writeValueWithoutResponse(REGISTER);log('Waiting 650 ms — Da Fit capture waited 625 ms here.');await sleep(650);log('Selecting active face index 8');await send.writeValueWithoutResponse(SELECT8);await sleep(250);await send.writeValueWithoutResponse(QUERYFACE);log('Queried active face index (0x29). Watch reply will appear below if received.')}finally{busy=false;buttons()}}
+async function finaliseOnly(){if(!send||!notify)return;try{busy=true;buttons();await notify.startNotifications();const listener=ev=>{const v=ev.target.value;if(!v)return;const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);if(d.length>=6&&d[0]===0xFE&&d[1]===0xEA&&d[4]===0x29)log('WATCH CONFIRMS active face index = '+d[5]);};notify.addEventListener('characteristicvaluechanged',listener);busy=false;await finishRegistration(false);await sleep(500);notify.removeEventListener('characteristicvaluechanged',listener);notify.stopNotifications().catch(()=>{})}catch(e){log('FINALISE ERROR: '+(e.message||e));busy=false;buttons()}}
+async function upload(){if(!file||file.size!==SIZE||!send||!sendFile||!notify)return;busy=true;buttons();$('progress').value=0;$('progressText').textContent='0%';try{const bytes=new Uint8Array(await file.arrayBuffer()),total=Math.ceil(bytes.length/CHUNK);await notify.startNotifications();await new Promise((resolve,reject)=>{let done=false;const timer=setTimeout(()=>end(Error('Timed out')),180000);function end(err){if(done)return;done=true;clearTimeout(timer);notify.removeEventListener('characteristicvaluechanged',onv);err?reject(err):resolve()}function onv(ev){const v=ev.target.value;if(!v)return;const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);if(starts(d,READY)&&d.length>=7){const n=(d[5]<<8)|d[6],st=n*CHUNK;if(st>=bytes.length)return end(Error('Invalid chunk '+n));const en=Math.min(st+CHUNK,bytes.length);sendFile.writeValueWithoutResponse(bytes.subarray(st,en)).then(()=>{const p=Math.round(en*100/bytes.length);$('progress').value=p;$('progressText').textContent=`${p}% — ${n+1}/${total}`}).catch(end);return}if(starts(d,PREP)&&d.length>=9){log('Watch reports complete file received; checksum bytes '+Array.from(d.slice(5,9),x=>x.toString(16).padStart(2,'0')).join(' '));end();return}if(d.length>=6&&d[0]===0xFE&&d[1]===0xEA&&d[4]===0x29)log('WATCH CONFIRMS active face index = '+d[5])}notify.addEventListener('characteristicvaluechanged',onv);const p=new Uint8Array(9);p.set(PREP);new DataView(p.buffer).setUint32(5,bytes.length,false);log('Starting 444,576-byte transfer…');send.writeValueWithoutResponse(p).catch(end)});busy=false;await finishRegistration(true);$('progress').value=100;$('progressText').textContent='100% — finalisation sent';await sleep(500);notify.stopNotifications().catch(()=>{});log('DONE.')}catch(e){log('UPLOAD ERROR: '+(e.message||e))}finally{busy=false;buttons()}}
+$('connect').onclick=connect;$('disconnect').onclick=()=>cleanup(true);$('finalise').onclick=finaliseOnly;$('upload').onclick=upload;$('file').onchange=()=>{file=$('file').files?.[0]||null;$('fileName').textContent=file?`${file.name} — ${file.size.toLocaleString()} bytes`:'No file selected';if(file&&file.size!==SIZE)log(`Wrong size: ${file.size}; expected ${SIZE}`);buttons()};log('Ready — protocol fix v3.');
 })();
-</script>
-</body>
-</html>
+</script></body></html>
