@@ -1,0 +1,67 @@
+Compiled from "SourceFile"
+public class com.crrepa.x.a {
+  private com.crrepa.ble.conn.callback.CRPJieliDfuPackageLengthCallback a;
+
+  private com.crrepa.x.a();
+    Code:
+       0: aload_0
+       1: invokespecial #18                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static com.crrepa.x.a a();
+    Code:
+       0: invokestatic  #21                 // Method com/crrepa/x/a$b.a:()Lcom/crrepa/x/a;
+       3: areturn
+
+  com.crrepa.x.a(com.crrepa.x.a$a);
+    Code:
+       0: aload_0
+       1: invokespecial #23                 // Method "<init>":()V
+       4: return
+
+  public void a(com.crrepa.ble.conn.callback.CRPJieliDfuPackageLengthCallback);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokestatic  #30                 // Method com/crrepa/m/f.d:()Lcom/crrepa/m/f;
+       5: invokestatic  #35                 // Method com/crrepa/f/n0.a:()[B
+       8: invokevirtual #38                 // Method com/crrepa/m/f.b:([B)V
+      11: putfield      #40                 // Field a:Lcom/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback;
+      14: return
+
+  public void b(com.crrepa.ble.conn.callback.CRPJieliDfuPackageLengthCallback);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #40                 // Field a:Lcom/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback;
+       5: return
+
+  public void a(int);
+    Code:
+       0: aload_0
+       1: new           #43                 // class java/lang/StringBuilder
+       4: dup
+       5: invokespecial #44                 // Method java/lang/StringBuilder."<init>":()V
+       8: ldc           #46                 // String onPackageLength:
+      10: invokevirtual #50                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      13: iload_1
+      14: invokevirtual #53                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      17: invokevirtual #57                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      20: invokestatic  #62                 // Method com/crrepa/p0/b.a:(Ljava/lang/Object;)I
+      23: pop
+      24: getfield      #40                 // Field a:Lcom/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback;
+      27: dup
+      28: astore_0
+      29: ifnull        39
+      32: aload_0
+      33: iload_1
+      34: invokeinterface #67,  2           // InterfaceMethod com/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback.onPackageLength:(I)V
+      39: return
+
+  public void b();
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: putfield      #40                 // Field a:Lcom/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback;
+       5: return
+}

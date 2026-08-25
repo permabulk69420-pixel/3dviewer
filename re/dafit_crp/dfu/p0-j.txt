@@ -1,0 +1,108 @@
+Compiled from "SourceFile"
+public class com.crrepa.p0.j {
+  private static final java.lang.String a = "-";
+
+  private static final int b = 3;
+
+  private static final int c = 1;
+
+  private static final int d = 2;
+
+  private com.crrepa.p0.j();
+    Code:
+       0: aload_0
+       1: invokespecial #22                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static java.lang.String a(java.lang.String);
+    Code:
+       0: aload_0
+       1: ldc           #11                 // String -
+       3: invokestatic  #26                 // Method a:(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+       6: dup
+       7: astore_0
+       8: ifnull        24
+      11: aload_0
+      12: arraylength
+      13: iconst_3
+      14: if_icmpge     20
+      17: goto          24
+      20: aload_0
+      21: iconst_1
+      22: aaload
+      23: areturn
+      24: aconst_null
+      25: areturn
+
+  public static int b(java.lang.String);
+    Code:
+       0: aload_0
+       1: iconst_0
+       2: istore_0
+       3: ldc           #11                 // String -
+       5: invokestatic  #26                 // Method a:(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;
+       8: dup
+       9: astore_1
+      10: ifnull        108
+      13: aload_1
+      14: arraylength
+      15: iconst_3
+      16: if_icmpge     22
+      19: goto          108
+      22: ldc           #31                 // String \\d+
+      24: invokestatic  #37                 // Method java/util/regex/Pattern.compile:(Ljava/lang/String;)Ljava/util/regex/Pattern;
+      27: aload_1
+      28: iconst_2
+      29: aaload
+      30: invokevirtual #41                 // Method java/util/regex/Pattern.matcher:(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
+      33: astore_1
+      34: new           #43                 // class java/util/ArrayList
+      37: dup
+      38: astore_2
+      39: invokespecial #44                 // Method java/util/ArrayList."<init>":()V
+      42: aload_1
+      43: invokevirtual #50                 // Method java/util/regex/Matcher.find:()Z
+      46: ifeq          67
+      49: aload_2
+      50: aload_1
+      51: iconst_0
+      52: invokevirtual #54                 // Method java/util/regex/Matcher.group:(I)Ljava/lang/String;
+      55: invokestatic  #60                 // Method java/lang/Integer.valueOf:(Ljava/lang/String;)Ljava/lang/Integer;
+      58: invokeinterface #66,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      63: pop
+      64: goto          42
+      67: aload_2
+      68: invokeinterface #70,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      73: astore_1
+      74: aload_1
+      75: invokeinterface #75,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      80: ifeq          106
+      83: iload_0
+      84: aload_1
+      85: invokeinterface #79,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      90: checkcast     #56                 // class java/lang/Integer
+      93: invokevirtual #83                 // Method java/lang/Integer.intValue:()I
+      96: istore_0
+      97: bipush        10
+      99: imul
+     100: iload_0
+     101: iadd
+     102: istore_0
+     103: goto          74
+     106: iload_0
+     107: ireturn
+     108: iload_0
+     109: ireturn
+
+  private static java.lang.String[] a(java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: invokestatic  #89                 // Method android/text/TextUtils.isEmpty:(Ljava/lang/CharSequence;)Z
+       4: ifeq          9
+       7: aconst_null
+       8: areturn
+       9: aload_0
+      10: aload_1
+      11: invokevirtual #95                 // Method java/lang/String.split:(Ljava/lang/String;)[Ljava/lang/String;
+      14: areturn
+}

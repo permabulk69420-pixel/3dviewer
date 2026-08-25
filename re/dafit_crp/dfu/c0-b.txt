@@ -1,0 +1,73 @@
+Compiled from "SourceFile"
+public class com.crrepa.c0.b {
+  public static final int a = 65258;
+
+  private com.crrepa.c0.b();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static byte[] a(byte[], int);
+    Code:
+       0: aload_0
+       1: ifnonnull     10
+       4: ldc           #10                 // int 65258
+       6: invokestatic  #21                 // Method com/crrepa/p0/d.b:(I)[B
+       9: areturn
+      10: aload_0
+      11: arraylength
+      12: istore_2
+      13: iconst_0
+      14: istore_3
+      15: iload_3
+      16: iload_2
+      17: if_icmpge     84
+      20: iload_1
+      21: aload_0
+      22: iload_3
+      23: baload
+      24: istore        4
+      26: ldc           #22                 // int 65280
+      28: iand
+      29: bipush        8
+      31: ishr
+      32: iload_1
+      33: sipush        255
+      36: iand
+      37: bipush        8
+      39: ishl
+      40: ior
+      41: iload         4
+      43: sipush        255
+      46: iand
+      47: ixor
+      48: dup
+      49: sipush        255
+      52: iand
+      53: iconst_4
+      54: ishr
+      55: ixor
+      56: dup
+      57: sipush        255
+      60: iand
+      61: bipush        8
+      63: ishl
+      64: iconst_4
+      65: ishl
+      66: ixor
+      67: dup
+      68: sipush        255
+      71: iand
+      72: iconst_4
+      73: ishl
+      74: iconst_1
+      75: ishl
+      76: ixor
+      77: istore_1
+      78: iinc          3, 1
+      81: goto          15
+      84: iload_1
+      85: invokestatic  #21                 // Method com/crrepa/p0/d.b:(I)[B
+      88: areturn
+}
