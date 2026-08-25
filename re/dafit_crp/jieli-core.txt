@@ -9885,6 +9885,482 @@ public class com.crrepa.l.a {
       14: iconst_0
       15: ireturn
 }
+===== com.crrepa.p0.e =====
+Compiled from "SourceFile"
+public class com.crrepa.p0.e {
+  private static android.content.Context a;
+
+  private static java.lang.String b;
+
+  private static java.lang.String c;
+
+  public com.crrepa.p0.e();
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void a(android.content.Context);
+    Code:
+       0: aload_0
+       1: putstatic     #22                 // Field a:Landroid/content/Context;
+       4: return
+
+  public static android.content.Context a();
+    Code:
+       0: getstatic     #22                 // Field a:Landroid/content/Context;
+       3: areturn
+
+  public static java.lang.String b();
+    Code:
+       0: getstatic     #26                 // Field b:Ljava/lang/String;
+       3: areturn
+
+  public static void a(java.lang.String);
+    Code:
+       0: aload_0
+       1: putstatic     #26                 // Field b:Ljava/lang/String;
+       4: return
+
+  public static java.lang.String c();
+    Code:
+       0: getstatic     #29                 // Field c:Ljava/lang/String;
+       3: areturn
+
+  public static void b(java.lang.String);
+    Code:
+       0: aload_0
+       1: putstatic     #29                 // Field c:Ljava/lang/String;
+       4: return
+}
+===== com.crrepa.p0.n =====
+Compiled from "SourceFile"
+public class com.crrepa.p0.n {
+  public com.crrepa.p0.n();
+    Code:
+       0: aload_0
+       1: invokespecial #11                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean a();
+    Code:
+       0: invokestatic  #18                 // Method com/crrepa/p0/e.a:()Landroid/content/Context;
+       3: ldc           #20                 // String connectivity
+       5: invokevirtual #26                 // Method android/content/Context.getSystemService:(Ljava/lang/String;)Ljava/lang/Object;
+       8: checkcast     #28                 // class android/net/ConnectivityManager
+      11: invokevirtual #32                 // Method android/net/ConnectivityManager.getActiveNetworkInfo:()Landroid/net/NetworkInfo;
+      14: dup
+      15: astore_0
+      16: ifnull        24
+      19: aload_0
+      20: invokevirtual #37                 // Method android/net/NetworkInfo.isConnected:()Z
+      23: ireturn
+      24: iconst_0
+      25: ireturn
+}
+===== com.crrepa.r.a =====
+Compiled from "SourceFile"
+public class com.crrepa.r.a {
+  private static final java.lang.String a = "GET";
+
+  private static final java.lang.String b = "POST";
+
+  public static final java.lang.String c = "file/*";
+
+  public static final java.lang.String d = "image/*";
+
+  public static final java.lang.String e = "audio/*";
+
+  public static final java.lang.String f = "video/*";
+
+  public com.crrepa.r.a();
+    Code:
+       0: aload_0
+       1: invokespecial #30                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void b(java.lang.String, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: aconst_null
+       3: aload_1
+       4: invokestatic  #34                 // Method b:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       7: return
+
+  public static void b(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aconst_null
+       3: aload_2
+       4: invokestatic  #34                 // Method b:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       7: return
+
+  public static void b(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: new           #39                 // class com/crrepa/r/d
+       3: dup
+       4: ldc           #11                 // String GET
+       6: aload_0
+       7: aload_1
+       8: aload_2
+       9: aload_3
+      10: invokespecial #42                 // Method com/crrepa/r/d."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      13: invokevirtual #44                 // Method com/crrepa/r/d.a:()V
+      16: return
+
+  public static void c(java.lang.String, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: aload_1
+       3: invokestatic  #46                 // Method c:(Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       6: return
+
+  public static void c(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aconst_null
+       3: aload_2
+       4: invokestatic  #48                 // Method c:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       7: return
+
+  public static void c(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: new           #39                 // class com/crrepa/r/d
+       3: dup
+       4: ldc           #14                 // String POST
+       6: aload_0
+       7: aload_1
+       8: aload_2
+       9: aload_3
+      10: invokespecial #42                 // Method com/crrepa/r/d."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      13: invokevirtual #44                 // Method com/crrepa/r/d.a:()V
+      16: return
+
+  public static void a(java.lang.String, java.lang.String, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aconst_null
+       3: aload_2
+       4: invokestatic  #52                 // Method a:(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       7: return
+
+  public static void a(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: new           #39                 // class com/crrepa/r/d
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: aload_2
+       7: aload_3
+       8: invokespecial #55                 // Method com/crrepa/r/d."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      11: invokevirtual #44                 // Method com/crrepa/r/d.a:()V
+      14: return
+
+  public static void a(java.lang.String, java.io.File, java.lang.String, java.lang.String, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aconst_null
+       5: aload         4
+       7: invokestatic  #59                 // Method a:(Ljava/lang/String;Ljava/io/File;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      10: return
+
+  public static void a(java.lang.String, java.io.File, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: aconst_null
+       7: aload         5
+       9: invokestatic  #63                 // Method a:(Ljava/lang/String;Ljava/io/File;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      12: return
+
+  public static void a(java.lang.String, java.io.File, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: new           #39                 // class com/crrepa/r/d
+       3: dup
+       4: aload_0
+       5: aload_1
+       6: aconst_null
+       7: aconst_null
+       8: aload_2
+       9: aload_3
+      10: aload         4
+      12: aload         5
+      14: aload         6
+      16: invokespecial #67                 // Method com/crrepa/r/d."<init>":(Ljava/lang/String;Ljava/io/File;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      19: invokevirtual #44                 // Method com/crrepa/r/d.a:()V
+      22: return
+
+  public static void a(java.lang.String, java.util.List<java.io.File>, java.lang.String, java.lang.String, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aconst_null
+       5: aload         4
+       7: invokestatic  #72                 // Method a:(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      10: return
+
+  public static void a(java.lang.String, java.util.List<java.io.File>, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aload         4
+       6: aconst_null
+       7: aload         5
+       9: invokestatic  #76                 // Method a:(Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      12: return
+
+  public static void a(java.lang.String, java.util.List<java.io.File>, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: new           #39                 // class com/crrepa/r/d
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: aload_1
+       7: aconst_null
+       8: aload_2
+       9: aload_3
+      10: aload         4
+      12: aload         5
+      14: aload         6
+      16: invokespecial #67                 // Method com/crrepa/r/d."<init>":(Ljava/lang/String;Ljava/io/File;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      19: invokevirtual #44                 // Method com/crrepa/r/d.a:()V
+      22: return
+
+  public static void a(java.lang.String, java.util.Map<java.lang.String, java.io.File>, java.lang.String, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aconst_null
+       4: aload_3
+       5: invokestatic  #82                 // Method a:(Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       8: return
+
+  public static void a(java.lang.String, java.util.Map<java.lang.String, java.io.File>, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: aconst_null
+       5: aload         4
+       7: invokestatic  #86                 // Method a:(Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      10: return
+
+  public static void a(java.lang.String, java.util.Map<java.lang.String, java.io.File>, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: new           #39                 // class com/crrepa/r/d
+       3: dup
+       4: aload_0
+       5: aconst_null
+       6: aconst_null
+       7: aload_1
+       8: aconst_null
+       9: aload_2
+      10: aload_3
+      11: aload         4
+      13: aload         5
+      15: invokespecial #67                 // Method com/crrepa/r/d."<init>":(Ljava/lang/String;Ljava/io/File;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      18: invokevirtual #44                 // Method com/crrepa/r/d.a:()V
+      21: return
+
+  public static void a(java.lang.String, com.crrepa.s.b);
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: aload_1
+       3: invokestatic  #91                 // Method a:(Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/b;)V
+       6: return
+
+  public static void a(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.b);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aconst_null
+       3: aload_2
+       4: invokestatic  #34                 // Method b:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       7: return
+
+  public static void a(java.lang.String, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aconst_null
+       2: aload_1
+       3: invokestatic  #94                 // Method a:(Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       6: return
+
+  public static void a(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aconst_null
+       3: aload_2
+       4: invokestatic  #96                 // Method a:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       7: return
+
+  public static void a(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.util.Map<java.lang.String, java.lang.String>, com.crrepa.s.a);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: aload_2
+       3: aload_3
+       4: invokestatic  #34                 // Method b:(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;Lcom/crrepa/s/a;)V
+       7: return
+}
+===== com.crrepa.s.a =====
+Compiled from "SourceFile"
+public abstract class com.crrepa.s.a<T> {
+  public static android.os.Handler mMainHandler;
+
+  public com.crrepa.s.a();
+    Code:
+       0: aload_0
+       1: invokespecial #18                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  protected static java.lang.String getRetString(java.io.InputStream);
+    Code:
+       0: new           #22                 // class java/io/BufferedReader
+       3: dup
+       4: astore_1
+       5: new           #24                 // class java/io/InputStreamReader
+       8: dup
+       9: astore_2
+      10: ldc           #26                 // String utf-8
+      12: aload_0
+      13: swap
+      14: invokespecial #29                 // Method java/io/InputStreamReader."<init>":(Ljava/io/InputStream;Ljava/lang/String;)V
+      17: aload_2
+      18: invokespecial #32                 // Method java/io/BufferedReader."<init>":(Ljava/io/Reader;)V
+      21: new           #34                 // class java/lang/StringBuilder
+      24: dup
+      25: astore_2
+      26: invokespecial #35                 // Method java/lang/StringBuilder."<init>":()V
+      29: aload_1
+      30: invokevirtual #39                 // Method java/io/BufferedReader.readLine:()Ljava/lang/String;
+      33: dup
+      34: astore_3
+      35: ifnull        66
+      38: aload_2
+      39: new           #34                 // class java/lang/StringBuilder
+      42: dup
+      43: aload_3
+      44: swap
+      45: invokespecial #35                 // Method java/lang/StringBuilder."<init>":()V
+      48: invokevirtual #43                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      51: ldc           #45                 // String \n
+      53: invokevirtual #43                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      56: invokevirtual #48                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      59: invokevirtual #43                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      62: pop
+      63: goto          29
+      66: aload_2
+      67: aload_0
+      68: invokevirtual #53                 // Method java/io/InputStream.close:()V
+      71: invokevirtual #48                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      74: areturn
+      75: pop
+      76: aconst_null
+      77: areturn
+    Exception table:
+       from    to  target type
+           0     3    75   Class java/lang/Exception
+           5     8    75   Class java/lang/Exception
+          10    24    75   Class java/lang/Exception
+          26    33    75   Class java/lang/Exception
+          38    42    75   Class java/lang/Exception
+          43    62    75   Class java/lang/Exception
+          66    74    75   Class java/lang/Exception
+
+  static {};
+    Code:
+       0: new           #58                 // class android/os/Handler
+       3: dup
+       4: invokestatic  #64                 // Method android/os/Looper.getMainLooper:()Landroid/os/Looper;
+       7: invokespecial #67                 // Method android/os/Handler."<init>":(Landroid/os/Looper;)V
+      10: putstatic     #69                 // Field mMainHandler:Landroid/os/Handler;
+      13: return
+
+  public void onProgress(float, long);
+    Code:
+       0: return
+
+  public void onError(com.crrepa.r.c);
+    Code:
+       0: aload_1
+       1: getfield      #79                 // Field com/crrepa/r/c.a:Ljava/io/InputStream;
+       4: dup
+       5: astore_2
+       6: ifnull        17
+       9: aload_2
+      10: invokestatic  #81                 // Method getRetString:(Ljava/io/InputStream;)Ljava/lang/String;
+      13: astore_2
+      14: goto          49
+      17: aload_1
+      18: getfield      #84                 // Field com/crrepa/r/c.b:Ljava/io/InputStream;
+      21: dup
+      22: astore_2
+      23: ifnull        29
+      26: goto          9
+      29: aload_1
+      30: getfield      #88                 // Field com/crrepa/r/c.e:Ljava/lang/Exception;
+      33: dup
+      34: astore_2
+      35: ifnull        46
+      38: aload_2
+      39: invokevirtual #93                 // Method java/lang/Throwable.getMessage:()Ljava/lang/String;
+      42: astore_2
+      43: goto          49
+      46: ldc           #95                 // String
+      48: astore_2
+      49: getstatic     #69                 // Field mMainHandler:Landroid/os/Handler;
+      52: new           #12                 // class com/crrepa/s/a$a
+      55: dup
+      56: aload_0
+      57: aload_1
+      58: aload_2
+      59: invokespecial #100                // Method com/crrepa/s/a$a."<init>":(Lcom/crrepa/s/a;Lcom/crrepa/r/c;Ljava/lang/String;)V
+      62: invokevirtual #104                // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      65: pop
+      66: return
+
+  public void onSeccess(com.crrepa.r.c);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokevirtual #109                // Method onParseResponse:(Lcom/crrepa/r/c;)Ljava/lang/Object;
+       5: astore_1
+       6: getstatic     #69                 // Field mMainHandler:Landroid/os/Handler;
+       9: new           #10                 // class com/crrepa/s/a$b
+      12: dup
+      13: aload_0
+      14: aload_1
+      15: invokespecial #112                // Method com/crrepa/s/a$b."<init>":(Lcom/crrepa/s/a;Ljava/lang/Object;)V
+      18: invokevirtual #104                // Method android/os/Handler.post:(Ljava/lang/Runnable;)Z
+      21: pop
+      22: return
+
+  public abstract T onParseResponse(com.crrepa.r.c);
+
+  public abstract void onFailure(int, java.lang.String);
+
+  public abstract void onResponse(T);
+}
 ===== com.crrepa.ble.ota.jieli.JieliDfuController =====
 Compiled from "SourceFile"
 public class com.crrepa.ble.ota.jieli.JieliDfuController {
@@ -10179,6 +10655,270 @@ public class com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter {
        from    to  target type
           56    59    83   Class java/io/IOException
           65    82    83   Class java/io/IOException
+}
+===== com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo {
+  private int code;
+
+  private int mcu;
+
+  private java.lang.String message;
+
+  private int type;
+
+  private java.lang.String version;
+
+  private java.lang.String path;
+
+  private java.lang.String url;
+
+  private java.lang.String md5;
+
+  private java.lang.String log;
+
+  private java.lang.String log_en;
+
+  private int size;
+
+  private int tp_bin;
+
+  private java.lang.String tp_bin_path;
+
+  private java.lang.String tp_bin_md5;
+
+  private int tp_bin_size;
+
+  private int tp_bin_offset;
+
+  private java.lang.String sf_ui_ver;
+
+  public com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo();
+    Code:
+       0: aload_0
+       1: invokespecial #30                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public int getCode();
+    Code:
+       0: aload_0
+       1: getfield      #34                 // Field code:I
+       4: ireturn
+
+  public void setCode(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #34                 // Field code:I
+       5: return
+
+  public int getMcu();
+    Code:
+       0: aload_0
+       1: getfield      #39                 // Field mcu:I
+       4: ireturn
+
+  public void setMcu(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #39                 // Field mcu:I
+       5: return
+
+  public java.lang.String getMessage();
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field message:Ljava/lang/String;
+       4: areturn
+
+  public void setMessage(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #44                 // Field message:Ljava/lang/String;
+       5: return
+
+  public int getType();
+    Code:
+       0: aload_0
+       1: getfield      #49                 // Field type:I
+       4: ireturn
+
+  public void setType(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #49                 // Field type:I
+       5: return
+
+  public java.lang.String getVersion();
+    Code:
+       0: aload_0
+       1: getfield      #53                 // Field version:Ljava/lang/String;
+       4: areturn
+
+  public void setVersion(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #53                 // Field version:Ljava/lang/String;
+       5: return
+
+  public java.lang.String getPath();
+    Code:
+       0: aload_0
+       1: getfield      #57                 // Field path:Ljava/lang/String;
+       4: areturn
+
+  public void setPath(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #57                 // Field path:Ljava/lang/String;
+       5: return
+
+  public java.lang.String getUrl();
+    Code:
+       0: aload_0
+       1: getfield      #61                 // Field url:Ljava/lang/String;
+       4: areturn
+
+  public void setUrl(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #61                 // Field url:Ljava/lang/String;
+       5: return
+
+  public java.lang.String getMd5();
+    Code:
+       0: aload_0
+       1: getfield      #65                 // Field md5:Ljava/lang/String;
+       4: areturn
+
+  public void setMd5(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #65                 // Field md5:Ljava/lang/String;
+       5: return
+
+  public java.lang.String getLog();
+    Code:
+       0: aload_0
+       1: getfield      #69                 // Field log:Ljava/lang/String;
+       4: areturn
+
+  public void setLog(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #69                 // Field log:Ljava/lang/String;
+       5: return
+
+  public java.lang.String getLog_en();
+    Code:
+       0: aload_0
+       1: getfield      #73                 // Field log_en:Ljava/lang/String;
+       4: areturn
+
+  public void setLog_en(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #73                 // Field log_en:Ljava/lang/String;
+       5: return
+
+  public int getSize();
+    Code:
+       0: aload_0
+       1: getfield      #77                 // Field size:I
+       4: ireturn
+
+  public void setSize(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #77                 // Field size:I
+       5: return
+
+  public int getTp_bin();
+    Code:
+       0: aload_0
+       1: getfield      #81                 // Field tp_bin:I
+       4: ireturn
+
+  public void setTp_bin(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #81                 // Field tp_bin:I
+       5: return
+
+  public java.lang.String getTp_bin_path();
+    Code:
+       0: aload_0
+       1: getfield      #85                 // Field tp_bin_path:Ljava/lang/String;
+       4: areturn
+
+  public void setTp_bin_path(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #85                 // Field tp_bin_path:Ljava/lang/String;
+       5: return
+
+  public java.lang.String getTp_bin_md5();
+    Code:
+       0: aload_0
+       1: getfield      #89                 // Field tp_bin_md5:Ljava/lang/String;
+       4: areturn
+
+  public void setTp_bin_md5(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #89                 // Field tp_bin_md5:Ljava/lang/String;
+       5: return
+
+  public int getTp_bin_size();
+    Code:
+       0: aload_0
+       1: getfield      #93                 // Field tp_bin_size:I
+       4: ireturn
+
+  public void setTp_bin_size(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #93                 // Field tp_bin_size:I
+       5: return
+
+  public int getTp_bin_offset();
+    Code:
+       0: aload_0
+       1: getfield      #97                 // Field tp_bin_offset:I
+       4: ireturn
+
+  public void setTp_bin_offset(int);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #97                 // Field tp_bin_offset:I
+       5: return
+
+  public java.lang.String getSf_ui_ver();
+    Code:
+       0: aload_0
+       1: getfield      #101                // Field sf_ui_ver:Ljava/lang/String;
+       4: areturn
+
+  public void setSf_ui_ver(java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #101                // Field sf_ui_ver:Ljava/lang/String;
+       5: return
 }
 ===== com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo =====
 Compiled from "SourceFile"
@@ -10865,6 +11605,7 @@ com/crrepa/ble/ota/jieli/JieliDfuController.class: C()Lcom/crrepa/ble/trans/upgr
 com/crrepa/ble/sifli/dfu/OTAFile.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
 com/crrepa/ble/sifli/dfu/CurrentSendFile.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
 com/crrepa/ble/sifli/dfu/FileProcess.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/FileProcess.class: , md5: 
 com/crrepa/ble/sifli/dfu/DFUState.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
 com/crrepa/ble/sifli/dfu/DFUImagePath$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
 com/crrepa/ble/sifli/dfu/Utils.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
@@ -10941,5 +11682,8 @@ com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: {(Lcom/
 com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
 com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: 5com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo
 com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: version
+com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: tp_bin_md5
+com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: getTp_bin_md5
+com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: setTp_bin_md5
 com/crrepa/ble/trans/upgrade/bean/HSFirmwareInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
 com/crrepa/ble/trans/upgrade/bean/HSFirmwareInfo.class: 0com/crrepa/ble/trans/upgrade/bean/HSFirmwareInfo
