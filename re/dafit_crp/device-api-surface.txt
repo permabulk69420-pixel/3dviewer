@@ -1,0 +1,2097 @@
+===== PUBLIC CONNECTION / DEVICE API =====
+
+===== com.crrepa.ble.conn.CRPBleConnection =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.CRPBleConnection {
+  public abstract boolean connect();
+  public abstract void close();
+  public abstract void setConnectionStateListener(com.crrepa.ble.conn.listener.CRPBleConnectionStateListener);
+  public abstract void setPhoneOperationListener(com.crrepa.ble.conn.listener.CRPPhoneOperationListener);
+  public abstract void setCameraOperationListener(com.crrepa.ble.conn.listener.CRPCameraOperationListener);
+  public abstract void setWeatherChangeListener(com.crrepa.ble.conn.listener.CRPWeatherChangeListener);
+  public abstract void setDeviceRssiListener(com.crrepa.ble.conn.listener.CRPDeviceRssiListener);
+  public abstract void setFindPhoneListener(com.crrepa.ble.conn.listener.CRPFindPhoneListener);
+  public abstract void syncTime();
+  public abstract void queryFrimwareVersion(com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback);
+  public abstract void checkFirmwareVersion(com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback, java.lang.String, int);
+  public abstract void queryDeviceBattery();
+  public abstract void setDeviceBatteryListener(com.crrepa.ble.conn.listener.CRPDeviceBatteryListener);
+  public abstract void subscribeDeviceBattery();
+  public abstract void sendUserInfo(com.crrepa.ble.conn.bean.CRPUserInfo);
+  public abstract void sendTodayWeather(com.crrepa.ble.conn.bean.CRPTodayWeatherInfo);
+  public abstract void sendFutureWeather(com.crrepa.ble.conn.bean.CRPFutureWeatherInfo);
+  public abstract void setStepChangeListener(com.crrepa.ble.conn.listener.CRPStepChangeListener);
+  public abstract void syncStep();
+  public abstract void queryHistoryStep(com.crrepa.ble.conn.type.CRPHistoryDay);
+  public abstract void setSleepChangeListener(com.crrepa.ble.conn.listener.CRPSleepChangeListener);
+  public abstract void syncSleep();
+  public abstract void syncRemSleep();
+  public abstract void queryHistorySleep(com.crrepa.ble.conn.type.CRPHistoryDay);
+  public abstract void queryHistoryRemSleep(com.crrepa.ble.conn.type.CRPHistoryDay);
+  public abstract void sendMetricSystem(byte);
+  public abstract void queryMetricSystem(com.crrepa.ble.conn.callback.CRPDeviceMetricSystemCallback);
+  public abstract void sendTimeSystem(byte);
+  public abstract void queryTimeSystem(com.crrepa.ble.conn.callback.CRPDeviceTimeSystemCallback);
+  public abstract void sendQuickView(boolean);
+  public abstract void queryQuickView(com.crrepa.ble.conn.callback.CRPDeviceQuickViewCallback);
+  public abstract void sendDominantHand(byte);
+  public abstract void queryDominantHand(com.crrepa.ble.conn.callback.CRPDeviceDominantHandCallback);
+  public abstract void sendGoalSteps(int);
+  public abstract void queryGoalStep(com.crrepa.ble.conn.callback.CRPDeviceGoalStepCallback);
+  public abstract void sendDisplayWatchFace(byte);
+  public abstract void queryDisplayWatchFace(com.crrepa.ble.conn.callback.CRPDeviceDisplayWatchFaceCallback);
+  public abstract void sendAlarm(com.crrepa.ble.conn.bean.CRPAlarmInfo);
+  public abstract void queryAllAlarm(com.crrepa.ble.conn.callback.CRPAlarmCallback);
+  public abstract void sendNewAlarm(com.crrepa.ble.conn.bean.CRPAlarmInfo);
+  public abstract void deleteNewAlarm(int);
+  public abstract void deleteAllNewAlarm();
+  public abstract void queryAllNewAlarm(com.crrepa.ble.conn.callback.CRPAlarmCallback);
+  public abstract void sendDeviceLanguage(byte);
+  public abstract void queryDeviceLanguage(com.crrepa.ble.conn.callback.CRPDeviceLanguageCallback);
+  public abstract void sendOtherMessageState(boolean);
+  public abstract void queryOtherMessageState(com.crrepa.ble.conn.callback.CRPDeviceOtherMessageCallback);
+  public abstract void sendSedentaryReminder(boolean);
+  public abstract void querySedentaryReminder(com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderCallback);
+  public abstract void findDevice();
+  public abstract void sendMessage(com.crrepa.ble.conn.bean.CRPMessageInfo);
+  public abstract void queryMessageLength(com.crrepa.ble.conn.callback.CRPMessageLengthCallback);
+  public abstract void sendCall0ffHook();
+  public abstract void sendDeviceVersion(byte);
+  public abstract void queryDeviceVersion(com.crrepa.ble.conn.callback.CRPDeviceVersionCallback);
+  public abstract void setHeartRateChangeListener(com.crrepa.ble.conn.listener.CRPHeartRateChangeListener);
+  public abstract void startMeasureDynamicRate();
+  public abstract void queryLastDynamicRate(com.crrepa.ble.conn.type.CRPHistoryDynamicRateType);
+  public abstract void stopMeasureDynamicRtae();
+  public abstract void setBloodPressureChangeListener(com.crrepa.ble.conn.listener.CRPBloodPressureChangeListener);
+  public abstract void startMeasureBloodPressure();
+  public abstract void stopMeasureBloodPressure();
+  public abstract void startFirmwareUpgrade(boolean, com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener);
+  public abstract void abortFirmwareUpgrade();
+  public abstract void enableTimingMeasureHeartRate(int);
+  public abstract void disableTimingMeasureHeartRate();
+  public abstract void queryTimingMeasureHeartRate(com.crrepa.ble.conn.callback.CRPDeviceTimingMeasureHeartRateCallback);
+  public abstract void queryTodayHeartRate(int);
+  public abstract void queryHistoryTimingHeartRate(com.crrepa.ble.conn.type.CRPHistoryDay);
+  public abstract void queryMovementHeartRate();
+  public abstract void startMeasureOnceHeartRate();
+  public abstract void stopMeasureOnceHeartRate();
+  public abstract void startMeasureBloodOxygen();
+  public abstract void stopMeasureBloodOxygen();
+  public abstract void setBloodOxygenChangeListener(com.crrepa.ble.conn.listener.CRPBloodOxygenChangeListener);
+  public abstract void queryDeviceSupportFunction(com.crrepa.ble.conn.callback.CRPDeviceFunctionCallback);
+  public abstract void sendDislpayDeviceFunction(com.crrepa.ble.conn.bean.CRPFunctionInfo);
+  public abstract void queryDisplayDeviceFunction(com.crrepa.ble.conn.callback.CRPDeviceFunctionCallback);
+  public abstract void sendGsensorCalibration();
+  public abstract void enterCameraView();
+  public abstract void exitCameraView();
+  public abstract void readDeviceRssi();
+  public abstract void shutDown();
+  public abstract void sendDoNotDistrubTime(com.crrepa.ble.conn.bean.CRPPeriodTimeInfo);
+  public abstract void queryDoNotDistrubTime(com.crrepa.ble.conn.callback.CRPDevicePeriodTimeCallback);
+  public abstract void sendQuickViewTime(com.crrepa.ble.conn.bean.CRPPeriodTimeInfo);
+  public abstract void queryQuickViewTime(com.crrepa.ble.conn.callback.CRPDevicePeriodTimeCallback);
+  public abstract void sendBreathingLight(boolean);
+  public abstract void queryBreathingLight(com.crrepa.ble.conn.callback.CRPDeviceBreathingLightCallback);
+  public abstract void sendWatchFaceBackground(com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo, com.crrepa.ble.conn.listener.CRPFileTransListener);
+  public abstract void abortWatchFaceBackground();
+  public abstract void sendWatchFaceLayout(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo);
+  public abstract void queryWatchFaceLayout(com.crrepa.ble.conn.callback.CRPDeviceWatchFaceLayoutCallback);
+  public abstract void queryDeviceDfuStatus(com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback);
+  public abstract void sendStepLength(byte);
+  public abstract void startECGMeasure();
+  public abstract void stopECGMeasure();
+  public abstract void queryLastMeasureECGData();
+  public abstract boolean isNewECGMeasurementVersion();
+  public abstract void setECGChangeListener(com.crrepa.ble.conn.listener.CRPBleECGChangeListener, com.crrepa.ble.conn.type.CRPEcgMeasureType);
+  public abstract void sendECGHeartRate(int);
+  public abstract void sendSedentaryReminderPeriod(com.crrepa.ble.conn.bean.CRPSedentaryReminderPeriodInfo);
+  public abstract void querySedentaryReminderPeriod(com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderPeriodCallback);
+  public abstract void querySupportWatchFace(com.crrepa.ble.conn.callback.CRPDeviceSupportWatchFaceCallback);
+  public abstract void queryWatchFaceStore(java.util.List<java.lang.Integer>, java.lang.String, int, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+  public abstract void querySifliWatchFaceStore(int, java.lang.String, int, int, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+  public abstract void queryWatchFaceOfID(int, com.crrepa.ble.conn.callback.CRPWatchFaceDetailsCallback);
+  public abstract void queryWatchFaceStoreTagList(com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo, com.crrepa.ble.conn.callback.CRPWatchFaceStoreTagCallback);
+  public abstract void queryWatchFaceStoreList(com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo, int, com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback);
+  public abstract void queryWatchFaceDetail(com.crrepa.ble.conn.bean.CRPWatchFaceDetailsRequestInfo, com.crrepa.ble.conn.callback.CRPWatchFaceDetailsCallback);
+  public abstract void sendWatchFace(com.crrepa.ble.conn.bean.CRPWatchFaceInfo, com.crrepa.ble.conn.listener.CRPWatchFaceTransListener, int);
+  public abstract void sendJieliWatchFaceId(int, boolean);
+  public abstract void abortWatchFace();
+  public abstract void deleteWatchFace(int, com.crrepa.ble.conn.callback.CRPWatchFaceDeleteCallback);
+  public abstract void deleteJieliWatchFace(int[], com.crrepa.ble.conn.callback.CRPWatchFaceDeleteCallback);
+  public abstract void queryJieliWatchFaceInfo(com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback);
+  public abstract void queryHsDfuAddress(com.crrepa.ble.conn.callback.CRPDeviceDfuAddressCallback);
+  public abstract void enableHsDfu();
+  public abstract void queryStepsCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+  public abstract void setStepsCategoryListener(com.crrepa.ble.conn.listener.CRPStepsCategoryChangeListener);
+  public abstract void setCaloriesCategoryListener(com.crrepa.ble.conn.listener.CRPCaloriesCategoryChangeListener);
+  public abstract void queryCaloriesCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+  public abstract void setDistanceCategoryListener(com.crrepa.ble.conn.listener.CRPDistanceCategoryChangeListener);
+  public abstract void queryDistanceCategory(com.crrepa.ble.conn.type.CRPCategoryHistoryDay);
+  public abstract void sendPhysiologcalPeriod(com.crrepa.ble.conn.bean.CRPPhysiologcalPeriodInfo);
+  public abstract void queryPhysiologcalPeriod(com.crrepa.ble.conn.callback.CRPDevicePhysiologcalPeriodCallback);
+  public abstract void setMtu(com.crrepa.ble.conn.callback.CRPMtuChangeCallback, int);
+  public abstract void querySleepAction(int);
+  public abstract void setSleepActionChangeListener(com.crrepa.ble.conn.listener.CRPSleepActionChangeListener);
+  public abstract void startFindPhone();
+  public abstract void stopFindPhone();
+  public abstract void setMusicPlayerState(byte);
+  public abstract void sendSongTitle(java.lang.String);
+  public abstract void sendLyrics(java.lang.String);
+  public abstract void closeMusicControl();
+  public abstract void sendDrinkWaterReminder(com.crrepa.ble.conn.bean.CRPDrinkWaterPeriodInfo);
+  public abstract void queryDrinkWaterReminderPeriod();
+  public abstract void setDrinkWaterListener(com.crrepa.ble.conn.listener.CRPDeviceDrinkWaterListener);
+  public abstract void queryNewDrinkWaterReminderPeriod();
+  public abstract void sendNewDrinkWaterReminder(com.crrepa.ble.conn.bean.CRPNewDrinkWaterPeriodInfo);
+  public abstract void sendDrinkWaterGoals(int);
+  public abstract void queryDrinkWaterGoals();
+  public abstract void sendTodayWaterIntake(int);
+  public abstract void queryTodayWaterIntake();
+  public abstract void addWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo);
+  public abstract void updateWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo);
+  public abstract void deleteWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo$WaterIntakeType, int);
+  public abstract void queryTodayWaterIntakeHistory();
+  public abstract void sendTodayWaterIntakeHistory(java.util.List<com.crrepa.ble.conn.bean.CRPWaterIntakeInfo>);
+  public abstract void setMaxHeartRate(byte, boolean);
+  public abstract void queryMaxHeartRate(com.crrepa.ble.conn.callback.CRPDeviceMaxHeartRateCallback);
+  public abstract void startMovement(byte);
+  public abstract void setMovementState(byte);
+  public abstract void setMovementStateListener(com.crrepa.ble.conn.listener.CRPMovementStateListener);
+  public abstract com.crrepa.ble.conn.type.CRPProtocolVersion getProtocolVersion();
+  public abstract void startMeasureTemp();
+  public abstract void stopMeasureTemp();
+  public abstract void enableTimingMeasureTemp();
+  public abstract void disableTimingMeasureTemp();
+  public abstract void queryTimingMeasureTempState(com.crrepa.ble.conn.callback.CRPTimingTempStateCallback);
+  public abstract void queryTimingMeasureTemp(com.crrepa.ble.conn.type.CRPTempTimeType);
+  public abstract void setTempChangeListener(com.crrepa.ble.conn.listener.CRPTempChangeListener);
+  public abstract void sendDisplayTime(int);
+  public abstract void queryDisplayTime(com.crrepa.ble.conn.callback.CRPDeviceDisplayTimeCallback);
+  public abstract void sendHandWashingReminder(com.crrepa.ble.conn.bean.CRPHandWashingPeriodInfo);
+  public abstract void queryHandWashingReminderPeriod(com.crrepa.ble.conn.callback.CRPDeviceHandWashingPeriodCallback);
+  public abstract void sendLocalCity(java.lang.String);
+  public abstract void sendBoundVibration();
+  public abstract void sendTempUnit(byte);
+  public abstract void queryTempUnit();
+  public abstract void sendBrightness(int);
+  public abstract void queryBrightness(com.crrepa.ble.conn.callback.CRPDeviceBrightnessCallback);
+  public abstract void queryBtAddress(com.crrepa.ble.conn.callback.CRPBtAddressCallback);
+  public abstract void clearContact();
+  public abstract void checkSupportQuickContact(com.crrepa.ble.conn.callback.CRPContactConfigCallback);
+  public abstract void deleteContact(int);
+  public abstract void sendContact(com.crrepa.ble.conn.bean.CRPContactInfo);
+  public abstract void deleteContactAvatar(int);
+  public abstract void sendContactAvatar(int, android.graphics.Bitmap, int, com.crrepa.ble.conn.listener.CRPFileTransListener);
+  public abstract void setContactListener(com.crrepa.ble.conn.listener.CRPContactListener);
+  public abstract void queryContactCount(com.crrepa.ble.conn.callback.CRPContactCountCallback);
+  public abstract void enableTimingMeasureBloodOxygen(int);
+  public abstract void disableTimingMeasureBloodOxygen();
+  public abstract void queryTimingBloodOxygenMeasureState();
+  public abstract void queryTimingBloodOxygen(com.crrepa.ble.conn.type.CRPBloodOxygenTimeType);
+  public abstract void queryDfuType(com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback);
+  public abstract void reset();
+  public abstract void sendCurrentVolume(int);
+  public abstract void sendMaxVolume(int);
+  public abstract void setSosChangeListener(com.crrepa.ble.conn.listener.CRPSosChangeListener);
+  public abstract void sendSosPresetInfo(com.crrepa.ble.conn.bean.CRPSosInfo);
+  public abstract void enableSos(boolean);
+  public abstract void querySosState(com.crrepa.ble.conn.callback.CRPSosStateCallback);
+  public abstract void setBatterySavingListener(com.crrepa.ble.conn.listener.CRPBatterySavingChangeListener);
+  public abstract void sendBatterySaving(boolean);
+  public abstract void queryBatterySaving();
+  public abstract void createBond(byte[], com.crrepa.ble.conn.callback.CRPDeviceBondStateCallback);
+  public abstract void createBond(byte[], boolean, int, com.crrepa.ble.conn.callback.CRPDeviceBondStateCallback);
+  public abstract void sendBondState(boolean);
+  public abstract void connectivityCheck(boolean, byte[], com.crrepa.ble.conn.callback.CRPConnectivityCheckCallback);
+  public abstract void enableHrvMeasure(int);
+  public abstract void disableHrvMeasure();
+  public abstract void queryHrvMeasureInterval();
+  public abstract void setHrvChangeListener(com.crrepa.ble.conn.listener.CRPHrvChangeListener);
+  public abstract void queryHrvMeasureCount(int);
+  public abstract void queryHrv(int, int);
+  public abstract void startMeasureHrv();
+  public abstract void stopMeasureHrv();
+  public abstract void queryWatchFaceList(com.crrepa.ble.conn.callback.CRPDeviceWatchFaceListCallback);
+  public abstract void setCallNumberListener(com.crrepa.ble.conn.listener.CRPCallNumberListener);
+  public abstract void sendCallContactName(java.lang.String);
+  public abstract void enableContinueBloodPressure();
+  public abstract void disableContinueBloodPressure();
+  public abstract void queryContinueBloodPressureState();
+  public abstract void queryLast24HourBloodPressure();
+  public abstract void enableContinueBloodOxygen();
+  public abstract void disableContinueBloodOxygen();
+  public abstract void queryContinueBloodOxygenState();
+  public abstract void queryLast24HourBloodOxygen();
+  public abstract void enableContinueTemp();
+  public abstract void disableContinueTemp();
+  public abstract void queryContinueTempState();
+  public abstract void queryLast24HourTemp();
+  public abstract void sendPillReminder(com.crrepa.ble.conn.bean.CRPPillReminderInfo);
+  public abstract void deletePillReminder(int);
+  public abstract void clearPillReminder();
+  public abstract void queryPillReminder(com.crrepa.ble.conn.callback.CRPPillReminderCallback);
+  public abstract void queryHistoryHeartRate();
+  public abstract void queryHistoryBloodPressure();
+  public abstract void queryHistoryBloodOxygen();
+  public abstract void sendTapToWakeState(boolean);
+  public abstract void queryTapToWakeState(com.crrepa.ble.conn.callback.CRPTapToWakeCallback);
+  public abstract void setTrainingListener(com.crrepa.ble.conn.listener.CRPTrainingChangeListener);
+  public abstract void queryHistoryTraining();
+  public abstract void queryTraining(int);
+  public abstract void queryTrainingRealtimeData();
+  public abstract void setA2DPConnectStateListener(com.crrepa.ble.conn.listener.CRPA2DPConnectStateListener);
+  public abstract void queryA2DPState();
+  public abstract void sendA2DPState(com.crrepa.ble.conn.listener.CRPA2DPConnectStateListener$A2DPConnectState);
+  public abstract void sendDailyGoals(com.crrepa.ble.conn.bean.CRPDailyGoalsInfo);
+  public abstract void queryDailyGoals(com.crrepa.ble.conn.callback.CRPDailyGoalsCallback);
+  public abstract void sendTrainingDayGoals(com.crrepa.ble.conn.bean.CRPDailyGoalsInfo);
+  public abstract void queryTrainingDayGoals(com.crrepa.ble.conn.callback.CRPTrainingDayGoalsCallback);
+  public abstract void sendTrainingDays(com.crrepa.ble.conn.bean.CRPTrainingDayInfo);
+  public abstract void queryTrainingDay(com.crrepa.ble.conn.callback.CRPTrainingDayGoalsCallback);
+  public abstract void querySupportStress();
+  public abstract void startMeasureStress();
+  public abstract void stopMeasureStress();
+  public abstract void queryHistoryStress();
+  public abstract void setStressListener(com.crrepa.ble.conn.listener.CRPStressListener);
+  public abstract void enableTimingStress();
+  public abstract void disableTimingStress();
+  public abstract void queryTimingStressState();
+  public abstract void queryTimingStress(com.crrepa.ble.conn.type.CRPStressDate);
+  public abstract void sendElectronicCard(com.crrepa.ble.conn.bean.CRPElectronicCardInfo);
+  public abstract void deleteElectronicCard(int);
+  public abstract void queryElectronicCardCount(com.crrepa.ble.conn.callback.CRPElectronicCardCountCallback);
+  public abstract void queryElectronicCard(int, com.crrepa.ble.conn.callback.CRPElectronicCardCallback);
+  public abstract void sendElectronicCardList(java.util.List<java.lang.Integer>);
+  public abstract void startBreathingTraining(com.crrepa.ble.conn.bean.CRPBreathingTrainingInfo);
+  public abstract void queryMessageList(com.crrepa.ble.conn.callback.CRPMessageListCallback);
+  public abstract void queryContactNumberSymbol(com.crrepa.ble.conn.callback.CRPContactNumberSymbolCallback);
+  public abstract void setNewHrvListener(com.crrepa.ble.conn.listener.CRPNewHrvChangeListener);
+  public abstract void querySupportNewHrv();
+  public abstract void startMeasureNewHrv();
+  public abstract void stopMeasureNewHrv();
+  public abstract void queryHistoryNewHrv();
+  public abstract void setCalendarEventListener(com.crrepa.ble.conn.listener.CRPCalendarEventListener);
+  public abstract void sendCalendarEvent(com.crrepa.ble.conn.bean.CRPCalendarEventInfo);
+  public abstract void queryCalendarEvent(int);
+  public abstract void deleteCalendarEvent(int);
+  public abstract void querySupportCalendarEvent();
+  public abstract void sendCalendarEventReminderTime(boolean, int);
+  public abstract void queryCalendarEventReminderTime();
+  public abstract void clearCalendarEvent();
+  public abstract void queryAvailableStorage(com.crrepa.ble.conn.callback.CRPAvailableStorageCallback);
+  public abstract void setGpsChangeListener(com.crrepa.ble.conn.listener.CRPGpsChangeListener);
+  public abstract void queryHistoryGps();
+  public abstract void queryGpsDetail(int);
+  public abstract void sendEpoFile(java.io.File, com.crrepa.ble.conn.type.CRPEpoType, com.crrepa.ble.conn.listener.CRPFileTransListener);
+  public abstract void sendLocalLocation(double, double);
+  public abstract void setBreathRateListener(com.crrepa.ble.conn.listener.CRPBreathRateChangeListener);
+  public abstract void startMeatureBreathRate();
+  public abstract void stopMeatureBreathRate();
+  public abstract void queryHistoryBreathRate();
+  public abstract void enableTimingBreathRate();
+  public abstract void disableTimingBreathRate();
+  public abstract void queryTimingBreathRateState();
+  public abstract void queryTimingBreathRate(com.crrepa.ble.conn.type.CRPHistoryDay);
+  public abstract void setQuickResponsesListener(com.crrepa.ble.conn.listener.CRPQuickResponsesChangeListener);
+  public abstract void queryQuickResponsesCount();
+  public abstract void enableQuickResponses();
+  public abstract void disableQuickResponses();
+  public abstract void queryQuickResponses(byte);
+  public abstract void sendQuickResponses(com.crrepa.ble.conn.bean.CRPQuickResponsesDetailInfo);
+  public abstract void sendVibrationStrength(com.crrepa.ble.conn.type.CRPVibrationStrength);
+  public abstract void queryVibrationStrength(com.crrepa.ble.conn.callback.CRPVibrationStrengthCallback);
+  public abstract void sendSleepTime(byte, byte);
+  public abstract void querySleepTime(com.crrepa.ble.conn.callback.CRPSleepTimeCallback);
+  public abstract void queryUIVersionCode(com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback);
+  public abstract void removeBond(com.crrepa.ble.conn.callback.CRPRemoveBondCallback);
+  public abstract void queryTestModeState(com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback);
+  public abstract void sendUserMode();
+  public abstract void setCustomKeyListener(com.crrepa.ble.conn.listener.CRPCustomKeyChangeListener);
+  public abstract void querySupportCustomTrainingList();
+  public abstract void querySupportCustomFeatureList();
+  public abstract void querySupportCustomGameList();
+  public abstract void sendCustomKey(com.crrepa.ble.conn.bean.CRPCustomKeyInfo);
+  public abstract void setWorldClockListener(com.crrepa.ble.conn.listener.CRPWorldClockListener);
+  public abstract void querySupportWorldClock();
+  public abstract void queryWorldClock(byte);
+  public abstract void sendWorldClock(com.crrepa.ble.conn.bean.CRPWorldClockInfo);
+  public abstract void deleteWorldClock(byte);
+  public abstract void resetWorldClockList(byte[]);
+  public abstract void setStockListener(com.crrepa.ble.conn.listener.CRPStockChangeListener);
+  public abstract void querySupportStock();
+  public abstract void clearStock();
+  public abstract void sendStock(com.crrepa.ble.conn.bean.CRPStockInfo);
+  public abstract void sendStockPrice(com.crrepa.ble.conn.bean.CRPStockPriceInfo);
+  public abstract void deleteStock(byte);
+  public abstract void resetStockList(byte[]);
+  public abstract void querySupportAi(com.crrepa.ble.conn.callback.CRPAiCallback);
+  public abstract void setChatListener(com.crrepa.ble.conn.listener.CRPChatChangeListener);
+  public abstract void sendChatError(com.crrepa.ble.conn.type.CRPChatErrorCode);
+  public abstract void sendChatActivateRecording();
+  public abstract void sendChatQuestion(java.lang.String);
+  public abstract void sendChatResponse(java.lang.String);
+  public abstract void setAiWatchFaceListener(com.crrepa.ble.conn.listener.CRPAiWatchFaceChangeListener);
+  public abstract void sendAiWatchFaceError(com.crrepa.ble.conn.type.CRPChatErrorCode);
+  public abstract void sendAiWatchFaceActivateRecording();
+  public abstract void sendAiWatchFaceDescribe(java.lang.String);
+  public abstract void sendAiWatchFacePreview(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType, android.graphics.Bitmap, com.crrepa.ble.conn.listener.CRPFileTransListener);
+  public abstract void sendAiWatchFace(com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo, com.crrepa.ble.conn.listener.CRPFileTransListener);
+  public abstract void queryAiWatchFaceLayout();
+  public abstract void sendAiWatchFaceLayout(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo);
+  public abstract void sendMuslimTasbihSetting(com.crrepa.ble.conn.bean.CRPMuslimTasbihSettingInfo);
+  public abstract void queryMuslimTasbihSetting(com.crrepa.ble.conn.callback.CRPMuslimTasbihSettingCallback);
+  public abstract void setMuslimPrayerSettingListener(com.crrepa.ble.conn.listener.CRPMuslimPrayerSettingListener);
+  public abstract void sendMuslimPrayersState(boolean, java.util.List<java.lang.Integer>);
+  public abstract void queryMuslimSavedPrayers();
+  public abstract void sendMuslimPrayerNotification(boolean, java.util.Map<com.crrepa.ble.conn.type.CRPMuslimPrayerNotifcationType, java.lang.Boolean>);
+  public abstract void queryMuslimPrayerNotification();
+  public abstract void sendMuslimPrayerCalculationType(com.crrepa.ble.conn.bean.CRPMuslimPrayerCalculationInfo);
+  public abstract void queryMuslimPrayerCalculationType();
+  public abstract void setMuslimNameListener(com.crrepa.ble.conn.listener.CRPMuslimNameListener);
+  public abstract void sendMuslimNameState(boolean, java.util.List<java.lang.Integer>);
+  public abstract void queryMuslimSavedName();
+  public abstract void sendMuslimLocation(com.crrepa.ble.conn.bean.CRPMuslimLocationInfo);
+  public abstract void setEmojiChangeListener(com.crrepa.ble.conn.listener.CRPEmojiChangeListener);
+  public abstract void querySupportEmojiCount();
+  public abstract void querySupportEmojiList();
+  public abstract void sendCurrentTimezone();
+  public abstract void setOfflineVoiceListener(com.crrepa.ble.conn.listener.CRPOfflineVoiceListener);
+  public abstract void sendOfflineVoiceCertification(byte[]);
+  public abstract void setGomoreListener(com.crrepa.ble.conn.listener.CRPGomoreListener);
+  public abstract void querySupportGomore();
+  public abstract void querySavedGomoreKey();
+  public abstract void queryGomoreEUID();
+  public abstract void sendGomoreKey(java.lang.String);
+  public abstract void sendFlashNotification(java.lang.Boolean);
+  public abstract void queryFlashNotification(com.crrepa.ble.conn.callback.CRPFlashNotificationCallback);
+}
+
+===== com.crrepa.ble.CRPBleDevice =====
+Error: class not found: com.crrepa.ble.CRPBleDevice
+
+===== com.crrepa.ble.CRPBleClient =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.CRPBleClient {
+  private static com.crrepa.ble.CRPBleClient mClient;
+  private com.crrepa.z.a mBleScanManager;
+  private android.bluetooth.BluetoothManager mBluetoothManager;
+  private com.crrepa.q0.a mBleAdapter;
+  private com.crrepa.g0.a mFirmwareFixManager;
+  private com.crrepa.ble.CRPBleClient(android.content.Context);
+  public static com.crrepa.ble.CRPBleClient create(android.content.Context);
+  public boolean isBluetoothEnable();
+  public java.util.Set<android.bluetooth.BluetoothDevice> getBondedDevices();
+  public boolean scanDevice(com.crrepa.ble.scan.callback.CRPScanCallback, long);
+  public void cancelScan();
+  public com.crrepa.ble.conn.CRPBleDevice getBleDevice(java.lang.String);
+  public void fixOtaDevice(java.lang.String, java.lang.String, boolean, com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener);
+}
+
+===== CALLBACK / BEAN CLASS NAMES RELEVANT TO IDENTITY =====
+com/crrepa/ble/conn/bean/CRPAiWatchFacePreviewInfo.class
+com/crrepa/ble/conn/bean/CRPFirmwareVersionInfo.class
+com/crrepa/ble/conn/bean/CRPJieliSupportWatchFaceInfo.class
+com/crrepa/ble/conn/bean/CRPJieliWatchFaceInfo.class
+com/crrepa/ble/conn/bean/CRPSifliSupportWatchFaceInfo$InstalledState.class
+com/crrepa/ble/conn/bean/CRPSifliSupportWatchFaceInfo$WatchFace.class
+com/crrepa/ble/conn/bean/CRPSifliSupportWatchFaceInfo.class
+com/crrepa/ble/conn/bean/CRPSupportWatchFaceInfo.class
+com/crrepa/ble/conn/bean/CRPSupportWorldClockInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceBackgroundInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceDetailsInfo$WatchFaceBean.class
+com/crrepa/ble/conn/bean/CRPWatchFaceDetailsInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceDetailsRequestInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceInfo$WacthFaceType.class
+com/crrepa/ble/conn/bean/CRPWatchFaceInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo$CompressionType.class
+com/crrepa/ble/conn/bean/CRPWatchFaceLayoutInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceListInfo$WatchFaceBean.class
+com/crrepa/ble/conn/bean/CRPWatchFaceListInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceStoreInfo$WatchFaceBean.class
+com/crrepa/ble/conn/bean/CRPWatchFaceStoreInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceStoreRequestInfo.class
+com/crrepa/ble/conn/bean/CRPWatchFaceStoreTagInfo$WatchFaceBean.class
+com/crrepa/ble/conn/bean/CRPWatchFaceStoreTagInfo.class
+com/crrepa/ble/conn/callback/CRPDeviceBondStateCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceBreathingLightCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceBrightnessCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceDfuAddressCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceDfuStatusCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceDfuTypeCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceDisplayTimeCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceDisplayWatchFaceCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceDominantHandCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceFirmwareVersionCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceFunctionCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceGoalStepCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceHandWashingPeriodCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceLanguageCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceMaxHeartRateCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceMetricSystemCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceNewFirmwareVersionCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceOtherMessageCallback.class
+com/crrepa/ble/conn/callback/CRPDevicePeriodTimeCallback.class
+com/crrepa/ble/conn/callback/CRPDevicePhysiologcalPeriodCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceQuickViewCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceSedentaryReminderCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceSedentaryReminderPeriodCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceSupportWatchFaceCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceTestModeCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceTimeSystemCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceTimingMeasureHeartRateCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceVersionCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceWatchFaceLayoutCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceWatchFaceListCallback.class
+com/crrepa/ble/conn/callback/CRPFlashNotificationCallback.class
+com/crrepa/ble/conn/callback/CRPJieliWatchFaceCallback.class
+com/crrepa/ble/conn/callback/CRPWatchFaceDeleteCallback.class
+com/crrepa/ble/conn/callback/CRPWatchFaceDetailsCallback.class
+com/crrepa/ble/conn/callback/CRPWatchFaceStoreCallback.class
+com/crrepa/ble/conn/callback/CRPWatchFaceStoreTagCallback.class
+com/crrepa/ble/conn/type/CRPDeviceLanguageType.class
+com/crrepa/ble/conn/type/CRPDeviceVersionType.class
+com/crrepa/ble/conn/type/CRPFirmwareUpgradeType.class
+com/crrepa/ble/conn/type/CRPProtocolVersion.class
+com/crrepa/ble/conn/type/CRPWatchFaceLayoutType.class
+com/crrepa/ble/conn/type/CRPWatchFaceStoreType.class
+com/crrepa/ble/conn/type/CRPWatchFaceType.class
+com/crrepa/ble/scan/bean/CRPScanDevice.class
+com/crrepa/ble/scan/bean/CRPScanRecordInfo$McuPlatform.class
+com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class
+com/crrepa/ble/trans/upgrade/bean/HSFirmwareInfo.class
+com/crrepa/ble/trans/watchface/entity/NewJieliWatchFaceListEntity$DataBean.class
+com/crrepa/ble/trans/watchface/entity/NewSifliWatchFaceListEntity$FacesBean.class
+com/crrepa/ble/trans/watchface/entity/NewWatchFaceDetailsEntity$DataBean$FaceListBean.class
+com/crrepa/ble/trans/watchface/entity/NewWatchFaceDetailsEntity$DataBean.class
+com/crrepa/ble/trans/watchface/entity/NewWatchFaceListEntity$DataBean$FacesBean.class
+com/crrepa/ble/trans/watchface/entity/NewWatchFaceListEntity$DataBean.class
+com/crrepa/ble/trans/watchface/entity/NewWatchFaceTagEntity$DataBean$FacesBean.class
+com/crrepa/ble/trans/watchface/entity/NewWatchFaceTagEntity$DataBean.class
+com/crrepa/ble/trans/watchface/entity/SifliWatchFaceStoreEntity$FacesBean.class
+com/crrepa/ble/trans/watchface/entity/WatchFaceStoreEntity$FacesBean.class
+com/realsil/sdk/dfu/model/FileTypeInfo.class
+
+===== FULL JAVAP OF IDENTITY-RELATED PUBLIC CLASSES =====
+
+===== com.crrepa.ble.conn.CRPBleDevice =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.CRPBleDevice {
+  public abstract com.crrepa.ble.conn.CRPBleConnection connect();
+  public abstract com.crrepa.v.b connectDfu();
+  public abstract com.crrepa.ble.ota.goodix.BleRestoreConnection connectRestore();
+  public abstract void disconnect();
+  public abstract boolean isConnected();
+  public abstract java.lang.String getName();
+  public abstract java.lang.String getMacAddress();
+  public abstract android.bluetooth.BluetoothDevice getBluetoothDevice();
+}
+
+===== com.crrepa.ble.conn.bean.CRPAiWatchFacePreviewInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPAiWatchFacePreviewInfo {
+  private int width;
+  private int height;
+  private int cornerRadius;
+  public com.crrepa.ble.conn.bean.CRPAiWatchFacePreviewInfo(int, int, int);
+  public int getWidth();
+  public int getHeight();
+  public int getCornerRadius();
+}
+
+===== com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo {
+  private java.lang.String version;
+  private java.lang.String changeNotes;
+  private java.lang.String changeNotesEn;
+  private int type;
+  private int mcu;
+  private boolean tpUpgrade;
+  public com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo(java.lang.String, java.lang.String, java.lang.String, int, int, boolean);
+  public java.lang.String getVersion();
+  public java.lang.String getChangeNotes();
+  public java.lang.String getChangeNotesEn();
+  public int getType();
+  public int getMcu();
+  public boolean isTpUpgrade();
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPJieliSupportWatchFaceInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPJieliSupportWatchFaceInfo {
+  private int displayWatchFace;
+  private int watchFaceMaxSize;
+  private java.util.List<java.lang.Integer> supportTypeList;
+  public com.crrepa.ble.conn.bean.CRPJieliSupportWatchFaceInfo(int, int, java.util.List<java.lang.Integer>);
+  public int getDisplayWatchFace();
+  public void setDisplayWatchFace(int);
+  public int getWatchFaceMaxSize();
+  public void setWatchFaceMaxSize(int);
+  public java.util.List<java.lang.Integer> getSupportTypeList();
+  public void setSupportTypeList(java.util.List<java.lang.Integer>);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo {
+  private byte apiVersion;
+  private byte feature;
+  public com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo(byte, byte);
+  public byte getApiVersion();
+  public void setApiVersion(byte);
+  public byte getFeature();
+  public void setFeature(byte);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState =====
+Compiled from "SourceFile"
+public final class com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState extends java.lang.Enum<com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState> {
+  public static final com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState INSTALLED;
+  public static final com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState NOT_INSTALLED;
+  private static final com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState[] $VALUES;
+  private byte value;
+  public static com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState[] values();
+  public static com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState valueOf(java.lang.String);
+  private com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState(byte);
+  public static com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState getInstance(byte);
+  static {};
+}
+
+===== com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$WatchFace =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$WatchFace {
+  private com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState state;
+  private int id;
+  public com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$WatchFace(com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState, int);
+  public com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState getState();
+  public void setState(com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$InstalledState);
+  public int getId();
+  public void setId(int);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo {
+  private int type;
+  private java.util.List<com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$WatchFace> list;
+  public com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo(int, java.util.List<com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$WatchFace>);
+  public int getType();
+  public void setType(int);
+  public java.util.List<com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$WatchFace> getList();
+  public void setList(java.util.List<com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo$WatchFace>);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPSupportWatchFaceInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPSupportWatchFaceInfo {
+  public static final int DEFAULT_WATCH_FACE_ID = 65535;
+  private int displayWatchFace;
+  private java.util.List<java.lang.Integer> supportWatchFaceList;
+  public com.crrepa.ble.conn.bean.CRPSupportWatchFaceInfo(int, java.util.List<java.lang.Integer>);
+  public int getDisplayWatchFace();
+  public java.util.List<java.lang.Integer> getSupportWatchFaceList();
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPSupportWorldClockInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPSupportWorldClockInfo {
+  private int maxCount;
+  private java.util.List<java.lang.Integer> idList;
+  public com.crrepa.ble.conn.bean.CRPSupportWorldClockInfo(int, java.util.List<java.lang.Integer>);
+  public int getMaxCount();
+  public void setMaxCount(int);
+  public java.util.List<java.lang.Integer> getIdList();
+  public void setIdList(java.util.List<java.lang.Integer>);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo {
+  private static final int DEFAULT_TIMEOUT = 30;
+  private android.graphics.Bitmap bitmap;
+  private android.graphics.Bitmap thumBitmap;
+  private com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType type;
+  private int timeout;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo(android.graphics.Bitmap, com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType);
+  public com.crrepa.ble.conn.bean.CRPWatchFaceBackgroundInfo(android.graphics.Bitmap, android.graphics.Bitmap, com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType);
+  public android.graphics.Bitmap getBitmap();
+  public void setBitmap(android.graphics.Bitmap);
+  public android.graphics.Bitmap getThumBitmap();
+  public void setThumBitmap(android.graphics.Bitmap);
+  public com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType getType();
+  public void setType(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType);
+  public int getTimeout();
+  public void setTimeout(int);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo$WatchFaceBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo$WatchFaceBean {
+  private int id;
+  private java.lang.String name;
+  private int size;
+  private java.lang.String preview;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo$WatchFaceBean();
+  public int getId();
+  public void setId(int);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public int getSize();
+  public void setSize(int);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo {
+  private int id;
+  private java.lang.String name;
+  private int download;
+  private int size;
+  private java.lang.String file;
+  private java.lang.String preview;
+  private java.lang.String remarkCn;
+  private java.lang.String remarkEn;
+  private java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo$WatchFaceBean> recommendWatchFaceList;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo();
+  public int getId();
+  public void setId(int);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public int getDownload();
+  public void setDownload(int);
+  public int getSize();
+  public void setSize(int);
+  public java.lang.String getFile();
+  public void setFile(java.lang.String);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String getRemarkCn();
+  public void setRemarkCn(java.lang.String);
+  public java.lang.String getRemarkEn();
+  public void setRemarkEn(java.lang.String);
+  public java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo$WatchFaceBean> getRecommendWatchFaceList();
+  public void setRecommendWatchFaceList(java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo$WatchFaceBean>);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceDetailsRequestInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceDetailsRequestInfo {
+  private com.crrepa.ble.conn.type.CRPWatchFaceStoreType storeType;
+  private int id;
+  private java.lang.String firmwareVersion;
+  private int apiVersion;
+  private int feature;
+  private int maxSize;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceDetailsRequestInfo(com.crrepa.ble.conn.type.CRPWatchFaceStoreType, int);
+  public com.crrepa.ble.conn.type.CRPWatchFaceStoreType getStoreType();
+  public void setStoreType(com.crrepa.ble.conn.type.CRPWatchFaceStoreType);
+  public int getId();
+  public void setId(int);
+  public java.lang.String getFirmwareVersion();
+  public void setFirmwareVersion(java.lang.String);
+  public int getApiVersion();
+  public void setApiVersion(int);
+  public int getFeature();
+  public void setFeature(int);
+  public int getMaxSize();
+  public void setMaxSize(int);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType =====
+Compiled from "SourceFile"
+public final class com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType extends java.lang.Enum<com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType> {
+  public static final com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType DEFAULT;
+  public static final com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType SIFLI;
+  public static final com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType JIELI;
+  private static final com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType[] $VALUES;
+  public static com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType[] values();
+  public static com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType valueOf(java.lang.String);
+  private com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType();
+  static {};
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceInfo {
+  private java.io.File file;
+  private com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType type;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceInfo(java.io.File, com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType);
+  public java.io.File getFile();
+  public void setFile(java.io.File);
+  public com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType getType();
+  public void setType(com.crrepa.ble.conn.bean.CRPWatchFaceInfo$WacthFaceType);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType =====
+Compiled from "SourceFile"
+public final class com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType extends java.lang.Enum<com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType> {
+  public static final com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType LZO;
+  public static final com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType RGB_DEDUPLICATION;
+  public static final com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType RGB_LINE;
+  public static final com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType SIFLI;
+  public static final com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType ORIGINAL;
+  private static final com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType[] $VALUES;
+  private int value;
+  public static com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType[] values();
+  public static com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType valueOf(java.lang.String);
+  private com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType(int);
+  public static com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType valueOf(int);
+  static {};
+  public int value();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo {
+  public static final int PICTURE_MD5_LENGTH = 32;
+  private int timePosition;
+  private int timeTopContent;
+  private int timeBottomContent;
+  private int textColor;
+  private java.lang.String backgroundPictureMd5;
+  private int height;
+  private int width;
+  private int thumHeight;
+  private int thumWidth;
+  private com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType compressionType;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo();
+  public int getTimePosition();
+  public void setTimePosition(int);
+  public int getTimeTopContent();
+  public void setTimeTopContent(int);
+  public int getTimeBottomContent();
+  public void setTimeBottomContent(int);
+  public int getTextColor();
+  public void setTextColor(int);
+  public java.lang.String getBackgroundPictureMd5();
+  public void setBackgroundPictureMd5(java.lang.String);
+  public int getHeight();
+  public void setHeight(int);
+  public int getWidth();
+  public void setWidth(int);
+  public int getThumHeight();
+  public void setThumHeight(int);
+  public int getThumWidth();
+  public void setThumWidth(int);
+  public com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType getCompressionType();
+  public void setCompressionType(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo$CompressionType);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceListInfo$WatchFaceBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceListInfo$WatchFaceBean {
+  private int index;
+  private java.lang.String type;
+  private int watchFaceId;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceListInfo$WatchFaceBean(int, java.lang.String, int);
+  public int getIndex();
+  public void setIndex(int);
+  public java.lang.String getType();
+  public void setType(java.lang.String);
+  public int getId();
+  public void setId(int);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceListInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceListInfo {
+  private int count;
+  private java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceListInfo$WatchFaceBean> list;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceListInfo(int, java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceListInfo$WatchFaceBean>);
+  public int getCount();
+  public void setCount(int);
+  public java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceListInfo$WatchFaceBean> getList();
+  public void setList(java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceListInfo$WatchFaceBean>);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo$WatchFaceBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo$WatchFaceBean {
+  private int id;
+  private java.lang.String preview;
+  private java.lang.String file;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo$WatchFaceBean(int, java.lang.String, java.lang.String);
+  public int getId();
+  public java.lang.String getPreview();
+  public java.lang.String getFile();
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo {
+  private int total;
+  private java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo$WatchFaceBean> list;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo(int, java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo$WatchFaceBean>);
+  public int getTotal();
+  public void setTotal(int);
+  public java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo$WatchFaceBean> getList();
+  public void setList(java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo$WatchFaceBean>);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo {
+  private com.crrepa.ble.conn.type.CRPWatchFaceStoreType storeType;
+  private java.util.List<java.lang.Integer> typeList;
+  private java.lang.String firmwareVersion;
+  private int perPageCount;
+  private int pageIndex;
+  private int maxSize;
+  private int apiVersion;
+  private int feature;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceStoreRequestInfo(com.crrepa.ble.conn.type.CRPWatchFaceStoreType, java.util.List<java.lang.Integer>, java.lang.String, int, int, int);
+  public com.crrepa.ble.conn.type.CRPWatchFaceStoreType getStoreType();
+  public void setStoreType(com.crrepa.ble.conn.type.CRPWatchFaceStoreType);
+  public java.util.List<java.lang.Integer> getTypeList();
+  public void setTypeList(java.util.List<java.lang.Integer>);
+  public java.lang.String getFirmwareVersion();
+  public void setFirmwareVersion(java.lang.String);
+  public int getPerPageCount();
+  public void setPerPageCount(int);
+  public int getPageIndex();
+  public void setPageIndex(int);
+  public int getMaxSize();
+  public void setMaxSize(int);
+  public int getApiVersion();
+  public void setApiVersion(int);
+  public int getFeature();
+  public void setFeature(int);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo$WatchFaceBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo$WatchFaceBean {
+  private java.lang.Integer id;
+  private java.lang.String name;
+  private java.lang.Integer size;
+  private java.lang.Integer download;
+  private java.lang.String preview;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo$WatchFaceBean();
+  public java.lang.Integer getId();
+  public void setId(java.lang.Integer);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public java.lang.Integer getSize();
+  public void setSize(java.lang.Integer);
+  public java.lang.Integer getDownload();
+  public void setDownload(java.lang.Integer);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo {
+  private int tagId;
+  private java.lang.String tagName;
+  private java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo$WatchFaceBean> list;
+  public com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo(int, java.lang.String, java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo$WatchFaceBean>);
+  public int getTagId();
+  public void setTagId(int);
+  public java.lang.String getTagName();
+  public void setTagName(java.lang.String);
+  public java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo$WatchFaceBean> getList();
+  public void setList(java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo$WatchFaceBean>);
+  public java.lang.String toString();
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceBondStateCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceBondStateCallback {
+  public static final byte BONDING = 2;
+  public static final byte BONDED = 1;
+  public static final byte UNBONDED = 0;
+  public abstract void onBondState(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceBreathingLightCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceBreathingLightCallback {
+  public abstract void onBreathingLight(boolean);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceBrightnessCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceBrightnessCallback {
+  public abstract void onBrightness(int, int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceDfuAddressCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceDfuAddressCallback {
+  public abstract void onAddress(java.lang.String);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback {
+  public static final int DEVICE_STATUS_NORMAL = 0;
+  public static final int DEVICE_STATUS_DFU = 1;
+  public static final int DEVICE_STATUS_NULL = 2;
+  public abstract void onDeviceDfuStatus(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback {
+  public static final int TYPE_GR_A = 1;
+  public static final int TYPE_GR_B = 2;
+  public abstract void onDfuType(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceDisplayTimeCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceDisplayTimeCallback {
+  public static final int DISPLAY_ALWAY_ON = 255;
+  public abstract void onSupportAlwayOn(boolean);
+  public abstract void onDisplayTime(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceDisplayWatchFaceCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceDisplayWatchFaceCallback {
+  public abstract void onDisplayWatchFace(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceDominantHandCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceDominantHandCallback {
+  public abstract void onDominantHand(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback {
+  public abstract void onDeviceFirmwareVersion(java.lang.String);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceFunctionCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceFunctionCallback {
+  public abstract void onFunctionChenge(com.crrepa.ble.conn.bean.CRPFunctionInfo);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceGoalStepCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceGoalStepCallback {
+  public abstract void onGoalStep(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceHandWashingPeriodCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceHandWashingPeriodCallback {
+  public abstract void onHandWashingPeriod(com.crrepa.ble.conn.bean.CRPHandWashingPeriodInfo);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceLanguageCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceLanguageCallback {
+  public abstract void onDeviceLanguage(int, int[]);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceMaxHeartRateCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceMaxHeartRateCallback {
+  public abstract void onHeartRate(int, boolean);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceMetricSystemCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceMetricSystemCallback {
+  public abstract void onMetricSystem(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback {
+  public abstract void onNewFirmwareVersion(com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo);
+  public abstract void onLatestVersion();
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceOtherMessageCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceOtherMessageCallback {
+  public abstract void onOtherMessage(boolean);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDevicePeriodTimeCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDevicePeriodTimeCallback {
+  public static final int DO_NOT_DISTRUB_TYPE = 1;
+  public static final int QUICK_VIEW_TYPE = 2;
+  public abstract void onPeriodTime(int, com.crrepa.ble.conn.bean.CRPPeriodTimeInfo);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDevicePhysiologcalPeriodCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDevicePhysiologcalPeriodCallback {
+  public abstract void onPhysiologcalPeriod(com.crrepa.ble.conn.bean.CRPPhysiologcalPeriodInfo);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceQuickViewCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceQuickViewCallback {
+  public abstract void onQuickView(boolean);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderCallback {
+  public abstract void onSedentaryReminder(boolean);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderPeriodCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceSedentaryReminderPeriodCallback {
+  public abstract void onSedentaryReminderPeriod(com.crrepa.ble.conn.bean.CRPSedentaryReminderPeriodInfo);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceSupportWatchFaceCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceSupportWatchFaceCallback {
+  public abstract void onSupportWatchFace(com.crrepa.ble.conn.bean.CRPSupportWatchFaceInfo);
+  public abstract void onSifliSupportWatchFace(com.crrepa.ble.conn.bean.CRPSifliSupportWatchFaceInfo);
+  public abstract void onJieliSupportWatchFace(com.crrepa.ble.conn.bean.CRPJieliSupportWatchFaceInfo);
+  public abstract void onJieliDownloadWatchFaceList(java.util.List<java.lang.Integer>);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback {
+  public abstract void onTestMode(boolean);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceTimeSystemCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceTimeSystemCallback {
+  public abstract void onTimeSystem(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceTimingMeasureHeartRateCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceTimingMeasureHeartRateCallback {
+  public abstract void onTimingMeasure(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback {
+  public abstract void onUIVersionCode(java.lang.String);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceVersionCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceVersionCallback {
+  public abstract void onDeviceVersion(int);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceWatchFaceLayoutCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceWatchFaceLayoutCallback {
+  public abstract void onWatchFaceLayoutChange(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo);
+}
+
+===== com.crrepa.ble.conn.callback.CRPDeviceWatchFaceListCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPDeviceWatchFaceListCallback {
+  public abstract void onWatchFaceList(com.crrepa.ble.conn.bean.CRPWatchFaceListInfo);
+}
+
+===== com.crrepa.ble.conn.callback.CRPFlashNotificationCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPFlashNotificationCallback {
+  public abstract void onFlashNotificationState(boolean);
+}
+
+===== com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback {
+  public abstract void onWatchFaceInfo(com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo);
+}
+
+===== com.crrepa.ble.conn.callback.CRPWatchFaceDeleteCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPWatchFaceDeleteCallback {
+  public abstract void onComplete();
+  public abstract void onError();
+}
+
+===== com.crrepa.ble.conn.callback.CRPWatchFaceDetailsCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPWatchFaceDetailsCallback {
+  public abstract void onWatchFaceChange(com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo$WatchFaceBean);
+  public abstract void onNewWatchFaceChange(com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo);
+  public abstract void onError(java.lang.String);
+}
+
+===== com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPWatchFaceStoreCallback {
+  public abstract void onWatchFaceStoreChange(com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo);
+  public abstract void onError(java.lang.String);
+}
+
+===== com.crrepa.ble.conn.callback.CRPWatchFaceStoreTagCallback =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.callback.CRPWatchFaceStoreTagCallback {
+  public abstract void onWatchFaceStoreTagChange(java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo>);
+  public abstract void onError(java.lang.String);
+}
+
+===== com.crrepa.ble.conn.listener.CRPAiWatchFaceChangeListener =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.listener.CRPAiWatchFaceChangeListener {
+  public abstract void onActivateRecording();
+  public abstract void onStartRecording(byte[]);
+  public abstract void onStopRecording(com.crrepa.ble.conn.type.CRPBleRecordingType);
+  public abstract void onRequestPreview(com.crrepa.ble.conn.bean.CRPAiWatchFacePreviewInfo);
+  public abstract void onConfirmPreview();
+  public abstract void onWatchFaceLayout(com.crrepa.ble.conn.bean.CRPWatchFaceLayoutInfo);
+  public abstract void onCancel();
+}
+
+===== com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener {
+  public static final int FIRMWARE_DOWNLOAD_FAILED = 17;
+  public static final int DEVICE_MACADDR_NULL = 18;
+  public static final int NO_FOUND_DEVICE = 19;
+  public static final int FIRMWARE_VERSION_NULL = 20;
+  public static final int NO_NEW_FIRMWARE_VERSION = 21;
+  public static final int DFU_PROCESS_FAILED = 23;
+  public abstract void onFirmwareDownloadStarting();
+  public abstract void onFirmwareDownloadComplete();
+  public abstract void onUpgradeProgressStarting(boolean);
+  public abstract void onUpgradeProgressChanged(int, float);
+  public abstract void onUpgradeCompleted();
+  public abstract void onUpgradeAborted();
+  public abstract void onError(int, java.lang.String);
+}
+
+===== com.crrepa.ble.conn.listener.CRPDeviceBatteryListener =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.listener.CRPDeviceBatteryListener {
+  public abstract void onSubscribe(boolean);
+  public abstract void onDeviceBattery(int);
+}
+
+===== com.crrepa.ble.conn.listener.CRPDeviceDrinkWaterListener =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.listener.CRPDeviceDrinkWaterListener {
+  public abstract void onDrinkWaterPeriod(com.crrepa.ble.conn.bean.CRPDrinkWaterPeriodInfo);
+  public abstract void onNewDrinkWaterPeriod(com.crrepa.ble.conn.bean.CRPNewDrinkWaterPeriodInfo);
+  public abstract void onDrinkWaterGoals(int);
+  public abstract void onTodayWaterIntake(int);
+  public abstract void onWaterIntakeChange(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo);
+  public abstract void onDeleteWaterIntake(com.crrepa.ble.conn.bean.CRPWaterIntakeInfo$WaterIntakeType, int);
+  public abstract void onTodayWaterIntakeHistoryChange(java.util.List<com.crrepa.ble.conn.bean.CRPWaterIntakeInfo>);
+  public abstract void requestWaterIntakeHistory();
+}
+
+===== com.crrepa.ble.conn.listener.CRPDeviceRssiListener =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.listener.CRPDeviceRssiListener {
+  public abstract void onDeviceRssi(int);
+}
+
+===== com.crrepa.ble.conn.listener.CRPWatchFaceTransListener =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.listener.CRPWatchFaceTransListener extends com.crrepa.ble.conn.listener.CRPFileTransListener {
+  public abstract void onInstallStateChange(boolean);
+}
+
+===== com.crrepa.ble.conn.type.CRPDeviceLanguageType =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.type.CRPDeviceLanguageType {
+  public static final byte LANGUAGE_ENGLISH = 0;
+  public static final byte LANGUAGE_CHINESE = 1;
+  public static final byte LANGUAGE_JAPANESE = 2;
+  public static final byte LANGUAGE_KOREAN = 3;
+  public static final byte LANGUAGE_GERMAN = 4;
+  public static final byte LANGUAGE_FRENCH = 5;
+  public static final byte LANGUAGE_SPANISH = 6;
+  public static final byte LANGUAGE_ARABIC = 7;
+  public static final byte LANGUAGE_RUSSIAN = 8;
+  public static final byte LANGUAGE_TRADITIONAL = 9;
+  public static final byte LANGUAGE_UKRAINIAN = 10;
+  public static final byte LANGUAGE_ITALIAN = 11;
+  public static final byte LANGUAGE_PORTUGUESE = 12;
+  public static final byte LANGUAGE_DUTCH = 13;
+  public static final byte LANGUAGE_POLISH = 14;
+  public static final byte LANGUAGE_SWEDISH = 15;
+  public static final byte LANGUAGE_FINNISH = 16;
+  public static final byte LANGUAGE_DANISH = 17;
+  public static final byte LANGUAGE_NORWEGIAN = 18;
+  public static final byte LANGUAGE_HUNGARIAN = 19;
+  public static final byte LANGUAGE_CZECH = 20;
+  public static final byte LANGUAGE_BULGARIAN = 21;
+  public static final byte LANGUAGE_ROMANIAN = 22;
+  public static final byte LANGUAGE_SLOVAK_LANGUAGE = 23;
+  public static final byte LANGUAGE_LATVIAN = 24;
+}
+
+===== com.crrepa.ble.conn.type.CRPDeviceVersionType =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.type.CRPDeviceVersionType {
+  public static final byte CHINESE_EDITION = 0;
+  public static final byte INTERNATIONAL_EDITION = 1;
+}
+
+===== com.crrepa.ble.conn.type.CRPFirmwareUpgradeType =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.type.CRPFirmwareUpgradeType {
+  public static final int NORMAL_UPGEADE_TYPE = 0;
+  public static final int BETA_UPGRADE_TYPE = 1;
+  public static final int FORCED_UPDATE_TYPE = 2;
+  public static final int NEW_UPGRADE_TYPE = 3;
+}
+
+===== com.crrepa.ble.conn.type.CRPProtocolVersion =====
+Compiled from "SourceFile"
+public final class com.crrepa.ble.conn.type.CRPProtocolVersion extends java.lang.Enum<com.crrepa.ble.conn.type.CRPProtocolVersion> {
+  public static final com.crrepa.ble.conn.type.CRPProtocolVersion V1;
+  public static final com.crrepa.ble.conn.type.CRPProtocolVersion V2;
+  public static final com.crrepa.ble.conn.type.CRPProtocolVersion V3;
+  private static final com.crrepa.ble.conn.type.CRPProtocolVersion[] $VALUES;
+  public static com.crrepa.ble.conn.type.CRPProtocolVersion[] values();
+  public static com.crrepa.ble.conn.type.CRPProtocolVersion valueOf(java.lang.String);
+  private com.crrepa.ble.conn.type.CRPProtocolVersion();
+  static {};
+}
+
+===== com.crrepa.ble.conn.type.CRPWatchFaceLayoutType =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.type.CRPWatchFaceLayoutType {
+  public static final java.lang.String DEFAULT_WATCH_FACE_BG_MD5 = "00000000000000000000000000000000";
+  public static final int WATCH_FACE_TIME_TOP = 0;
+  public static final int WATCH_FACE_TIME_BOTTOM = 1;
+  public static final int WATCH_FACE_CONTENT_CLOSE = 0;
+  public static final int WATCH_FACE_CONTENT_DATE = 1;
+  public static final int WATCH_FACE_CONTENT_SLEEP = 2;
+  public static final int WATCH_FACE_CONTENT_HEART_RATE = 3;
+  public static final int WATCH_FACE_CONTENT_STEP = 4;
+}
+
+===== com.crrepa.ble.conn.type.CRPWatchFaceStoreType =====
+Compiled from "SourceFile"
+public final class com.crrepa.ble.conn.type.CRPWatchFaceStoreType extends java.lang.Enum<com.crrepa.ble.conn.type.CRPWatchFaceStoreType> {
+  public static final com.crrepa.ble.conn.type.CRPWatchFaceStoreType DEFAULT;
+  public static final com.crrepa.ble.conn.type.CRPWatchFaceStoreType SIFLI;
+  public static final com.crrepa.ble.conn.type.CRPWatchFaceStoreType JIELI;
+  private static final com.crrepa.ble.conn.type.CRPWatchFaceStoreType[] $VALUES;
+  public static com.crrepa.ble.conn.type.CRPWatchFaceStoreType[] values();
+  public static com.crrepa.ble.conn.type.CRPWatchFaceStoreType valueOf(java.lang.String);
+  private com.crrepa.ble.conn.type.CRPWatchFaceStoreType();
+  static {};
+}
+
+===== com.crrepa.ble.conn.type.CRPWatchFaceType =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.conn.type.CRPWatchFaceType {
+  public static final byte FIRST_WATCH_FACE = 1;
+  public static final byte SECOND_WATCH_FACE = 2;
+  public static final byte THIRD_WATCH_FACE = 3;
+  public static final byte NEW_CUSTOMIZE_WATCH_FACE = 4;
+}
+
+===== com.crrepa.ble.nrf.dfu.internal.exception.DeviceDisconnectedException =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.nrf.dfu.internal.exception.DeviceDisconnectedException extends java.lang.Exception {
+  private static final long serialVersionUID = -6901728550661937942l;
+  public com.crrepa.ble.nrf.dfu.internal.exception.DeviceDisconnectedException(java.lang.String);
+}
+
+===== com.crrepa.ble.nrf.dfu.internal.manifest.SoftDeviceBootloaderFileInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.nrf.dfu.internal.manifest.SoftDeviceBootloaderFileInfo extends com.crrepa.ble.nrf.dfu.internal.manifest.FileInfo {
+  private int bootloaderSize;
+  private int softdeviceSize;
+  public com.crrepa.ble.nrf.dfu.internal.manifest.SoftDeviceBootloaderFileInfo();
+  public int getSoftdeviceSize();
+  public int getBootloaderSize();
+}
+
+===== com.crrepa.ble.ota.goodix.BleRestoreDeviceServices =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.ota.goodix.BleRestoreDeviceServices {
+  private android.bluetooth.BluetoothGattCharacteristic notifyCharacteristic;
+  private android.bluetooth.BluetoothGattCharacteristic writeCharacteristic;
+  public com.crrepa.ble.ota.goodix.BleRestoreDeviceServices(java.util.List<android.bluetooth.BluetoothGattService>);
+  public java.util.List<android.bluetooth.BluetoothGattCharacteristic> getNotifyCharacteristicList();
+  public android.bluetooth.BluetoothGattCharacteristic getNotifyCharacteristic();
+  public android.bluetooth.BluetoothGattCharacteristic getWriteCharacteristic();
+  public boolean isOrderly();
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreDeviceChangeListener =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.ota.goodix.RestoreDeviceChangeListener {
+  public abstract void onRestoreDevice(java.lang.String);
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreFirmwareChangeListener =====
+Compiled from "SourceFile"
+public interface com.crrepa.ble.ota.goodix.RestoreFirmwareChangeListener {
+  public static final int ERROR_NULL_ADDRESS = 100001;
+  public static final int ERROR_NULL_DEVICE = 100002;
+  public static final int ERROR_MAX_CONNECT_COUNT = 100003;
+  public static final int ERROR_NOT_BOOTINFO = 100004;
+  public static final int ERROR_SEND_BOOTINFO = 100005;
+  public abstract void onReadBootInfo();
+  public abstract void onSendBootInfo();
+  public abstract void onComplete();
+  public abstract void onError(int);
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreFirmwareController$1 =====
+Compiled from "SourceFile"
+class com.crrepa.ble.ota.goodix.RestoreFirmwareController$1 {
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreFirmwareController$Holder =====
+Compiled from "SourceFile"
+class com.crrepa.ble.ota.goodix.RestoreFirmwareController$Holder {
+  private static com.crrepa.ble.ota.goodix.RestoreFirmwareController INSTANCE;
+  private com.crrepa.ble.ota.goodix.RestoreFirmwareController$Holder();
+  static com.crrepa.ble.ota.goodix.RestoreFirmwareController access$100();
+  static {};
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreFirmwareController =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.ota.goodix.RestoreFirmwareController {
+  private com.crrepa.ble.ota.goodix.RestoreDeviceChangeListener restoreDeviceChangeListener;
+  private com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl controller;
+  private com.crrepa.ble.ota.goodix.RestoreFirmwareController();
+  public static com.crrepa.ble.ota.goodix.RestoreFirmwareController getInstance();
+  com.crrepa.ble.ota.goodix.RestoreFirmwareController(com.crrepa.ble.ota.goodix.RestoreFirmwareController$1);
+  public void setListener(com.crrepa.ble.ota.goodix.RestoreFirmwareChangeListener);
+  public void setRestoreDeviceChangeListener(com.crrepa.ble.ota.goodix.RestoreDeviceChangeListener);
+  public com.crrepa.ble.ota.goodix.RestoreDeviceChangeListener getRestoreDeviceChangeListener();
+  public void start(java.lang.String);
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$1 =====
+Compiled from "SourceFile"
+class com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$1 implements java.lang.Runnable {
+  final com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl this$0;
+  com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$1(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  public void run();
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$BleConnectionStateListener =====
+Compiled from "SourceFile"
+class com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$BleConnectionStateListener implements com.crrepa.ble.conn.listener.CRPBleConnectionStateListener {
+  private java.lang.ref.WeakReference<com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl> weakReference;
+  public com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$BleConnectionStateListener(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  public void onConnectionStateChange(int);
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$BootInfoChangeListener =====
+Compiled from "SourceFile"
+class com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$BootInfoChangeListener implements com.crrepa.ble.ota.goodix.BleBootInfoChangeListener {
+  private java.lang.ref.WeakReference<com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl> weakReference;
+  public com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$BootInfoChangeListener(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  public void onBootInfo(byte[]);
+  public void onBootInfoSendState(boolean);
+}
+
+===== com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl {
+  private static final int MAX_RETRY_COUNT = 5;
+  private static final int DELAY_TIME = 3000;
+  private static final int STATE_READ_BOOT = 17;
+  private static final int STATE_SEND_BOOT = 18;
+  private static final int STATE_SEND_START = 19;
+  private static final int STATE_SHUTDOWN = 20;
+  private com.crrepa.ble.ota.goodix.RestoreFirmwareChangeListener listener;
+  private com.crrepa.ble.CRPBleClient bleClient;
+  private com.crrepa.ble.conn.CRPBleDevice bleDevice;
+  private com.crrepa.ble.ota.goodix.BleRestoreConnection bleConnection;
+  private com.crrepa.ble.conn.listener.CRPBleConnectionStateListener connectionStateListener;
+  private com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl$BootInfoChangeListener bootInfoChangeListener;
+  private int connectCount;
+  private int restoreState;
+  private byte[] bootBytes;
+  public com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl();
+  private void connect();
+  private void handleDisconnected();
+  private void handleConnected();
+  private void sendBootInfo();
+  private void sendStartInfo();
+  private void shutdown();
+  private void onReadBootInfo();
+  private void onSendBootInfo();
+  private void onComplete();
+  private void onError(int);
+  static void access$000(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  static void access$100(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  static void access$200(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  static int access$300(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  static byte[] access$402(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl, byte[]);
+  static void access$500(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  static void access$600(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  static void access$700(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl);
+  static void access$800(com.crrepa.ble.ota.goodix.RestoreFirmwareControllerImpl, int);
+  public void setListener(com.crrepa.ble.ota.goodix.RestoreFirmwareChangeListener);
+  public void start(java.lang.String);
+}
+
+===== com.crrepa.ble.scan.bean.CRPScanDevice =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.scan.bean.CRPScanDevice {
+  private android.bluetooth.BluetoothDevice mDevice;
+  private byte[] mScanRecord;
+  private int mRssi;
+  private java.lang.String name;
+  public com.crrepa.ble.scan.bean.CRPScanDevice(android.bluetooth.BluetoothDevice, byte[], int, java.lang.String);
+  public android.bluetooth.BluetoothDevice getDevice();
+  public byte[] getScanRecord();
+  public int getRssi();
+  public java.lang.String getName();
+}
+
+===== com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform =====
+Compiled from "SourceFile"
+public final class com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform extends java.lang.Enum<com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform> {
+  public static final com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform PLATFORM_NONE;
+  public static final com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform PLATFORM_NORDIC;
+  public static final com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform PLATFORM_HUNTERSUN;
+  public static final com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform PLATFORM_REALTEK;
+  public static final com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform PLATFORM_GOODIX;
+  public static final com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform PLATFORM_SIFLI;
+  public static final com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform PLATFORM_JIELI;
+  private static final com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform[] $VALUES;
+  private int value;
+  public static com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform[] values();
+  public static com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform valueOf(java.lang.String);
+  private com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform(int);
+  public static com.crrepa.ble.scan.bean.CRPScanRecordInfo$McuPlatform getInstance(int);
+  static {};
+  public int getValue();
+}
+
+===== com.crrepa.ble.sifli.dfu.Protocol =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.sifli.dfu.Protocol {
+  public static final int IMAGE_ID_NAND_RES = -2;
+  public static final int IMAGE_ID_CTRL = -1;
+  public static final int IMAGE_ID_HCPU = 0;
+  public static final int IMAGE_ID_LCPU = 1;
+  public static final int IMAGE_ID_NOR_LCPU_PATCH = 2;
+  public static final int IMAGE_ID_RES = 3;
+  public static final int IMAGE_ID_FONT = 4;
+  public static final int IMAGE_ID_NAND_LCPU_PATCH = 4;
+  public static final int IMAGE_ID_EX = 5;
+  public static final int IMAGE_ID_OTA = 6;
+  public static final int IMAGE_ID_DYN = 5;
+  public static final int IMAGE_ID_MUSIC = 6;
+  public static final int IMAGE_ID_TINY_FONT = 7;
+  public static final int DFU_MODE_NORMAL = 1;
+  public static final int DFU_MODE_RESUME = 2;
+  public static final int DFU_MODE_FORCE = 3;
+  public static final int DFU_END_MODE_NO_SEND = 0;
+  public static final int DFU_END_MODE_WAIT_RSP = 1;
+  public static final int DFU_END_MODE_SEND_CMD = 2;
+  public static final int SIFLI_RES_PACKET_LEN = 10240;
+  public static final int DFU_COMMAND_HEADER_LEN = 4;
+  public static final int DFU_IMAGE_INIT_REQUEST = 0;
+  public static final int DFU_IMAGE_INIT_RESPONSE = 1;
+  public static final int DFU_IMAGE_INIT_COMPLETED = 2;
+  public static final int DFU_INIT_COMPLETED_LEN = 1;
+  public static final int DFU_IMAGE_RESUME_REQUEST = 3;
+  public static final int DFU_IMAGE_RESUME_RESPONSE = 4;
+  public static final int DFU_IMAGE_RESUME_COMPLETED = 5;
+  public static final int DFU_RESUME_COMPLETED_LEN = 1;
+  public static final int DFU_IMAGE_START_REQUEST = 6;
+  public static final int DFU_IMAGE_START_REQUEST_LEN = 10;
+  public static final int DFU_IMAGE_START_RESPONSE = 7;
+  public static final int DFU_IMAGE_END_REQUEST = 8;
+  public static final int DFU_IMAGE_END_REQUEST_LEN = 2;
+  public static final int DFU_IMAGE_END_RESPONSE = 9;
+  public static final int DFU_IMAGE_PACKET_DATA = 10;
+  public static final int DFU_IMAGE_DATA_LEN = 6;
+  public static final int DFU_IMAGE_PACKET_DATA_RESPONSE = 11;
+  public static final int DFU_IMAGE_TRANSMISSION_END = 12;
+  public static final int DFU_IMAGE_TRANSMISSION_END_LEN = 1;
+  public static final int DFU_IMAGE_END = 13;
+  public static final int DFU_IMAGE_END_LEN = 1;
+  public static final int DFU_IMAGE_FORCE_INIT_REQUEST = 14;
+  public static final int DFU_FILE_INIT_COMMAND_REQUEST = 21;
+  public static final int FILE_INIT_COMMAND_LEN = 16;
+  public static final int DFU_FILE_INIT_COMMAND_RESPONSE = 22;
+  public static final int DFU_FILE_INIT_COMPLETED = 23;
+  public static final int FILE_INIT_COMPLETED_LEN = 1;
+  public static final int DFU_FILE_START_REQUEST = 24;
+  public static final int FILE_START_REQUEST_LEN = 12;
+  public static final int DFU_FILE_START_RESPONSE = 25;
+  public static final int DFU_FILE_PACKET_DATA = 26;
+  public static final int FILE_PACKET_DATA_LEN = 4;
+  public static final int DFU_FILE_PACKET_DATA_RESPONSE = 27;
+  public static final int DFU_FILE_END_REQUEST = 28;
+  public static final int FILE_END_REQUEST_LEN = 2;
+  public static final int DFU_FILE_END_RESPONSE = 29;
+  public static final int DFU_FILE_TOTAL_END_REQUEST = 30;
+  public static final int FILE_TOTAL_END_REQUEST_LEN = 2;
+  public static final int DFU_FILE_TOTAL_END_RESPONSE = 31;
+  public static final int DFU_INIT_COMMAND_REQUEST_EXT = 32;
+  public static final int DFU_INIT_COMMAND_RESPONSE_EXT = 33;
+  public static final int DFU_IMAGE_INIT_COMPLETED_EXT = 34;
+  public static final int DFU_INIT_COMPLETED_EXT_LEN = 1;
+  public static final int DFU_FILE_LINK_LOSE_CHECK_REQ = 35;
+  public static final int DFU_FILE_LINK_LOSE_CHECK_RSP = 36;
+  public static final int FILE_LINK_LOSE_RSP_LEN = 2;
+  public static final int DFU_ABORT_COMMAND = 37;
+  public static final int DFU_SERVICE_EXIT = 100;
+  public static final int DFU_ERROR_DISCOVERY = 101;
+  public static final int DFU_ERROR_DISCOVERY_NOT_FOUND = 102;
+  public static final int DFU_RESUME_MODE_ABORT = 0;
+  public static final int DFU_RESUME_MODE_NORMAL = 1;
+  public static final int DFU_RESUME_MODE_QUERY = 2;
+  public com.crrepa.ble.sifli.dfu.Protocol();
+}
+
+===== com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo {
+  private int code;
+  private int mcu;
+  private java.lang.String message;
+  private int type;
+  private java.lang.String version;
+  private java.lang.String path;
+  private java.lang.String url;
+  private java.lang.String md5;
+  private java.lang.String log;
+  private java.lang.String log_en;
+  private int size;
+  private int tp_bin;
+  private java.lang.String tp_bin_path;
+  private java.lang.String tp_bin_md5;
+  private int tp_bin_size;
+  private int tp_bin_offset;
+  private java.lang.String sf_ui_ver;
+  public com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo();
+  public int getCode();
+  public void setCode(int);
+  public int getMcu();
+  public void setMcu(int);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public int getType();
+  public void setType(int);
+  public java.lang.String getVersion();
+  public void setVersion(java.lang.String);
+  public java.lang.String getPath();
+  public void setPath(java.lang.String);
+  public java.lang.String getUrl();
+  public void setUrl(java.lang.String);
+  public java.lang.String getMd5();
+  public void setMd5(java.lang.String);
+  public java.lang.String getLog();
+  public void setLog(java.lang.String);
+  public java.lang.String getLog_en();
+  public void setLog_en(java.lang.String);
+  public int getSize();
+  public void setSize(int);
+  public int getTp_bin();
+  public void setTp_bin(int);
+  public java.lang.String getTp_bin_path();
+  public void setTp_bin_path(java.lang.String);
+  public java.lang.String getTp_bin_md5();
+  public void setTp_bin_md5(java.lang.String);
+  public int getTp_bin_size();
+  public void setTp_bin_size(int);
+  public int getTp_bin_offset();
+  public void setTp_bin_offset(int);
+  public java.lang.String getSf_ui_ver();
+  public void setSf_ui_ver(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.upgrade.bean.HSFirmwareInfo =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.upgrade.bean.HSFirmwareInfo {
+  private java.lang.String appFilePath;
+  private java.lang.String configFilePath;
+  private java.lang.String patchFilePath;
+  private java.lang.String userFilePath;
+  private java.lang.String userStartAddress;
+  public com.crrepa.ble.trans.upgrade.bean.HSFirmwareInfo();
+  public java.lang.String getAppFilePath();
+  public void setAppFilePath(java.lang.String);
+  public java.lang.String getConfigFilePath();
+  public void setConfigFilePath(java.lang.String);
+  public java.lang.String getPatchFilePath();
+  public void setPatchFilePath(java.lang.String);
+  public java.lang.String getUserFilePath();
+  public void setUserFilePath(java.lang.String);
+  public java.lang.String getUserStartAddress();
+  public void setUserStartAddress(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$a =====
+Compiled from "SourceFile"
+class com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$a extends com.crrepa.s.d {
+  final com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback a;
+  final java.lang.String b;
+  final com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter c;
+  com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$a(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter, com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback, java.lang.String);
+  public void onFailure(int, java.lang.String);
+  public void onResponse(java.lang.Object);
+}
+
+===== com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$b =====
+Compiled from "SourceFile"
+class com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$b extends com.crrepa.s.c {
+  final com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener a;
+  final java.lang.String b;
+  final com.crrepa.h0.a c;
+  final com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter d;
+  com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$b(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter, java.lang.String, java.lang.String, com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, java.lang.String, com.crrepa.h0.a);
+  public void onFailure(int, java.lang.String);
+  public void onResponse(java.lang.Object);
+}
+
+===== com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$c =====
+Compiled from "SourceFile"
+class com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$c {
+  private static final com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter a;
+  private com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$c();
+  static com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter a();
+  static {};
+}
+
+===== com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter {
+  private static final java.lang.String DEFAULT_APP_VERSION = "1.0.2";
+  private com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter();
+  public static com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter getInstance();
+  private void saveFirmwareInfo(com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+  private com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo getFirmwareVersionInfo(com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+  private void startDownloadFirmwareFile(com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, com.crrepa.h0.a, com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+  private void onNetError(com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, int, java.lang.String);
+  com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$a);
+  static com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo access$200(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter, com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+  static void access$300(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter, com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+  static void access$400(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter, com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, int, java.lang.String);
+  public void checkFirmwareVersion(java.lang.String, int, com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback);
+  public void downloadNewFirmware(com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, com.crrepa.h0.a);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity$DataBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity$DataBean {
+  private java.lang.Integer id;
+  private java.lang.String name;
+  private java.lang.Integer api_ver;
+  private java.lang.Integer func_ver;
+  private java.lang.Integer size;
+  private java.lang.Integer download;
+  private java.lang.String preview;
+  public com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity$DataBean();
+  public java.lang.Integer getId();
+  public void setId(java.lang.Integer);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public java.lang.Integer getApi_ver();
+  public void setApi_ver(java.lang.Integer);
+  public java.lang.Integer getFunc_ver();
+  public void setFunc_ver(java.lang.Integer);
+  public java.lang.Integer getSize();
+  public void setSize(java.lang.Integer);
+  public java.lang.Integer getDownload();
+  public void setDownload(java.lang.Integer);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity {
+  private java.lang.Integer code;
+  private java.lang.String message;
+  private java.lang.Integer total;
+  private java.util.List<com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity$DataBean> data;
+  public com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity();
+  public java.lang.Integer getCode();
+  public void setCode(java.lang.Integer);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public java.lang.Integer getTotal();
+  public void setTotal(java.lang.Integer);
+  public java.util.List<com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity$DataBean> getData();
+  public void setData(java.util.List<com.crrepa.ble.trans.watchface.entity.NewJieliWatchFaceListEntity$DataBean>);
+  public com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo getWatchFaceList();
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity$FacesBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity$FacesBean {
+  private java.lang.Integer id;
+  private java.lang.String name;
+  private java.lang.Integer size;
+  private java.lang.String remark_cn;
+  private java.lang.String remark_en;
+  private java.lang.Integer tpl;
+  private java.util.List<java.lang.Integer> tpls;
+  private java.lang.String preview;
+  private java.lang.String file;
+  public com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity$FacesBean();
+  public java.lang.Integer getId();
+  public void setId(java.lang.Integer);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public java.lang.Integer getSize();
+  public void setSize(java.lang.Integer);
+  public java.lang.String getRemark_cn();
+  public void setRemark_cn(java.lang.String);
+  public java.lang.String getRemark_en();
+  public void setRemark_en(java.lang.String);
+  public java.lang.Integer getTpl();
+  public void setTpl(java.lang.Integer);
+  public java.util.List<java.lang.Integer> getTpls();
+  public void setTpls(java.util.List<java.lang.Integer>);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String getFile();
+  public void setFile(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity {
+  private java.lang.Integer code;
+  private java.lang.String page;
+  private java.lang.String per_page;
+  private java.lang.Integer total;
+  private java.lang.String message;
+  private java.util.List<com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity$FacesBean> faces;
+  public com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity();
+  public java.lang.Integer getCode();
+  public void setCode(java.lang.Integer);
+  public java.lang.String getPage();
+  public void setPage(java.lang.String);
+  public java.lang.String getPer_page();
+  public void setPer_page(java.lang.String);
+  public java.lang.Integer getTotal();
+  public void setTotal(java.lang.Integer);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public java.util.List<com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity$FacesBean> getFaces();
+  public void setFaces(java.util.List<com.crrepa.ble.trans.watchface.entity.NewSifliWatchFaceListEntity$FacesBean>);
+  public com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo getWatchFaceList();
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean$FaceListBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean$FaceListBean {
+  private java.lang.Integer id;
+  private java.lang.String name;
+  private java.lang.Integer size;
+  private java.lang.String preview;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean$FaceListBean();
+  public java.lang.Integer getId();
+  public void setId(java.lang.Integer);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public java.lang.Integer getSize();
+  public void setSize(java.lang.Integer);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean {
+  private java.lang.Integer id;
+  private java.lang.String name;
+  private java.lang.Integer download;
+  private java.lang.Integer size;
+  private java.lang.String file;
+  private java.lang.String preview;
+  private java.lang.String remark_cn;
+  private java.lang.String remark_en;
+  private java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean$FaceListBean> face_list;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean();
+  public java.lang.Integer getId();
+  public void setId(java.lang.Integer);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public java.lang.Integer getDownload();
+  public void setDownload(java.lang.Integer);
+  public java.lang.Integer getSize();
+  public void setSize(java.lang.Integer);
+  public java.lang.String getFile();
+  public void setFile(java.lang.String);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String getRemark_cn();
+  public void setRemark_cn(java.lang.String);
+  public java.lang.String getRemark_en();
+  public void setRemark_en(java.lang.String);
+  public java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean$FaceListBean> getFace_list();
+  public void setFace_list(java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean$FaceListBean>);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity {
+  private java.lang.Integer code;
+  private java.lang.String message;
+  private com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean data;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity();
+  public java.lang.Integer getCode();
+  public void setCode(java.lang.Integer);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean getData();
+  public void setData(com.crrepa.ble.trans.watchface.entity.NewWatchFaceDetailsEntity$DataBean);
+  public com.crrepa.ble.conn.bean.CRPWatchFaceDetailsInfo getWatchFaceDetailsInfo();
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean$FacesBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean$FacesBean {
+  private java.lang.Integer id;
+  private java.lang.String name;
+  private java.lang.Object tpl;
+  private java.lang.Integer download;
+  private java.lang.String remark_en;
+  private java.lang.String remark_zh;
+  private java.lang.String preview;
+  private java.lang.String file;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean$FacesBean();
+  public java.lang.Integer getId();
+  public void setId(java.lang.Integer);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public java.lang.Object getTpl();
+  public void setTpl(java.lang.Object);
+  public java.lang.Integer getDownload();
+  public void setDownload(java.lang.Integer);
+  public java.lang.String getRemark_en();
+  public void setRemark_en(java.lang.String);
+  public java.lang.String getRemark_zh();
+  public void setRemark_zh(java.lang.String);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String getFile();
+  public void setFile(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean {
+  private java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean$FacesBean> faces;
+  private java.lang.Integer count;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean();
+  public java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean$FacesBean> getFaces();
+  public void setFaces(java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean$FacesBean>);
+  public java.lang.Integer getCount();
+  public void setCount(java.lang.Integer);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity {
+  private java.lang.Integer code;
+  private java.lang.String message;
+  private java.lang.Integer total;
+  private com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean data;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity();
+  public java.lang.Integer getCode();
+  public void setCode(java.lang.Integer);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public java.lang.Integer getTotal();
+  public void setTotal(java.lang.Integer);
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean getData();
+  public void setData(com.crrepa.ble.trans.watchface.entity.NewWatchFaceListEntity$DataBean);
+  public com.crrepa.ble.conn.bean.CRPWatchFaceStoreInfo getWatchFaceList();
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean$FacesBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean$FacesBean {
+  private java.lang.Integer id;
+  private java.lang.String name;
+  private java.lang.Integer size;
+  private java.lang.Integer download;
+  private java.lang.String preview;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean$FacesBean();
+  public java.lang.Integer getId();
+  public void setId(java.lang.Integer);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public java.lang.Integer getSize();
+  public void setSize(java.lang.Integer);
+  public java.lang.Integer getDownload();
+  public void setDownload(java.lang.Integer);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean {
+  private java.lang.Integer id;
+  private java.lang.String tag_name;
+  private java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean$FacesBean> faces;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean();
+  public java.lang.Integer getId();
+  public void setId(java.lang.Integer);
+  public java.lang.String getTag_name();
+  public void setTag_name(java.lang.String);
+  public java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean$FacesBean> getFaces();
+  public void setFaces(java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean$FacesBean>);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity {
+  private java.lang.Integer code;
+  private java.lang.String message;
+  private java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean> data;
+  public com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity();
+  public java.lang.Integer getCode();
+  public void setCode(java.lang.Integer);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean> getData();
+  public void setData(java.util.List<com.crrepa.ble.trans.watchface.entity.NewWatchFaceTagEntity$DataBean>);
+  public java.util.List<com.crrepa.ble.conn.bean.CRPWatchFaceStoreTagInfo> getTagList();
+}
+
+===== com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity$FacesBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity$FacesBean {
+  private int id;
+  private java.lang.String name;
+  private java.lang.String preview;
+  private java.lang.String file;
+  public com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity$FacesBean();
+  public int getId();
+  public void setId(int);
+  public java.lang.String getName();
+  public void setName(java.lang.String);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String getFile();
+  public void setFile(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity {
+  private int code;
+  private int page;
+  private int per_page;
+  private int total;
+  private java.lang.String message;
+  private java.util.List<com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity$FacesBean> faces;
+  public com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity();
+  public int getCode();
+  public void setCode(int);
+  public int getPage();
+  public void setPage(int);
+  public int getPer_page();
+  public void setPer_page(int);
+  public int getTotal();
+  public void setTotal(int);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public java.util.List<com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity$FacesBean> getFaces();
+  public void setFaces(java.util.List<com.crrepa.ble.trans.watchface.entity.SifliWatchFaceStoreEntity$FacesBean>);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.WatchFaceEntity =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.WatchFaceEntity {
+  private int code;
+  private java.lang.String message;
+  private int tpl;
+  private java.lang.String preview;
+  private java.lang.String file;
+  public com.crrepa.ble.trans.watchface.entity.WatchFaceEntity();
+  public int getCode();
+  public void setCode(int);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public int getTpl();
+  public void setTpl(int);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String getFile();
+  public void setFile(java.lang.String);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity$FacesBean =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity$FacesBean {
+  private int id;
+  private int tpl;
+  private java.lang.String preview;
+  private java.lang.String file;
+  private java.util.List<java.lang.Integer> tpls;
+  public com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity$FacesBean();
+  public int getId();
+  public void setId(int);
+  public int getTpl();
+  public void setTpl(int);
+  public java.lang.String getPreview();
+  public void setPreview(java.lang.String);
+  public java.lang.String getFile();
+  public void setFile(java.lang.String);
+  public java.util.List<java.lang.Integer> getTpls();
+  public void setTpls(java.util.List<java.lang.Integer>);
+}
+
+===== com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity {
+  private int code;
+  private java.lang.String message;
+  private java.lang.String current_page;
+  private java.lang.String per_page;
+  private int total;
+  private java.util.List<com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity$FacesBean> faces;
+  public com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity();
+  public int getCode();
+  public void setCode(int);
+  public java.lang.String getMessage();
+  public void setMessage(java.lang.String);
+  public java.lang.String getCurrent_page();
+  public void setCurrent_page(java.lang.String);
+  public java.lang.String getPer_page();
+  public void setPer_page(java.lang.String);
+  public int getTotal();
+  public void setTotal(int);
+  public java.util.List<com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity$FacesBean> getFaces();
+  public void setFaces(java.util.List<com.crrepa.ble.trans.watchface.entity.WatchFaceStoreEntity$FacesBean>);
+}
+
+===== IMPLEMENTATION CLASSES REFERENCING INTERESTING QUERY METHODS =====
