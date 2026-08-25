@@ -20,25 +20,27 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Trace OTA firmware-version reply parser
+      - name: Extract exact firmware-version protocol
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
           mkdir -p /tmp/crp && cd /tmp/crp && unzip -q /tmp/crp.aar
           mkdir -p "$GITHUB_WORKSPACE/re/dafit_crp"
+          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.f.w > "$GITHUB_WORKSPACE/re/dafit_crp/firmware-version-builder.txt"
+          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.e.e > "$GITHUB_WORKSPACE/re/dafit_crp/firmware-version-callback.txt"
           javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.m.a > /tmp/ma.txt
           {
-            echo '===== command 0x5A / decimal 90 contexts in com.crrepa.m.a ====='
-            grep -n -B100 -A180 -E 'bipush[[:space:]]+90|sipush[[:space:]]+90' /tmp/ma.txt || true
-            echo '===== firmware callback/string contexts ====='
-            grep -n -B80 -A140 -Ei 'FirmwareVersion|firmware|onFirmware|String' /tmp/ma.txt || true
-          } > "$GITHUB_WORKSPACE/re/dafit_crp/ota-version-parser.txt"
+            echo '===== cmd 90 dispatch context ====='
+            grep -n -A240 -B80 '90: 1119' /tmp/ma.txt || true
+            echo '===== methods referencing firmware callback singleton ====='
+            grep -n -A120 -B40 -E 'com/crrepa/e/e|CRPDeviceFirmwareVersionCallback' /tmp/ma.txt || true
+          } > "$GITHUB_WORKSPACE/re/dafit_crp/firmware-version-parser.txt"
       - name: Commit focused dump
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/ota-version-parser.txt
-          git commit -m 'Add OTA firmware-version reply parser trace' || exit 0
+          git config user.email '4189827+github-actions[bot]@users.noreply.github.com'
+          git add re/dafit_crp/firmware-version-builder.txt re/dafit_crp/firmware-version-callback.txt re/dafit_crp/firmware-version-parser.txt
+          git commit -m 'Add exact firmware-version query protocol' || exit 0
           git push
