@@ -6,38 +6,21 @@
 <style>
 :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}
 *{box-sizing:border-box}body{margin:0;padding:18px;max-width:720px;margin-inline:auto}
-h1{font-size:1.4rem;margin:.2rem 0}.sub{color:#aeb7c4;margin:.2rem 0 1rem}
-.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}
-button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:#fff}
-.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}button:disabled{opacity:.45}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px}
-.k{color:#9ca8b8}.ok{color:#78e7a2}.bad{color:#ff8c8c}.warn{color:#ffd37a}
-progress{width:100%;height:16px;margin-top:12px}
-pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:150px;max-height:340px;overflow:auto;font-size:.82rem}
-small{color:#aeb7c4;line-height:1.45;display:block}
+h1{font-size:1.4rem;margin:.2rem 0}.sub{color:#aeb7c4;margin:.2rem 0 1rem}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}
+button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:#fff}.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}button:disabled{opacity:.45}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px}.k{color:#9ca8b8}.ok{color:#78e7a2}.bad{color:#ff8c8c}.warn{color:#ffd37a}
+progress{width:100%;height:16px;margin-top:12px}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:150px;max-height:340px;overflow:auto;font-size:.82rem}small{color:#aeb7c4;line-height:1.45;display:block}
 </style></head><body>
 <h1>Anko MOYOUNG-V2 uploader</h1>
-<div class="sub">Protocol fix v4 — CRC-verified. It will not activate a face unless the watch actually accepts the uploaded file.</div>
-
-<div class="card"><strong>1. Connect</strong>
-<div class="row" style="margin-top:12px"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div>
-<div class="kv"><div class="k">Status</div><div id="status">Not connected</div><div class="k">Manufacturer</div><div id="manufacturer">—</div><div class="k">Software</div><div id="software">—</div><div class="k">Battery</div><div id="battery">—</div></div></div>
-
-<div class="card"><strong>2. Choose .bin</strong>
-<div class="row" style="margin-top:12px"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div>
-<div class="kv"><div class="k">Expected CRC</div><div id="expectedCrc">—</div></div></div>
-
-<div class="card"><strong>3. Upload</strong>
-<small class="warn">This version checks the watch's final CRC before sending the success/registration commands. A 0000 CRC is treated as rejection, not success.</small>
-<div class="row" style="margin-top:12px"><button id="upload" disabled>Upload + verify</button></div>
-<progress id="progress" value="0" max="100"></progress><div id="progressText">0%</div></div>
-
+<div class="sub">Protocol fix v5 — mirrors the captured Da Fit 10,240-byte block transport.</div>
+<div class="card"><strong>1. Connect</strong><div class="row" style="margin-top:12px"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div><div class="kv"><div class="k">Status</div><div id="status">Not connected</div><div class="k">Manufacturer</div><div id="manufacturer">—</div><div class="k">Software</div><div id="software">—</div><div class="k">Battery</div><div id="battery">—</div></div></div>
+<div class="card"><strong>2. Choose .bin</strong><div class="row" style="margin-top:12px"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div><div class="kv"><div class="k">Expected CRC</div><div id="expectedCrc">—</div></div></div>
+<div class="card"><strong>3. Upload</strong><small class="warn">Da Fit does not send one 244-byte chunk per request. Each watch request selects a 10,240-byte block, which is then streamed as 41 × 244 bytes + 236 bytes (or a shorter final block). v4 got this wrong; v5 matches the capture.</small><div class="row" style="margin-top:12px"><button id="upload" disabled>Upload + verify</button></div><progress id="progress" value="0" max="100"></progress><div id="progressText">0%</div></div>
 <div class="card"><strong>Log</strong><pre id="log"></pre></div>
-
 <script>
 (()=>{'use strict';
 const SERVICE=0xFEEA,SEND=0xFEE2,SENDFILE=0xFEE6,NOTIFY=0xFEE3,INFO=0x180A,MAN=0x2A29,SOFT=0x2A28,BATT=0x180F,BATTLVL=0x2A19;
-const CHUNK=244,SIZE=444576;
+const ATT_CHUNK=244,BLOCK=10240,SIZE=444576;
 const PREP=new Uint8Array([0xFE,0xEA,0x20,0x09,0x74]);
 const READY=new Uint8Array([0xFE,0xEA,0x20,0x07,0x74]);
 const SUCCESS=new Uint8Array([0xFE,0xEA,0x20,0x09,0x74,0x00,0x00,0x00,0x00]);
@@ -53,83 +36,48 @@ function crc16(data,initial=0xFEEA){let value=initial;for(const byte of data){le
 function hx(n){return '0x'+n.toString(16).padStart(4,'0').toUpperCase()}
 function buttons(){const c=!!device?.gatt?.connected;$('upload').disabled=!(c&&file?.size===SIZE&&fileBytes&&expectedCrc!==null&&!busy)}
 function cleanup(disconnect=true){if(disconnect&&device?.gatt?.connected)device.gatt.disconnect();send=sendFile=notify=null;$('connect').disabled=false;$('disconnect').disabled=true;$('status').textContent='Not connected';buttons()}
-async function connect(){try{
- if(!('bluetooth'in navigator))throw Error('Web Bluetooth unavailable');
- log('Opening Bluetooth chooser…');
- device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SERVICE,INFO,BATT]});
- device.addEventListener('gattserverdisconnected',()=>cleanup(false));
- const s=await device.gatt.connect(),is=await s.getPrimaryService(INFO),bs=await s.getPrimaryService(BATT),ms=await s.getPrimaryService(SERVICE);
- const man=text(await(await is.getCharacteristic(MAN)).readValue()),soft=text(await(await is.getCharacteristic(SOFT)).readValue()),bat=(await(await bs.getCharacteristic(BATTLVL)).readValue()).getUint8(0);
- send=await ms.getCharacteristic(SEND);sendFile=await ms.getCharacteristic(SENDFILE);notify=await ms.getCharacteristic(NOTIFY);
- if(man!=='MOYOUNG-V2')throw Error('Wrong device: '+man);
- $('manufacturer').textContent=man;$('software').textContent=soft;$('battery').textContent=bat+'%';
- $('status').textContent='Connected to '+(device.name||'watch');$('status').className='ok';$('connect').disabled=true;$('disconnect').disabled=false;
- log(`Connected: ${man} / ${soft} / ${bat}%`);buttons();
-}catch(e){$('status').textContent='Connection failed';$('status').className='bad';log('ERROR: '+(e.message||e));cleanup(false)}}
+async function connect(){try{if(!('bluetooth'in navigator))throw Error('Web Bluetooth unavailable');log('Opening Bluetooth chooser…');device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SERVICE,INFO,BATT]});device.addEventListener('gattserverdisconnected',()=>cleanup(false));const s=await device.gatt.connect(),is=await s.getPrimaryService(INFO),bs=await s.getPrimaryService(BATT),ms=await s.getPrimaryService(SERVICE);const man=text(await(await is.getCharacteristic(MAN)).readValue()),soft=text(await(await is.getCharacteristic(SOFT)).readValue()),bat=(await(await bs.getCharacteristic(BATTLVL)).readValue()).getUint8(0);send=await ms.getCharacteristic(SEND);sendFile=await ms.getCharacteristic(SENDFILE);notify=await ms.getCharacteristic(NOTIFY);if(man!=='MOYOUNG-V2')throw Error('Wrong device: '+man);$('manufacturer').textContent=man;$('software').textContent=soft;$('battery').textContent=bat+'%';$('status').textContent='Connected to '+(device.name||'watch');$('status').className='ok';$('connect').disabled=true;$('disconnect').disabled=false;log(`Connected: ${man} / ${soft} / ${bat}%`);buttons()}catch(e){$('status').textContent='Connection failed';$('status').className='bad';log('ERROR: '+(e.message||e));cleanup(false)}}
+
+async function sendBlock(bytes,blockIndex){
+ const start=blockIndex*BLOCK;
+ if(start>=bytes.length)throw Error('Watch requested invalid block '+blockIndex);
+ const end=Math.min(start+BLOCK,bytes.length);
+ for(let off=start;off<end;off+=ATT_CHUNK){
+  const piece=bytes.subarray(off,Math.min(off+ATT_CHUNK,end));
+  await sendFile.writeValueWithoutResponse(piece);
+ }
+ const pct=Math.round(end*100/bytes.length);
+ $('progress').value=pct;$('progressText').textContent=`${pct}% — block ${blockIndex+1}/${Math.ceil(bytes.length/BLOCK)}`;
+}
 
 async function upload(){
  if(!fileBytes||fileBytes.length!==SIZE||!send||!sendFile||!notify||expectedCrc===null)return;
  busy=true;buttons();$('progress').value=0;$('progressText').textContent='0%';
  try{
-  const bytes=fileBytes,total=Math.ceil(bytes.length/CHUNK);
-  log(`Starting ${bytes.length.toLocaleString()}-byte transfer; expected full-file CRC ${hx(expectedCrc)}.`);
+  const bytes=fileBytes,totalBlocks=Math.ceil(bytes.length/BLOCK);
+  log(`Starting ${bytes.length.toLocaleString()}-byte transfer; ${totalBlocks} blocks; expected CRC ${hx(expectedCrc)}.`);
   await notify.startNotifications();
   const watchCrc=await new Promise((resolve,reject)=>{
-   let done=false;const timer=setTimeout(()=>end(Error('Timed out')),180000);
+   let done=false,sending=false,pending=[];const timer=setTimeout(()=>end(Error('Timed out')),180000);
    function end(err,result){if(done)return;done=true;clearTimeout(timer);notify.removeEventListener('characteristicvaluechanged',onv);err?reject(err):resolve(result)}
-   function onv(ev){
-    const v=ev.target.value;if(!v)return;const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);
-    if(starts(d,READY)&&d.length>=7){
-      const n=(d[5]<<8)|d[6],st=n*CHUNK;if(st>=bytes.length)return end(Error('Invalid chunk '+n));
-      const en=Math.min(st+CHUNK,bytes.length);
-      sendFile.writeValueWithoutResponse(bytes.subarray(st,en)).then(()=>{const p=Math.round(en*100/bytes.length);$('progress').value=p;$('progressText').textContent=`${p}% — chunk ${n+1}/${total}`}).catch(e=>end(e));
-      return;
-    }
-    if(starts(d,PREP)&&d.length>=9&&d[5]===0xFF&&d[6]===0xFF){
-      const crc=(d[7]<<8)|d[8];
-      log(`Watch final frame: FF FF ${d[7].toString(16).padStart(2,'0')} ${d[8].toString(16).padStart(2,'0')} → CRC ${hx(crc)}.`);
-      return end(null,crc);
-    }
-    if(d.length>=6&&d[0]===0xFE&&d[1]===0xEA&&d[4]===0x29)log('WATCH CONFIRMS active face index = '+d[5]);
+   async function drain(){if(sending||done)return;sending=true;try{while(pending.length&&!done){const n=pending.shift();log(`Watch requests block ${n}/${totalBlocks-1}.`);await sendBlock(bytes,n)}}catch(e){end(e)}finally{sending=false}}
+   function onv(ev){const v=ev.target.value;if(!v)return;const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);
+    if(starts(d,READY)&&d.length>=7){const n=(d[5]<<8)|d[6];pending.push(n);drain();return}
+    if(starts(d,PREP)&&d.length>=9&&d[5]===0xFF&&d[6]===0xFF){const crc=(d[7]<<8)|d[8];log(`Watch final frame: FF FF ${d[7].toString(16).padStart(2,'0')} ${d[8].toString(16).padStart(2,'0')} → CRC ${hx(crc)}.`);if(sending||pending.length){log('Final CRC arrived while block queue still active; waiting briefly.');setTimeout(()=>end(null,crc),100)}else end(null,crc);return}
    }
    notify.addEventListener('characteristicvaluechanged',onv);
-   const p=new Uint8Array(9);p.set(PREP);new DataView(p.buffer).setUint32(5,bytes.length,false);
-   send.writeValueWithoutResponse(p).catch(e=>end(e));
+   const p=new Uint8Array(9);p.set(PREP);new DataView(p.buffer).setUint32(5,bytes.length,false);send.writeValueWithoutResponse(p).catch(e=>end(e));
   });
-
-  if(watchCrc!==expectedCrc){
-    $('progressText').textContent=`REJECTED — watch ${hx(watchCrc)}, file ${hx(expectedCrc)}`;
-    log(`REJECTED. Watch CRC ${hx(watchCrc)} does not match file CRC ${hx(expectedCrc)}. Not committing and not changing the active face.`);
-    return;
-  }
-
-  log(`CRC MATCH ${hx(watchCrc)}. Watch accepted the exact uploaded bytes.`);
-  await send.writeValueWithoutResponse(SUCCESS);
-  log('Success packet sent. Waiting 1.05 s before registration.');
-  await sleep(1050);
-  await send.writeValueWithoutResponse(REGISTER);
-  log('Registration sent. Waiting 650 ms before selecting face index 8.');
-  await sleep(650);
-  await send.writeValueWithoutResponse(SELECT8);
-  await sleep(250);
-  await send.writeValueWithoutResponse(QUERYFACE);
-  $('progress').value=100;$('progressText').textContent=`100% — ACCEPTED ${hx(watchCrc)}`;
-  log('ACCEPTED + activated. Querying the watch for active face index.');
-  await sleep(500);
- }catch(e){log('UPLOAD ERROR: '+(e.message||e));$('progressText').textContent='ERROR'}
- finally{notify?.stopNotifications().catch(()=>{});busy=false;buttons()}
+  if(watchCrc!==expectedCrc){$('progressText').textContent=`REJECTED — watch ${hx(watchCrc)}, file ${hx(expectedCrc)}`;log(`REJECTED. Watch CRC ${hx(watchCrc)} does not match file CRC ${hx(expectedCrc)}. Not committing.`);return}
+  log(`CRC MATCH ${hx(watchCrc)}. Exact file accepted.`);
+  await send.writeValueWithoutResponse(SUCCESS);log('Success packet sent. Waiting 1.05 s.');await sleep(1050);
+  await send.writeValueWithoutResponse(REGISTER);log('Registration sent. Waiting 650 ms.');await sleep(650);
+  await send.writeValueWithoutResponse(SELECT8);await sleep(250);await send.writeValueWithoutResponse(QUERYFACE);
+  $('progress').value=100;$('progressText').textContent=`100% — ACCEPTED ${hx(watchCrc)}`;log('ACCEPTED + activated.');await sleep(500);
+ }catch(e){log('UPLOAD ERROR: '+(e.message||e));$('progressText').textContent='ERROR'}finally{notify?.stopNotifications().catch(()=>{});busy=false;buttons()}
 }
-
 $('connect').onclick=connect;$('disconnect').onclick=()=>cleanup(true);$('upload').onclick=upload;
-$('file').onchange=async()=>{
- file=$('file').files?.[0]||null;fileBytes=null;expectedCrc=null;$('expectedCrc').textContent='—';
- $('fileName').textContent=file?`${file.name} — ${file.size.toLocaleString()} bytes`:'No file selected';
- if(file){
-  if(file.size!==SIZE){log(`Wrong size: ${file.size}; expected ${SIZE}`)}
-  else{fileBytes=new Uint8Array(await file.arrayBuffer());expectedCrc=crc16(fileBytes);$('expectedCrc').textContent=hx(expectedCrc);log(`File loaded. CRC ${hx(expectedCrc)}.`)}
- }
- buttons();
-};
-log('Ready — protocol fix v4 (CRC-verified).');
+$('file').onchange=async()=>{file=$('file').files?.[0]||null;fileBytes=null;expectedCrc=null;$('expectedCrc').textContent='—';$('fileName').textContent=file?`${file.name} — ${file.size.toLocaleString()} bytes`:'No file selected';if(file){if(file.size!==SIZE){log(`Wrong size: ${file.size}; expected ${SIZE}`)}else{fileBytes=new Uint8Array(await file.arrayBuffer());expectedCrc=crc16(fileBytes);$('expectedCrc').textContent=hx(expectedCrc);log(`File loaded. CRC ${hx(expectedCrc)}.`)}}buttons()};
+log('Ready — protocol fix v5 (10 KiB block transport).');
 })();
 </script></body></html>
