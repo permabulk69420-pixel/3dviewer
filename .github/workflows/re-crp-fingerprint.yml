@@ -32,25 +32,19 @@ jobs:
 
           OUT="$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-semantics.txt"
           : > "$OUT"
-          PAT='queryAvailableStorage|queryJieliWatchFaceInfo|queryDeviceOtaStatus|queryOtaType|queryDeviceVersion|queryFirmwareVersion|queryFrimwareVersion|queryUiVersion|testMode|JieliWatchFaceInfo|AvailableStorage|DeviceVersionType|FirmwareUpgradeType'
 
-          echo '===== MATCHING CLASS FILES =====' >> "$OUT"
-          mapfile -t files < <(grep -aRIl -E "$PAT" /tmp/classes/com/crrepa --include='*.class' || true)
-          printf '%s\n' "${files[@]}" >> "$OUT"
+          echo '===== RELEVANT CLASS NAMES =====' >> "$OUT"
+          find /tmp/classes/com/crrepa -type f -name '*.class' | grep -Ei 'dfu|ota|jieli|storage|version|watchface' | sed 's#^/tmp/classes/##' | sort >> "$OUT" || true
 
           echo >> "$OUT"
-          echo '===== JAVAP =====' >> "$OUT"
-          for f in "${files[@]}"; do
-            [ -n "$f" ] || continue
-            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
-            echo >> "$OUT"
-            echo "===== $c =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
-          done
-
-          echo >> "$OUT"
-          echo '===== ENUM / BEAN CLASSES =====' >> "$OUT"
+          echo '===== DIRECT CORE CLASSES =====' >> "$OUT"
           for c in \
+            com.crrepa.h.a \
+            com.crrepa.f.w \
+            com.crrepa.f.a2 \
+            com.crrepa.e.c \
+            com.crrepa.m.a \
+            com.crrepa.q.b \
             com.crrepa.ble.conn.type.CRPDeviceVersionType \
             com.crrepa.ble.conn.type.CRPFirmwareUpgradeType \
             com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo \
@@ -61,6 +55,15 @@ jobs:
             javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
           done
 
+          echo >> "$OUT"
+          echo '===== DFU / OTA TYPE CLASSES =====' >> "$OUT"
+          while read -r f; do
+            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
+            echo >> "$OUT"
+            echo "===== $c =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
+          done < <(find /tmp/classes/com/crrepa/ble/conn -type f -name '*.class' | grep -Ei 'Dfu|Ota|Firmware|Jieli|AvailableStorage' | sort || true)
+
           wc -l "$OUT"
       - name: Commit result
         run: |
@@ -68,5 +71,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp/fingerprint-semantics.txt
-          git commit -m 'Add CRP fingerprint command semantics' || exit 0
+          git commit -m 'Expand CRP fingerprint semantics' || exit 0
           git push
