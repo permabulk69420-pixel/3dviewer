@@ -1,0 +1,75 @@
+name: Analyze public JieLi UFW sample
+
+on:
+  push:
+    paths:
+      - '.github/workflows/re-jieli-ufw-sample.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Download and analyze public vendor sample
+        run: |
+          set -euxo pipefail
+          URL='https://p.moyoung.com/uploads/jieli/V37_QIpBxMKILvdR5SYRGAhsUVx3CTAxdIxV/fZaBQ5zVwUMPiM4mxHBWBEGe6XzeC5P6.ufw'
+          curl -fL "$URL" -o /tmp/sample.ufw
+          OUT="$GITHUB_WORKSPACE/re/dafit_crp/jieli-ufw-sample-analysis.txt"
+          mkdir -p "$(dirname "$OUT")"
+          {
+            echo '===== METADATA ====='
+            stat -c 'size=%s bytes' /tmp/sample.ufw
+            sha256sum /tmp/sample.ufw
+            md5sum /tmp/sample.ufw
+            file /tmp/sample.ufw
+            echo
+            echo '===== FIRST 1024 BYTES ====='
+            xxd -g1 -l 1024 /tmp/sample.ufw
+            echo
+            echo '===== LAST 1024 BYTES ====='
+            tail -c 1024 /tmp/sample.ufw | xxd -g1
+            echo
+            echo '===== PRINTABLE STRINGS ====='
+            strings -a -n 4 /tmp/sample.ufw | head -n 2000
+            echo
+            echo '===== SIGNATURE OFFSETS ====='
+            python3 - <<'PY'
+          } > "$OUT"
+          python3 - <<'PY' >> "$OUT"
+          from pathlib import Path
+          import math, collections
+          b=Path('/tmp/sample.ufw').read_bytes()
+          sigs={
+            'ELF':b'\x7fELF','ZIP':b'PK\x03\x04','GZIP':b'\x1f\x8b','XZ':b'\xfd7zXZ\x00',
+            'PNG':b'\x89PNG\r\n\x1a\n','JIELI_ASCII':b'JIELI','JL_ASCII':b'JL',
+            'UF2':b'UF2','LZ4':b'\x04\x22\x4d\x18'
+          }
+          for name,s in sigs.items():
+              offs=[]; p=0
+              while True:
+                  p=b.find(s,p)
+                  if p<0: break
+                  offs.append(p); p+=1
+                  if len(offs)>=50: break
+              print(name, offs)
+          c=collections.Counter(b)
+          ent=-sum((n/len(b))*math.log2(n/len(b)) for n in c.values()) if b else 0
+          print(f'entropy={ent:.6f} bits/byte')
+          print('first32=',b[:32].hex())
+          print('last32=',b[-32:].hex())
+          PY
+      - name: Commit analysis only
+        run: |
+          set -euxo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add re/dafit_crp/jieli-ufw-sample-analysis.txt
+          git commit -m 'Add public JieLi UFW container analysis' || exit 0
+          git push
