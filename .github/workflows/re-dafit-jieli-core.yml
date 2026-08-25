@@ -26,59 +26,14 @@ jobs:
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
           mkdir -p /tmp/crp && cd /tmp/crp && unzip -q /tmp/crp.aar
-          OUT="$GITHUB_WORKSPACE/re/dafit_crp/jieli-core.txt"
-          : > "$OUT"
-          for cls in \
-            com.crrepa.i0.a \
-            com.crrepa.i0.b \
-            com.crrepa.c0.a \
-            com.crrepa.c0.c \
-            com.crrepa.c0.d \
-            com.crrepa.c0.e \
-            com.crrepa.m.a \
-            com.crrepa.k0.d \
-            com.crrepa.m.f \
-            com.crrepa.m.c \
-            com.crrepa.q.b \
-            com.crrepa.p.c \
-            com.crrepa.p.a \
-            com.crrepa.f.u1 \
-            com.crrepa.f.m \
-            com.crrepa.j.a \
-            com.crrepa.l.a \
-            com.crrepa.p0.e \
-            com.crrepa.p0.n \
-            com.crrepa.r.a \
-            com.crrepa.s.a \
-            com.crrepa.ble.ota.jieli.JieliDfuController \
-            com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter \
-            com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo \
-            com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo \
-            com.crrepa.ble.conn.type.CRPFirmwareUpgradeType \
-            com.crrepa.h0.a; do
-            echo "===== $cls =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT" 2>&1 || true
-          done
-          mkdir -p /tmp/classes && cd /tmp/classes && jar xf /tmp/crp/classes.jar
-          echo '===== classes referencing CRPBtAddressCallback =====' >> "$OUT"
-          grep -RIl --binary-files=text 'CRPBtAddressCallback' com/crrepa --include='*.class' | sort | tee /tmp/btaddr-refs.txt >> "$OUT" || true
-          while read -r f; do
-            [ -n "$f" ] || continue
-            cls="${f%.class}"; cls="${cls//\//.}"
-            echo "===== BTADDR REF $cls =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT" 2>&1 || true
-          done < /tmp/btaddr-refs.txt
-          echo '===== firmware/upgrade class list =====' >> "$OUT"
-          jar tf /tmp/crp/classes.jar | grep -Ei '(firmware|upgrade|jieli|dfu)' | sort >> "$OUT" || true
-          echo '===== URL-like strings in firmware/upgrade classes =====' >> "$OUT"
-          find com/crrepa -type f -name '*.class' | grep -Ei '(firmware|upgrade|jieli|dfu)' | while read -r f; do
-            strings "$f" | grep -E 'https?://|\.bin|\.zip|firmware|upgrade|version|md5|url|mac|app_version' | sed "s#^#$f: #" || true
-          done >> "$OUT"
+          mkdir -p "$GITHUB_WORKSPACE/re/dafit_crp"
+          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.f.m > "$GITHUB_WORKSPACE/re/dafit_crp/bt-address-builder.txt"
+          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.j.a > "$GITHUB_WORKSPACE/re/dafit_crp/bt-address-decoder.txt"
       - name: Commit focused dump
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/jieli-core.txt
-          git commit -m 'Add Bluetooth address packet analysis' || exit 0
+          git add re/dafit_crp/bt-address-builder.txt re/dafit_crp/bt-address-decoder.txt
+          git commit -m 'Add exact Bluetooth address query classes' || exit 0
           git push
