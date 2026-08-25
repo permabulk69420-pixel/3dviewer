@@ -1,0 +1,116 @@
+name: Analyze JieLi UFW container
+
+on:
+  push:
+    paths:
+      - '.github/workflows/re-jieli-ufw.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download sample UFW and CRP AAR
+        run: |
+          set -euxo pipefail
+          curl -fL 'https://p.moyoung.com/uploads/jieli/V37_QIpBxMKILvdR5SYRGAhsUVx3CTAxdIxV/fZaBQ5zVwUMPiM4mxHBWBEGe6XzeC5P6.ufw' -o /tmp/sample.ufw
+          curl -fL 'https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar' -o /tmp/crp.aar
+          rm -rf /tmp/crp /tmp/classes
+          mkdir -p /tmp/crp /tmp/classes re/dafit_crp
+          cd /tmp/crp && unzip -q /tmp/crp.aar
+          cd /tmp/classes && jar xf /tmp/crp/classes.jar
+      - name: Analyze UFW bytes
+        run: |
+          set -euxo pipefail
+          OUT="$GITHUB_WORKSPACE/re/dafit_crp/jieli-ufw-analysis.txt"
+          : > "$OUT"
+          echo '===== BASIC =====' >> "$OUT"
+          wc -c /tmp/sample.ufw >> "$OUT"
+          sha256sum /tmp/sample.ufw >> "$OUT"
+          md5sum /tmp/sample.ufw >> "$OUT"
+          file /tmp/sample.ufw >> "$OUT"
+          echo >> "$OUT"
+          echo '===== FIRST 1024 BYTES =====' >> "$OUT"
+          xxd -g1 -l 1024 /tmp/sample.ufw >> "$OUT"
+          echo >> "$OUT"
+          echo '===== LAST 1024 BYTES =====' >> "$OUT"
+          tail -c 1024 /tmp/sample.ufw | xxd -g1 >> "$OUT"
+          echo >> "$OUT"
+          echo '===== STRINGS =====' >> "$OUT"
+          strings -a -n 4 /tmp/sample.ufw | head -n 1000 >> "$OUT" || true
+          echo >> "$OUT"
+          echo '===== MAGIC / ENTROPY / REPEATS =====' >> "$OUT"
+          python - <<'PY' >> "$OUT"
+          from pathlib import Path
+          import math, collections, struct
+          p=Path('/tmp/sample.ufw').read_bytes()
+          print('size',len(p),hex(len(p)))
+          for off in [0,4,8,12,16,20,24,28,32,64,128,256,512,1024,4096]:
+              if off+16<=len(p): print(hex(off),p[off:off+16].hex(' '))
+          print('u32le first64:', [hex(x) for x in struct.unpack('<16I',p[:64])])
+          print('u32be first64:', [hex(x) for x in struct.unpack('>16I',p[:64])])
+          for bs in [256,1024,4096,16384]:
+              ents=[]
+              for i in range(0,len(p),bs):
+                  c=collections.Counter(p[i:i+bs]); n=sum(c.values())
+                  if not n: continue
+                  e=-sum((v/n)*math.log2(v/n) for v in c.values())
+                  ents.append(e)
+              print('entropy block',bs,'min',min(ents),'max',max(ents),'avg',sum(ents)/len(ents))
+          for magic in [b'JL',b'JLFS',b'UF',b'UP',b'uboot',b'sdk',b'AC69',b'AC70',b'BR23',b'BR25',b'BR28',b'BR30',b'pi32',b'PI32']:
+              offs=[]; start=0
+              while True:
+                  j=p.find(magic,start)
+                  if j<0: break
+                  offs.append(j); start=j+1
+              if offs: print('magic',magic,offs[:50])
+          # long runs of FF/00 often expose partition padding
+          for val in (0x00,0xff):
+              runs=[]; s=None
+              for i,b in enumerate(p):
+                  if b==val and s is None: s=i
+                  elif b!=val and s is not None:
+                      if i-s>=64:runs.append((s,i-s))
+                      s=None
+              if s is not None and len(p)-s>=64:runs.append((s,len(p)-s))
+              print('runs',hex(val),sorted(runs,key=lambda x:x[1],reverse=True)[:30])
+          PY
+      - name: Decompile JieLi transfer classes
+        run: |
+          set -euxo pipefail
+          OUT="$GITHUB_WORKSPACE/re/dafit_crp/jieli-transfer-bytecode.txt"
+          : > "$OUT"
+          for c in \
+            com.crrepa.ble.ota.jieli.JieliDfuController \
+            com.crrepa.i0.b \
+            com.crrepa.i0.a \
+            com.crrepa.c0.c \
+            com.crrepa.c0.d \
+            com.crrepa.c0.e \
+            com.crrepa.m.f \
+            com.crrepa.f.u1; do
+            echo >> "$OUT"
+            echo "===== $c =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
+          done
+      - name: Commit analysis only
+        run: |
+          set -euxo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add re/dafit_crp/jieli-ufw-analysis.txt re/dafit_crp/jieli-transfer-bytecode.txt
+          git commit -m 'Add JieLi UFW container analysis' || exit 0
+          git push
