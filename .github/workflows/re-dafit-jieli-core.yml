@@ -20,27 +20,19 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Isolate proprietary firmware-version protocol
+      - name: Extract exact OTA version packet builder
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
           mkdir -p /tmp/crp && cd /tmp/crp && unzip -q /tmp/crp.aar
-          OUT="$GITHUB_WORKSPACE/re/dafit_crp/ota-version-method.txt"
-          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.h.a > /tmp/ha.txt
-          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.m.a > /tmp/ma.txt
-          : > "$OUT"
-          echo '===== queryFrimwareVersion method =====' >> "$OUT"
-          grep -A35 -B3 'public void queryFrimwareVersion' /tmp/ha.txt >> "$OUT" || true
-          echo '===== firmware callback decode sites =====' >> "$OUT"
-          grep -B35 -A15 'com/crrepa/e/e.*java/lang/String' /tmp/ma.txt >> "$OUT" || true
-          echo '===== all e/e references in parser =====' >> "$OUT"
-          grep -B12 -A12 'com/crrepa/e/e' /tmp/ma.txt >> "$OUT" || true
+          mkdir -p "$GITHUB_WORKSPACE/re/dafit_crp"
+          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.f.w > "$GITHUB_WORKSPACE/re/dafit_crp/ota-version-builder.txt"
       - name: Commit focused dump
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/ota-version-method.txt
-          git commit -m 'Add isolated OTA version protocol' || exit 0
+          git add re/dafit_crp/ota-version-builder.txt
+          git commit -m 'Add exact OTA version packet builder' || exit 0
           git push
