@@ -1,4 +1,4 @@
-name: Extract Da Fit firmware network surface
+name: Extract Da Fit device + JieLi OTA internals
 
 on:
   push:
@@ -16,11 +16,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
-      - name: Extract every MoYoung firmware endpoint and caller
+      - name: Extract device-identification API and OTA image path
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
@@ -30,43 +30,93 @@ jobs:
           cd /tmp/crp && unzip -q /tmp/crp.aar
           cd /tmp/classes && jar xf /tmp/crp/classes.jar
 
-          OUT="$GITHUB_WORKSPACE/re/dafit_crp/firmware-network-surface.txt"
-          : > "$OUT"
+          API="$GITHUB_WORKSPACE/re/dafit_crp/device-api-surface.txt"
+          OTA="$GITHUB_WORKSPACE/re/dafit_crp/jieli-ota-internals.txt"
+          : > "$API"
+          : > "$OTA"
 
-          echo '===== URL / DOMAIN STRINGS =====' >> "$OUT"
-          (strings -a /tmp/crp/classes.jar | grep -Eio 'https?://[^[:space:]"<>]+' || true) | sort -u >> "$OUT"
-          (grep -aRhoE 'https?://[^[:space:]"<>]+' /tmp/classes || true) | sort -u >> "$OUT"
-
-          echo >> "$OUT"
-          echo '===== MOYOUNG / UPGRADE / FIRMWARE STRING HITS =====' >> "$OUT"
-          (strings -a /tmp/crp/classes.jar | grep -Ei 'moyoung|upgrade|firmware|factory|beta|download|\.ufw|uploads/jieli' || true) | sort -u >> "$OUT"
-
-          echo >> "$OUT"
-          echo '===== MATCHING CLASSES (FULL JAVAP) =====' >> "$OUT"
-          mapfile -t MATCHES < <(grep -aRIl -E 'moyoung|upgrade|factory|beta|FirmwareVersionInfo|FirmwareUpgradePresenter|downloadNewFirmware' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
-          for f in "${MATCHES[@]}"; do
-            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
-            echo >> "$OUT"
-            echo "===== $c =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
+          echo '===== PUBLIC CONNECTION / DEVICE API =====' >> "$API"
+          for c in \
+            com.crrepa.ble.conn.CRPBleConnection \
+            com.crrepa.ble.CRPBleDevice \
+            com.crrepa.ble.CRPBleClient; do
+            echo >> "$API"
+            echo "===== $c =====" >> "$API"
+            javap -classpath /tmp/crp/classes.jar -p -constants "$c" >> "$API" 2>&1 || true
           done
 
-          echo >> "$OUT"
-          echo '===== ALL com.crrepa.r NETWORK HELPERS =====' >> "$OUT"
-          mapfile -t NETS < <(find /tmp/classes/com/crrepa/r -name '*.class' -type f 2>/dev/null | sort || true)
-          for f in "${NETS[@]}"; do
-            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
-            echo >> "$OUT"
-            echo "===== $c =====" >> "$OUT"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
+          echo >> "$API"
+          echo '===== CALLBACK / BEAN CLASS NAMES RELEVANT TO IDENTITY =====' >> "$API"
+          jar tf /tmp/crp/classes.jar | grep -Ei 'callback|bean|type' | grep -Ei 'device|firmware|version|screen|display|resolution|mcu|hardware|protocol|model|product|flash|support|watchface' | sort -u >> "$API" || true
+
+          echo >> "$API"
+          echo '===== FULL JAVAP OF IDENTITY-RELATED PUBLIC CLASSES =====' >> "$API"
+          mapfile -t PUBS < <(jar tf /tmp/crp/classes.jar | grep '^com/crrepa/ble/' | grep '\.class$' | grep -Ei 'Device|Firmware|Version|Screen|Display|Resolution|Mcu|Hardware|Protocol|Model|Product|Flash|Support|WatchFace' | sort -u || true)
+          for p in "${PUBS[@]}"; do
+            c="${p%.class}"; c="${c//\//.}"
+            echo >> "$API"
+            echo "===== $c =====" >> "$API"
+            javap -classpath /tmp/crp/classes.jar -p -constants "$c" >> "$API" 2>&1 || true
           done
 
-          wc -l "$OUT"
-      - name: Commit firmware network surface
+          echo >> "$API"
+          echo '===== IMPLEMENTATION CLASSES REFERENCING INTERESTING QUERY METHODS =====' >> "$API"
+          mapfile -t QCLASSES < <(grep -aRIl -E 'query(Device|Mcu|MCU|Hardware|Protocol|Firmware|WatchFace|Screen|Display)|get(Device|Mcu|MCU|Hardware|Protocol|Firmware|Screen|Display|Resolution)|firmwareVersion|deviceVersion|protocolVersion' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
+          for f in "${QCLASSES[@]}"; do
+            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
+            echo >> "$API"
+            echo "===== $c =====" >> "$API"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$API" 2>&1 || true
+          done
+
+          echo '===== JIELI / UPGRADE CLASS INVENTORY =====' >> "$OTA"
+          jar tf /tmp/crp/classes.jar | grep -Ei 'jieli|trans/upgrade|ota/.+dfu|firmware' | sort -u >> "$OTA" || true
+
+          echo >> "$OTA"
+          echo '===== KNOWN CRP/JIELI OTA CORE =====' >> "$OTA"
+          for c in \
+            com.crrepa.ble.ota.jieli.JieliDfuController \
+            com.crrepa.i0.b \
+            com.crrepa.i0.a \
+            com.crrepa.c0.c \
+            com.crrepa.c0.d \
+            com.crrepa.c0.e \
+            com.crrepa.m.f \
+            com.crrepa.q.b \
+            com.crrepa.f.u1 \
+            com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter \
+            com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo; do
+            echo >> "$OTA"
+            echo "===== $c =====" >> "$OTA"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OTA" 2>&1 || true
+          done
+
+          echo >> "$OTA"
+          echo '===== ALL JIELI OTA PACKAGE CLASSES =====' >> "$OTA"
+          mapfile -t JCLS < <(jar tf /tmp/crp/classes.jar | grep '^com/crrepa/ble/ota/jieli/.*\.class$' | sort -u || true)
+          for p in "${JCLS[@]}"; do
+            c="${p%.class}"; c="${c//\//.}"
+            echo >> "$OTA"
+            echo "===== $c =====" >> "$OTA"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OTA" 2>&1 || true
+          done
+
+          echo >> "$OTA"
+          echo '===== ALL TRANS/UPGRADE CLASSES =====' >> "$OTA"
+          mapfile -t UCLS < <(jar tf /tmp/crp/classes.jar | grep '^com/crrepa/ble/trans/upgrade/.*\.class$' | sort -u || true)
+          for p in "${UCLS[@]}"; do
+            c="${p%.class}"; c="${c//\//.}"
+            echo >> "$OTA"
+            echo "===== $c =====" >> "$OTA"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OTA" 2>&1 || true
+          done
+
+          wc -l "$API" "$OTA"
+      - name: Commit reverse-engineering dumps
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/firmware-network-surface.txt
-          git commit -m 'Add complete MoYoung firmware network surface' || exit 0
+          git add re/dafit_crp/device-api-surface.txt re/dafit_crp/jieli-ota-internals.txt
+          git commit -m 'Add device API and JieLi OTA reverse-engineering dumps' || exit 0
           git push
