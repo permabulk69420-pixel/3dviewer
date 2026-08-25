@@ -20,7 +20,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Extract connection API and callback inventory
+      - name: Extract concrete connection implementation
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
@@ -31,10 +31,9 @@ jobs:
           cd /tmp/classes && jar xf /tmp/crp/classes.jar
 
           jar tf /tmp/crp/classes.jar | grep '^com/crrepa/ble/conn/callback/CRP.*\.class$' | sort > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint/callback-classes.txt" || true
-          jar tf /tmp/crp/classes.jar | grep '^com/crrepa/ble/conn/.*\.class$' | sort > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint/connection-classes.txt" || true
-
           for c in \
             com.crrepa.ble.conn.CRPBleConnection \
+            com.crrepa.ble.conn.CRPBleDevice \
             com.crrepa.ble.CRPBleClient \
             com.crrepa.f.a2 \
             com.crrepa.f.w; do
@@ -42,11 +41,20 @@ jobs:
             javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint/$safe.txt" 2>&1 || true
           done
 
-      - name: Commit query inventory
+          # CRPBleClient constructs com.crrepa.h.c. Dump every top-level class in that package;
+          # one of them is the concrete CRPBleConnection implementation/delegate.
+          find /tmp/classes/com/crrepa/h -maxdepth 1 -name '*.class' -type f | sort | while read f; do
+            case "$f" in *'$'*) continue;; esac
+            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
+            safe="${c//./_}"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint/$safe.txt" 2>&1 || true
+          done
+
+      - name: Commit concrete connection dump
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp/fingerprint
-          git commit -m 'Add CRP connection API and callback inventory' || exit 0
+          git commit -m 'Add concrete CRP connection implementation' || exit 0
           git push
