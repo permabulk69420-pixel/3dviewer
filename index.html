@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>Anko OTA firmware version</h1>
-<div class="sub">v10 — read-only Da Fit firmware-version query. Sends only CRP command 0x5A with payload 0x01. No DFU command, no firmware data.</div>
+<div class="sub">v10.1 — exact read-only Da Fit firmware-version query: CRP command 0x5A, payload 0x01. No DFU command and no firmware data.</div>
 <div class="card">
 <button id="connect">1. Connect watch</button>
 <button id="query" disabled>2. Get OTA version</button>
@@ -81,7 +81,7 @@ async function queryVersion(){
 $('connect').onclick=connect;
 $('query').onclick=queryVersion;
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied';}catch(e){log('Clipboard failed; long-press log to copy');}};
-log('Ready — v10 read-only OTA firmware version query.');
+log('Ready — v10.1 exact read-only OTA firmware version query.');
 })();
 </script>
 </body>
