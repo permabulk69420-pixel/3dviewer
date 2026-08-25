@@ -20,41 +20,63 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Extract concrete connection implementation
+      - name: Extract exact read-only fingerprint methods and builders
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
-          rm -rf /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint"
-          mkdir -p /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint"
+          rm -rf /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-focus"
+          mkdir -p /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-focus/builders"
           cd /tmp/crp && unzip -q /tmp/crp.aar
           cd /tmp/classes && jar xf /tmp/crp/classes.jar
 
-          jar tf /tmp/crp/classes.jar | grep '^com/crrepa/ble/conn/callback/CRP.*\.class$' | sort > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint/callback-classes.txt" || true
-          for c in \
-            com.crrepa.ble.conn.CRPBleConnection \
-            com.crrepa.ble.conn.CRPBleDevice \
-            com.crrepa.ble.CRPBleClient \
-            com.crrepa.f.a2 \
-            com.crrepa.f.w; do
-            safe="${c//./_}"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint/$safe.txt" 2>&1 || true
-          done
+          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.h.a > /tmp/impl.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          text=Path('/tmp/impl.txt').read_text(errors='replace').splitlines()
+          wanted=(
+            'queryDeviceVersion(', 'queryDfuType(', 'queryUIVersionCode(',
+            'queryAvailableStorage(', 'queryDeviceDfuStatus(', 'queryJieliWatchFaceInfo(',
+            'getProtocolVersion(', 'queryTestModeState(', 'queryFlashNotification(',
+            'queryFrimwareVersion(', 'queryBtAddress('
+          )
+          out=[]
+          i=0
+          while i<len(text):
+              line=text[i]
+              if line.startswith('  public ') and any(w in line for w in wanted):
+                  out.append('===== '+line.strip()+' =====')
+                  out.append(line)
+                  i+=1
+                  while i<len(text) and not (text[i].startswith('  public ') or text[i].startswith('  private ') or text[i].startswith('  protected ') or text[i].startswith('  static ')):
+                      out.append(text[i]); i+=1
+                  out.append('')
+                  continue
+              i+=1
+          Path('/home/runner/work/3dviewer/3dviewer/re/dafit_crp/fingerprint-focus/methods.txt').write_text('\n'.join(out))
+          PY
 
-          # CRPBleClient constructs com.crrepa.h.c. Dump every top-level class in that package;
-          # one of them is the concrete CRPBleConnection implementation/delegate.
-          find /tmp/classes/com/crrepa/h -maxdepth 1 -name '*.class' -type f | sort | while read f; do
-            case "$f" in *'$'*) continue;; esac
-            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
-            safe="${c//./_}"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint/$safe.txt" 2>&1 || true
-          done
+          # Search the implementation/AAR for any JieLi DFU package-length API that is not on the public interface.
+          grep -n -i -E 'JieliDfuPackage|PackageLength|DfuPackage' /tmp/impl.txt > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-focus/package-length-hits.txt" || true
+          strings -a /tmp/crp/classes.jar | grep -i -E 'JieliDfuPackage|PackageLength|DfuPackage' | sort -u >> "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-focus/package-length-hits.txt" || true
 
-      - name: Commit concrete connection dump
+          # Dump every builder/helper class directly referenced by the selected methods.
+          grep -oE 'com/crrepa/[A-Za-z0-9_$/]+\.[A-Za-z0-9_$]+:' "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-focus/methods.txt" \
+            | sed -E 's/\.[A-Za-z0-9_$]+:$//' | sort -u > /tmp/refs.txt || true
+          while read -r path; do
+            [ -n "$path" ] || continue
+            c="${path//\//.}"
+            safe="${c//./_}"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-focus/builders/$safe.txt" 2>&1 || true
+          done < /tmp/refs.txt
+
+          cat /tmp/refs.txt > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-focus/referenced-classes.txt"
+
+      - name: Commit focused fingerprint packets
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/fingerprint
-          git commit -m 'Add concrete CRP connection implementation' || exit 0
+          git add re/dafit_crp/fingerprint-focus
+          git commit -m 'Add exact read-only fingerprint packet paths' || exit 0
           git push
