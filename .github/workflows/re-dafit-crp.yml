@@ -46,11 +46,18 @@ jobs:
             echo "===== $cls =====" >> "$OUT/javap-interesting.txt"
             javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT/javap-interesting.txt" 2>&1 || true
           done < <(grep -Ei 'jieli|jieli|ota|dfu|firmware' "$OUT/classes.txt" | grep '\.class$' | head -n 250)
+
+          : > "$OUT/javap-jieli-internals.txt"
+          while IFS= read -r cls; do
+            cls="${cls%.class}"; cls="${cls//\//.}"
+            echo "===== $cls =====" >> "$OUT/javap-jieli-internals.txt"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT/javap-jieli-internals.txt" 2>&1 || true
+          done < <(grep -E '^com/crrepa/i0/.*\.class$|^com/crrepa/ble/ota/jieli/.*\.class$' "$OUT/classes.txt")
       - name: Commit analysis
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp
-          git commit -m 'Add Da Fit CRP SDK analysis' || exit 0
+          git commit -m 'Add Da Fit JieLi internal analysis' || exit 0
           git push
