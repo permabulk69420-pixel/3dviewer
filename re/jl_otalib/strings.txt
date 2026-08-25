@@ -1,0 +1,772 @@
+4e97 T`"@
+5094 hVA9
+624d  A9H
+631d  A9H
+645d  A9H
+661d "A9H
+6745  A9H
+67d1  A9H
+69fd  A9H
+6d1f 5hRA9
+6e07 ThRA9
+80b7 T`"@
+911e @8K}
+9123 Si1IJ
+9129 Yix)
+9138 J1KJ
+913d YjxB
+935d O@yjB
+94a6 !n@4 n
+bd92 KJ*YjxH
+bda4 j1JJ*YjxH
+bfe0 i"A)#
+10c80 @(#)PROGRAM:JL_OTALib  PROJECT:JL_BLEKit-1
+10cf4 B c0
+10d14 B c0
+10d30 https://profile.jieliapp.com/license/v1/fileupdate/check?auth_key=%@&proj_code=%@&type=firmware
+10d90 https://profile.jieliapp.com/license/v1/fileupdate/check2?auth_key=%@&proj_code=%@&type=firmware&hash=%@
+10df9 Invalid URL
+10e05 v8@?0
+10e0b code
+10e10 data
+10e15 version
+10e21 explain
+10e2d v32@?0@"NSData"8@"NSURLResponse"16@"NSError"24
+10e5c kOtaTimeOutTagReadE5
+10e71 -[JLOtaFlowProcessor cmdUpgrade:Option:Result:]
+10ea1 OTA --> cmdUpgrade:%d
+10eb7 -[JLOtaFlowProcessor noteEntityConnected]
+10ee1 -[JLOtaFlowProcessor noteEntityDisconnected]
+10f0e -[JLOtaFlowProcessor startOTAWithData:resultBlock:]
+10f42 OTA --> cmdOTAData:%d
+10f58 OTA --> JL_PartitionSingle
+10f73 OTA --> JL_OtaStatusNormal
+10f8e OTA --> OTA Special Update Mode. Update firmware only
+10fc4 OTA --> OTA Special Update Mode. Update source only,should use DialManager to update sources
+11021 OTA --> JL_OtaStatusForce
+1103b OTA --> otaSecondStep
+11051 OTA --> otaFirstStep
+11066 OTA --> JL_PartitionDouble
+11081 -[JLOtaFlowProcessor requestCancel]
+110a5 -[JLOtaFlowProcessor requestReboot:]
+110ca -[JLOtaFlowProcessor otaFirstStep:]_block_invoke
+110fe -[JLOtaFlowProcessor otaFirstStep:]_block_invoke_2
+11131 v24@?0C8C12@"NSData"16
+11148 -[JLOtaFlowProcessor otaPartitionSingle:]
+11172 JL_BLE_M_SAVE_BLEADDR
+11188 -[JLOtaFlowProcessor otaPartitionSingle:]_block_invoke
+111bf -[JLOtaFlowProcessor otaPartitionDouble]
+111e8 -[JLOtaFlowProcessor updateRelinkType:]
+11210 JL_OTAResultReconnectWithMacAddr
+11231 JL_OTAResultReconnectWithUUid
+1124f -[JLOtaFlowProcessor otaSecondStep]_block_invoke
+11280 -[JLOtaFlowProcessor cmdOTA_2_AskForUpgrade:Result:]
+112b5 --->check can be update? SN:%d
+112d4 -[JLOtaFlowProcessor cmdOTA_6_QueryUpgradeStatusResult:]
+1130d -[JLOtaFlowProcessor cmdUpdateBuffer:]_block_invoke
+11341 -[JLOtaFlowProcessor cmdUpdateBuffer:]_block_invoke_2
+11377 -[JLOtaFlowProcessor cmdUpdateBuffer:]_block_invoke_4
+113ad -[JLOtaFlowProcessor cmdUpdateBuffer:]
+113d4 -[JLOtaFlowProcessor handleCommand:sn:payload:]
+11404 -[JLOtaFlowProcessor handleResponse:sn:payload:]
+11435 -[JLOtaFlowProcessor handleTimeout:]
+1145a JL_BLE_M_OTA_TIMEOUT
+1146f TYPE
+11474 DATA
+11479 %d.%d.%d.%d
+11485 +[JLOtaDeviceInfoParser parseInfo:intoManager:]
+114b5 Single
+114bc Double
+114c3 no need download loader
+114db need download loader
+114f0 JL_OtaStatusNormal
+11503 JL_OtaStatusForce
+11515 Normal
+1151c Force
+11524 Disable
+1152e Source Update
+1153e Only Update Source
+11553 Only Update Firmware
+11572 JLUFW
+11578 unDefineUUID
+11585 JLDevice
+1158e +[JL_OTAManager logSDKVersion]
+115ad ---> The version of OTA SDK is %@ 
+115d0 -[JL_OTAManager logSendData:]
+115ee ---> logSendDataStatus: %d
+11609 JL_BLE_M_OTA_RECEIVE_DATA
+11623 -[JL_OTAManager resetOTAManager]
+11644 OTA manager reset finish.
+1165e -[JL_OTAManager maxLostCount:]
+1167d ---> maxLostCount: %d
+11693 -[JL_OTAManager cmdTimeOut:]
+116b0 ---> cmdTimeOut: %d
+116c4 -[JL_OTAManager setOTARelink:]
+116e3 ---> setOTARelink: %d
+116f9 -[JL_OTAManager intputDeviceName:]
+1171c -[JL_OTAManager cmdSystemFunction]
+1173f -[JL_OTAManager cmdTargetFeature]
+11761 -[JL_OTAManager cmdGetExpandInfo]
+11783 -[JL_OTAManager cmdOtaDataIIResult:]
+117a8 -[JL_OTAManager otaHandler:didReceiveResponse:sn:payload:]
+117e3 -[JLOtaDataHandler xmCommandCode:needRep:data:UUID:]
+11818 opcode:%hhx playload:%@
+11830 -[JLOtaDataHandler cmdResponseCode:OpSN:Status:Data:UUID:]
+1186b opcode:%hhx SN:%d playload:%@
+11889 opcode:%hhx SN:%d playloadLen:%d
+118aa -[JLOtaDataHandler parseInputPackage:]
+118d1 OTA GET CMD --> opCode:%lx SN:%d
+118f2 OTA GET RESP --> opCode:%lx SN:%d
+11915 %02x
+1191c SIZE
+11921 -[JLOTATimeoutInfo timeCountAction:]
+11946 timeout:%d, MaxTimeOut:%d
+11960 JL_BLE_M_OTA_SEND_DATA
+11977 -[JLOtaCustom initWithDelegate:OtaManager:]
+119a3 -[JLOtaCustom cmdSendCommandData:needResponse:Result:]
+119da -[JLOtaCustom cmdResponseData:sn:]
+119fd -[JLOtaCustom otaDataHandlerData:NeedResponse:Data:sn:opcode:]
+11a3c ---> OTA custom command error
+11a5a OTA custom command error:%d sn%d
+11a7b ---> OTA custom command timeout
+11a9b v16@?0@"JLOTATimeoutInfo"8
+11ab6 v2.5.0
+11abd Beta_1_20251210
+11acd %@_%@
+11ad3 AE00
+11ad8 AE01
+11add AE02
+11ae2 -[JLOtaReConnectMgr otaFeatureResult:]
+11b09 update error for connect way, source update should not use this api
+11b4d -[JLOtaReConnectMgr centralManagerDidUpdateState:]
+11b80 OTA Reconnect start
+11b94 OTA Reconnect error for ble state:%ld
+11bba kCBAdvDataManufacturerData
+11bd5 unKnow
+11bdc -[JLOtaReConnectMgr centralManager:didConnectPeripheral:]
+11c16 OTA Reconnect success
+11c2c -[JLOtaReConnectMgr peripheral:didUpdateNotificationStateForCharacteristic:error:]_block_invoke
+11c8c JL_Assist Err: bluetooth pairing fail.
+11cb3 v12@?0B8
+11cbc JLOTAFile
+11cc8 JLOtaFlowProcessor
+11cdb JLOtaCmdTimeProtocol
+11cf0 NSObject
+11cff JLOtaDeviceInfoParser
+11d15 JL_OTAManager
+11d23 JLOtaDataHandlerDelegate
+11d3c JLOtaFlowProcessorDelegate
+11d5c JLOtaDataHandler
+11d72 JLOTATimeoutInfo
+11d86 JLOtaCustomData
+11d98 JLOtaCustom
+11daa JLOtaTimeoutManager
+11dc0 JLOTAVersion
+11dcd JLOtaReConnectOption
+11de4 JLOtaReConnectMgr
+11df6 JLHashHandlerDelegate
+11e0c CBCentralManagerDelegate
+11e25 CBPeripheralDelegate
+11e3a JL_OTAManagerDelegate
+11e54 T@"JL_OTAManager",&,N,V_manager
+11e74 HexToData:
+11e7f T@?,N,V_rtBlock
+11e8f T#,R
+11e94 TB,N,V_isRelink
+11ea4 T@"<JLOtaCustomDelegate>",W,N,V_delegate
+11ecd _bootloaderType
+11edd T@"<JLOtaFlowProcessorDelegate>",W,N,V_delegate
+11f0d _kOtaTimeOutMax
+11f1d T@"CBCentralManager",&,N,V_centralManager
+11f47 _mCmdSN
+11f4f T@"CBCharacteristic",&,N,V_writeCharacteristic
+11f7e _option
+11f86 T@"JLHashHandler",&,N,V_authHandler
+11faa addCrc:
+11fb2 T@"JLOtaDataHandler",W,N,V_dataHandler
+11fd9 bleAddr
+11fe1 T@"JL_OTAManager",W,N,V_otaManager
+12004 characteristics
+12014 T@"NSData",&,N,V_data
+1202a cmdRebootDevice
+1203a T@"NSMutableArray",&,N,V_cmdArray
+1205c dealloc
+12064 T@"NSString",&,N,V_bleAddr
+1207f isProxy
+12087 T@"NSString",&,N,V_mBLE_UUID
+120a4 manager
+120ac T@"NSString",&,N,V_readUUID
+120cc T@"NSString",&,N,V_tagString
+120e9 otaSent
+120f1 T@"NSString",&,N,V_writeUUID
+1210e release
+12116 T@"NSString",N,V_uuid
+1212c resetOTAManager
+1213c T@"NSTimer",&,N,V_timer
+12154 sendExpandInfoWithSN:type:UUID:
+12174 T@?,C,N,V_cusResult
+12188 setDataHandler:
+12198 TB,N,V_deviceAuthorize
+121af setServiceUUID:
+121bf TB,N,V_isSupportCRC
+121d3 versionFirmware
+121e3 .cxx_destruct
+121f1 T@"JL_OTAManager",W,N,V_manager
+12211 JSONObjectWithData:options:error:
+12233 TB,N,V_isAuthed
+12243 T@"<JLOtaCmdTimeProtocol>",&,N,V_delegate
+1226d TC,N,V_otaWatch
+1227d T@"<JLOtaDataHandlerDelegate>",W,N,V_delegate
+122ab _centralManager
+122bb T@"<JL_OTAManagerDelegate>",W,N,V_delegate
+122e6 _logOtaSendData
+122f6 T@"CBCharacteristic",&,N,V_readCharacteristic
+12324 _opcode
+1232c T@"CBPeripheral",&,N,V_currentPeripheral
+12359 T@"JLOtaDataHandler",&,N,V_dataHandler
+12380 authKey
+12388 T@"JLOtaReConnectOption",&,N,V_option
+123ae bleOnly
+123b6 T@"NSData",&,N,V_authKey
+123cf clearAllTimeOut
+123df T@"NSData",&,N,V_otaData
+123f8 copeWithBLEData
+12408 T@"NSMutableData",&,N,V_mRcspData
+1242a deviceAuthorize
+1243a T@"NSString",&,N,V_mBLE_NAME
+12457 isSupportExpand
+12467 T@"NSString",&,N,V_pMac
+1247f maximumWriteValueLengthForType:
+1249f T@"NSString",&,N,V_serviceUUID
+124be otaData
+124c6 T@"NSString",&,N,V_versionFirmware
+124e9 peripheral:didDiscoverServices:
+12509 T@"NSString",?,R,C
+1251c removeObserver:
+1252c T@"NSString",R,C
+1253d rtBlock
+12545 T@?,C,N,V_callback
+12558 setAuthHandler:
+12568 TB,N,V_bleOnly
+12577 setIsSearching:
+12587 TB,N,V_isSearching
+1259a version
+125a2 TB,N,V_isSupportExpand
+125b9 TB,N,V_isSupportReuseSpaceOTA
+125d7 TB,N,V_isUpdating
+125e9 TB,N,V_isWriteWithResponse
+12604 TB,N,V_logOtaSendData
+1261a TB,N,V_needResponse
+1262e TC,N,V_bootloaderType
+12644 TC,N,V_mCmdSN
+12652 TC,N,V_otaHeadset
+12664 TC,N,V_otaPartition
+12678 TC,N,V_otaReconnectType
+12690 TC,N,V_otaSourceMode
+126a5 TC,N,V_otaStatus
+126b6 TC,N,V_sn
+126c0 TI,N,V_otaLength
+126d1 TI,N,V_otaSent
+126e0 TI,R,N,V_otaSent
+126f1 TQ,R
+126f6 TS,N,V_version
+12705 Ti,N,V_kOtaTimeOutMax
+1271b Ti,N,V_maxLostCount
+1272f Ti,N,V_maxTimerCount
+12744 Ti,N,V_opcode
+12752 Ti,N,V_sn
+1275c Ti,N,V_timerCount
+1276e Tq,R,N,V_otaLength
+12781 URLWithString:
+12790 UUID
+12795 UUIDString
+127a0 _authHandler
+127ad _authKey
+127b6 _bleAddr
+127bf _bleOnly
+127c8 _callback
+127d2 _cmdArray
+127dc _currentPeripheral
+127ef _cusResult
+127fa _data
+12800 _dataHandler
+1280d _delegate
+12817 _deviceAuthorize
+12828 _isAuthed
+12832 _isRelink
+1283c _isSearching
+12849 _isSupportCRC
+12857 _isSupportExpand
+12868 _isSupportReuseSpaceOTA
+12880 _isUpdating
+1288c _isWriteWithResponse
+128a1 _mBLE_NAME
+128ac _mBLE_UUID
+128b7 _mRcspData
+128c2 _manager
+128cb _maxLostCount
+128d9 _maxTimerCount
+128e8 _needResponse
+128f6 _otaData
+128ff _otaHeadset
+1290b _otaLength
+12916 _otaManager
+12922 _otaPartition
+12930 _otaReconnectType
+12942 _otaSent
+1294b _otaSourceMode
+1295a _otaStatus
+12965 _otaWatch
+1296f _pMac
+12975 _readCharacteristic
+12989 _readUUID
+12993 _rtBlock
+1299c _serviceUUID
+129a9 _tagString
+129b4 _timer
+129bb _timerCount
+129c7 _uuid
+129cd _version
+129d6 _versionFirmware
+129e7 _writeCharacteristic
+129fc _writeUUID
+12a07 addObject:
+12a12 addObserver:selector:name:object:
+12a34 appendBytes:length:
+12a48 appendData:
+12a54 array
+12a5a arrayWithObjects:count:
+12a72 authHandler
+12a7e autorelease
+12a8a beHexStr:
+12a94 bluetoothPairingKey:Result:
+12ab0 bootloaderType
+12abf bytes
+12ac5 callback
+12ace cancelTimeOut:OpCode:
+12ae4 cancelTimeOutWithTag:
+12afa centralManager
+12b09 centralManager:connectionEventDidOccur:forPeripheral:
+12b3f centralManager:didConnectPeripheral:
+12b64 centralManager:didDisconnectPeripheral:error:
+12b92 centralManager:didDisconnectPeripheral:timestamp:isReconnecting:error:
+12bd9 centralManager:didDiscoverPeripheral:advertisementData:RSSI:
+12c16 centralManager:didFailToConnectPeripheral:error:
+12c47 centralManager:didUpdateANCSAuthorizationForPeripheral:
+12c7f centralManager:willRestoreState:
+12ca0 centralManagerDidUpdateState:
+12cbe characterAtIndex:
+12cd0 class
+12cd6 cmdArray
+12cdf cmdGetExpandInfo
+12cf0 cmdGetOtaFileKey:Code:Result:
+12d0e cmdGetOtaFileKey:Code:hash:Result:
+12d31 cmdOTACancelResult:
+12d45 cmdOTAData:Result:
+12d58 cmdOTA_1_GetMarkSeekResult:
+12d74 cmdOTA_2_AskForUpgrade:Result:
+12d93 cmdOTA_3_EnterUpgradeResult:
+12db0 cmdOTA_4_InterruptResult:
+12dca cmdOTA_5_Err:
+12dd8 cmdOTA_5_TransportSN:Data:
+12df3 cmdOTA_6_QueryUpgradeStatusResult:
+12e16 cmdOTA_7_RebootDevice:Result:
+12e34 cmdOTA_Route:withOtaReconnectType:Result:
+12e5e cmdOTA_UpgradeLength:
+12e74 cmdOtaDataIIResult:
+12e88 cmdOtaDataReceive:
+12e9b cmdOtaIsRelinking
+12ead cmdRebootForceDevice
+12ec2 cmdResponseCode:OpSN:Status:Data:UUID:
+12ee9 cmdResponseData:sn:
+12efd cmdSendCommandData:needResponse:Result:
+12f25 cmdSystemFunction
+12f37 cmdTargetFeature
+12f48 cmdTimeOut:
+12f54 cmdTimer
+12f5d cmdUpdateBuffer:
+12f6e cmdUpgrade:Option:Result:
+12f88 cmd_OTA_1
+12f92 cmd_OTA_2
+12f9c cmd_OTA_3
+12fa6 cmd_OTA_4
+12fb0 cmd_OTA_6
+12fba cmd_OTA_7
+12fc4 cmd_OTA_8
+12fce cmd_OTA_rt
+12fd9 cmd_OTA_url
+12fe5 codeHead
+12fee codeTail
+12ff7 conformsToProtocol:
+1300b connectPeripheral:options:
+13026 copy
+1302b copyWithZone:
+13039 count
+1303f countByEnumeratingWithState:objects:count:
+1306a countSameSn
+13076 currentPeripheral
+13088 currentVersion
+13097 cusResult
+130a1 data
+130a6 data:R:L:
+130b0 dataChangeToString:
+130c4 dataHandler
+130d0 dataSender:
+130dc dataTaskWithURL:completionHandler:
+130ff dataToInt:
+1310a dataWithBytes:length:
+13120 dataWithData:
+1312e debugDescription
+1313f defaultCenter
+1314d defaultOption
+1315b defaultSessionConfiguration
+13177 delegate
+13180 description
+1318c dictionaryWithObjects:forKeys:count:
+131b1 discoverCharacteristics:forService:
+131d5 discoverServices:
+131e7 downloadOtaFileWithUrl:
+131ff eotaData
+13208 errorWithDomain:code:userInfo:
+13227 fire
+1322c getOTAManager
+1323a handleCommand:sn:payload:
+13254 handleResponse:sn:payload:
+1326f handleTimeout:
+1327e hash
+13283 hashOnPairOutputData:
+13299 identifier
+132a4 init
+132a9 init:
+132af initWithBytes:length:
+132c5 initWithDelegate:OtaManager:
+132e2 initWithDelegate:queue:
+132fa inputHandleData:
+1330b inputPairData:
+1331a intValue
+13323 intputDeviceName:
+13335 invalidate
+13340 isAuthed
+13349 isEqual:
+13352 isEqualToString:
+13363 isKindOfClass:
+13372 isLogProgress
+13380 isMemberOfClass:
+13391 isOTA_EXIT_E4
+1339f isRelink
+133a8 isSearching
+133b4 isSendRebootWitoutResp
+133cb isSupportCRC
+133d8 isSupportReuseSpaceOTA
+133ef isUpdating
+133fa isWriteWithResponse
+1340e kOtaTimeOutMax
+1341d last_seek
+13427 length
+1342e localizedDescription
+13443 logLevel:funcName:line:format:
+13462 logOtaSendData
+13471 logSDKVersion
+1347f logSendData:
+1348c mBLE_NAME
+13496 mBLE_UUID
+134a0 mCmdSN
+134a7 mRcspData
+134b1 maxLostCount
+134be maxLostCount:
+134cc maxTimerCount
+134da name
+134df needResponse
+134ec noteEntityConnected
+13500 noteEntityDisconnected
+13517 notifyResult:progress:
+1352e numberWithInt:
+1353d numberWithUnsignedChar:
+13555 object
+1355c objectAtIndexedSubscript:
+13576 objectForKeyedSubscript:
+1358f opcode
+13596 option
+1359d otaBleMacAddress:isEqualToCBAdvDataManufacturerData:
+135d2 otaCancel
+135dc otaCustomReceiveData:
+135f2 otaDataHandlerData:NeedResponse:Data:sn:opcode:
+13622 otaDataHandlerDidResp:uuid:
+1363e otaDataHandlerDidSend:uuid:
+1365a otaDataHandlerReceiveData:
+13675 otaDataSend:
+13682 otaDidReceiveData:
+13695 otaFeatureResult:
+136a7 otaFirstStep:
+136b5 otaFlowDidSendData:
+136c9 otaFlowDidUpdateStatus:progress:
+136ea otaHandler:didReceiveCmd:sn:needResponse:payload:
+1371c otaHandler:didReceiveResponse:sn:payload:
+13746 otaHeadset
+13751 otaLength
+1375b otaManager
+13766 otaManagerHandlerDidReceive:
+13783 otaManagerHandlerDidTimeOut:
+137a0 otaPartition
+137ad otaPartitionDouble
+137c0 otaPartitionSingle:
+137d4 otaProcessor
+137e1 otaReconnectType
+137f2 otaSecondStep
+13800 otaSourceMode
+1380e otaStatus
+13818 otaTimeout:
+13824 otaUpgradeResult:Progress:
+1383f otaVersion
+1384a otaWatch
+13853 ota_value
+1385d pMac
+13862 parseInfo:intoManager:
+13879 parseInputPackage:
+1388c performSelector:
+1389d performSelector:withObject:
+138b9 performSelector:withObject:withObject:
+138e0 peripheral:didDiscoverCharacteristicsForService:error:
+13917 peripheral:didDiscoverDescriptorsForCharacteristic:error:
+13951 peripheral:didDiscoverIncludedServicesForService:error:
+13989 peripheral:didModifyServices:
+139a7 peripheral:didOpenL2CAPChannel:error:
+139cd peripheral:didReadRSSI:error:
+139eb peripheral:didUpdateNotificationStateForCharacteristic:error:
+13a29 peripheral:didUpdateValueForCharacteristic:error:
+13a5b peripheral:didUpdateValueForDescriptor:error:
+13a89 peripheral:didWriteValueForCharacteristic:error:
+13aba peripheral:didWriteValueForDescriptor:error:
+13ae7 peripheralDidUpdateName:
+13b00 peripheralDidUpdateRSSI:error:
+13b1f peripheralIsReadyToSendWriteWithoutResponse:
+13b4c postNotificationName:object:
+13b69 rcspInfoArrFromData:
+13b7e rcspMakePkg:needRes:Opcode:playload:
+13ba3 reConnectMgr
+13bb0 readCharacteristic
+13bc3 readUUID
+13bcc readValueForCharacteristic:
+13be8 reciveSn
+13bf1 reconnectWithMac:Result:
+13c0a reconnectWithUUID:Result:
+13c24 removeAllObjects
+13c35 removeObject:
+13c43 removeObjectsInArray:
+13c59 requestCancel
+13c67 requestReboot:
+13c76 reset
+13c7c respondsToSelector:
+13c90 resume
+13c97 retain
+13c9e retainCount
+13caa scanForPeripheralsWithServices:options:
+13cd2 scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+13d13 self
+13d18 sendBleSppWithSN:type:reconnectType:UUID:
+13d42 sendCheckCanUpdateWithSN:data:UUID:
+13d66 sendEnterUpdateWithSN:UUID:
+13d82 sendExitUpdateSuccessWithSN:UUID:
+13da4 sendExitUpdateWithSN:UUID:
+13dbf sendGetTargetFeatureWithSN:UUID:
+13de0 sendMarkSeekWithSN:UUID:
+13df9 sendOtaDataErrorWithSN:UUID:
+13e16 sendOtaDataWithSN:data:UUID:
+13e33 sendOtaLengthSuccessWithSN:UUID:
+13e54 sendOtaStatusWithSN:UUID:
+13e6e sendRebootWithSN:type:UUID:
+13e8a sendSystemFunctionWithSN:UUID:
+13ea9 serviceUUID
+13eb5 services
+13ebe sessionWithConfiguration:
+13ed8 setAuthKey:
+13ee4 setBleAddr:
+13ef0 setBleOnly:
+13efc setBootloaderType:
+13f0f setCallback:
+13f1c setCentralManager:
+13f2f setCmdArray:
+13f3c setCurrentPeripheral:
+13f52 setCusResult:
+13f60 setData:
+13f69 setDelegate:
+13f76 setDeviceAuthorize:
+13f8a setIsAuthed:
+13f97 setIsRelink:
+13fa4 setIsSupportCRC:
+13fb5 setIsSupportExpand:
+13fc9 setIsSupportReuseSpaceOTA:
+13fe4 setIsUpdating:
+13ff3 setIsWriteWithResponse:
+1400b setKOtaTimeOutMax:
+1401e setLogOtaSendData:
+14031 setMBLE_NAME:
+1403f setMBLE_UUID:
+1404d setMCmdSN:
+14058 setMRcspData:
+14066 setManager:
+14072 setMaxLostCount:
+14083 setMaxTimerCount:
+14095 setNeedResponse:
+140a6 setNotifyValue:forCharacteristic:
+140c8 setOTARelink:
+140d6 setOpcode:
+140e1 setOption:
+140ec setOtaData:
+140f8 setOtaHeadset:
+14107 setOtaLength:
+14115 setOtaManager:
+14124 setOtaPartition:
+14135 setOtaReconnectType:
+1414a setOtaSent:
+14156 setOtaSourceMode:
+14168 setOtaStatus:
+14176 setOtaWatch:
+14183 setPMac:
+1418c setReadCharacteristic:
+141a3 setReadUUID:
+141b0 setRtBlock:
+141bc setSn:
+141c3 setTagString:
+141d1 setTimeOutMax:
+141e0 setTimeoutIntervalForRequest:
+141fe setTimer:
+14208 setTimerCount:
+14217 setUuid:
+14220 setVersion:
+1422c setVersionFirmware:
+14240 setWriteCharacteristic:
+14258 setWriteUUID:
+14266 share
+1426f startOTAWithData:resultBlock:
+1428d startTimeOut
+1429a startTimeOut:OpCode:
+142af startTimeOutWithTag:
+142c4 startTimer
+142cf state
+142d5 stopScan
+142de stopTimeOut
+142ea stopTimer
+142f4 stringByReplacingOccurrencesOfString:withString:
+14325 stringWithFormat:
+14337 stringWithUTF8String:
+1434d subdataWithRange:
+1435f superclass
+1436a tagString
+14374 timeCountAction:
+14385 timeOutMax
+14390 timer
+14396 timerAction
+143a2 timerCount
+143ad uInt16_data:
+143ba updateRelinkType:
+143cc updateStatus:
+143da uuid
+143df value
+143e5 waitCountTime
+143f3 writeCharacteristic
+14407 writeUUID
+14411 writeValue:forCharacteristic:type:
+14434 xmCommandCode:needRep:data:UUID:
+14455 zone
+1445a v40@0:8@16@24@?32
+1446c v48@0:8@16@24@32@?40
+14481 v24@0:8@16
+1448c v16@0:8
+14497 B24@0:8@16
+144a2 #16@0:8
+144aa @16@0:8
+144b2 @24@0:8:16
+144bd @32@0:8:16@24
+144cb @40@0:8:16@24@32
+144dc B16@0:8
+144e4 B24@0:8#16
+144ef B24@0:8:16
+144fa Vv16@0:8
+14503 Q16@0:8
+1450b ^{_NSZone=}16@0:8
+1451d B24@0:8@"Protocol"16
+14532 @"NSString"16@0:8
+14544 v24@0:8@"JLOTATimeoutInfo"16
+14561 v32@0:8@16@?24
+14570 v20@0:8B16
+1457b v20@0:8C16
+14586 v24@0:8@?16
+14592 v28@0:8C16@20
+145a0 v28@0:8C16@?20
+145af v32@0:8C16C20@?24
+145c1 v32@0:8C16C20@24
+145d2 v24@0:8S16f20
+145e0 v20@0:8S16
+145eb I16@0:8
+145f3 v20@0:8I16
+145fe i16@0:8
+14606 v20@0:8i16
+14619 @"JLOtaReConnectMgr"
+14630 @"<JLOtaFlowProcessorDelegate>"
+14650 @"JL_OTAManager"
+14661 @"JLOtaDataHandler"
+14675 @"NSData"
+1467f v32@0:8@16@24
+1468d v44@0:8@16C24C28B32@36
+146a4 v40@0:8@16C24C28@32
+146b8 v32@0:8@"NSData"16@"NSString"24
+146d8 v24@0:8@"NSData"16
+146eb v44@0:8@"JLOtaDataHandler"16C24C28B32@"NSData"36
+1471c v40@0:8@"JLOtaDataHandler"16C24C28@"NSData"32
+1474a C16@0:8
+14752 S16@0:8
+1475a q16@0:8
+14762 @"JLOtaFlowProcessor"
+1477c @"NSString"
+1478a @"<JL_OTAManagerDelegate>"
+147a5 @40@0:8@16q24q32
+147b6 q24@0:8@16
+147c1 @24@0:8@16
+147cc v40@0:8C16B20@24@32
+147e0 v44@0:8C16C20C24@28@36
+147f7 @36@0:8S16S20S24@28
+1480b v36@0:8C16@20@28
+1481c v36@0:8C16C20C24@28
+14830 @20@0:8S16
+1483b @"NSMutableData"
+1484c @"<JLOtaDataHandlerDelegate>"
+1486a @24@0:8^{_NSZone=}16
+1487f @?16@0:8
+14888 @"NSTimer"
+14893 @32@0:8@16@24
+148a1 v36@0:8@16B24@?28
+148b3 v28@0:8@16C24
+148c1 v40@0:8B16B20@24C32C36
+148d8 @"<JLOtaCustomDelegate>"
+148f1 v24@0:8i16i20
+148ff @"<JLOtaCmdTimeProtocol>"
+14919 @"NSMutableArray"
+1492b v48@0:8@16@24@32@40
+1493f v40@0:8@16@24@32
+14950 v52@0:8@16@24d32B40@44
+14967 v40@0:8@16q24@32
+14978 v24@0:8@"CBCentralManager"16
+14995 v32@0:8@"CBCentralManager"16@"NSDictionary"24
+149c3 v48@0:8@"CBCentralManager"16@"CBPeripheral"24@"NSDictionary"32@"NSNumber"40
+14a0f v32@0:8@"CBCentralManager"16@"CBPeripheral"24
+14a3d v40@0:8@"CBCentralManager"16@"CBPeripheral"24@"NSError"32
+14a77 v52@0:8@"CBCentralManager"16@"CBPeripheral"24d32B40@"NSError"44
+14ab7 v40@0:8@"CBCentralManager"16q24@"CBPeripheral"32
+14ae8 v24@0:8@"CBPeripheral"16
+14b01 v32@0:8@"CBPeripheral"16@"NSArray"24
+14b26 v32@0:8@"CBPeripheral"16@"NSError"24
+14b4b v40@0:8@"CBPeripheral"16@"NSNumber"24@"NSError"32
+14b7d v40@0:8@"CBPeripheral"16@"CBService"24@"NSError"32
+14bb0 v40@0:8@"CBPeripheral"16@"CBCharacteristic"24@"NSError"32
+14bea v40@0:8@"CBPeripheral"16@"CBDescriptor"24@"NSError"32
+14c20 v40@0:8@"CBPeripheral"16@"CBL2CAPChannel"24@"NSError"32
+14c58 v24@0:8@"JL_OTAManager"16
+14c72 @"CBCentralManager"
+14c86 @"JLHashHandler"
+14c97 @"JLOtaReConnectOption"
+14caf @"CBPeripheral"
+14cbf @"CBCharacteristic"
+158df ~6e0R
+158fc !k1Y%
+15c60 U'U'U'

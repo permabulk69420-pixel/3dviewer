@@ -1,0 +1,866 @@
+                 (undefined) external _OBJC_CLASS_$_CBCentralManager (from CoreBluetooth)
+                 (undefined) external _OBJC_CLASS_$_JLAdvParse (from JL_AdvParse)
+                 (undefined) external _OBJC_CLASS_$_JLHashHandler (from JL_HashPair)
+                 (undefined) external _OBJC_CLASS_$_JLLogManager (from JLLogHelper)
+                 (undefined) external _OBJC_CLASS_$_NSArray (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSData (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSDictionary (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSError (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSJSONSerialization (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSMutableArray (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSMutableData (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSNotificationCenter (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSNumber (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSObject (from libobjc)
+                 (undefined) external _OBJC_CLASS_$_NSString (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSTimer (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSURL (from CoreFoundation)
+                 (undefined) external _OBJC_CLASS_$_NSURLSession (from Foundation)
+                 (undefined) external _OBJC_CLASS_$_NSURLSessionConfiguration (from Foundation)
+                 (undefined) external _OBJC_METACLASS_$_NSObject (from libobjc)
+                 (undefined) external __NSConcreteGlobalBlock (from libSystem)
+                 (undefined) external __NSConcreteStackBlock (from libSystem)
+                 (undefined) external __Unwind_Resume (from libSystem)
+                 (undefined) external ___CFConstantStringClassReference (from CoreFoundation)
+                 (undefined) external ___objc_personality_v0 (from libobjc)
+                 (undefined) external ___stack_chk_fail (from libSystem)
+                 (undefined) external ___stack_chk_guard (from libSystem)
+                 (undefined) external __dispatch_main_q (from libSystem)
+                 (undefined) external __objc_empty_cache (from libobjc)
+                 (undefined) external _dispatch_after (from libSystem)
+                 (undefined) external _dispatch_async (from libSystem)
+                 (undefined) external _dispatch_once (from libSystem)
+                 (undefined) external _dispatch_time (from libSystem)
+                 (undefined) external _free (from libSystem)
+                 (undefined) external _malloc (from libSystem)
+                 (undefined) external _memcmp (from libSystem)
+                 (undefined) external _memcpy (from libSystem)
+                 (undefined) external _objc_alloc (from libobjc)
+                 (undefined) external _objc_autoreleaseReturnValue (from libobjc)
+                 (undefined) external _objc_copyWeak (from libobjc)
+                 (undefined) external _objc_destroyWeak (from libobjc)
+                 (undefined) external _objc_enumerationMutation (from libobjc)
+                 (undefined) external _objc_initWeak (from libobjc)
+                 (undefined) external _objc_loadWeakRetained (from libobjc)
+                 (undefined) external _objc_msgSend (from libobjc)
+                 (undefined) external _objc_msgSendSuper2 (from libobjc)
+                 (undefined) external _objc_release (from libobjc)
+                 (undefined) external _objc_retain (from libobjc)
+                 (undefined) external _objc_retainAutorelease (from libobjc)
+                 (undefined) external _objc_retainAutoreleaseReturnValue (from libobjc)
+                 (undefined) external _objc_retainAutoreleasedReturnValue (from libobjc)
+                 (undefined) external _objc_retainBlock (from libobjc)
+                 (undefined) external _objc_setProperty_nonatomic_copy (from libobjc)
+                 (undefined) external _objc_storeStrong (from libobjc)
+                 (undefined) external _objc_storeWeak (from libobjc)
+                 (undefined) external _objc_sync_enter (from libobjc)
+                 (undefined) external _objc_sync_exit (from libobjc)
+                 (undefined) external _sprintf (from libSystem)
+                 (undefined) external _strlen (from libSystem)
+                 (undefined) external _strtol (from libSystem)
+                 (undefined) external dyld_stub_binder (from libSystem)
+0000000000004000 (__TEXT,__text) non-external -[JLOTAFile cmdGetOtaFileKey:Code:Result:]
+00000000000040ec (__TEXT,__text) non-external -[JLOTAFile cmdGetOtaFileKey:Code:hash:Result:]
+0000000000004208 (__TEXT,__text) non-external -[JLOTAFile downloadOtaFileWithUrl:]
+0000000000004344 (__TEXT,__text) non-external ___36-[JLOTAFile downloadOtaFileWithUrl:]_block_invoke
+0000000000004390 (__TEXT,__text) non-external (was a private external) ___copy_helper_block_e8_32s
+0000000000004398 (__TEXT,__text) non-external (was a private external) ___destroy_helper_block_e8_32s
+00000000000043a0 (__TEXT,__text) non-external ___36-[JLOTAFile downloadOtaFileWithUrl:]_block_invoke.9
+00000000000046f8 (__TEXT,__text) non-external ___36-[JLOTAFile downloadOtaFileWithUrl:]_block_invoke_2
+0000000000004764 (__TEXT,__text) non-external (was a private external) ___copy_helper_block_e8_32s40s
+000000000000478c (__TEXT,__text) non-external (was a private external) ___destroy_helper_block_e8_32s40s
+00000000000047b4 (__TEXT,__text) non-external ___36-[JLOTAFile downloadOtaFileWithUrl:]_block_invoke.11
+0000000000004820 (__TEXT,__text) non-external ___36-[JLOTAFile downloadOtaFileWithUrl:]_block_invoke_2.22
+0000000000004860 (__TEXT,__text) non-external (was a private external) ___copy_helper_block_e8_32s40s48s56s
+0000000000004898 (__TEXT,__text) non-external (was a private external) ___destroy_helper_block_e8_32s40s48s56s
+00000000000048d0 (__TEXT,__text) non-external ___36-[JLOTAFile downloadOtaFileWithUrl:]_block_invoke.23
+000000000000493c (__TEXT,__text) non-external -[JLOTAFile .cxx_destruct]
+0000000000004948 (__TEXT,__text) non-external -[JLOtaFlowProcessor init]
+00000000000049a8 (__TEXT,__text) non-external -[JLOtaFlowProcessor reset]
+0000000000004a44 (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdUpgrade:Option:Result:]
+0000000000004b80 (__TEXT,__text) non-external -[JLOtaFlowProcessor noteEntityConnected]
+0000000000004c2c (__TEXT,__text) non-external -[JLOtaFlowProcessor noteEntityDisconnected]
+0000000000005114 (__TEXT,__text) non-external -[JLOtaFlowProcessor startOTAWithData:resultBlock:]
+00000000000054b4 (__TEXT,__text) non-external -[JLOtaFlowProcessor requestCancel]
+000000000000554c (__TEXT,__text) non-external -[JLOtaFlowProcessor requestReboot:]
+00000000000055f4 (__TEXT,__text) non-external -[JLOtaFlowProcessor otaFirstStep:]
+0000000000005648 (__TEXT,__text) non-external ___35-[JLOtaFlowProcessor otaFirstStep:]_block_invoke
+0000000000005928 (__TEXT,__text) non-external ___35-[JLOtaFlowProcessor otaFirstStep:]_block_invoke_2
+0000000000005b44 (__TEXT,__text) non-external -[JLOtaFlowProcessor otaPartitionSingle:]
+0000000000005da4 (__TEXT,__text) non-external ___41-[JLOtaFlowProcessor otaPartitionSingle:]_block_invoke
+0000000000005e54 (__TEXT,__text) non-external -[JLOtaFlowProcessor otaPartitionDouble]
+0000000000005f20 (__TEXT,__text) non-external -[JLOtaFlowProcessor updateRelinkType:]
+0000000000006100 (__TEXT,__text) non-external -[JLOtaFlowProcessor otaSecondStep]
+0000000000006150 (__TEXT,__text) non-external ___35-[JLOtaFlowProcessor otaSecondStep]_block_invoke
+000000000000624c (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_1_GetMarkSeekResult:]
+000000000000631c (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_2_AskForUpgrade:Result:]
+000000000000645c (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_3_EnterUpgradeResult:]
+000000000000652c (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_4_InterruptResult:]
+00000000000065f0 (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_5_TransportSN:Data:]
+0000000000006744 (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_5_Err:]
+00000000000067d0 (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_6_QueryUpgradeStatusResult:]
+0000000000006928 (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_7_RebootDevice:Result:]
+00000000000069fc (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_Route:withOtaReconnectType:Result:]
+0000000000006ae4 (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdOTA_UpgradeLength:]
+0000000000006b64 (__TEXT,__text) non-external -[JLOtaFlowProcessor cmdUpdateBuffer:]
+0000000000007084 (__TEXT,__text) non-external ___38-[JLOtaFlowProcessor cmdUpdateBuffer:]_block_invoke
+00000000000074bc (__TEXT,__text) non-external ___38-[JLOtaFlowProcessor cmdUpdateBuffer:]_block_invoke_2
+00000000000075a4 (__TEXT,__text) non-external ___38-[JLOtaFlowProcessor cmdUpdateBuffer:]_block_invoke_3
+00000000000075b0 (__TEXT,__text) non-external ___38-[JLOtaFlowProcessor cmdUpdateBuffer:]_block_invoke_4
+0000000000007818 (__TEXT,__text) non-external -[JLOtaFlowProcessor handleCommand:sn:payload:]
+0000000000007cdc (__TEXT,__text) non-external -[JLOtaFlowProcessor handleResponse:sn:payload:]
+0000000000007fdc (__TEXT,__text) non-external -[JLOtaFlowProcessor notifyResult:progress:]
+00000000000080d4 (__TEXT,__text) non-external -[JLOtaFlowProcessor updateStatus:]
+0000000000008108 (__TEXT,__text) non-external -[JLOtaFlowProcessor otaTimeout:]
+000000000000810c (__TEXT,__text) non-external -[JLOtaFlowProcessor handleTimeout:]
+0000000000008324 (__TEXT,__text) non-external -[JLOtaFlowProcessor delegate]
+000000000000833c (__TEXT,__text) non-external -[JLOtaFlowProcessor setDelegate:]
+0000000000008348 (__TEXT,__text) non-external -[JLOtaFlowProcessor manager]
+0000000000008360 (__TEXT,__text) non-external -[JLOtaFlowProcessor setManager:]
+000000000000836c (__TEXT,__text) non-external -[JLOtaFlowProcessor dataHandler]
+0000000000008384 (__TEXT,__text) non-external -[JLOtaFlowProcessor setDataHandler:]
+0000000000008390 (__TEXT,__text) non-external -[JLOtaFlowProcessor isUpdating]
+0000000000008398 (__TEXT,__text) non-external -[JLOtaFlowProcessor setIsUpdating:]
+00000000000083a0 (__TEXT,__text) non-external -[JLOtaFlowProcessor otaSent]
+00000000000083a8 (__TEXT,__text) non-external -[JLOtaFlowProcessor setOtaSent:]
+00000000000083b0 (__TEXT,__text) non-external -[JLOtaFlowProcessor otaLength]
+00000000000083b8 (__TEXT,__text) non-external -[JLOtaFlowProcessor setOtaLength:]
+00000000000083c0 (__TEXT,__text) non-external -[JLOtaFlowProcessor maxLostCount]
+00000000000083c8 (__TEXT,__text) non-external -[JLOtaFlowProcessor setMaxLostCount:]
+00000000000083d0 (__TEXT,__text) non-external -[JLOtaFlowProcessor isSupportCRC]
+00000000000083d8 (__TEXT,__text) non-external -[JLOtaFlowProcessor setIsSupportCRC:]
+00000000000083e0 (__TEXT,__text) non-external -[JLOtaFlowProcessor otaData]
+00000000000083e8 (__TEXT,__text) non-external -[JLOtaFlowProcessor setOtaData:]
+00000000000083f4 (__TEXT,__text) non-external -[JLOtaFlowProcessor .cxx_destruct]
+000000000000849c (__TEXT,__text) non-external +[JLOtaDeviceInfoParser parseInfo:intoManager:]
+0000000000008ff4 (__TEXT,__text) external _cd03_crc_encode
+0000000000009098 (__TEXT,__text) external _decrypt
+000000000000910c (__TEXT,__text) external _CRC16
+0000000000009154 (__TEXT,__text) external _parse_fw_info
+0000000000009474 (__TEXT,__text) non-external _byteArrayDataToKey
+00000000000094f0 (__TEXT,__text) non-external +[JL_OTAManager getOTAManager]
+0000000000009520 (__TEXT,__text) non-external ___30+[JL_OTAManager getOTAManager]_block_invoke
+0000000000009550 (__TEXT,__text) non-external -[JL_OTAManager init]
+0000000000009640 (__TEXT,__text) non-external +[JL_OTAManager logSDKVersion]
+00000000000096b8 (__TEXT,__text) non-external -[JL_OTAManager logSendData:]
+000000000000970c (__TEXT,__text) non-external -[JL_OTAManager cmdOtaDataReceive:]
+0000000000009780 (__TEXT,__text) non-external -[JL_OTAManager resetOTAManager]
+0000000000009800 (__TEXT,__text) non-external -[JL_OTAManager maxLostCount:]
+0000000000009854 (__TEXT,__text) non-external -[JL_OTAManager cmdTimeOut:]
+00000000000098c8 (__TEXT,__text) non-external -[JL_OTAManager setOTARelink:]
+0000000000009924 (__TEXT,__text) non-external -[JL_OTAManager intputDeviceName:]
+0000000000009990 (__TEXT,__text) non-external -[JL_OTAManager noteEntityConnected]
+0000000000009998 (__TEXT,__text) non-external -[JL_OTAManager noteEntityDisconnected]
+00000000000099a0 (__TEXT,__text) non-external -[JL_OTAManager cmdSystemFunction]
+0000000000009a48 (__TEXT,__text) non-external -[JL_OTAManager cmdTargetFeature]
+0000000000009af0 (__TEXT,__text) non-external -[JL_OTAManager cmdGetExpandInfo]
+0000000000009b9c (__TEXT,__text) non-external -[JL_OTAManager cmdOtaIsRelinking]
+0000000000009ba0 (__TEXT,__text) non-external -[JL_OTAManager cmdOTAData:Result:]
+0000000000009ba8 (__TEXT,__text) non-external -[JL_OTAManager cmdOtaDataIIResult:]
+0000000000009cb0 (__TEXT,__text) non-external -[JL_OTAManager cmdUpgrade:Option:Result:]
+0000000000009cb8 (__TEXT,__text) non-external -[JL_OTAManager cmdOTACancelResult:]
+0000000000009cc0 (__TEXT,__text) non-external -[JL_OTAManager cmdRebootDevice]
+0000000000009ccc (__TEXT,__text) non-external -[JL_OTAManager cmdRebootForceDevice]
+0000000000009cd8 (__TEXT,__text) non-external -[JL_OTAManager otaFlowDidUpdateStatus:progress:]
+0000000000009d64 (__TEXT,__text) non-external -[JL_OTAManager otaFlowDidSendData:]
+0000000000009d68 (__TEXT,__text) non-external -[JL_OTAManager otaDataHandlerDidSend:uuid:]
+0000000000009dec (__TEXT,__text) non-external -[JL_OTAManager otaDataHandlerDidResp:uuid:]
+0000000000009e64 (__TEXT,__text) non-external -[JL_OTAManager otaDataHandlerReceiveData:]
+0000000000009ec0 (__TEXT,__text) non-external -[JL_OTAManager otaHandler:didReceiveCmd:sn:needResponse:payload:]
+0000000000009ed4 (__TEXT,__text) non-external -[JL_OTAManager otaHandler:didReceiveResponse:sn:payload:]
+000000000000a260 (__TEXT,__text) non-external -[JL_OTAManager mBLE_UUID]
+000000000000a268 (__TEXT,__text) non-external -[JL_OTAManager setMBLE_UUID:]
+000000000000a274 (__TEXT,__text) non-external -[JL_OTAManager mBLE_NAME]
+000000000000a27c (__TEXT,__text) non-external -[JL_OTAManager setMBLE_NAME:]
+000000000000a288 (__TEXT,__text) non-external -[JL_OTAManager bleOnly]
+000000000000a290 (__TEXT,__text) non-external -[JL_OTAManager setBleOnly:]
+000000000000a298 (__TEXT,__text) non-external -[JL_OTAManager bleAddr]
+000000000000a2a0 (__TEXT,__text) non-external -[JL_OTAManager setBleAddr:]
+000000000000a2ac (__TEXT,__text) non-external -[JL_OTAManager mCmdSN]
+000000000000a2b4 (__TEXT,__text) non-external -[JL_OTAManager setMCmdSN:]
+000000000000a2bc (__TEXT,__text) non-external -[JL_OTAManager version]
+000000000000a2c4 (__TEXT,__text) non-external -[JL_OTAManager setVersion:]
+000000000000a2cc (__TEXT,__text) non-external -[JL_OTAManager versionFirmware]
+000000000000a2d4 (__TEXT,__text) non-external -[JL_OTAManager setVersionFirmware:]
+000000000000a2e0 (__TEXT,__text) non-external -[JL_OTAManager otaStatus]
+000000000000a2e8 (__TEXT,__text) non-external -[JL_OTAManager setOtaStatus:]
+000000000000a2f0 (__TEXT,__text) non-external -[JL_OTAManager otaHeadset]
+000000000000a2f8 (__TEXT,__text) non-external -[JL_OTAManager setOtaHeadset:]
+000000000000a300 (__TEXT,__text) non-external -[JL_OTAManager otaWatch]
+000000000000a308 (__TEXT,__text) non-external -[JL_OTAManager setOtaWatch:]
+000000000000a310 (__TEXT,__text) non-external -[JL_OTAManager isSupportReuseSpaceOTA]
+000000000000a318 (__TEXT,__text) non-external -[JL_OTAManager setIsSupportReuseSpaceOTA:]
+000000000000a320 (__TEXT,__text) non-external -[JL_OTAManager isSupportExpand]
+000000000000a328 (__TEXT,__text) non-external -[JL_OTAManager setIsSupportExpand:]
+000000000000a330 (__TEXT,__text) non-external -[JL_OTAManager otaSourceMode]
+000000000000a338 (__TEXT,__text) non-external -[JL_OTAManager setOtaSourceMode:]
+000000000000a340 (__TEXT,__text) non-external -[JL_OTAManager otaPartition]
+000000000000a348 (__TEXT,__text) non-external -[JL_OTAManager setOtaPartition:]
+000000000000a350 (__TEXT,__text) non-external -[JL_OTAManager bootloaderType]
+000000000000a358 (__TEXT,__text) non-external -[JL_OTAManager setBootloaderType:]
+000000000000a360 (__TEXT,__text) non-external -[JL_OTAManager otaReconnectType]
+000000000000a368 (__TEXT,__text) non-external -[JL_OTAManager setOtaReconnectType:]
+000000000000a370 (__TEXT,__text) non-external -[JL_OTAManager otaLength]
+000000000000a378 (__TEXT,__text) non-external -[JL_OTAManager otaSent]
+000000000000a380 (__TEXT,__text) non-external -[JL_OTAManager delegate]
+000000000000a398 (__TEXT,__text) non-external -[JL_OTAManager setDelegate:]
+000000000000a3a4 (__TEXT,__text) non-external -[JL_OTAManager isRelink]
+000000000000a3ac (__TEXT,__text) non-external -[JL_OTAManager setIsRelink:]
+000000000000a3b4 (__TEXT,__text) non-external -[JL_OTAManager .cxx_destruct]
+000000000000a41c (__TEXT,__text) non-external -[JLOtaDataHandler init]
+000000000000a4ec (__TEXT,__text) non-external -[JLOtaDataHandler xmCommandCode:needRep:data:UUID:]
+000000000000a684 (__TEXT,__text) non-external -[JLOtaDataHandler cmdResponseCode:OpSN:Status:Data:UUID:]
+000000000000a8b0 (__TEXT,__text) non-external -[JLOtaDataHandler rcspMakePkg:needRes:Opcode:playload:]
+000000000000aa3c (__TEXT,__text) non-external -[JLOtaDataHandler otaDidReceiveData:]
+000000000000aa88 (__TEXT,__text) non-external -[JLOtaDataHandler inputHandleData:]
+000000000000aab8 (__TEXT,__text) non-external -[JLOtaDataHandler copeWithBLEData]
+000000000000ad20 (__TEXT,__text) non-external -[JLOtaDataHandler parseInputPackage:]
+000000000000b014 (__TEXT,__text) non-external -[JLOtaDataHandler sendGetTargetFeatureWithSN:UUID:]
+000000000000b0ac (__TEXT,__text) non-external -[JLOtaDataHandler sendSystemFunctionWithSN:UUID:]
+000000000000b140 (__TEXT,__text) non-external -[JLOtaDataHandler sendExpandInfoWithSN:type:UUID:]
+000000000000b1d4 (__TEXT,__text) non-external -[JLOtaDataHandler sendMarkSeekWithSN:UUID:]
+000000000000b25c (__TEXT,__text) non-external -[JLOtaDataHandler sendCheckCanUpdateWithSN:data:UUID:]
+000000000000b30c (__TEXT,__text) non-external -[JLOtaDataHandler sendEnterUpdateWithSN:UUID:]
+000000000000b394 (__TEXT,__text) non-external -[JLOtaDataHandler sendExitUpdateWithSN:UUID:]
+000000000000b41c (__TEXT,__text) non-external -[JLOtaDataHandler sendOtaStatusWithSN:UUID:]
+000000000000b4a4 (__TEXT,__text) non-external -[JLOtaDataHandler sendRebootWithSN:type:UUID:]
+000000000000b530 (__TEXT,__text) non-external -[JLOtaDataHandler sendBleSppWithSN:type:reconnectType:UUID:]
+000000000000b5c0 (__TEXT,__text) non-external -[JLOtaDataHandler sendExitUpdateSuccessWithSN:UUID:]
+000000000000b654 (__TEXT,__text) non-external -[JLOtaDataHandler sendOtaLengthSuccessWithSN:UUID:]
+000000000000b66c (__TEXT,__text) non-external -[JLOtaDataHandler sendOtaDataWithSN:data:UUID:]
+000000000000b684 (__TEXT,__text) non-external -[JLOtaDataHandler sendOtaDataErrorWithSN:UUID:]
+000000000000b69c (__TEXT,__text) non-external +[JLOtaDataHandler data:R:L:]
+000000000000b738 (__TEXT,__text) non-external +[JLOtaDataHandler dataToInt:]
+000000000000b7f4 (__TEXT,__text) non-external +[JLOtaDataHandler dataChangeToString:]
+000000000000b8e4 (__TEXT,__text) non-external +[JLOtaDataHandler HexToData:]
+000000000000b9c8 (__TEXT,__text) non-external -[JLOtaDataHandler uInt16_data:]
+000000000000ba04 (__TEXT,__text) non-external -[JLOtaDataHandler rcspInfoArrFromData:]
+000000000000bc40 (__TEXT,__text) non-external -[JLOtaDataHandler beHexStr:]
+000000000000bd30 (__TEXT,__text) non-external +[JLOtaDataHandler addCrc:]
+000000000000be48 (__TEXT,__text) non-external -[JLOtaDataHandler logOtaSendData]
+000000000000be50 (__TEXT,__text) non-external -[JLOtaDataHandler setLogOtaSendData:]
+000000000000be58 (__TEXT,__text) non-external -[JLOtaDataHandler mRcspData]
+000000000000be60 (__TEXT,__text) non-external -[JLOtaDataHandler setMRcspData:]
+000000000000be6c (__TEXT,__text) non-external -[JLOtaDataHandler delegate]
+000000000000be84 (__TEXT,__text) non-external -[JLOtaDataHandler setDelegate:]
+000000000000be90 (__TEXT,__text) non-external -[JLOtaDataHandler .cxx_destruct]
+000000000000bee0 (__TEXT,__text) non-external -[JLOTATimeoutInfo setTimeOutMax:]
+000000000000bee8 (__TEXT,__text) non-external -[JLOTATimeoutInfo startTimeOut]
+000000000000bf48 (__TEXT,__text) non-external -[JLOTATimeoutInfo stopTimeOut]
+000000000000bf78 (__TEXT,__text) non-external -[JLOTATimeoutInfo timeCountAction:]
+000000000000c018 (__TEXT,__text) non-external -[JLOTATimeoutInfo copyWithZone:]
+000000000000c098 (__TEXT,__text) non-external -[JLOTATimeoutInfo opcode]
+000000000000c0a0 (__TEXT,__text) non-external -[JLOTATimeoutInfo setOpcode:]
+000000000000c0a8 (__TEXT,__text) non-external -[JLOTATimeoutInfo sn]
+000000000000c0b0 (__TEXT,__text) non-external -[JLOTATimeoutInfo setSn:]
+000000000000c0b8 (__TEXT,__text) non-external -[JLOTATimeoutInfo tagString]
+000000000000c0c0 (__TEXT,__text) non-external -[JLOTATimeoutInfo setTagString:]
+000000000000c0cc (__TEXT,__text) non-external -[JLOTATimeoutInfo callback]
+000000000000c0d4 (__TEXT,__text) non-external -[JLOTATimeoutInfo setCallback:]
+000000000000c0dc (__TEXT,__text) non-external -[JLOTATimeoutInfo .cxx_destruct]
+000000000000c118 (__TEXT,__text) non-external -[JLOtaCustomData needResponse]
+000000000000c120 (__TEXT,__text) non-external -[JLOtaCustomData setNeedResponse:]
+000000000000c128 (__TEXT,__text) non-external -[JLOtaCustomData data]
+000000000000c130 (__TEXT,__text) non-external -[JLOtaCustomData setData:]
+000000000000c13c (__TEXT,__text) non-external -[JLOtaCustomData sn]
+000000000000c144 (__TEXT,__text) non-external -[JLOtaCustomData setSn:]
+000000000000c14c (__TEXT,__text) non-external -[JLOtaCustomData .cxx_destruct]
+000000000000c158 (__TEXT,__text) non-external -[JLOtaCustom initWithDelegate:OtaManager:]
+000000000000c318 (__TEXT,__text) non-external -[JLOtaCustom dealloc]
+000000000000c380 (__TEXT,__text) non-external -[JLOtaCustom cmdSendCommandData:needResponse:Result:]
+000000000000c538 (__TEXT,__text) non-external -[JLOtaCustom cmdResponseData:sn:]
+000000000000c690 (__TEXT,__text) non-external -[JLOtaCustom otaDataHandlerDidResp:uuid:]
+000000000000c768 (__TEXT,__text) non-external -[JLOtaCustom otaDataHandlerDidSend:uuid:]
+000000000000c818 (__TEXT,__text) non-external -[JLOtaCustom otaDataHandlerData:NeedResponse:Data:sn:opcode:]
+000000000000cabc (__TEXT,__text) non-external -[JLOtaCustom otaHandler:didReceiveCmd:sn:needResponse:payload:]
+000000000000cadc (__TEXT,__text) non-external -[JLOtaCustom otaHandler:didReceiveResponse:sn:payload:]
+000000000000caf8 (__TEXT,__text) non-external -[JLOtaCustom otaDataHandlerReceiveData:]
+000000000000cafc (__TEXT,__text) non-external -[JLOtaCustom otaManagerHandlerDidReceive:]
+000000000000cb3c (__TEXT,__text) non-external -[JLOtaCustom otaManagerHandlerDidTimeOut:]
+000000000000cbd0 (__TEXT,__text) non-external -[JLOtaCustom otaManager]
+000000000000cbe8 (__TEXT,__text) non-external -[JLOtaCustom setOtaManager:]
+000000000000cbf4 (__TEXT,__text) non-external -[JLOtaCustom dataHandler]
+000000000000cbfc (__TEXT,__text) non-external -[JLOtaCustom setDataHandler:]
+000000000000cc08 (__TEXT,__text) non-external -[JLOtaCustom delegate]
+000000000000cc20 (__TEXT,__text) non-external -[JLOtaCustom setDelegate:]
+000000000000cc2c (__TEXT,__text) non-external -[JLOtaCustom cusResult]
+000000000000cc34 (__TEXT,__text) non-external -[JLOtaCustom setCusResult:]
+000000000000cc3c (__TEXT,__text) non-external -[JLOtaCustom .cxx_destruct]
+000000000000cc7c (__TEXT,__text) non-external +[JLOtaTimeoutManager share]
+000000000000ccac (__TEXT,__text) non-external ___28+[JLOtaTimeoutManager share]_block_invoke
+000000000000ccd8 (__TEXT,__text) non-external -[JLOtaTimeoutManager init]
+000000000000cd44 (__TEXT,__text) non-external -[JLOtaTimeoutManager cancelTimeOut:OpCode:]
+000000000000ce80 (__TEXT,__text) non-external -[JLOtaTimeoutManager startTimeOut:OpCode:]
+000000000000cf8c (__TEXT,__text) non-external ___43-[JLOtaTimeoutManager startTimeOut:OpCode:]_block_invoke
+000000000000d178 (__TEXT,__text) non-external (was a private external) ___copy_helper_block_e8_32w
+000000000000d184 (__TEXT,__text) non-external (was a private external) ___destroy_helper_block_e8_32w
+000000000000d18c (__TEXT,__text) non-external -[JLOtaTimeoutManager startTimeOutWithTag:]
+000000000000d2c8 (__TEXT,__text) non-external ___43-[JLOtaTimeoutManager startTimeOutWithTag:]_block_invoke
+000000000000d4a0 (__TEXT,__text) non-external (was a private external) ___copy_helper_block_e8_32s40w
+000000000000d4d0 (__TEXT,__text) non-external (was a private external) ___destroy_helper_block_e8_32s40w
+000000000000d4f8 (__TEXT,__text) non-external -[JLOtaTimeoutManager cancelTimeOutWithTag:]
+000000000000d6c8 (__TEXT,__text) non-external -[JLOtaTimeoutManager clearAllTimeOut]
+000000000000d7c0 (__TEXT,__text) non-external -[JLOtaTimeoutManager delegate]
+000000000000d7c8 (__TEXT,__text) non-external -[JLOtaTimeoutManager setDelegate:]
+000000000000d7d4 (__TEXT,__text) non-external -[JLOtaTimeoutManager kOtaTimeOutMax]
+000000000000d7dc (__TEXT,__text) non-external -[JLOtaTimeoutManager setKOtaTimeOutMax:]
+000000000000d7e4 (__TEXT,__text) non-external -[JLOtaTimeoutManager cmdArray]
+000000000000d7ec (__TEXT,__text) non-external -[JLOtaTimeoutManager setCmdArray:]
+000000000000d7f8 (__TEXT,__text) non-external -[JLOtaTimeoutManager .cxx_destruct]
+000000000000d828 (__TEXT,__text) non-external +[JLOTAVersion otaVersion]
+000000000000d834 (__TEXT,__text) non-external +[JLOTAVersion currentVersion]
+000000000000d874 (__TEXT,__text) non-external +[JLOtaReConnectOption defaultOption]
+000000000000d8e8 (__TEXT,__text) non-external -[JLOtaReConnectOption deviceAuthorize]
+000000000000d8f0 (__TEXT,__text) non-external -[JLOtaReConnectOption setDeviceAuthorize:]
+000000000000d8f8 (__TEXT,__text) non-external -[JLOtaReConnectOption authKey]
+000000000000d900 (__TEXT,__text) non-external -[JLOtaReConnectOption setAuthKey:]
+000000000000d90c (__TEXT,__text) non-external -[JLOtaReConnectOption serviceUUID]
+000000000000d914 (__TEXT,__text) non-external -[JLOtaReConnectOption setServiceUUID:]
+000000000000d920 (__TEXT,__text) non-external -[JLOtaReConnectOption writeUUID]
+000000000000d928 (__TEXT,__text) non-external -[JLOtaReConnectOption setWriteUUID:]
+000000000000d934 (__TEXT,__text) non-external -[JLOtaReConnectOption readUUID]
+000000000000d93c (__TEXT,__text) non-external -[JLOtaReConnectOption setReadUUID:]
+000000000000d948 (__TEXT,__text) non-external -[JLOtaReConnectOption isWriteWithResponse]
+000000000000d950 (__TEXT,__text) non-external -[JLOtaReConnectOption setIsWriteWithResponse:]
+000000000000d958 (__TEXT,__text) non-external -[JLOtaReConnectOption .cxx_destruct]
+000000000000d9a0 (__TEXT,__text) non-external -[JLOtaReConnectMgr init:]
+000000000000da84 (__TEXT,__text) non-external -[JLOtaReConnectMgr startTimer]
+000000000000daf4 (__TEXT,__text) non-external -[JLOtaReConnectMgr timerAction]
+000000000000db48 (__TEXT,__text) non-external -[JLOtaReConnectMgr stopTimer]
+000000000000db84 (__TEXT,__text) non-external -[JLOtaReConnectMgr reconnectWithMac:Result:]
+000000000000dc20 (__TEXT,__text) non-external -[JLOtaReConnectMgr reconnectWithUUID:Result:]
+000000000000dcbc (__TEXT,__text) non-external -[JLOtaReConnectMgr hashOnPairOutputData:]
+000000000000dcc0 (__TEXT,__text) non-external -[JLOtaReConnectMgr otaDataSend:]
+000000000000dcc4 (__TEXT,__text) non-external -[JLOtaReConnectMgr otaFeatureResult:]
+000000000000dd90 (__TEXT,__text) non-external -[JLOtaReConnectMgr otaUpgradeResult:Progress:]
+000000000000dddc (__TEXT,__text) non-external -[JLOtaReConnectMgr dataSender:]
+000000000000deb8 (__TEXT,__text) non-external -[JLOtaReConnectMgr centralManagerDidUpdateState:]
+000000000000df70 (__TEXT,__text) non-external -[JLOtaReConnectMgr centralManager:didDiscoverPeripheral:advertisementData:RSSI:]
+000000000000e1d8 (__TEXT,__text) non-external ___81-[JLOtaReConnectMgr centralManager:didDiscoverPeripheral:advertisementData:RSSI:]_block_invoke
+000000000000e22c (__TEXT,__text) non-external ___81-[JLOtaReConnectMgr centralManager:didDiscoverPeripheral:advertisementData:RSSI:]_block_invoke.15
+000000000000e278 (__TEXT,__text) non-external -[JLOtaReConnectMgr centralManager:didConnectPeripheral:]
+000000000000e390 (__TEXT,__text) non-external -[JLOtaReConnectMgr peripheral:didDiscoverServices:]
+000000000000e518 (__TEXT,__text) non-external -[JLOtaReConnectMgr peripheral:didDiscoverCharacteristicsForService:error:]
+000000000000e730 (__TEXT,__text) non-external -[JLOtaReConnectMgr peripheral:didUpdateValueForCharacteristic:error:]
+000000000000e82c (__TEXT,__text) non-external -[JLOtaReConnectMgr peripheral:didUpdateNotificationStateForCharacteristic:error:]
+000000000000e978 (__TEXT,__text) non-external ___82-[JLOtaReConnectMgr peripheral:didUpdateNotificationStateForCharacteristic:error:]_block_invoke
+000000000000e9e8 (__TEXT,__text) non-external -[JLOtaReConnectMgr otaData]
+000000000000e9f0 (__TEXT,__text) non-external -[JLOtaReConnectMgr setOtaData:]
+000000000000e9fc (__TEXT,__text) non-external -[JLOtaReConnectMgr centralManager]
+000000000000ea04 (__TEXT,__text) non-external -[JLOtaReConnectMgr setCentralManager:]
+000000000000ea10 (__TEXT,__text) non-external -[JLOtaReConnectMgr pMac]
+000000000000ea18 (__TEXT,__text) non-external -[JLOtaReConnectMgr setPMac:]
+000000000000ea24 (__TEXT,__text) non-external -[JLOtaReConnectMgr uuid]
+000000000000ea2c (__TEXT,__text) non-external -[JLOtaReConnectMgr setUuid:]
+000000000000ea34 (__TEXT,__text) non-external -[JLOtaReConnectMgr manager]
+000000000000ea3c (__TEXT,__text) non-external -[JLOtaReConnectMgr setManager:]
+000000000000ea48 (__TEXT,__text) non-external -[JLOtaReConnectMgr authHandler]
+000000000000ea50 (__TEXT,__text) non-external -[JLOtaReConnectMgr setAuthHandler:]
+000000000000ea5c (__TEXT,__text) non-external -[JLOtaReConnectMgr isAuthed]
+000000000000ea64 (__TEXT,__text) non-external -[JLOtaReConnectMgr setIsAuthed:]
+000000000000ea6c (__TEXT,__text) non-external -[JLOtaReConnectMgr option]
+000000000000ea74 (__TEXT,__text) non-external -[JLOtaReConnectMgr setOption:]
+000000000000ea80 (__TEXT,__text) non-external -[JLOtaReConnectMgr currentPeripheral]
+000000000000ea88 (__TEXT,__text) non-external -[JLOtaReConnectMgr setCurrentPeripheral:]
+000000000000ea94 (__TEXT,__text) non-external -[JLOtaReConnectMgr readCharacteristic]
+000000000000ea9c (__TEXT,__text) non-external -[JLOtaReConnectMgr setReadCharacteristic:]
+000000000000eaa8 (__TEXT,__text) non-external -[JLOtaReConnectMgr writeCharacteristic]
+000000000000eab0 (__TEXT,__text) non-external -[JLOtaReConnectMgr setWriteCharacteristic:]
+000000000000eabc (__TEXT,__text) non-external -[JLOtaReConnectMgr rtBlock]
+000000000000eac4 (__TEXT,__text) non-external -[JLOtaReConnectMgr setRtBlock:]
+000000000000eacc (__TEXT,__text) non-external -[JLOtaReConnectMgr isSearching]
+000000000000ead4 (__TEXT,__text) non-external -[JLOtaReConnectMgr setIsSearching:]
+000000000000eadc (__TEXT,__text) non-external -[JLOtaReConnectMgr timer]
+000000000000eae4 (__TEXT,__text) non-external -[JLOtaReConnectMgr setTimer:]
+000000000000eaf0 (__TEXT,__text) non-external -[JLOtaReConnectMgr timerCount]
+000000000000eaf8 (__TEXT,__text) non-external -[JLOtaReConnectMgr setTimerCount:]
+000000000000eb00 (__TEXT,__text) non-external -[JLOtaReConnectMgr maxTimerCount]
+000000000000eb08 (__TEXT,__text) non-external -[JLOtaReConnectMgr setMaxTimerCount:]
+000000000000eb10 (__TEXT,__text) non-external -[JLOtaReConnectMgr .cxx_destruct]
+000000000000eba0 (__TEXT,__text) non-external +[JL_OTAManager getOTAManager].cold.1
+000000000000ebb4 (__TEXT,__text) non-external +[JLOtaTimeoutManager share].cold.1
+000000000000eee0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$HexToData:
+000000000000ef00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$JSONObjectWithData:options:error:
+000000000000ef20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$URLWithString:
+000000000000ef40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$UUID
+000000000000ef60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$UUIDString
+000000000000ef80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addCrc:
+000000000000efa0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addObject:
+000000000000efc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addObserver:selector:name:object:
+000000000000efe0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$appendBytes:length:
+000000000000f000 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$appendData:
+000000000000f020 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$array
+000000000000f040 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$arrayWithObjects:count:
+000000000000f060 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$authKey
+000000000000f080 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$beHexStr:
+000000000000f0a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$bleAddr
+000000000000f0c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$bluetoothPairingKey:Result:
+000000000000f0e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$bootloaderType
+000000000000f100 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$bytes
+000000000000f120 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$callback
+000000000000f140 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cancelTimeOut:OpCode:
+000000000000f160 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cancelTimeOutWithTag:
+000000000000f180 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$characterAtIndex:
+000000000000f1a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$characteristics
+000000000000f1c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$class
+000000000000f1e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$clearAllTimeOut
+000000000000f200 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdArray
+000000000000f220 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdGetExpandInfo
+000000000000f240 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTAData:Result:
+000000000000f260 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_1_GetMarkSeekResult:
+000000000000f280 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_2_AskForUpgrade:Result:
+000000000000f2a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_3_EnterUpgradeResult:
+000000000000f2c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_4_InterruptResult:
+000000000000f2e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_5_Err:
+000000000000f300 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_5_TransportSN:Data:
+000000000000f320 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_6_QueryUpgradeStatusResult:
+000000000000f340 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_7_RebootDevice:Result:
+000000000000f360 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_Route:withOtaReconnectType:Result:
+000000000000f380 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_UpgradeLength:
+000000000000f3a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOtaDataReceive:
+000000000000f3c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOtaIsRelinking
+000000000000f3e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdResponseCode:OpSN:Status:Data:UUID:
+000000000000f400 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdTargetFeature
+000000000000f420 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdUpdateBuffer:
+000000000000f440 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdUpgrade:Option:Result:
+000000000000f460 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$connectPeripheral:options:
+000000000000f480 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$copeWithBLEData
+000000000000f4a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$copy
+000000000000f4c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$count
+000000000000f4e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$countByEnumeratingWithState:objects:count:
+000000000000f500 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$currentVersion
+000000000000f520 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$data:R:L:
+000000000000f540 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataChangeToString:
+000000000000f560 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataHandler
+000000000000f580 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataSender:
+000000000000f5a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataTaskWithURL:completionHandler:
+000000000000f5c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataToInt:
+000000000000f5e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataWithBytes:length:
+000000000000f600 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataWithData:
+000000000000f620 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$defaultCenter
+000000000000f640 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$defaultOption
+000000000000f660 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$defaultSessionConfiguration
+000000000000f680 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$delegate
+000000000000f6a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$deviceAuthorize
+000000000000f6c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dictionaryWithObjects:forKeys:count:
+000000000000f6e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$discoverCharacteristics:forService:
+000000000000f700 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$discoverServices:
+000000000000f720 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$downloadOtaFileWithUrl:
+000000000000f740 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$errorWithDomain:code:userInfo:
+000000000000f760 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$fire
+000000000000f780 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$getOTAManager
+000000000000f7a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$handleCommand:sn:payload:
+000000000000f7c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$handleResponse:sn:payload:
+000000000000f7e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$handleTimeout:
+000000000000f800 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$identifier
+000000000000f820 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$init
+000000000000f840 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$init:
+000000000000f860 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$initWithBytes:length:
+000000000000f880 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$initWithDelegate:queue:
+000000000000f8a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$inputHandleData:
+000000000000f8c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$inputPairData:
+000000000000f8e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$intValue
+000000000000f900 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$invalidate
+000000000000f920 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isEqual:
+000000000000f940 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isEqualToString:
+000000000000f960 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isKindOfClass:
+000000000000f980 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isRelink
+000000000000f9a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isSupportExpand
+000000000000f9c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isSupportReuseSpaceOTA
+000000000000f9e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isWriteWithResponse
+000000000000fa00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$length
+000000000000fa20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$localizedDescription
+000000000000fa40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$logLevel:funcName:line:format:
+000000000000fa60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$logOtaSendData
+000000000000fa80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$mBLE_NAME
+000000000000faa0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$mBLE_UUID
+000000000000fac0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$mCmdSN
+000000000000fae0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$manager
+000000000000fb00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$maximumWriteValueLengthForType:
+000000000000fb20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$name
+000000000000fb40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$new
+000000000000fb60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$noteEntityConnected
+000000000000fb80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$noteEntityDisconnected
+000000000000fba0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$notifyResult:progress:
+000000000000fbc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$numberWithInt:
+000000000000fbe0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$numberWithUnsignedChar:
+000000000000fc00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$object
+000000000000fc20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$objectAtIndexedSubscript:
+000000000000fc40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$objectForKeyedSubscript:
+000000000000fc60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$opcode
+000000000000fc80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaBleMacAddress:isEqualToCBAdvDataManufacturerData:
+000000000000fca0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaCustomReceiveData:
+000000000000fcc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaData
+000000000000fce0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataHandlerData:NeedResponse:Data:sn:opcode:
+000000000000fd00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataHandlerDidResp:uuid:
+000000000000fd20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataHandlerDidSend:uuid:
+000000000000fd40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataHandlerReceiveData:
+000000000000fd60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataSend:
+000000000000fd80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDidReceiveData:
+000000000000fda0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaFeatureResult:
+000000000000fdc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaFirstStep:
+000000000000fde0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaFlowDidUpdateStatus:progress:
+000000000000fe00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaHandler:didReceiveCmd:sn:needResponse:payload:
+000000000000fe20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaHandler:didReceiveResponse:sn:payload:
+000000000000fe40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaManager
+000000000000fe60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaPartition
+000000000000fe80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaPartitionDouble
+000000000000fea0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaPartitionSingle:
+000000000000fec0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaReconnectType
+000000000000fee0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaSecondStep
+000000000000ff00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaSourceMode
+000000000000ff20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaStatus
+000000000000ff40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaTimeout:
+000000000000ff60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaUpgradeResult:Progress:
+000000000000ff80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaVersion
+000000000000ffa0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$parseInfo:intoManager:
+000000000000ffc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$parseInputPackage:
+000000000000ffe0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$postNotificationName:object:
+0000000000010000 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$rcspInfoArrFromData:
+0000000000010020 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$rcspMakePkg:needRes:Opcode:playload:
+0000000000010040 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$readUUID
+0000000000010060 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$readValueForCharacteristic:
+0000000000010080 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$reconnectWithMac:Result:
+00000000000100a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$reconnectWithUUID:Result:
+00000000000100c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$removeAllObjects
+00000000000100e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$removeObject:
+0000000000010100 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$removeObjectsInArray:
+0000000000010120 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$removeObserver:
+0000000000010140 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$requestCancel
+0000000000010160 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$requestReboot:
+0000000000010180 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$reset
+00000000000101a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$resetOTAManager
+00000000000101c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$respondsToSelector:
+00000000000101e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$resume
+0000000000010200 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$scanForPeripheralsWithServices:options:
+0000000000010220 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+0000000000010240 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$self
+0000000000010260 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendBleSppWithSN:type:reconnectType:UUID:
+0000000000010280 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendCheckCanUpdateWithSN:data:UUID:
+00000000000102a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendEnterUpdateWithSN:UUID:
+00000000000102c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendExitUpdateSuccessWithSN:UUID:
+00000000000102e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendExitUpdateWithSN:UUID:
+0000000000010300 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendExpandInfoWithSN:type:UUID:
+0000000000010320 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendGetTargetFeatureWithSN:UUID:
+0000000000010340 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendMarkSeekWithSN:UUID:
+0000000000010360 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendOtaDataErrorWithSN:UUID:
+0000000000010380 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendOtaDataWithSN:data:UUID:
+00000000000103a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendOtaLengthSuccessWithSN:UUID:
+00000000000103c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendOtaStatusWithSN:UUID:
+00000000000103e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendRebootWithSN:type:UUID:
+0000000000010400 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendSystemFunctionWithSN:UUID:
+0000000000010420 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$serviceUUID
+0000000000010440 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$services
+0000000000010460 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sessionWithConfiguration:
+0000000000010480 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setBleAddr:
+00000000000104a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setBleOnly:
+00000000000104c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setBootloaderType:
+00000000000104e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setCallback:
+0000000000010500 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setData:
+0000000000010520 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setDataHandler:
+0000000000010540 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setDelegate:
+0000000000010560 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setDeviceAuthorize:
+0000000000010580 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsRelink:
+00000000000105a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsSupportCRC:
+00000000000105c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsSupportExpand:
+00000000000105e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsSupportReuseSpaceOTA:
+0000000000010600 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsWriteWithResponse:
+0000000000010620 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setKOtaTimeOutMax:
+0000000000010640 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setLogOtaSendData:
+0000000000010660 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setMBLE_NAME:
+0000000000010680 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setMBLE_UUID:
+00000000000106a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setMCmdSN:
+00000000000106c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setManager:
+00000000000106e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setMaxLostCount:
+0000000000010700 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setNeedResponse:
+0000000000010720 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setNotifyValue:forCharacteristic:
+0000000000010740 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOTARelink:
+0000000000010760 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOpcode:
+0000000000010780 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaData:
+00000000000107a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaHeadset:
+00000000000107c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaPartition:
+00000000000107e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaReconnectType:
+0000000000010800 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaSourceMode:
+0000000000010820 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaStatus:
+0000000000010840 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setPMac:
+0000000000010860 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setReadUUID:
+0000000000010880 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setServiceUUID:
+00000000000108a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setSn:
+00000000000108c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setTagString:
+00000000000108e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setTimeOutMax:
+0000000000010900 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setTimeoutIntervalForRequest:
+0000000000010920 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setUuid:
+0000000000010940 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setVersion:
+0000000000010960 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setVersionFirmware:
+0000000000010980 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setWriteUUID:
+00000000000109a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$share
+00000000000109c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sn
+00000000000109e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startOTAWithData:resultBlock:
+0000000000010a00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startTimeOut
+0000000000010a20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startTimeOut:OpCode:
+0000000000010a40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startTimeOutWithTag:
+0000000000010a60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startTimer
+0000000000010a80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$state
+0000000000010aa0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stopScan
+0000000000010ac0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stopTimeOut
+0000000000010ae0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stopTimer
+0000000000010b00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringByReplacingOccurrencesOfString:withString:
+0000000000010b20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringWithFormat:
+0000000000010b40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringWithUTF8String:
+0000000000010b60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$subdataWithRange:
+0000000000010b80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$tagString
+0000000000010ba0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$uInt16_data:
+0000000000010bc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$updateRelinkType:
+0000000000010be0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$updateStatus:
+0000000000010c00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$value
+0000000000010c20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$writeUUID
+0000000000010c40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$writeValue:forCharacteristic:type:
+0000000000010c60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$xmCommandCode:needRep:data:UUID:
+0000000000010c80 (__TEXT,__const) external _JL_OTALibVersionString
+0000000000010cb0 (__TEXT,__const) external _JL_OTALibVersionNumber
+0000000000016530 (__TEXT,__gcc_except_tab) non-external GCC_except_table4
+0000000000016554 (__TEXT,__gcc_except_tab) non-external GCC_except_table8
+0000000000016578 (__TEXT,__gcc_except_tab) non-external GCC_except_table12
+00000000000165cc (__TEXT,__gcc_except_tab) non-external GCC_except_table21
+0000000000018130 (__DATA,__const) non-external (was a private external) ___block_descriptor_40_e8_32s_e5_v8?0l
+0000000000018160 (__DATA,__const) non-external (was a private external) ___block_descriptor_48_e8_32s40s_e5_v8?0l
+0000000000018190 (__DATA,__const) non-external (was a private external) ___block_descriptor_64_e8_32s40s48s56s_e5_v8?0l
+00000000000181c0 (__DATA,__const) non-external (was a private external) ___block_descriptor_40_e8_32s_e46_v32?0"NSData"8"NSURLResponse"16"NSError"24l
+00000000000181f0 (__DATA,__const) non-external (was a private external) ___block_descriptor_41_e8_32s_e22_v24?0C8C12"NSData"16l
+0000000000018220 (__DATA,__const) non-external (was a private external) ___block_descriptor_40_e8_32s_e22_v24?0C8C12"NSData"16l
+0000000000018250 (__DATA,__const) non-external (was a private external) ___block_descriptor_32_e5_v8?0l
+0000000000018270 (__DATA,__const) non-external ___block_literal_global
+0000000000018290 (__DATA,__const) non-external ___block_literal_global
+00000000000182b0 (__DATA,__const) non-external (was a private external) ___block_descriptor_40_e8_32w_e26_v16?0"JLOTATimeoutInfo"8l
+00000000000182e0 (__DATA,__const) non-external (was a private external) ___block_descriptor_48_e8_32s40w_e26_v16?0"JLOTATimeoutInfo"8l
+0000000000018310 (__DATA,__const) non-external (was a private external) ___block_descriptor_48_e8_32s40w_e5_v8?0l
+0000000000018340 (__DATA,__const) non-external (was a private external) ___block_descriptor_40_e8_32w_e8_v12?0B8l
+00000000000196f0 (__DATA,__objc_protolist) non-external (was a private external) __OBJC_LABEL_PROTOCOL_$_NSObject
+00000000000196f8 (__DATA,__objc_protolist) non-external (was a private external) __OBJC_LABEL_PROTOCOL_$_JLOtaCmdTimeProtocol
+0000000000019700 (__DATA,__objc_protolist) non-external (was a private external) __OBJC_LABEL_PROTOCOL_$_JLOtaDataHandlerDelegate
+0000000000019708 (__DATA,__objc_protolist) non-external (was a private external) __OBJC_LABEL_PROTOCOL_$_JLOtaFlowProcessorDelegate
+0000000000019710 (__DATA,__objc_protolist) non-external (was a private external) __OBJC_LABEL_PROTOCOL_$_JLHashHandlerDelegate
+0000000000019718 (__DATA,__objc_protolist) non-external (was a private external) __OBJC_LABEL_PROTOCOL_$_CBCentralManagerDelegate
+0000000000019720 (__DATA,__objc_protolist) non-external (was a private external) __OBJC_LABEL_PROTOCOL_$_CBPeripheralDelegate
+0000000000019728 (__DATA,__objc_protolist) non-external (was a private external) __OBJC_LABEL_PROTOCOL_$_JL_OTAManagerDelegate
+0000000000019738 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOTAFile
+0000000000019780 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOTAFile
+00000000000197e8 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOTAFile
+0000000000019810 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOTAFile
+0000000000019858 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+0000000000019a28 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_NSObject
+0000000000019a48 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_NSObject
+0000000000019a90 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_METHOD_TYPES_NSObject
+0000000000019b30 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_REFS_JLOtaCmdTimeProtocol
+0000000000019b48 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_JLOtaCmdTimeProtocol
+0000000000019b68 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_METHOD_TYPES_JLOtaCmdTimeProtocol
+0000000000019b70 (__DATA,__objc_const) non-external __OBJC_CLASS_PROTOCOLS_$_JLOtaFlowProcessor
+0000000000019b88 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOtaFlowProcessor
+0000000000019bd0 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOtaFlowProcessor
+000000000001a070 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOtaFlowProcessor
+000000000001a398 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JLOtaFlowProcessor
+000000000001a470 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOtaFlowProcessor
+000000000001a4b8 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_JLOtaDeviceInfoParser
+000000000001a4d8 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOtaDeviceInfoParser
+000000000001a520 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOtaDeviceInfoParser
+000000000001a568 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_JL_OTAManager
+000000000001a5a0 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_REFS_JLOtaDataHandlerDelegate
+000000000001a5b8 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_JLOtaDataHandlerDelegate
+000000000001a638 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_METHOD_TYPES_JLOtaDataHandlerDelegate
+000000000001a660 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_REFS_JLOtaFlowProcessorDelegate
+000000000001a678 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_JLOtaFlowProcessorDelegate
+000000000001a6b0 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_METHOD_TYPES_JLOtaFlowProcessorDelegate
+000000000001a6c0 (__DATA,__objc_const) non-external __OBJC_CLASS_PROTOCOLS_$_JL_OTAManager
+000000000001a6e0 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JL_OTAManager
+000000000001a728 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JL_OTAManager
+000000000001ad60 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JL_OTAManager
+000000000001b028 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JL_OTAManager
+000000000001b1b0 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JL_OTAManager
+000000000001b1f8 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_JLOtaDataHandler
+000000000001b278 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOtaDataHandler
+000000000001b2c0 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOtaDataHandler
+000000000001b5c8 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOtaDataHandler
+000000000001b690 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JLOtaDataHandler
+000000000001b6c8 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOtaDataHandler
+000000000001b710 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOTATimeoutInfo
+000000000001b758 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOTATimeoutInfo
+000000000001b8b0 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOTATimeoutInfo
+000000000001b998 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JLOTATimeoutInfo
+000000000001b9e0 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOTATimeoutInfo
+000000000001ba28 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOtaCustomData
+000000000001ba70 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOtaCustomData
+000000000001bb20 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOtaCustomData
+000000000001bb88 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JLOtaCustomData
+000000000001bbc0 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOtaCustomData
+000000000001bc08 (__DATA,__objc_const) non-external __OBJC_CLASS_PROTOCOLS_$_JLOtaCustom
+000000000001bc20 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOtaCustom
+000000000001bc68 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOtaCustom
+000000000001be68 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOtaCustom
+000000000001bef0 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JLOtaCustom
+000000000001bf78 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOtaCustom
+000000000001bfc0 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_JLOtaTimeoutManager
+000000000001bfe0 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOtaTimeoutManager
+000000000001c028 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOtaTimeoutManager
+000000000001c168 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOtaTimeoutManager
+000000000001c1d0 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JLOtaTimeoutManager
+000000000001c208 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOtaTimeoutManager
+000000000001c250 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_JLOTAVersion
+000000000001c288 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOTAVersion
+000000000001c2d0 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOTAVersion
+000000000001c318 (__DATA,__objc_const) non-external __OBJC_$_CLASS_METHODS_JLOtaReConnectOption
+000000000001c338 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOtaReConnectOption
+000000000001c380 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOtaReConnectOption
+000000000001c4c0 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOtaReConnectOption
+000000000001c588 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JLOtaReConnectOption
+000000000001c5f0 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOtaReConnectOption
+000000000001c638 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_REFS_JLHashHandlerDelegate
+000000000001c650 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_JLHashHandlerDelegate
+000000000001c670 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_METHOD_TYPES_JLHashHandlerDelegate
+000000000001c678 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_REFS_CBCentralManagerDelegate
+000000000001c690 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_CBCentralManagerDelegate
+000000000001c6b0 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_CBCentralManagerDelegate
+000000000001c778 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_METHOD_TYPES_CBCentralManagerDelegate
+000000000001c7c0 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_REFS_CBPeripheralDelegate
+000000000001c7d8 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_CBPeripheralDelegate
+000000000001c948 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_METHOD_TYPES_CBPeripheralDelegate
+000000000001c9c0 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_REFS_JL_OTAManagerDelegate
+000000000001c9d8 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_JL_OTAManagerDelegate
+000000000001c9f8 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_JL_OTAManagerDelegate
+000000000001ca48 (__DATA,__objc_const) non-external __OBJC_$_PROTOCOL_METHOD_TYPES_JL_OTAManagerDelegate
+000000000001ca68 (__DATA,__objc_const) non-external __OBJC_CLASS_PROTOCOLS_$_JLOtaReConnectMgr
+000000000001ca98 (__DATA,__objc_const) non-external __OBJC_METACLASS_RO_$_JLOtaReConnectMgr
+000000000001cae0 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_METHODS_JLOtaReConnectMgr
+000000000001cfb0 (__DATA,__objc_const) non-external __OBJC_$_INSTANCE_VARIABLES_JLOtaReConnectMgr
+000000000001d1b8 (__DATA,__objc_const) non-external __OBJC_$_PROP_LIST_JLOtaReConnectMgr
+000000000001d300 (__DATA,__objc_const) non-external __OBJC_CLASS_RO_$_JLOtaReConnectMgr
+000000000001dbe8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTAFile.cmd_OTA_url
+000000000001dbec (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.cmd_OTA_1
+000000000001dbf0 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.cmd_OTA_2
+000000000001dbf4 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.cmd_OTA_3
+000000000001dbf8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.cmd_OTA_4
+000000000001dbfc (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.cmd_OTA_6
+000000000001dc00 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.cmd_OTA_7
+000000000001dc04 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.cmd_OTA_8
+000000000001dc08 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.cmd_OTA_rt
+000000000001dc0c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.isOTA_EXIT_E4
+000000000001dc10 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.ota_value
+000000000001dc14 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.last_seek
+000000000001dc18 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.isLogProgress
+000000000001dc1c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.isSendRebootWitoutResp
+000000000001dc20 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.reciveSn
+000000000001dc24 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.countSameSn
+000000000001dc28 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.reConnectMgr
+000000000001dc2c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._isUpdating
+000000000001dc30 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._isSupportCRC
+000000000001dc34 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._otaSent
+000000000001dc38 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._otaLength
+000000000001dc3c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._maxLostCount
+000000000001dc40 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._delegate
+000000000001dc44 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._manager
+000000000001dc48 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._dataHandler
+000000000001dc4c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor._otaData
+000000000001dc50 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager.dataHandler
+000000000001dc54 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager.otaProcessor
+000000000001dc58 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._bleOnly
+000000000001dc5c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._mCmdSN
+000000000001dc60 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._otaStatus
+000000000001dc64 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._otaHeadset
+000000000001dc68 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._otaWatch
+000000000001dc6c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._isSupportReuseSpaceOTA
+000000000001dc70 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._isSupportExpand
+000000000001dc74 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._otaSourceMode
+000000000001dc78 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._otaPartition
+000000000001dc7c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._bootloaderType
+000000000001dc80 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._otaReconnectType
+000000000001dc84 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._isRelink
+000000000001dc88 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._version
+000000000001dc8c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._otaSent
+000000000001dc90 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._mBLE_UUID
+000000000001dc94 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._mBLE_NAME
+000000000001dc98 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._bleAddr
+000000000001dc9c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._versionFirmware
+000000000001dca0 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._otaLength
+000000000001dca4 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JL_OTAManager._delegate
+000000000001dca8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaDataHandler.codeHead
+000000000001dcac (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaDataHandler.codeTail
+000000000001dcb0 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaDataHandler.eotaData
+000000000001dcb4 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaDataHandler._logOtaSendData
+000000000001dcb8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaDataHandler._mRcspData
+000000000001dcbc (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaDataHandler._delegate
+000000000001dcc0 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTATimeoutInfo.timeOutMax
+000000000001dcc4 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTATimeoutInfo.waitCountTime
+000000000001dcc8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTATimeoutInfo.cmdTimer
+000000000001dccc (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTATimeoutInfo._opcode
+000000000001dcd0 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTATimeoutInfo._sn
+000000000001dcd4 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTATimeoutInfo._tagString
+000000000001dcd8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTATimeoutInfo._callback
+000000000001dcdc (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaCustomData._needResponse
+000000000001dce0 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaCustomData._sn
+000000000001dce4 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaCustomData._data
+000000000001dce8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaCustom._otaManager
+000000000001dcec (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaCustom._dataHandler
+000000000001dcf0 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaCustom._delegate
+000000000001dcf4 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaCustom._cusResult
+000000000001dcf8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaTimeoutManager._kOtaTimeOutMax
+000000000001dcfc (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaTimeoutManager._delegate
+000000000001dd00 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaTimeoutManager._cmdArray
+000000000001dd04 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectOption._deviceAuthorize
+000000000001dd08 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectOption._isWriteWithResponse
+000000000001dd0c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectOption._authKey
+000000000001dd10 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectOption._serviceUUID
+000000000001dd14 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectOption._writeUUID
+000000000001dd18 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectOption._readUUID
+000000000001dd1c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._isAuthed
+000000000001dd20 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._isSearching
+000000000001dd24 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._timerCount
+000000000001dd28 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._maxTimerCount
+000000000001dd2c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._otaData
+000000000001dd30 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._centralManager
+000000000001dd34 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._pMac
+000000000001dd38 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._uuid
+000000000001dd3c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._manager
+000000000001dd40 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._authHandler
+000000000001dd44 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._option
+000000000001dd48 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._currentPeripheral
+000000000001dd4c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._readCharacteristic
+000000000001dd50 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._writeCharacteristic
+000000000001dd54 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._rtBlock
+000000000001dd58 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaReConnectMgr._timer
+000000000001dd60 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOTAFile
+000000000001dd88 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOTAFile
+000000000001ddb0 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOtaFlowProcessor
+000000000001ddd8 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOtaFlowProcessor
+000000000001de00 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOtaDeviceInfoParser
+000000000001de28 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOtaDeviceInfoParser
+000000000001de50 (__DATA,__objc_data) external _OBJC_CLASS_$_JL_OTAManager
+000000000001de78 (__DATA,__objc_data) external _OBJC_METACLASS_$_JL_OTAManager
+000000000001dea0 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOtaDataHandler
+000000000001dec8 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOtaDataHandler
+000000000001def0 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOTATimeoutInfo
+000000000001df18 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOTATimeoutInfo
+000000000001df40 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOtaCustomData
+000000000001df68 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOtaCustomData
+000000000001df90 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOtaCustom
+000000000001dfb8 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOtaCustom
+000000000001dfe0 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOtaTimeoutManager
+000000000001e008 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOtaTimeoutManager
+000000000001e030 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOTAVersion
+000000000001e058 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOTAVersion
+000000000001e080 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOtaReConnectOption
+000000000001e0a8 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOtaReConnectOption
+000000000001e0d0 (__DATA,__objc_data) external _OBJC_CLASS_$_JLOtaReConnectMgr
+000000000001e0f8 (__DATA,__objc_data) external _OBJC_METACLASS_$_JLOtaReConnectMgr
+000000000001e120 (__DATA,__data) non-external (was a private external) __OBJC_PROTOCOL_$_NSObject
+000000000001e180 (__DATA,__data) non-external (was a private external) __OBJC_PROTOCOL_$_JLOtaCmdTimeProtocol
+000000000001e1e0 (__DATA,__data) non-external _m_u16ChipKey
+000000000001e1e8 (__DATA,__data) non-external (was a private external) __OBJC_PROTOCOL_$_JLOtaDataHandlerDelegate
+000000000001e248 (__DATA,__data) non-external (was a private external) __OBJC_PROTOCOL_$_JLOtaFlowProcessorDelegate
+000000000001e2a8 (__DATA,__data) non-external (was a private external) __OBJC_PROTOCOL_$_JLHashHandlerDelegate
+000000000001e308 (__DATA,__data) non-external (was a private external) __OBJC_PROTOCOL_$_CBCentralManagerDelegate
+000000000001e368 (__DATA,__data) non-external (was a private external) __OBJC_PROTOCOL_$_CBPeripheralDelegate
+000000000001e3c8 (__DATA,__data) non-external (was a private external) __OBJC_PROTOCOL_$_JL_OTAManagerDelegate
+000000000001e428 (__DATA,__data) non-external __dyld_private
+000000000001e430 (__DATA,__bss) non-external _getOTAManager.manager
+000000000001e438 (__DATA,__bss) non-external _getOTAManager.onceToken
+000000000001e440 (__DATA,__bss) non-external _share.mgr
+000000000001e448 (__DATA,__bss) non-external _share.onceToken

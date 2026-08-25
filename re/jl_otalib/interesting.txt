@@ -1,0 +1,1248 @@
+=== TARGET / OTA STRINGS ===
+38:10eb7 -[JLOtaFlowProcessor noteEntityConnected]
+95:115d0 -[JL_OTAManager logSendData:]
+96:115ee ---> logSendDataStatus: %d
+107:1171c -[JL_OTAManager cmdSystemFunction]
+108:1173f -[JL_OTAManager cmdTargetFeature]
+113:11818 opcode:%hhx playload:%@
+115:1186b opcode:%hhx SN:%d playload:%@
+116:11889 opcode:%hhx SN:%d playloadLen:%d
+118:118d1 OTA GET CMD --> opCode:%lx SN:%d
+119:118f2 OTA GET RESP --> opCode:%lx SN:%d
+124:11960 JL_BLE_M_OTA_SEND_DATA
+126:119a3 -[JLOtaCustom cmdSendCommandData:needResponse:Result:]
+128:119fd -[JLOtaCustom otaDataHandlerData:NeedResponse:Data:sn:opcode:]
+139:11ae2 -[JLOtaReConnectMgr otaFeatureResult:]
+206:12154 sendExpandInfoWithSN:type:UUID:
+222:122e6 _logOtaSendData
+224:12324 _opcode
+234:12408 T@"NSMutableData",&,N,V_mRcspData
+258:12604 TB,N,V_logOtaSendData
+276:12744 Ti,N,V_opcode
+305:128b7 _mRcspData
+346:12ace cancelTimeOut:OpCode:
+382:12efd cmdSendCommandData:needResponse:Result:
+383:12f25 cmdSystemFunction
+384:12f37 cmdTargetFeature
+414:130d0 dataSender:
+458:133b4 isSendRebootWitoutResp
+468:13462 logOtaSendData
+470:1347f logSendData:
+474:134a7 mRcspData
+480:134ec noteEntityConnected
+488:1358f opcode
+493:135f2 otaDataHandlerData:NeedResponse:Data:sn:opcode:
+495:1363e otaDataHandlerDidSend:uuid:
+497:13675 otaDataSend:
+499:13695 otaFeatureResult:
+501:136b5 otaFlowDidSendData:
+542:13b1f peripheralIsReadyToSendWriteWithoutResponse:
+544:13b69 rcspInfoArrFromData:
+545:13b7e rcspMakePkg:needRes:Opcode:playload:
+564:13cd2 scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+566:13d18 sendBleSppWithSN:type:reconnectType:UUID:
+567:13d42 sendCheckCanUpdateWithSN:data:UUID:
+568:13d66 sendEnterUpdateWithSN:UUID:
+569:13d82 sendExitUpdateSuccessWithSN:UUID:
+570:13da4 sendExitUpdateWithSN:UUID:
+571:13dbf sendGetTargetFeatureWithSN:UUID:
+572:13de0 sendMarkSeekWithSN:UUID:
+573:13df9 sendOtaDataErrorWithSN:UUID:
+574:13e16 sendOtaDataWithSN:data:UUID:
+575:13e33 sendOtaLengthSuccessWithSN:UUID:
+576:13e54 sendOtaStatusWithSN:UUID:
+577:13e6e sendRebootWithSN:type:UUID:
+578:13e8a sendSystemFunctionWithSN:UUID:
+602:1401e setLogOtaSendData:
+606:14058 setMRcspData:
+613:140d6 setOpcode:
+643:1429a startTimeOut:OpCode:
+
+=== TARGET / OTA SYMBOLS ===
+45:                 (undefined) external _objc_msgSend (from libobjc)
+46:                 (undefined) external _objc_msgSendSuper2 (from libobjc)
+81:0000000000004b80 (__TEXT,__text) non-external -[JLOtaFlowProcessor noteEntityConnected]
+145:00000000000096b8 (__TEXT,__text) non-external -[JL_OTAManager logSendData:]
+152:0000000000009990 (__TEXT,__text) non-external -[JL_OTAManager noteEntityConnected]
+154:00000000000099a0 (__TEXT,__text) non-external -[JL_OTAManager cmdSystemFunction]
+155:0000000000009a48 (__TEXT,__text) non-external -[JL_OTAManager cmdTargetFeature]
+165:0000000000009d64 (__TEXT,__text) non-external -[JL_OTAManager otaFlowDidSendData:]
+166:0000000000009d68 (__TEXT,__text) non-external -[JL_OTAManager otaDataHandlerDidSend:uuid:]
+213:000000000000a8b0 (__TEXT,__text) non-external -[JLOtaDataHandler rcspMakePkg:needRes:Opcode:playload:]
+218:000000000000b014 (__TEXT,__text) non-external -[JLOtaDataHandler sendGetTargetFeatureWithSN:UUID:]
+219:000000000000b0ac (__TEXT,__text) non-external -[JLOtaDataHandler sendSystemFunctionWithSN:UUID:]
+220:000000000000b140 (__TEXT,__text) non-external -[JLOtaDataHandler sendExpandInfoWithSN:type:UUID:]
+221:000000000000b1d4 (__TEXT,__text) non-external -[JLOtaDataHandler sendMarkSeekWithSN:UUID:]
+222:000000000000b25c (__TEXT,__text) non-external -[JLOtaDataHandler sendCheckCanUpdateWithSN:data:UUID:]
+223:000000000000b30c (__TEXT,__text) non-external -[JLOtaDataHandler sendEnterUpdateWithSN:UUID:]
+224:000000000000b394 (__TEXT,__text) non-external -[JLOtaDataHandler sendExitUpdateWithSN:UUID:]
+225:000000000000b41c (__TEXT,__text) non-external -[JLOtaDataHandler sendOtaStatusWithSN:UUID:]
+226:000000000000b4a4 (__TEXT,__text) non-external -[JLOtaDataHandler sendRebootWithSN:type:UUID:]
+227:000000000000b530 (__TEXT,__text) non-external -[JLOtaDataHandler sendBleSppWithSN:type:reconnectType:UUID:]
+228:000000000000b5c0 (__TEXT,__text) non-external -[JLOtaDataHandler sendExitUpdateSuccessWithSN:UUID:]
+229:000000000000b654 (__TEXT,__text) non-external -[JLOtaDataHandler sendOtaLengthSuccessWithSN:UUID:]
+230:000000000000b66c (__TEXT,__text) non-external -[JLOtaDataHandler sendOtaDataWithSN:data:UUID:]
+231:000000000000b684 (__TEXT,__text) non-external -[JLOtaDataHandler sendOtaDataErrorWithSN:UUID:]
+237:000000000000ba04 (__TEXT,__text) non-external -[JLOtaDataHandler rcspInfoArrFromData:]
+240:000000000000be48 (__TEXT,__text) non-external -[JLOtaDataHandler logOtaSendData]
+241:000000000000be50 (__TEXT,__text) non-external -[JLOtaDataHandler setLogOtaSendData:]
+242:000000000000be58 (__TEXT,__text) non-external -[JLOtaDataHandler mRcspData]
+243:000000000000be60 (__TEXT,__text) non-external -[JLOtaDataHandler setMRcspData:]
+252:000000000000c098 (__TEXT,__text) non-external -[JLOTATimeoutInfo opcode]
+253:000000000000c0a0 (__TEXT,__text) non-external -[JLOTATimeoutInfo setOpcode:]
+270:000000000000c380 (__TEXT,__text) non-external -[JLOtaCustom cmdSendCommandData:needResponse:Result:]
+273:000000000000c768 (__TEXT,__text) non-external -[JLOtaCustom otaDataHandlerDidSend:uuid:]
+274:000000000000c818 (__TEXT,__text) non-external -[JLOtaCustom otaDataHandlerData:NeedResponse:Data:sn:opcode:]
+292:000000000000cd44 (__TEXT,__text) non-external -[JLOtaTimeoutManager cancelTimeOut:OpCode:]
+293:000000000000ce80 (__TEXT,__text) non-external -[JLOtaTimeoutManager startTimeOut:OpCode:]
+294:000000000000cf8c (__TEXT,__text) non-external ___43-[JLOtaTimeoutManager startTimeOut:OpCode:]_block_invoke
+333:000000000000dcc0 (__TEXT,__text) non-external -[JLOtaReConnectMgr otaDataSend:]
+334:000000000000dcc4 (__TEXT,__text) non-external -[JLOtaReConnectMgr otaFeatureResult:]
+336:000000000000dddc (__TEXT,__text) non-external -[JLOtaReConnectMgr dataSender:]
+382:000000000000eee0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$HexToData:
+383:000000000000ef00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$JSONObjectWithData:options:error:
+384:000000000000ef20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$URLWithString:
+385:000000000000ef40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$UUID
+386:000000000000ef60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$UUIDString
+387:000000000000ef80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addCrc:
+388:000000000000efa0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addObject:
+389:000000000000efc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$addObserver:selector:name:object:
+390:000000000000efe0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$appendBytes:length:
+391:000000000000f000 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$appendData:
+392:000000000000f020 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$array
+393:000000000000f040 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$arrayWithObjects:count:
+394:000000000000f060 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$authKey
+395:000000000000f080 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$beHexStr:
+396:000000000000f0a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$bleAddr
+397:000000000000f0c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$bluetoothPairingKey:Result:
+398:000000000000f0e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$bootloaderType
+399:000000000000f100 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$bytes
+400:000000000000f120 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$callback
+401:000000000000f140 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cancelTimeOut:OpCode:
+402:000000000000f160 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cancelTimeOutWithTag:
+403:000000000000f180 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$characterAtIndex:
+404:000000000000f1a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$characteristics
+405:000000000000f1c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$class
+406:000000000000f1e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$clearAllTimeOut
+407:000000000000f200 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdArray
+408:000000000000f220 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdGetExpandInfo
+409:000000000000f240 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTAData:Result:
+410:000000000000f260 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_1_GetMarkSeekResult:
+411:000000000000f280 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_2_AskForUpgrade:Result:
+412:000000000000f2a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_3_EnterUpgradeResult:
+413:000000000000f2c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_4_InterruptResult:
+414:000000000000f2e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_5_Err:
+415:000000000000f300 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_5_TransportSN:Data:
+416:000000000000f320 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_6_QueryUpgradeStatusResult:
+417:000000000000f340 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_7_RebootDevice:Result:
+418:000000000000f360 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_Route:withOtaReconnectType:Result:
+419:000000000000f380 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOTA_UpgradeLength:
+420:000000000000f3a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOtaDataReceive:
+421:000000000000f3c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdOtaIsRelinking
+422:000000000000f3e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdResponseCode:OpSN:Status:Data:UUID:
+423:000000000000f400 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdTargetFeature
+424:000000000000f420 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdUpdateBuffer:
+425:000000000000f440 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$cmdUpgrade:Option:Result:
+426:000000000000f460 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$connectPeripheral:options:
+427:000000000000f480 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$copeWithBLEData
+428:000000000000f4a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$copy
+429:000000000000f4c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$count
+430:000000000000f4e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$countByEnumeratingWithState:objects:count:
+431:000000000000f500 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$currentVersion
+432:000000000000f520 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$data:R:L:
+433:000000000000f540 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataChangeToString:
+434:000000000000f560 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataHandler
+435:000000000000f580 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataSender:
+436:000000000000f5a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataTaskWithURL:completionHandler:
+437:000000000000f5c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataToInt:
+438:000000000000f5e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataWithBytes:length:
+439:000000000000f600 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dataWithData:
+440:000000000000f620 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$defaultCenter
+441:000000000000f640 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$defaultOption
+442:000000000000f660 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$defaultSessionConfiguration
+443:000000000000f680 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$delegate
+444:000000000000f6a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$deviceAuthorize
+445:000000000000f6c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$dictionaryWithObjects:forKeys:count:
+446:000000000000f6e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$discoverCharacteristics:forService:
+447:000000000000f700 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$discoverServices:
+448:000000000000f720 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$downloadOtaFileWithUrl:
+449:000000000000f740 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$errorWithDomain:code:userInfo:
+450:000000000000f760 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$fire
+451:000000000000f780 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$getOTAManager
+452:000000000000f7a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$handleCommand:sn:payload:
+453:000000000000f7c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$handleResponse:sn:payload:
+454:000000000000f7e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$handleTimeout:
+455:000000000000f800 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$identifier
+456:000000000000f820 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$init
+457:000000000000f840 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$init:
+458:000000000000f860 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$initWithBytes:length:
+459:000000000000f880 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$initWithDelegate:queue:
+460:000000000000f8a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$inputHandleData:
+461:000000000000f8c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$inputPairData:
+462:000000000000f8e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$intValue
+463:000000000000f900 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$invalidate
+464:000000000000f920 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isEqual:
+465:000000000000f940 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isEqualToString:
+466:000000000000f960 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isKindOfClass:
+467:000000000000f980 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isRelink
+468:000000000000f9a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isSupportExpand
+469:000000000000f9c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isSupportReuseSpaceOTA
+470:000000000000f9e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$isWriteWithResponse
+471:000000000000fa00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$length
+472:000000000000fa20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$localizedDescription
+473:000000000000fa40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$logLevel:funcName:line:format:
+474:000000000000fa60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$logOtaSendData
+475:000000000000fa80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$mBLE_NAME
+476:000000000000faa0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$mBLE_UUID
+477:000000000000fac0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$mCmdSN
+478:000000000000fae0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$manager
+479:000000000000fb00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$maximumWriteValueLengthForType:
+480:000000000000fb20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$name
+481:000000000000fb40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$new
+482:000000000000fb60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$noteEntityConnected
+483:000000000000fb80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$noteEntityDisconnected
+484:000000000000fba0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$notifyResult:progress:
+485:000000000000fbc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$numberWithInt:
+486:000000000000fbe0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$numberWithUnsignedChar:
+487:000000000000fc00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$object
+488:000000000000fc20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$objectAtIndexedSubscript:
+489:000000000000fc40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$objectForKeyedSubscript:
+490:000000000000fc60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$opcode
+491:000000000000fc80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaBleMacAddress:isEqualToCBAdvDataManufacturerData:
+492:000000000000fca0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaCustomReceiveData:
+493:000000000000fcc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaData
+494:000000000000fce0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataHandlerData:NeedResponse:Data:sn:opcode:
+495:000000000000fd00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataHandlerDidResp:uuid:
+496:000000000000fd20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataHandlerDidSend:uuid:
+497:000000000000fd40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataHandlerReceiveData:
+498:000000000000fd60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDataSend:
+499:000000000000fd80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaDidReceiveData:
+500:000000000000fda0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaFeatureResult:
+501:000000000000fdc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaFirstStep:
+502:000000000000fde0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaFlowDidUpdateStatus:progress:
+503:000000000000fe00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaHandler:didReceiveCmd:sn:needResponse:payload:
+504:000000000000fe20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaHandler:didReceiveResponse:sn:payload:
+505:000000000000fe40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaManager
+506:000000000000fe60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaPartition
+507:000000000000fe80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaPartitionDouble
+508:000000000000fea0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaPartitionSingle:
+509:000000000000fec0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaReconnectType
+510:000000000000fee0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaSecondStep
+511:000000000000ff00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaSourceMode
+512:000000000000ff20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaStatus
+513:000000000000ff40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaTimeout:
+514:000000000000ff60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaUpgradeResult:Progress:
+515:000000000000ff80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$otaVersion
+516:000000000000ffa0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$parseInfo:intoManager:
+517:000000000000ffc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$parseInputPackage:
+518:000000000000ffe0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$postNotificationName:object:
+519:0000000000010000 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$rcspInfoArrFromData:
+520:0000000000010020 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$rcspMakePkg:needRes:Opcode:playload:
+521:0000000000010040 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$readUUID
+522:0000000000010060 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$readValueForCharacteristic:
+523:0000000000010080 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$reconnectWithMac:Result:
+524:00000000000100a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$reconnectWithUUID:Result:
+525:00000000000100c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$removeAllObjects
+526:00000000000100e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$removeObject:
+527:0000000000010100 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$removeObjectsInArray:
+528:0000000000010120 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$removeObserver:
+529:0000000000010140 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$requestCancel
+530:0000000000010160 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$requestReboot:
+531:0000000000010180 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$reset
+532:00000000000101a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$resetOTAManager
+533:00000000000101c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$respondsToSelector:
+534:00000000000101e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$resume
+535:0000000000010200 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$scanForPeripheralsWithServices:options:
+536:0000000000010220 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+537:0000000000010240 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$self
+538:0000000000010260 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendBleSppWithSN:type:reconnectType:UUID:
+539:0000000000010280 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendCheckCanUpdateWithSN:data:UUID:
+540:00000000000102a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendEnterUpdateWithSN:UUID:
+541:00000000000102c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendExitUpdateSuccessWithSN:UUID:
+542:00000000000102e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendExitUpdateWithSN:UUID:
+543:0000000000010300 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendExpandInfoWithSN:type:UUID:
+544:0000000000010320 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendGetTargetFeatureWithSN:UUID:
+545:0000000000010340 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendMarkSeekWithSN:UUID:
+546:0000000000010360 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendOtaDataErrorWithSN:UUID:
+547:0000000000010380 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendOtaDataWithSN:data:UUID:
+548:00000000000103a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendOtaLengthSuccessWithSN:UUID:
+549:00000000000103c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendOtaStatusWithSN:UUID:
+550:00000000000103e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendRebootWithSN:type:UUID:
+551:0000000000010400 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sendSystemFunctionWithSN:UUID:
+552:0000000000010420 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$serviceUUID
+553:0000000000010440 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$services
+554:0000000000010460 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sessionWithConfiguration:
+555:0000000000010480 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setBleAddr:
+556:00000000000104a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setBleOnly:
+557:00000000000104c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setBootloaderType:
+558:00000000000104e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setCallback:
+559:0000000000010500 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setData:
+560:0000000000010520 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setDataHandler:
+561:0000000000010540 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setDelegate:
+562:0000000000010560 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setDeviceAuthorize:
+563:0000000000010580 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsRelink:
+564:00000000000105a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsSupportCRC:
+565:00000000000105c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsSupportExpand:
+566:00000000000105e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsSupportReuseSpaceOTA:
+567:0000000000010600 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setIsWriteWithResponse:
+568:0000000000010620 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setKOtaTimeOutMax:
+569:0000000000010640 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setLogOtaSendData:
+570:0000000000010660 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setMBLE_NAME:
+571:0000000000010680 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setMBLE_UUID:
+572:00000000000106a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setMCmdSN:
+573:00000000000106c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setManager:
+574:00000000000106e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setMaxLostCount:
+575:0000000000010700 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setNeedResponse:
+576:0000000000010720 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setNotifyValue:forCharacteristic:
+577:0000000000010740 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOTARelink:
+578:0000000000010760 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOpcode:
+579:0000000000010780 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaData:
+580:00000000000107a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaHeadset:
+581:00000000000107c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaPartition:
+582:00000000000107e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaReconnectType:
+583:0000000000010800 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaSourceMode:
+584:0000000000010820 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setOtaStatus:
+585:0000000000010840 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setPMac:
+586:0000000000010860 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setReadUUID:
+587:0000000000010880 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setServiceUUID:
+588:00000000000108a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setSn:
+589:00000000000108c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setTagString:
+590:00000000000108e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setTimeOutMax:
+591:0000000000010900 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setTimeoutIntervalForRequest:
+592:0000000000010920 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setUuid:
+593:0000000000010940 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setVersion:
+594:0000000000010960 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setVersionFirmware:
+595:0000000000010980 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$setWriteUUID:
+596:00000000000109a0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$share
+597:00000000000109c0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$sn
+598:00000000000109e0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startOTAWithData:resultBlock:
+599:0000000000010a00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startTimeOut
+600:0000000000010a20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startTimeOut:OpCode:
+601:0000000000010a40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startTimeOutWithTag:
+602:0000000000010a60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$startTimer
+603:0000000000010a80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$state
+604:0000000000010aa0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stopScan
+605:0000000000010ac0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stopTimeOut
+606:0000000000010ae0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stopTimer
+607:0000000000010b00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringByReplacingOccurrencesOfString:withString:
+608:0000000000010b20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringWithFormat:
+609:0000000000010b40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$stringWithUTF8String:
+610:0000000000010b60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$subdataWithRange:
+611:0000000000010b80 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$tagString
+612:0000000000010ba0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$uInt16_data:
+613:0000000000010bc0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$updateRelinkType:
+614:0000000000010be0 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$updateStatus:
+615:0000000000010c00 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$value
+616:0000000000010c20 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$writeUUID
+617:0000000000010c40 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$writeValue:forCharacteristic:type:
+618:0000000000010c60 (__TEXT,__objc_stubs) non-external (was a private external) _objc_msgSend$xmCommandCode:needRep:data:UUID:
+749:000000000001dc1c (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaFlowProcessor.isSendRebootWitoutResp
+787:000000000001dcb4 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaDataHandler._logOtaSendData
+788:000000000001dcb8 (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOtaDataHandler._mRcspData
+793:000000000001dccc (__DATA,__objc_ivar) non-external (was a private external) _OBJC_IVAR_$_JLOTATimeoutInfo._opcode
+
+=== OBJC MANAGER METHODS ===
+78-            name    0x13c76 reset
+79-            types   0x1448c v16@0:8
+80-            imp     0x49a8 -[JLOtaFlowProcessor reset]
+81-            name    0x12f6e cmdUpgrade:Option:Result:
+82-            types   0x1445a v40@0:8@16@24@?32
+83-            imp     0x4a44 -[JLOtaFlowProcessor cmdUpgrade:Option:Result:]
+84:            name    0x134ec noteEntityConnected
+85-            types   0x1448c v16@0:8
+86:            imp     0x4b80 -[JLOtaFlowProcessor noteEntityConnected]
+87-            name    0x13500 noteEntityDisconnected
+88-            types   0x1448c v16@0:8
+89-            imp     0x4c2c -[JLOtaFlowProcessor noteEntityDisconnected]
+90-            name    0x1426f startOTAWithData:resultBlock:
+91-            types   0x14561 v32@0:8@16@?24
+92-            imp     0x5114 -[JLOtaFlowProcessor startOTAWithData:resultBlock:]
+93-            name    0x13c59 requestCancel
+94-            types   0x1448c v16@0:8
+95-            imp     0x54b4 -[JLOtaFlowProcessor requestCancel]
+96-            name    0x13c67 requestReboot:
+97-            types   0x14570 v20@0:8B16
+98-            imp     0x554c -[JLOtaFlowProcessor requestReboot:]
+99-            name    0x136a7 otaFirstStep:
+100-            types   0x1457b v20@0:8C16
+101-            imp     0x55f4 -[JLOtaFlowProcessor otaFirstStep:]
+102-            name    0x137c0 otaPartitionSingle:
+--
+431-            name      0x1280d _delegate
+432-            type      0x14630 @"<JLOtaFlowProcessorDelegate>"
+433-            alignment 3
+434-            size      8
+435-            offset    0x1dc44 _OBJC_IVAR_$_JLOtaFlowProcessor._manager 128
+436-            name      0x128c2 _manager
+437:            type      0x14650 @"JL_OTAManager"
+438-            alignment 3
+439-            size      8
+440-            offset    0x1dc48 _OBJC_IVAR_$_JLOtaFlowProcessor._dataHandler 136
+441-            name      0x12800 _dataHandler
+442-            type      0x14661 @"JLOtaDataHandler"
+443-            alignment 3
+444-            size      8
+445-            offset    0x1dc4c _OBJC_IVAR_$_JLOtaFlowProcessor._otaData 144
+446-            name      0x128f6 _otaData
+447-            type      0x14675 @"NSData"
+448-            alignment 3
+449-            size      8
+450-        weakIvarLayout 0x11cfd
+451-        layout map     0xe3 
+452-        baseProperties 0x1a398 __OBJC_$_PROP_LIST_JLOtaFlowProcessor
+453-            entsize    16
+--
+458-            attributes 0x126d1 TI,N,V_otaSent
+459-            name       0x13751 otaLength
+460-            attributes 0x126c0 TI,N,V_otaLength
+461-            name       0x13177 delegate
+462-            attributes 0x11edd T@"<JLOtaFlowProcessorDelegate>",W,N,V_delegate
+463-            name       0x120a4 manager
+464:            attributes 0x121f1 T@"JL_OTAManager",W,N,V_manager
+465-            name       0x130c4 dataHandler
+466-            attributes 0x11fb2 T@"JLOtaDataHandler",W,N,V_dataHandler
+467-            name       0x134b1 maxLostCount
+468-            attributes 0x1271b Ti,N,V_maxLostCount
+469-            name       0x133cb isSupportCRC
+470-            attributes 0x121bf TB,N,V_isSupportCRC
+471-            name       0x124be otaData
+472-            attributes 0x123df T@"NSData",&,N,V_otaData
+473-            name       0x1327e hash
+474-            attributes 0x126f1 TQ,R
+475-            name       0x1435f superclass
+476-            attributes 0x11e8f T#,R
+477-            name       0x13180 description
+478-            attributes 0x1252c T@"NSString",R,C
+479-            name       0x1312e debugDescription
+480-            attributes 0x12509 T@"NSString",?,R,C
+--
+630-            types   0x1467f v32@0:8@16@24
+631-            imp     0x849c +[JLOtaDeviceInfoParser parseInfo:intoManager:]
+632-        baseProtocols  0x0
+633-        ivars          0x0
+634-        weakIvarLayout 0x0
+635-        baseProperties 0x0
+636:00000000000196a8 0x1de50 _OBJC_CLASS_$_JL_OTAManager
+637:    isa        0x1de78 _OBJC_METACLASS_$_JL_OTAManager
+638-    superclass 0x0 _OBJC_CLASS_$_NSObject
+639-    cache      0x0 __objc_empty_cache
+640-    vtable     0x0
+641:    data       0x1b1b0 __OBJC_CLASS_RO_$_JL_OTAManager
+642-        flags          0x184 RO_HAS_CXX_STRUCTORS
+643-        instanceStart  8
+644-        instanceSize   96
+645-        reserved       0x0
+646-        ivarLayout     0x11d57
+647-        layout map     0x02 0x34 
+648:        name           0x11d15 JL_OTAManager
+649:        baseMethods    0x1a728 __OBJC_$_INSTANCE_METHODS_JL_OTAManager
+650-            entsize 24
+651-            count   66
+652-            name    0x132a4 init
+653-            types   0x144aa @16@0:8
+654:            imp     0x9550 -[JL_OTAManager init]
+655-            name    0x1347f logSendData:
+656-            types   0x14570 v20@0:8B16
+657:            imp     0x96b8 -[JL_OTAManager logSendData:]
+658-            name    0x12e88 cmdOtaDataReceive:
+659-            types   0x14481 v24@0:8@16
+660:            imp     0x970c -[JL_OTAManager cmdOtaDataReceive:]
+661-            name    0x1212c resetOTAManager
+662-            types   0x1448c v16@0:8
+663:            imp     0x9780 -[JL_OTAManager resetOTAManager]
+664-            name    0x134be maxLostCount:
+665-            types   0x14606 v20@0:8i16
+666:            imp     0x9800 -[JL_OTAManager maxLostCount:]
+667-            name    0x12f48 cmdTimeOut:
+668-            types   0x14606 v20@0:8i16
+669:            imp     0x9854 -[JL_OTAManager cmdTimeOut:]
+670-            name    0x140c8 setOTARelink:
+671-            types   0x14570 v20@0:8B16
+672:            imp     0x98c8 -[JL_OTAManager setOTARelink:]
+673-            name    0x13323 intputDeviceName:
+674-            types   0x14481 v24@0:8@16
+675:            imp     0x9924 -[JL_OTAManager intputDeviceName:]
+676:            name    0x134ec noteEntityConnected
+677-            types   0x1448c v16@0:8
+678:            imp     0x9990 -[JL_OTAManager noteEntityConnected]
+679-            name    0x13500 noteEntityDisconnected
+680-            types   0x1448c v16@0:8
+681:            imp     0x9998 -[JL_OTAManager noteEntityDisconnected]
+682:            name    0x12f25 cmdSystemFunction
+683-            types   0x1448c v16@0:8
+684:            imp     0x99a0 -[JL_OTAManager cmdSystemFunction]
+685:            name    0x12f37 cmdTargetFeature
+686-            types   0x1448c v16@0:8
+687:            imp     0x9a48 -[JL_OTAManager cmdTargetFeature]
+688-            name    0x12cdf cmdGetExpandInfo
+689-            types   0x1448c v16@0:8
+690:            imp     0x9af0 -[JL_OTAManager cmdGetExpandInfo]
+691-            name    0x12e9b cmdOtaIsRelinking
+692-            types   0x144dc B16@0:8
+693:            imp     0x9b9c -[JL_OTAManager cmdOtaIsRelinking]
+694-            name    0x12d45 cmdOTAData:Result:
+695-            types   0x14561 v32@0:8@16@?24
+696:            imp     0x9ba0 -[JL_OTAManager cmdOTAData:Result:]
+697-            name    0x12e74 cmdOtaDataIIResult:
+698-            types   0x14586 v24@0:8@?16
+699:            imp     0x9ba8 -[JL_OTAManager cmdOtaDataIIResult:]
+700-            name    0x12f6e cmdUpgrade:Option:Result:
+701-            types   0x1445a v40@0:8@16@24@?32
+702:            imp     0x9cb0 -[JL_OTAManager cmdUpgrade:Option:Result:]
+703-            name    0x12d31 cmdOTACancelResult:
+704-            types   0x14586 v24@0:8@?16
+705:            imp     0x9cb8 -[JL_OTAManager cmdOTACancelResult:]
+706-            name    0x1202a cmdRebootDevice
+707-            types   0x1448c v16@0:8
+708:            imp     0x9cc0 -[JL_OTAManager cmdRebootDevice]
+709-            name    0x12ead cmdRebootForceDevice
+710-            types   0x1448c v16@0:8
+711:            imp     0x9ccc -[JL_OTAManager cmdRebootForceDevice]
+712-            name    0x136c9 otaFlowDidUpdateStatus:progress:
+713-            types   0x145d2 v24@0:8S16f20
+714:            imp     0x9cd8 -[JL_OTAManager otaFlowDidUpdateStatus:progress:]
+715-            name    0x136b5 otaFlowDidSendData:
+716-            types   0x14481 v24@0:8@16
+717:            imp     0x9d64 -[JL_OTAManager otaFlowDidSendData:]
+718-            name    0x1363e otaDataHandlerDidSend:uuid:
+719-            types   0x1467f v32@0:8@16@24
+720:            imp     0x9d68 -[JL_OTAManager otaDataHandlerDidSend:uuid:]
+721-            name    0x13622 otaDataHandlerDidResp:uuid:
+722-            types   0x1467f v32@0:8@16@24
+723:            imp     0x9dec -[JL_OTAManager otaDataHandlerDidResp:uuid:]
+724-            name    0x1365a otaDataHandlerReceiveData:
+725-            types   0x14481 v24@0:8@16
+726:            imp     0x9e64 -[JL_OTAManager otaDataHandlerReceiveData:]
+727-            name    0x136ea otaHandler:didReceiveCmd:sn:needResponse:payload:
+728-            types   0x1468d v44@0:8@16C24C28B32@36
+729:            imp     0x9ec0 -[JL_OTAManager otaHandler:didReceiveCmd:sn:needResponse:payload:]
+730-            name    0x1371c otaHandler:didReceiveResponse:sn:payload:
+731-            types   0x146a4 v40@0:8@16C24C28@32
+732:            imp     0x9ed4 -[JL_OTAManager otaHandler:didReceiveResponse:sn:payload:]
+733-            name    0x13496 mBLE_UUID
+734-            types   0x144aa @16@0:8
+735:            imp     0xa260 -[JL_OTAManager mBLE_UUID]
+736-            name    0x1403f setMBLE_UUID:
+737-            types   0x14481 v24@0:8@16
+738:            imp     0xa268 -[JL_OTAManager setMBLE_UUID:]
+739-            name    0x1348c mBLE_NAME
+740-            types   0x144aa @16@0:8
+741:            imp     0xa274 -[JL_OTAManager mBLE_NAME]
+742-            name    0x14031 setMBLE_NAME:
+743-            types   0x14481 v24@0:8@16
+744:            imp     0xa27c -[JL_OTAManager setMBLE_NAME:]
+745-            name    0x123ae bleOnly
+746-            types   0x144dc B16@0:8
+747:            imp     0xa288 -[JL_OTAManager bleOnly]
+748-            name    0x13ef0 setBleOnly:
+749-            types   0x14570 v20@0:8B16
+750:            imp     0xa290 -[JL_OTAManager setBleOnly:]
+751-            name    0x11fd9 bleAddr
+752-            types   0x144aa @16@0:8
+753:            imp     0xa298 -[JL_OTAManager bleAddr]
+754-            name    0x13ee4 setBleAddr:
+755-            types   0x14481 v24@0:8@16
+756:            imp     0xa2a0 -[JL_OTAManager setBleAddr:]
+757-            name    0x134a0 mCmdSN
+758-            types   0x1474a C16@0:8
+759:            imp     0xa2ac -[JL_OTAManager mCmdSN]
+760-            name    0x1404d setMCmdSN:
+761-            types   0x1457b v20@0:8C16
+762:            imp     0xa2b4 -[JL_OTAManager setMCmdSN:]
+763-            name    0x1259a version
+764-            types   0x14752 S16@0:8
+765:            imp     0xa2bc -[JL_OTAManager version]
+766-            name    0x14220 setVersion:
+767-            types   0x145e0 v20@0:8S16
+768:            imp     0xa2c4 -[JL_OTAManager setVersion:]
+769-            name    0x121d3 versionFirmware
+770-            types   0x144aa @16@0:8
+771:            imp     0xa2cc -[JL_OTAManager versionFirmware]
+772-            name    0x1422c setVersionFirmware:
+773-            types   0x14481 v24@0:8@16
+774:            imp     0xa2d4 -[JL_OTAManager setVersionFirmware:]
+775-            name    0x1380e otaStatus
+776-            types   0x1474a C16@0:8
+777:            imp     0xa2e0 -[JL_OTAManager otaStatus]
+778-            name    0x14168 setOtaStatus:
+779-            types   0x1457b v20@0:8C16
+780:            imp     0xa2e8 -[JL_OTAManager setOtaStatus:]
+781-            name    0x13746 otaHeadset
+782-            types   0x1474a C16@0:8
+783:            imp     0xa2f0 -[JL_OTAManager otaHeadset]
+784-            name    0x140f8 setOtaHeadset:
+785-            types   0x1457b v20@0:8C16
+786:            imp     0xa2f8 -[JL_OTAManager setOtaHeadset:]
+787-            name    0x1384a otaWatch
+788-            types   0x1474a C16@0:8
+789:            imp     0xa300 -[JL_OTAManager otaWatch]
+790-            name    0x14176 setOtaWatch:
+791-            types   0x1457b v20@0:8C16
+792:            imp     0xa308 -[JL_OTAManager setOtaWatch:]
+793-            name    0x133d8 isSupportReuseSpaceOTA
+794-            types   0x144dc B16@0:8
+795:            imp     0xa310 -[JL_OTAManager isSupportReuseSpaceOTA]
+796-            name    0x13fc9 setIsSupportReuseSpaceOTA:
+797-            types   0x14570 v20@0:8B16
+798:            imp     0xa318 -[JL_OTAManager setIsSupportReuseSpaceOTA:]
+799-            name    0x12457 isSupportExpand
+800-            types   0x144dc B16@0:8
+801:            imp     0xa320 -[JL_OTAManager isSupportExpand]
+802-            name    0x13fb5 setIsSupportExpand:
+803-            types   0x14570 v20@0:8B16
+804:            imp     0xa328 -[JL_OTAManager setIsSupportExpand:]
+805-            name    0x13800 otaSourceMode
+806-            types   0x1474a C16@0:8
+807:            imp     0xa330 -[JL_OTAManager otaSourceMode]
+808-            name    0x14156 setOtaSourceMode:
+809-            types   0x1457b v20@0:8C16
+810:            imp     0xa338 -[JL_OTAManager setOtaSourceMode:]
+811-            name    0x137a0 otaPartition
+812-            types   0x1474a C16@0:8
+813:            imp     0xa340 -[JL_OTAManager otaPartition]
+814-            name    0x14124 setOtaPartition:
+815-            types   0x1457b v20@0:8C16
+816:            imp     0xa348 -[JL_OTAManager setOtaPartition:]
+817-            name    0x12ab0 bootloaderType
+818-            types   0x1474a C16@0:8
+819:            imp     0xa350 -[JL_OTAManager bootloaderType]
+820-            name    0x13efc setBootloaderType:
+821-            types   0x1457b v20@0:8C16
+822:            imp     0xa358 -[JL_OTAManager setBootloaderType:]
+823-            name    0x137e1 otaReconnectType
+824-            types   0x1474a C16@0:8
+825:            imp     0xa360 -[JL_OTAManager otaReconnectType]
+826-            name    0x14135 setOtaReconnectType:
+827-            types   0x1457b v20@0:8C16
+828:            imp     0xa368 -[JL_OTAManager setOtaReconnectType:]
+829-            name    0x13751 otaLength
+830-            types   0x1475a q16@0:8
+831:            imp     0xa370 -[JL_OTAManager otaLength]
+832-            name    0x120e9 otaSent
+833-            types   0x145eb I16@0:8
+834:            imp     0xa378 -[JL_OTAManager otaSent]
+835-            name    0x13177 delegate
+836-            types   0x144aa @16@0:8
+837:            imp     0xa380 -[JL_OTAManager delegate]
+838-            name    0x13f69 setDelegate:
+839-            types   0x14481 v24@0:8@16
+840:            imp     0xa398 -[JL_OTAManager setDelegate:]
+841-            name    0x1339f isRelink
+842-            types   0x144dc B16@0:8
+843:            imp     0xa3a4 -[JL_OTAManager isRelink]
+844-            name    0x13f97 setIsRelink:
+845-            types   0x14570 v20@0:8B16
+846:            imp     0xa3ac -[JL_OTAManager setIsRelink:]
+847-            name    0x121e3 .cxx_destruct
+848-            types   0x1448c v16@0:8
+849:            imp     0xa3b4 -[JL_OTAManager .cxx_destruct]
+850:        baseProtocols  0x1a6c0 __OBJC_CLASS_PROTOCOLS_$_JL_OTAManager
+851-            count    2
+852-            list[0]  0x1e1e8 __OBJC_PROTOCOL_$_JLOtaDataHandlerDelegate
+853-                isa       0x0
+854-                name      0x11d23 JLOtaDataHandlerDelegate
+855-                protocols 0x1a5a0 __OBJC_$_PROTOCOL_REFS_JLOtaDataHandlerDelegate
+856-                    count    1
+857-                    list[0]  0x1e120 __OBJC_PROTOCOL_$_NSObject
+858-                        isa       0x0
+859-                        name      0x11cf0 NSObject
+860-                        protocols 0x0
+861-                        instanceMethods 0x19858 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+862-                            entsize 24
+863-                            count   19
+864-                            name    0x13349 isEqual:
+865-                            types   0x14497 B24@0:8@16
+866-                            imp     0x0
+--
+1057-                    types   0x14481 v24@0:8@16
+1058-                    imp     0x0
+1059-                classMethods 0x0
+1060-                optionalInstanceMethods 0x0
+1061-                optionalClassMethods 0x0
+1062-                instanceProperties 0x0
+1063:        ivars          0x1ad60 __OBJC_$_INSTANCE_VARIABLES_JL_OTAManager
+1064-            entsize   32
+1065-            count     22
+1066:            offset    0x1dc50 _OBJC_IVAR_$_JL_OTAManager.dataHandler 8
+1067-            name      0x130c4 dataHandler
+1068-            type      0x14661 @"JLOtaDataHandler"
+1069-            alignment 3
+1070-            size      8
+1071:            offset    0x1dc54 _OBJC_IVAR_$_JL_OTAManager.otaProcessor 16
+1072-            name      0x137d4 otaProcessor
+1073-            type      0x14762 @"JLOtaFlowProcessor"
+1074-            alignment 3
+1075-            size      8
+1076:            offset    0x1dc58 _OBJC_IVAR_$_JL_OTAManager._bleOnly 24
+1077-            name      0x127bf _bleOnly
+1078-            type      0x14611 B
+1079-            alignment 0
+1080-            size      1
+1081:            offset    0x1dc5c _OBJC_IVAR_$_JL_OTAManager._mCmdSN 25
+1082-            name      0x11f47 _mCmdSN
+1083-            type      0x14778 C
+1084-            alignment 0
+1085-            size      1
+1086:            offset    0x1dc60 _OBJC_IVAR_$_JL_OTAManager._otaStatus 26
+1087-            name      0x1295a _otaStatus
+1088-            type      0x14778 C
+1089-            alignment 0
+1090-            size      1
+1091:            offset    0x1dc64 _OBJC_IVAR_$_JL_OTAManager._otaHeadset 27
+1092-            name      0x128ff _otaHeadset
+1093-            type      0x14778 C
+1094-            alignment 0
+1095-            size      1
+1096:            offset    0x1dc68 _OBJC_IVAR_$_JL_OTAManager._otaWatch 28
+1097-            name      0x12965 _otaWatch
+1098-            type      0x14778 C
+1099-            alignment 0
+1100-            size      1
+1101:            offset    0x1dc6c _OBJC_IVAR_$_JL_OTAManager._isSupportReuseSpaceOTA 29
+1102-            name      0x12868 _isSupportReuseSpaceOTA
+1103-            type      0x14611 B
+1104-            alignment 0
+1105-            size      1
+1106:            offset    0x1dc70 _OBJC_IVAR_$_JL_OTAManager._isSupportExpand 30
+1107-            name      0x12857 _isSupportExpand
+1108-            type      0x14611 B
+1109-            alignment 0
+1110-            size      1
+1111:            offset    0x1dc74 _OBJC_IVAR_$_JL_OTAManager._otaSourceMode 31
+1112-            name      0x1294b _otaSourceMode
+1113-            type      0x14778 C
+1114-            alignment 0
+1115-            size      1
+1116:            offset    0x1dc78 _OBJC_IVAR_$_JL_OTAManager._otaPartition 32
+1117-            name      0x12922 _otaPartition
+1118-            type      0x14778 C
+1119-            alignment 0
+1120-            size      1
+1121:            offset    0x1dc7c _OBJC_IVAR_$_JL_OTAManager._bootloaderType 33
+1122-            name      0x11ecd _bootloaderType
+1123-            type      0x14778 C
+1124-            alignment 0
+1125-            size      1
+1126:            offset    0x1dc80 _OBJC_IVAR_$_JL_OTAManager._otaReconnectType 34
+1127-            name      0x12930 _otaReconnectType
+1128-            type      0x14778 C
+1129-            alignment 0
+1130-            size      1
+1131:            offset    0x1dc84 _OBJC_IVAR_$_JL_OTAManager._isRelink 35
+1132-            name      0x12832 _isRelink
+1133-            type      0x14611 B
+1134-            alignment 0
+1135-            size      1
+1136:            offset    0x1dc88 _OBJC_IVAR_$_JL_OTAManager._version 36
+1137-            name      0x129cd _version
+1138-            type      0x1477a S
+1139-            alignment 1
+1140-            size      2
+1141:            offset    0x1dc8c _OBJC_IVAR_$_JL_OTAManager._otaSent 40
+1142-            name      0x12942 _otaSent
+1143-            type      0x1462e I
+1144-            alignment 2
+1145-            size      4
+1146:            offset    0x1dc90 _OBJC_IVAR_$_JL_OTAManager._mBLE_UUID 48
+1147-            name      0x128ac _mBLE_UUID
+1148-            type      0x1477c @"NSString"
+1149-            alignment 3
+1150-            size      8
+1151:            offset    0x1dc94 _OBJC_IVAR_$_JL_OTAManager._mBLE_NAME 56
+1152-            name      0x128a1 _mBLE_NAME
+1153-            type      0x1477c @"NSString"
+1154-            alignment 3
+1155-            size      8
+1156:            offset    0x1dc98 _OBJC_IVAR_$_JL_OTAManager._bleAddr 64
+1157-            name      0x127b6 _bleAddr
+1158-            type      0x1477c @"NSString"
+1159-            alignment 3
+1160-            size      8
+1161:            offset    0x1dc9c _OBJC_IVAR_$_JL_OTAManager._versionFirmware 72
+1162-            name      0x129d6 _versionFirmware
+1163-            type      0x1477c @"NSString"
+1164-            alignment 3
+1165-            size      8
+1166:            offset    0x1dca0 _OBJC_IVAR_$_JL_OTAManager._otaLength 80
+1167-            name      0x1290b _otaLength
+1168-            type      0x14788 q
+1169-            alignment 3
+1170-            size      8
+1171:            offset    0x1dca4 _OBJC_IVAR_$_JL_OTAManager._delegate 88
+1172-            name      0x1280d _delegate
+1173:            type      0x1478a @"<JL_OTAManagerDelegate>"
+1174-            alignment 3
+1175-            size      8
+1176-        weakIvarLayout 0x11d5a
+1177-        layout map     0xa1 
+1178:        baseProperties 0x1b028 __OBJC_$_PROP_LIST_JL_OTAManager
+1179-            entsize    16
+1180-            count      24
+1181-            name       0x1339f isRelink
+1182-            attributes 0x11e94 TB,N,V_isRelink
+1183-            name       0x13496 mBLE_UUID
+1184-            attributes 0x12087 T@"NSString",&,N,V_mBLE_UUID
+1185-            name       0x1348c mBLE_NAME
+1186-            attributes 0x1243a T@"NSString",&,N,V_mBLE_NAME
+1187-            name       0x123ae bleOnly
+1188-            attributes 0x12568 TB,N,V_bleOnly
+1189-            name       0x11fd9 bleAddr
+1190-            attributes 0x12064 T@"NSString",&,N,V_bleAddr
+1191-            name       0x134a0 mCmdSN
+1192-            attributes 0x12644 TC,N,V_mCmdSN
+1193-            name       0x1259a version
+1194-            attributes 0x126f6 TS,N,V_version
+--
+1214-            attributes 0x12678 TC,N,V_otaReconnectType
+1215-            name       0x13751 otaLength
+1216-            attributes 0x1276e Tq,R,N,V_otaLength
+1217-            name       0x120e9 otaSent
+1218-            attributes 0x126e0 TI,R,N,V_otaSent
+1219-            name       0x13177 delegate
+1220:            attributes 0x122bb T@"<JL_OTAManagerDelegate>",W,N,V_delegate
+1221-            name       0x1327e hash
+1222-            attributes 0x126f1 TQ,R
+1223-            name       0x1435f superclass
+1224-            attributes 0x11e8f T#,R
+1225-            name       0x13180 description
+1226-            attributes 0x1252c T@"NSString",R,C
+1227-            name       0x1312e debugDescription
+1228-            attributes 0x12509 T@"NSString",?,R,C
+1229-Meta Class
+1230-    isa        0x0 _OBJC_METACLASS_$_NSObject
+1231-    superclass 0x0 _OBJC_METACLASS_$_NSObject
+1232-    cache      0x0 __objc_empty_cache
+1233-    vtable     0x0
+1234:    data       0x1a6e0 __OBJC_METACLASS_RO_$_JL_OTAManager
+1235-        flags          0x185 RO_META RO_HAS_CXX_STRUCTORS
+1236-        instanceStart  40
+1237-        instanceSize   40
+1238-        reserved       0x0
+1239-        ivarLayout     0x0
+1240:        name           0x11d15 JL_OTAManager
+1241:        baseMethods    0x1a568 __OBJC_$_CLASS_METHODS_JL_OTAManager
+1242-            entsize 24
+1243-            count   2
+1244-            name    0x1322c getOTAManager
+1245-            types   0x144aa @16@0:8
+1246:            imp     0x94f0 +[JL_OTAManager getOTAManager]
+1247-            name    0x13471 logSDKVersion
+1248-            types   0x144aa @16@0:8
+1249:            imp     0x9640 +[JL_OTAManager logSDKVersion]
+1250:        baseProtocols  0x1a6c0 __OBJC_CLASS_PROTOCOLS_$_JL_OTAManager
+1251-            count    2
+1252-            list[0]  0x1e1e8 __OBJC_PROTOCOL_$_JLOtaDataHandlerDelegate
+1253-                isa       0x0
+1254-                name      0x11d23 JLOtaDataHandlerDelegate
+1255-                protocols 0x1a5a0 __OBJC_$_PROTOCOL_REFS_JLOtaDataHandlerDelegate
+1256-                    count    1
+1257-                    list[0]  0x1e120 __OBJC_PROTOCOL_$_NSObject
+1258-                        isa       0x0
+1259-                        name      0x11cf0 NSObject
+1260-                        protocols 0x0
+1261-                        instanceMethods 0x19858 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+1262-                            entsize 24
+1263-                            count   19
+1264-                            name    0x13349 isEqual:
+1265-                            types   0x14497 B24@0:8@16
+1266-                            imp     0x0
+--
+2056-                instanceProperties 0x0
+2057-        ivars          0x1be68 __OBJC_$_INSTANCE_VARIABLES_JLOtaCustom
+2058-            entsize   32
+2059-            count     4
+2060-            offset    0x1dce8 _OBJC_IVAR_$_JLOtaCustom._otaManager 8
+2061-            name      0x12916 _otaManager
+2062:            type      0x14650 @"JL_OTAManager"
+2063-            alignment 3
+2064-            size      8
+2065-            offset    0x1dcec _OBJC_IVAR_$_JLOtaCustom._dataHandler 16
+2066-            name      0x12800 _dataHandler
+2067-            type      0x14661 @"JLOtaDataHandler"
+2068-            alignment 3
+2069-            size      8
+2070-            offset    0x1dcf0 _OBJC_IVAR_$_JLOtaCustom._delegate 24
+2071-            name      0x1280d _delegate
+2072-            type      0x148d8 @"<JLOtaCustomDelegate>"
+2073-            alignment 3
+2074-            size      8
+2075-            offset    0x1dcf4 _OBJC_IVAR_$_JLOtaCustom._cusResult 32
+2076-            name      0x127ef _cusResult
+2077-            type      0x14494 @?
+2078-            alignment 3
+--
+2080-        weakIvarLayout 0x11da7
+2081-        layout map     0x01 0x11 
+2082-        baseProperties 0x1bef0 __OBJC_$_PROP_LIST_JLOtaCustom
+2083-            entsize    16
+2084-            count      8
+2085-            name       0x1375b otaManager
+2086:            attributes 0x11fe1 T@"JL_OTAManager",W,N,V_otaManager
+2087-            name       0x130c4 dataHandler
+2088-            attributes 0x12359 T@"JLOtaDataHandler",&,N,V_dataHandler
+2089-            name       0x13177 delegate
+2090-            attributes 0x11ea4 T@"<JLOtaCustomDelegate>",W,N,V_delegate
+2091-            name       0x13097 cusResult
+2092-            attributes 0x12174 T@?,C,N,V_cusResult
+2093-            name       0x1327e hash
+2094-            attributes 0x126f1 TQ,R
+2095-            name       0x1435f superclass
+2096-            attributes 0x11e8f T#,R
+2097-            name       0x13180 description
+2098-            attributes 0x1252c T@"NSString",R,C
+2099-            name       0x1312e debugDescription
+2100-            attributes 0x12509 T@"NSString",?,R,C
+2101-Meta Class
+2102-    isa        0x0 _OBJC_METACLASS_$_NSObject
+--
+2535-            name    0x13c0a reconnectWithUUID:Result:
+2536-            types   0x14561 v32@0:8@16@?24
+2537-            imp     0xdc20 -[JLOtaReConnectMgr reconnectWithUUID:Result:]
+2538-            name    0x13283 hashOnPairOutputData:
+2539-            types   0x14481 v24@0:8@16
+2540-            imp     0xdcbc -[JLOtaReConnectMgr hashOnPairOutputData:]
+2541:            name    0x13675 otaDataSend:
+2542-            types   0x14481 v24@0:8@16
+2543:            imp     0xdcc0 -[JLOtaReConnectMgr otaDataSend:]
+2544-            name    0x13695 otaFeatureResult:
+2545-            types   0x14481 v24@0:8@16
+2546-            imp     0xdcc4 -[JLOtaReConnectMgr otaFeatureResult:]
+2547-            name    0x13824 otaUpgradeResult:Progress:
+2548-            types   0x145d2 v24@0:8S16f20
+2549-            imp     0xdd90 -[JLOtaReConnectMgr otaUpgradeResult:Progress:]
+2550-            name    0x130d0 dataSender:
+2551-            types   0x14481 v24@0:8@16
+2552-            imp     0xdddc -[JLOtaReConnectMgr dataSender:]
+2553-            name    0x12ca0 centralManagerDidUpdateState:
+2554-            types   0x14481 v24@0:8@16
+2555-            imp     0xdeb8 -[JLOtaReConnectMgr centralManagerDidUpdateState:]
+2556-            name    0x12bd9 centralManager:didDiscoverPeripheral:advertisementData:RSSI:
+2557-            types   0x1492b v48@0:8@16@24@32@40
+2558-            imp     0xdf70 -[JLOtaReConnectMgr centralManager:didDiscoverPeripheral:advertisementData:RSSI:]
+2559-            name    0x12b3f centralManager:didConnectPeripheral:
+--
+3031-                    imp     0x0
+3032-                    name    0x139a7 peripheral:didOpenL2CAPChannel:error:
+3033-                    types   0x1493f v40@0:8@16@24@32
+3034-                    imp     0x0
+3035-                optionalClassMethods 0x0
+3036-                instanceProperties 0x0
+3037:            list[3]  0x1e3c8 __OBJC_PROTOCOL_$_JL_OTAManagerDelegate
+3038-                isa       0x0
+3039:                name      0x11e3a JL_OTAManagerDelegate
+3040:                protocols 0x1c9c0 __OBJC_$_PROTOCOL_REFS_JL_OTAManagerDelegate
+3041-                    count    1
+3042-                    list[0]  0x1e120 __OBJC_PROTOCOL_$_NSObject
+3043-                        isa       0x0
+3044-                        name      0x11cf0 NSObject
+3045-                        protocols 0x0
+3046-                        instanceMethods 0x19858 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+3047-                            entsize 24
+3048-                            count   19
+3049-                            name    0x13349 isEqual:
+3050-                            types   0x14497 B24@0:8@16
+3051-                            imp     0x0
+3052-                            name    0x12cd0 class
+3053-                            types   0x144a2 #16@0:8
+3054-                            imp     0x0
+3055-                            name    0x13d13 self
+3056-                            types   0x144aa @16@0:8
+--
+3119-                            name       0x1435f superclass
+3120-                            attributes 0x11e8f T#,R
+3121-                            name       0x13180 description
+3122-                            attributes 0x1252c T@"NSString",R,C
+3123-                            name       0x1312e debugDescription
+3124-                            attributes 0x12509 T@"NSString",?,R,C
+3125:                instanceMethods 0x1c9d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_JL_OTAManagerDelegate
+3126-                    entsize 24
+3127-                    count   1
+3128:                    name    0x13675 otaDataSend:
+3129-                    types   0x14481 v24@0:8@16
+3130-                    imp     0x0
+3131-                classMethods 0x0
+3132:                optionalInstanceMethods 0x1c9f8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_JL_OTAManagerDelegate
+3133-                    entsize 24
+3134-                    count   3
+3135-                    name    0x13695 otaFeatureResult:
+3136-                    types   0x14481 v24@0:8@16
+3137-                    imp     0x0
+3138-                    name    0x13824 otaUpgradeResult:Progress:
+3139-                    types   0x145d2 v24@0:8S16f20
+3140-                    imp     0x0
+3141-                    name    0x135d2 otaCancel
+3142-                    types   0x1448c v16@0:8
+3143-                    imp     0x0
+3144-                optionalClassMethods 0x0
+3145-                instanceProperties 0x0
+3146-        ivars          0x1cfb0 __OBJC_$_INSTANCE_VARIABLES_JLOtaReConnectMgr
+3147-            entsize   32
+3148-            count     16
+--
+3185-            name      0x129c7 _uuid
+3186-            type      0x1477c @"NSString"
+3187-            alignment 3
+3188-            size      8
+3189-            offset    0x1dd3c _OBJC_IVAR_$_JLOtaReConnectMgr._manager 56
+3190-            name      0x128c2 _manager
+3191:            type      0x14650 @"JL_OTAManager"
+3192-            alignment 3
+3193-            size      8
+3194-            offset    0x1dd40 _OBJC_IVAR_$_JLOtaReConnectMgr._authHandler 64
+3195-            name      0x127a0 _authHandler
+3196-            type      0x14c86 @"JLHashHandler"
+3197-            alignment 3
+3198-            size      8
+3199-            offset    0x1dd44 _OBJC_IVAR_$_JLOtaReConnectMgr._option 72
+3200-            name      0x11f7e _option
+3201-            type      0x14c97 @"JLOtaReConnectOption"
+3202-            alignment 3
+3203-            size      8
+3204-            offset    0x1dd48 _OBJC_IVAR_$_JLOtaReConnectMgr._currentPeripheral 80
+3205-            name      0x127dc _currentPeripheral
+3206-            type      0x14caf @"CBPeripheral"
+3207-            alignment 3
+--
+3234-            attributes 0x11f1d T@"CBCentralManager",&,N,V_centralManager
+3235-            name       0x1385d pMac
+3236-            attributes 0x12467 T@"NSString",&,N,V_pMac
+3237-            name       0x143da uuid
+3238-            attributes 0x12116 T@"NSString",N,V_uuid
+3239-            name       0x120a4 manager
+3240:            attributes 0x11e54 T@"JL_OTAManager",&,N,V_manager
+3241-            name       0x12a72 authHandler
+3242-            attributes 0x11f86 T@"JLHashHandler",&,N,V_authHandler
+3243-            name       0x13340 isAuthed
+3244-            attributes 0x12233 TB,N,V_isAuthed
+3245-            name       0x13596 option
+3246-            attributes 0x12388 T@"JLOtaReConnectOption",&,N,V_option
+3247-            name       0x13076 currentPeripheral
+3248-            attributes 0x1232c T@"CBPeripheral",&,N,V_currentPeripheral
+3249-            name       0x13bb0 readCharacteristic
+3250-            attributes 0x122f6 T@"CBCharacteristic",&,N,V_readCharacteristic
+3251-            name       0x143f3 writeCharacteristic
+3252-            attributes 0x11f4f T@"CBCharacteristic",&,N,V_writeCharacteristic
+3253-            name       0x1253d rtBlock
+3254-            attributes 0x11e7f T@?,N,V_rtBlock
+3255-            name       0x133a8 isSearching
+3256-            attributes 0x12587 TB,N,V_isSearching
+--
+3644-                    imp     0x0
+3645-                    name    0x139a7 peripheral:didOpenL2CAPChannel:error:
+3646-                    types   0x1493f v40@0:8@16@24@32
+3647-                    imp     0x0
+3648-                optionalClassMethods 0x0
+3649-                instanceProperties 0x0
+3650:            list[3]  0x1e3c8 __OBJC_PROTOCOL_$_JL_OTAManagerDelegate
+3651-                isa       0x0
+3652:                name      0x11e3a JL_OTAManagerDelegate
+3653:                protocols 0x1c9c0 __OBJC_$_PROTOCOL_REFS_JL_OTAManagerDelegate
+3654-                    count    1
+3655-                    list[0]  0x1e120 __OBJC_PROTOCOL_$_NSObject
+3656-                        isa       0x0
+3657-                        name      0x11cf0 NSObject
+3658-                        protocols 0x0
+3659-                        instanceMethods 0x19858 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+3660-                            entsize 24
+3661-                            count   19
+3662-                            name    0x13349 isEqual:
+3663-                            types   0x14497 B24@0:8@16
+3664-                            imp     0x0
+3665-                            name    0x12cd0 class
+3666-                            types   0x144a2 #16@0:8
+3667-                            imp     0x0
+3668-                            name    0x13d13 self
+3669-                            types   0x144aa @16@0:8
+--
+3732-                            name       0x1435f superclass
+3733-                            attributes 0x11e8f T#,R
+3734-                            name       0x13180 description
+3735-                            attributes 0x1252c T@"NSString",R,C
+3736-                            name       0x1312e debugDescription
+3737-                            attributes 0x12509 T@"NSString",?,R,C
+3738:                instanceMethods 0x1c9d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_JL_OTAManagerDelegate
+3739-                    entsize 24
+3740-                    count   1
+3741:                    name    0x13675 otaDataSend:
+3742-                    types   0x14481 v24@0:8@16
+3743-                    imp     0x0
+3744-                classMethods 0x0
+3745:                optionalInstanceMethods 0x1c9f8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_JL_OTAManagerDelegate
+3746-                    entsize 24
+3747-                    count   3
+3748-                    name    0x13695 otaFeatureResult:
+3749-                    types   0x14481 v24@0:8@16
+3750-                    imp     0x0
+3751-                    name    0x13824 otaUpgradeResult:Progress:
+3752-                    types   0x145d2 v24@0:8S16f20
+3753-                    imp     0x0
+3754-                    name    0x135d2 otaCancel
+3755-                    types   0x1448c v16@0:8
+3756-                    imp     0x0
+3757-                optionalClassMethods 0x0
+3758-                instanceProperties 0x0
+3759-        ivars          0x0
+3760-        weakIvarLayout 0x0
+3761-        baseProperties 0x0
+--
+3771-000000000001db18 0x1dfe0 _OBJC_CLASS_$_JLOtaTimeoutManager
+3772-000000000001db20 0x1dea0 _OBJC_CLASS_$_JLOtaDataHandler
+3773-000000000001db28 0x0 _OBJC_CLASS_$_NSNotificationCenter
+3774-000000000001db30 0x0 _OBJC_CLASS_$_NSNumber
+3775-000000000001db38 0x0 _OBJC_CLASS_$_NSArray
+3776-000000000001db40 0x0 _OBJC_CLASS_$_NSDictionary
+3777:000000000001db48 0x1de50 _OBJC_CLASS_$_JL_OTAManager
+3778-000000000001db50 0x1ddb0 _OBJC_CLASS_$_JLOtaFlowProcessor
+3779-000000000001db58 0x1e058 _OBJC_CLASS_$_JLOTAVersion
+3780-000000000001db60 0x1de28 _OBJC_CLASS_$_JLOtaDeviceInfoParser
+3781-000000000001db68 0x0 _OBJC_CLASS_$_NSData
+3782-000000000001db70 0x0 _OBJC_CLASS_$_NSMutableData
+3783-000000000001db78 0x0 _OBJC_CLASS_$_NSMutableArray
+3784-000000000001db80 0x0 _OBJC_CLASS_$_NSTimer
+3785-000000000001db88 0x1def0 _OBJC_CLASS_$_JLOTATimeoutInfo
+3786-000000000001db90 0x1df68 _OBJC_CLASS_$_JLOtaCustomData
+3787-000000000001db98 0x0 _OBJC_CLASS_$_NSError
+3788-000000000001dba0 0x0 _OBJC_CLASS_$_CBCentralManager
+3789-000000000001dba8 0x0 _OBJC_CLASS_$_JLHashHandler
+3790-000000000001dbb0 0x0 _OBJC_CLASS_$_JLAdvParse
+3791-Contents of (__DATA,__objc_superrefs) section
+3792-000000000001dbb8 0x1ddb0 _OBJC_CLASS_$_JLOtaFlowProcessor
+3793:000000000001dbc0 0x1de50 _OBJC_CLASS_$_JL_OTAManager
+3794-000000000001dbc8 0x1dea0 _OBJC_CLASS_$_JLOtaDataHandler
+3795-000000000001dbd0 0x1df90 _OBJC_CLASS_$_JLOtaCustom
+3796-000000000001dbd8 0x1dfe0 _OBJC_CLASS_$_JLOtaTimeoutManager
+3797-000000000001dbe0 0x1e0d0 _OBJC_CLASS_$_JLOtaReConnectMgr
+3798-Contents of (__DATA,__objc_protolist) section
+3799-00000000000196f0 0x1e120 __OBJC_PROTOCOL_$_NSObject
+3800-    isa       0x0
+3801-    name      0x11cf0 NSObject
+3802-    protocols 0x0
+3803-    instanceMethods 0x19858 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+3804-        entsize 24
+3805-        count   19
+3806-        name    0x13349 isEqual:
+3807-        types   0x14497 B24@0:8@16
+3808-        imp     0x0
+3809-        name    0x12cd0 class
+--
+4547-        imp     0x0
+4548-        name    0x139a7 peripheral:didOpenL2CAPChannel:error:
+4549-        types   0x1493f v40@0:8@16@24@32
+4550-        imp     0x0
+4551-    optionalClassMethods 0x0
+4552-    instanceProperties 0x0
+4553:0000000000019728 0x1e3c8 __OBJC_PROTOCOL_$_JL_OTAManagerDelegate
+4554-    isa       0x0
+4555:    name      0x11e3a JL_OTAManagerDelegate
+4556:    protocols 0x1c9c0 __OBJC_$_PROTOCOL_REFS_JL_OTAManagerDelegate
+4557-        count    1
+4558-        list[0]  0x1e120 __OBJC_PROTOCOL_$_NSObject
+4559-            isa       0x0
+4560-            name      0x11cf0 NSObject
+4561-            protocols 0x0
+4562-            instanceMethods 0x19858 __OBJC_$_PROTOCOL_INSTANCE_METHODS_NSObject
+4563-                entsize 24
+4564-                count   19
+4565-                name    0x13349 isEqual:
+4566-                types   0x14497 B24@0:8@16
+4567-                imp     0x0
+4568-                name    0x12cd0 class
+4569-                types   0x144a2 #16@0:8
+4570-                imp     0x0
+4571-                name    0x13d13 self
+4572-                types   0x144aa @16@0:8
+--
+4635-                name       0x1435f superclass
+4636-                attributes 0x11e8f T#,R
+4637-                name       0x13180 description
+4638-                attributes 0x1252c T@"NSString",R,C
+4639-                name       0x1312e debugDescription
+4640-                attributes 0x12509 T@"NSString",?,R,C
+4641:    instanceMethods 0x1c9d8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_JL_OTAManagerDelegate
+4642-        entsize 24
+4643-        count   1
+4644:        name    0x13675 otaDataSend:
+4645-        types   0x14481 v24@0:8@16
+4646-        imp     0x0
+4647-    classMethods 0x0
+4648:    optionalInstanceMethods 0x1c9f8 __OBJC_$_PROTOCOL_INSTANCE_METHODS_OPT_JL_OTAManagerDelegate
+4649-        entsize 24
+4650-        count   3
+4651-        name    0x13695 otaFeatureResult:
+4652-        types   0x14481 v24@0:8@16
+4653-        imp     0x0
+4654-        name    0x13824 otaUpgradeResult:Progress:
+4655-        types   0x145d2 v24@0:8S16f20
+4656-        imp     0x0
+4657-        name    0x135d2 otaCancel
+4658-        types   0x1448c v16@0:8
+4659-        imp     0x0
+4660-    optionalClassMethods 0x0
+4661-    instanceProperties 0x0
+4662-Contents of (__DATA,__objc_selrefs) section
+4663-    0x14374 timeCountAction:
+4664-    0x13766 otaManagerHandlerDidReceive:
+--
+4703-    0x12e16 cmdOTA_7_RebootDevice:Result:
+4704-    0x12e34 cmdOTA_Route:withOtaReconnectType:Result:
+4705-    0x12e5e cmdOTA_UpgradeLength:
+4706-    0x12e88 cmdOtaDataReceive:
+4707-    0x12e9b cmdOtaIsRelinking
+4708-    0x12ec2 cmdResponseCode:OpSN:Status:Data:UUID:
+4709:    0x12f37 cmdTargetFeature
+4710-    0x12f5d cmdUpdateBuffer:
+4711-    0x12f6e cmdUpgrade:Option:Result:
+4712-    0x1300b connectPeripheral:options:
+4713-    0x123f8 copeWithBLEData
+4714-    0x13026 copy
+4715-    0x13039 count
+4716-    0x1303f countByEnumeratingWithState:objects:count:
+4717-    0x13088 currentVersion
+4718-    0x130a6 data:R:L:
+4719-    0x130b0 dataChangeToString:
+4720-    0x130c4 dataHandler
+4721-    0x130d0 dataSender:
+4722-    0x130dc dataTaskWithURL:completionHandler:
+4723-    0x130ff dataToInt:
+4724-    0x1310a dataWithBytes:length:
+4725-    0x13120 dataWithData:
+--
+4762-    0x13496 mBLE_UUID
+4763-    0x134a0 mCmdSN
+4764-    0x120a4 manager
+4765-    0x1247f maximumWriteValueLengthForType:
+4766-    0x134da name
+4767-    0x120c8 new
+4768:    0x134ec noteEntityConnected
+4769-    0x13500 noteEntityDisconnected
+4770-    0x13517 notifyResult:progress:
+4771-    0x1352e numberWithInt:
+4772-    0x1353d numberWithUnsignedChar:
+4773-    0x13555 object
+4774-    0x1355c objectAtIndexedSubscript:
+4775-    0x13576 objectForKeyedSubscript:
+4776-    0x1358f opcode
+4777-    0x1359d otaBleMacAddress:isEqualToCBAdvDataManufacturerData:
+4778-    0x135dc otaCustomReceiveData:
+4779-    0x124be otaData
+4780-    0x135f2 otaDataHandlerData:NeedResponse:Data:sn:opcode:
+4781-    0x13622 otaDataHandlerDidResp:uuid:
+4782-    0x1363e otaDataHandlerDidSend:uuid:
+4783-    0x1365a otaDataHandlerReceiveData:
+4784:    0x13675 otaDataSend:
+4785-    0x13682 otaDidReceiveData:
+4786-    0x13695 otaFeatureResult:
+4787-    0x136a7 otaFirstStep:
+4788-    0x136c9 otaFlowDidUpdateStatus:progress:
+4789-    0x136ea otaHandler:didReceiveCmd:sn:needResponse:payload:
+4790-    0x1371c otaHandler:didReceiveResponse:sn:payload:
+4791-    0x1375b otaManager
+4792-    0x137a0 otaPartition
+4793-    0x137ad otaPartitionDouble
+4794-    0x137c0 otaPartitionSingle:
+4795-    0x137e1 otaReconnectType
+4796-    0x137f2 otaSecondStep
+4797-    0x13800 otaSourceMode
+4798-    0x1380e otaStatus
+4799-    0x13818 otaTimeout:
+4800-    0x13824 otaUpgradeResult:Progress:

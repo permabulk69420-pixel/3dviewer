@@ -1,0 +1,503 @@
+/tmp/JL_OTALib:
+Load command 0
+      cmd LC_SEGMENT_64
+  cmdsize 1032
+  segname __TEXT
+   vmaddr 0x0000000000000000
+   vmsize 0x0000000000018000
+  fileoff 0
+ filesize 98304
+  maxprot 0x00000005
+ initprot 0x00000005
+   nsects 12
+    flags 0x0
+Section
+  sectname __text
+   segname __TEXT
+      addr 0x0000000000004000
+      size 0x000000000000abc8
+    offset 16384
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __stubs
+   segname __TEXT
+      addr 0x000000000000ebc8
+      size 0x0000000000000180
+    offset 60360
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x80000408
+ reserved1 0 (index into indirect symbol table)
+ reserved2 12 (size of stubs)
+Section
+  sectname __stub_helper
+   segname __TEXT
+      addr 0x000000000000ed48
+      size 0x0000000000000198
+    offset 60744
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_stubs
+   segname __TEXT
+      addr 0x000000000000eee0
+      size 0x0000000000001da0
+    offset 61152
+     align 2^5 (32)
+    reloff 0
+    nreloc 0
+     flags 0x80000400
+ reserved1 0
+ reserved2 0
+Section
+  sectname __const
+   segname __TEXT
+      addr 0x0000000000010c80
+      size 0x00000000000000b0
+    offset 68736
+     align 2^4 (16)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __cstring
+   segname __TEXT
+      addr 0x0000000000010d30
+      size 0x0000000000000f8c
+    offset 68912
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_classname
+   segname __TEXT
+      addr 0x0000000000011cbc
+      size 0x0000000000000198
+    offset 72892
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_methname
+   segname __TEXT
+      addr 0x0000000000011e54
+      size 0x0000000000002606
+    offset 73300
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_methtype
+   segname __TEXT
+      addr 0x000000000001445a
+      size 0x0000000000000879
+    offset 83034
+     align 2^0 (1)
+    reloff 0
+    nreloc 0
+     flags 0x00000002
+ reserved1 0
+ reserved2 0
+Section
+  sectname __ustring
+   segname __TEXT
+      addr 0x0000000000014cd4
+      size 0x000000000000185a
+    offset 85204
+     align 2^1 (2)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __gcc_except_tab
+   segname __TEXT
+      addr 0x0000000000016530
+      size 0x00000000000000bc
+    offset 91440
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __unwind_info
+   segname __TEXT
+      addr 0x00000000000165ec
+      size 0x00000000000002e8
+    offset 91628
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Load command 1
+      cmd LC_SEGMENT_64
+  cmdsize 1272
+  segname __DATA
+   vmaddr 0x0000000000018000
+   vmsize 0x0000000000008000
+  fileoff 98304
+ filesize 32768
+  maxprot 0x00000003
+ initprot 0x00000003
+   nsects 15
+    flags 0x0
+Section
+  sectname __got
+   segname __DATA
+      addr 0x0000000000018000
+      size 0x0000000000000030
+    offset 98304
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000006
+ reserved1 32 (index into indirect symbol table)
+ reserved2 0
+Section
+  sectname __la_symbol_ptr
+   segname __DATA
+      addr 0x0000000000018030
+      size 0x0000000000000100
+    offset 98352
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000007
+ reserved1 38 (index into indirect symbol table)
+ reserved2 0
+Section
+  sectname __const
+   segname __DATA
+      addr 0x0000000000018130
+      size 0x0000000000000240
+    offset 98608
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __cfstring
+   segname __DATA
+      addr 0x0000000000018370
+      size 0x0000000000001320
+    offset 99184
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_classlist
+   segname __DATA
+      addr 0x0000000000019690
+      size 0x0000000000000060
+    offset 104080
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_protolist
+   segname __DATA
+      addr 0x00000000000196f0
+      size 0x0000000000000040
+    offset 104176
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x0000000b
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_imageinfo
+   segname __DATA
+      addr 0x0000000000019730
+      size 0x0000000000000008
+    offset 104240
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_const
+   segname __DATA
+      addr 0x0000000000019738
+      size 0x0000000000003c10
+    offset 104248
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_selrefs
+   segname __DATA
+      addr 0x000000000001d348
+      size 0x0000000000000790
+    offset 119624
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x10000005
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_classrefs
+   segname __DATA
+      addr 0x000000000001dad8
+      size 0x00000000000000e0
+    offset 121560
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_superrefs
+   segname __DATA
+      addr 0x000000000001dbb8
+      size 0x0000000000000030
+    offset 121784
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x10000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_ivar
+   segname __DATA
+      addr 0x000000000001dbe8
+      size 0x0000000000000174
+    offset 121832
+     align 2^2 (4)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __objc_data
+   segname __DATA
+      addr 0x000000000001dd60
+      size 0x00000000000003c0
+    offset 122208
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __data
+   segname __DATA
+      addr 0x000000000001e120
+      size 0x0000000000000310
+    offset 123168
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000000
+ reserved1 0
+ reserved2 0
+Section
+  sectname __bss
+   segname __DATA
+      addr 0x000000000001e430
+      size 0x0000000000000020
+    offset 0
+     align 2^3 (8)
+    reloff 0
+    nreloc 0
+     flags 0x00000001
+ reserved1 0
+ reserved2 0
+Load command 2
+      cmd LC_SEGMENT_64
+  cmdsize 72
+  segname __LINKEDIT
+   vmaddr 0x0000000000020000
+   vmsize 0x0000000000014000
+  fileoff 131072
+ filesize 76344
+  maxprot 0x00000001
+ initprot 0x00000001
+   nsects 0
+    flags 0x0
+Load command 3
+          cmd LC_ID_DYLIB
+      cmdsize 64
+         name @rpath/JL_OTALib.framework/JL_OTALib (offset 24)
+   time stamp 1 Thu Jan  1 00:00:01 1970
+      current version 1.0.0
+compatibility version 1.0.0
+Load command 4
+            cmd LC_DYLD_INFO_ONLY
+        cmdsize 48
+     rebase_off 131072
+    rebase_size 624
+       bind_off 131696
+      bind_size 1016
+  weak_bind_off 0
+ weak_bind_size 0
+  lazy_bind_off 132712
+ lazy_bind_size 768
+     export_off 133480
+    export_size 680
+Load command 5
+     cmd LC_SYMTAB
+ cmdsize 24
+  symoff 134592
+   nsyms 2341
+  stroff 172328
+ strsize 35088
+Load command 6
+            cmd LC_DYSYMTAB
+        cmdsize 80
+      ilocalsym 0
+      nlocalsym 2250
+     iextdefsym 2250
+     nextdefsym 30
+      iundefsym 2280
+      nundefsym 61
+         tocoff 0
+           ntoc 0
+      modtaboff 0
+        nmodtab 0
+   extrefsymoff 0
+    nextrefsyms 0
+ indirectsymoff 172048
+  nindirectsyms 70
+      extreloff 0
+        nextrel 0
+      locreloff 0
+        nlocrel 0
+Load command 7
+     cmd LC_UUID
+ cmdsize 24
+    uuid 30390DF5-57D3-33CF-891B-624B879C2F84
+Load command 8
+      cmd LC_VERSION_MIN_IPHONEOS
+  cmdsize 16
+  version 10.0
+      sdk 26.2
+Load command 9
+      cmd LC_SOURCE_VERSION
+  cmdsize 16
+  version 0.0
+Load command 10
+          cmd LC_ENCRYPTION_INFO_64
+      cmdsize 24
+     cryptoff 16384
+    cryptsize 81920
+      cryptid 0
+          pad 0
+Load command 11
+          cmd LC_LOAD_DYLIB
+      cmdsize 72
+         name @rpath/JL_HashPair.framework/JL_HashPair (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 1.0.0
+compatibility version 1.0.0
+Load command 12
+          cmd LC_LOAD_DYLIB
+      cmdsize 72
+         name @rpath/JL_AdvParse.framework/JL_AdvParse (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 1.0.0
+compatibility version 1.0.0
+Load command 13
+          cmd LC_LOAD_DYLIB
+      cmdsize 72
+         name @rpath/JLLogHelper.framework/JLLogHelper (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 1.0.0
+compatibility version 1.0.0
+Load command 14
+          cmd LC_LOAD_DYLIB
+      cmdsize 88
+         name /System/Library/Frameworks/Foundation.framework/Foundation (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 4201.0.0
+compatibility version 300.0.0
+Load command 15
+          cmd LC_LOAD_DYLIB
+      cmdsize 56
+         name /usr/lib/libobjc.A.dylib (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 228.0.0
+compatibility version 1.0.0
+Load command 16
+          cmd LC_LOAD_DYLIB
+      cmdsize 56
+         name /usr/lib/libSystem.B.dylib (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 1356.0.0
+compatibility version 1.0.0
+Load command 17
+          cmd LC_LOAD_DYLIB
+      cmdsize 96
+         name /System/Library/Frameworks/CoreBluetooth.framework/CoreBluetooth (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 192.7.0
+compatibility version 1.0.0
+Load command 18
+          cmd LC_LOAD_DYLIB
+      cmdsize 96
+         name /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation (offset 24)
+   time stamp 2 Thu Jan  1 00:00:02 1970
+      current version 4201.0.0
+compatibility version 150.0.0
+Load command 19
+          cmd LC_RPATH
+      cmdsize 40
+         path @executable_path/Frameworks (offset 12)
+Load command 20
+          cmd LC_RPATH
+      cmdsize 40
+         path @loader_path/Frameworks (offset 12)
+Load command 21
+      cmd LC_FUNCTION_STARTS
+  cmdsize 16
+  dataoff 134160
+ datasize 432
+Load command 22
+      cmd LC_DATA_IN_CODE
+  cmdsize 16
+  dataoff 134592
+ datasize 0
