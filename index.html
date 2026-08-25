@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Anko address query</title>
+<title>Anko OTA version query</title>
 <style>
 :root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}
 *{box-sizing:border-box}body{margin:0;padding:18px;max-width:760px;margin:auto}h1{font-size:1.45rem}.sub{color:#aeb7c4}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button.secondary{background:#283246}button:disabled{opacity:.45}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:260px;max-height:560px;overflow:auto;font-size:.78rem}
 </style>
 </head>
 <body>
-<h1>Anko watch address query</h1>
-<div class="sub">v9 — read-only Da Fit Bluetooth-address query. Sends only CRP command 0xF1; no DFU commands and no firmware data.</div>
+<h1>Anko OTA firmware version</h1>
+<div class="sub">v10 — read-only Da Fit firmware-version query. Sends only CRP command 0x5A with payload 0x01. No DFU command, no firmware data.</div>
 <div class="card">
 <button id="connect">1. Connect watch</button>
-<button id="query" disabled>2. Get watch address</button>
+<button id="query" disabled>2. Get OTA version</button>
 <button id="copy" class="secondary" disabled>Copy report</button>
 <div id="status" class="warn" style="margin-top:12px">Not connected</div>
 </div>
@@ -28,18 +28,17 @@ const $=id=>document.getElementById(id);
 function log(s){const line=`[${new Date().toLocaleTimeString()}] ${s}`;lines.push(line);$('log').textContent=lines.join('\n');$('log').scrollTop=$('log').scrollHeight;}
 function hex(a){return Array.from(a,b=>b.toString(16).padStart(2,'0')).join(' ');}
 function shortUuid(u){const m=u.toLowerCase().match(/^0000([0-9a-f]{4})-/);return m?m[1]:u;}
-function mac(a){return Array.from(a,b=>b.toString(16).padStart(2,'0').toUpperCase()).join(':');}
+function ascii(a){return Array.from(a,b=>(b>=32&&b<=126)?String.fromCharCode(b):'.').join('');}
 function onNotify(ev){
   const ch=ev.target,v=ch.value,d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);
   log(`RX ${shortUuid(ch.uuid).toUpperCase()}: ${hex(d)}`);
   if(d.length>=5&&d[0]===0xfe&&d[1]===0xea){
     const cmd=d[4],p=d.slice(5);
     log(`  decoded cmd=0x${cmd.toString(16).padStart(2,'0')} payload=${hex(p)}`);
-    if(cmd===0xf1){
-      if(p.length===6) log(`WATCH ADDRESS: ${mac(p)}`);
-      else if(p.length===7&&p[0]===0) log(`WATCH ADDRESS: ${mac(p.slice(1))} (leading status 00)`);
-      else log(`F1 reply received; raw payload length=${p.length}`);
-      $('status').textContent='Address reply received — copy report';$('status').className='ok';
+    if(cmd===0x5a){
+      log(`  payload ASCII: ${ascii(p)}`);
+      $('status').textContent='OTA version reply received — copy report';
+      $('status').className='ok';
     }
   }
 }
@@ -67,22 +66,22 @@ async function connect(){
     $('connect').disabled=false;$('status').textContent='Connect failed';$('status').className='bad';log('CONNECT ERROR: '+(e.message||e));
   }finally{connecting=false;}
 }
-async function queryAddress(){
+async function queryVersion(){
   try{
-    $('query').disabled=true;$('status').textContent='Reading watch address…';$('status').className='warn';
-    const packet=Uint8Array.from([0xfe,0xea,0x20,0x06,0xf1,0x00]);
-    log('TX FEE2 BT ADDRESS QUERY: '+hex(packet));
+    $('query').disabled=true;$('status').textContent='Reading OTA firmware version…';$('status').className='warn';
+    const packet=Uint8Array.from([0xfe,0xea,0x20,0x06,0x5a,0x01]);
+    log('TX FEE2 OTA VERSION QUERY: '+hex(packet));
     if(fee2.properties.writeWithoutResponse)await fee2.writeValueWithoutResponse(packet);
     else if(fee2.properties.write)await fee2.writeValueWithResponse(packet);
     else throw Error('FEE2 is not writable');
     log('  ATT write accepted');
-    setTimeout(()=>{if($('status').textContent==='Reading watch address…'){$('status').textContent='Query sent — copy report';$('status').className='warn';$('query').disabled=false;}},2000);
+    setTimeout(()=>{if($('status').textContent==='Reading OTA firmware version…'){$('status').textContent='Query sent — copy report';$('status').className='warn';$('query').disabled=false;}},2500);
   }catch(e){$('status').textContent='Query error — copy report';$('status').className='bad';log('QUERY ERROR: '+(e.message||e));$('query').disabled=false;}
 }
 $('connect').onclick=connect;
-$('query').onclick=queryAddress;
+$('query').onclick=queryVersion;
 $('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied';}catch(e){log('Clipboard failed; long-press log to copy');}};
-log('Ready — v9 read-only watch address query.');
+log('Ready — v10 read-only OTA firmware version query.');
 })();
 </script>
 </body>
