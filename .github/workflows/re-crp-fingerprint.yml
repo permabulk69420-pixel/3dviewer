@@ -42,6 +42,7 @@ jobs:
             com.crrepa.h.a \
             com.crrepa.f.w \
             com.crrepa.f.a2 \
+            com.crrepa.f.u \
             com.crrepa.e.c \
             com.crrepa.m.a \
             com.crrepa.q.b \
@@ -50,6 +51,15 @@ jobs:
             com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo \
             com.crrepa.ble.conn.bean.CRPJieliSupportWatchFaceInfo \
             com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo; do
+            echo >> "$OUT"
+            echo "===== $c =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
+          done
+
+          echo >> "$OUT"
+          echo '===== CALLBACK REFERENCE CLASSES =====' >> "$OUT"
+          grep -aRIl -E 'CRPJieliDfuPackageLengthCallback|CRPJieliWatchFaceCallback|CRPAvailableStorageCallback' /tmp/classes/com/crrepa --include='*.class' | sort -u | while read -r f; do
+            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
             echo >> "$OUT"
             echo "===== $c =====" >> "$OUT"
             javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
@@ -71,5 +81,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp/fingerprint-semantics.txt
-          git commit -m 'Expand CRP fingerprint semantics' || exit 0
+          git commit -m 'Trace JieLi DFU package length query' || exit 0
           git push
