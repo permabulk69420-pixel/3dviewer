@@ -20,44 +20,34 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Fetch public Da Fit CRP AAR
+      - name: Fetch CRP AAR
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
           mkdir -p /tmp/crp && cd /tmp/crp && unzip -q /tmp/crp.aar
-      - name: Inspect classes and native libraries
+      - name: Dump exact JieLi DFU path
         run: |
           set -euxo pipefail
-          OUT='re/dafit_crp'
-          mkdir -p "$OUT"
-          (cd /tmp/crp && find . -maxdepth 4 -type f | sort) > "$OUT/aar-files.txt"
-          jar tf /tmp/crp/classes.jar > "$OUT/classes.txt"
-          grep -Ei 'jieli|jieli|ota|dfu|firmware|watchface|jl_' "$OUT/classes.txt" > "$OUT/interesting-classes.txt" || true
-          strings -a /tmp/crp/classes.jar | grep -Ei 'jieli|jieli|ota|dfu|JLQFN|MOY-|190e|ae00|gr-A|gr-B' > "$OUT/jar-strings.txt" || true
-          find /tmp/crp -type f \( -name '*.so' -o -name '*.jar' \) -print > "$OUT/binaries.txt"
-          while IFS= read -r f; do
-            echo "===== $f ====="
-            strings -a "$f" | grep -Ei 'jieli|jieli|rcsp|ota|dfu|ae00|ae01|ae02|190e|JLQFN|MOY-' || true
-          done < "$OUT/binaries.txt" > "$OUT/native-interesting.txt"
-          : > "$OUT/javap-interesting.txt"
-          while IFS= read -r cls; do
-            cls="${cls%.class}"; cls="${cls//\//.}"
-            echo "===== $cls =====" >> "$OUT/javap-interesting.txt"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT/javap-interesting.txt" 2>&1 || true
-          done < <(grep -Ei 'jieli|jieli|ota|dfu|firmware' "$OUT/classes.txt" | grep '\.class$' | head -n 250)
-
-          : > "$OUT/javap-jieli-internals.txt"
-          while IFS= read -r cls; do
-            cls="${cls%.class}"; cls="${cls//\//.}"
-            echo "===== $cls =====" >> "$OUT/javap-jieli-internals.txt"
-            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT/javap-jieli-internals.txt" 2>&1 || true
-          done < <(grep -E '^com/crrepa/i0/.*\.class$|^com/crrepa/c0/.*\.class$|^com/crrepa/p0/.*\.class$|^com/crrepa/ble/ota/jieli/.*\.class$' "$OUT/classes.txt")
+          OUT='re/dafit_crp/javap-dfu-core.txt'
+          : > "$OUT"
+          for cls in \
+            com.crrepa.ble.ota.jieli.JieliDfuController \
+            com.crrepa.i0.b \
+            com.crrepa.c0.c \
+            com.crrepa.c0.d \
+            com.crrepa.f.u1 \
+            com.crrepa.p0.d \
+            com.crrepa.x.a \
+            com.crrepa.m.f; do
+            echo "===== $cls =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT" 2>&1 || true
+          done
       - name: Commit analysis
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp
-          git commit -m 'Add Da Fit JieLi transfer-engine analysis' || exit 0
+          git add re/dafit_crp/javap-dfu-core.txt
+          git commit -m 'Add exact CRP JieLi DFU packet analysis' || exit 0
           git push
