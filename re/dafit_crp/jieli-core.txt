@@ -602,6 +602,892 @@ public class com.crrepa.m.f extends com.crrepa.m.c {
        2: putfield      #208                // Field f:Lcom/crrepa/ble/conn/callback/CRPRemoveBondCallback;
        5: return
 }
+===== com.crrepa.m.c =====
+Compiled from "SourceFile"
+public abstract class com.crrepa.m.c {
+  public com.crrepa.m.c();
+    Code:
+       0: aload_0
+       1: invokespecial #11                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void a();
+    Code:
+       0: invokestatic  #18                 // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       3: invokevirtual #21                 // Method com/crrepa/l/a.a:()Landroid/bluetooth/BluetoothGatt;
+       6: invokestatic  #27                 // Method com/crrepa/m/b.c:(Landroid/bluetooth/BluetoothGatt;)V
+       9: return
+
+  protected com.crrepa.q.b b();
+    Code:
+       0: invokestatic  #33                 // Method com/crrepa/q/c.c:()Lcom/crrepa/q/c;
+       3: invokevirtual #35                 // Method com/crrepa/q/c.a:()Lcom/crrepa/q/b;
+       6: areturn
+}
+===== com.crrepa.q.b =====
+Compiled from "SourceFile"
+public class com.crrepa.q.b {
+  private android.bluetooth.BluetoothGattCharacteristic a;
+
+  private android.bluetooth.BluetoothGattCharacteristic b;
+
+  private android.bluetooth.BluetoothGattCharacteristic c;
+
+  private android.bluetooth.BluetoothGattCharacteristic d;
+
+  private android.bluetooth.BluetoothGattCharacteristic e;
+
+  private android.bluetooth.BluetoothGattCharacteristic f;
+
+  private android.bluetooth.BluetoothGattCharacteristic g;
+
+  private android.bluetooth.BluetoothGattCharacteristic h;
+
+  private android.bluetooth.BluetoothGattCharacteristic i;
+
+  private android.bluetooth.BluetoothGattCharacteristic j;
+
+  private android.bluetooth.BluetoothGattCharacteristic k;
+
+  private android.bluetooth.BluetoothGattCharacteristic l;
+
+  private android.bluetooth.BluetoothGattCharacteristic m;
+
+  public com.crrepa.q.b(java.util.List<android.bluetooth.BluetoothGattService>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokespecial #27                 // Method java/lang/Object."<init>":()V
+       5: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      10: astore_1
+      11: aload_1
+      12: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      17: ifeq          518
+      20: aload_1
+      21: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      26: checkcast     #45                 // class android/bluetooth/BluetoothGattService
+      29: dup
+      30: astore_2
+      31: invokevirtual #49                 // Method android/bluetooth/BluetoothGattService.getUuid:()Ljava/util/UUID;
+      34: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+      37: invokevirtual #60                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+      40: dup
+      41: astore_3
+      42: aload_2
+      43: new           #62                 // class java/lang/StringBuilder
+      46: dup
+      47: invokespecial #63                 // Method java/lang/StringBuilder."<init>":()V
+      50: ldc           #65                 // String serviceUuid:
+      52: invokevirtual #69                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      55: aload_3
+      56: invokevirtual #69                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      59: invokevirtual #70                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      62: invokestatic  #75                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+      65: pop
+      66: invokevirtual #79                 // Method android/bluetooth/BluetoothGattService.getCharacteristics:()Ljava/util/List;
+      69: astore_2
+      70: ldc           #81                 // String feea
+      72: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      75: ifeq          241
+      78: aload_2
+      79: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      84: astore_2
+      85: aload_2
+      86: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      91: ifeq          11
+      94: aload_2
+      95: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     100: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     103: dup
+     104: astore_3
+     105: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     108: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     111: invokevirtual #60                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+     114: dup
+     115: astore        4
+     117: ldc           #90                 // String fee1
+     119: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     122: ifeq          133
+     125: aload_0
+     126: aload_3
+     127: putfield      #92                 // Field a:Landroid/bluetooth/BluetoothGattCharacteristic;
+     130: goto          85
+     133: aload         4
+     135: ldc           #94                 // String fee2
+     137: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     140: ifeq          151
+     143: aload_0
+     144: aload_3
+     145: putfield      #96                 // Field b:Landroid/bluetooth/BluetoothGattCharacteristic;
+     148: goto          85
+     151: aload         4
+     153: ldc           #98                 // String fee3
+     155: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     158: ifeq          169
+     161: aload_0
+     162: aload_3
+     163: putfield      #100                // Field c:Landroid/bluetooth/BluetoothGattCharacteristic;
+     166: goto          85
+     169: aload         4
+     171: ldc           #102                // String fee5
+     173: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     176: ifeq          187
+     179: aload_0
+     180: aload_3
+     181: putfield      #104                // Field h:Landroid/bluetooth/BluetoothGattCharacteristic;
+     184: goto          85
+     187: aload         4
+     189: ldc           #106                // String fee6
+     191: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     194: ifeq          205
+     197: aload_0
+     198: aload_3
+     199: putfield      #108                // Field i:Landroid/bluetooth/BluetoothGattCharacteristic;
+     202: goto          85
+     205: aload         4
+     207: ldc           #110                // String fee7
+     209: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     212: ifeq          223
+     215: aload_0
+     216: aload_3
+     217: putfield      #112                // Field j:Landroid/bluetooth/BluetoothGattCharacteristic;
+     220: goto          85
+     223: aload         4
+     225: ldc           #114                // String fee8
+     227: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     230: ifeq          85
+     233: aload_0
+     234: aload_3
+     235: putfield      #116                // Field k:Landroid/bluetooth/BluetoothGattCharacteristic;
+     238: goto          85
+     241: aload_3
+     242: ldc           #118                // String 180a
+     244: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     247: ifeq          341
+     250: aload_2
+     251: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     256: astore_2
+     257: aload_2
+     258: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     263: ifeq          11
+     266: aload_2
+     267: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     272: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     275: dup
+     276: astore_3
+     277: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     280: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     283: invokevirtual #60                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+     286: dup
+     287: astore        4
+     289: ldc           #120                // String 2a28
+     291: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     294: ifeq          305
+     297: aload_0
+     298: aload_3
+     299: putfield      #122                // Field e:Landroid/bluetooth/BluetoothGattCharacteristic;
+     302: goto          257
+     305: aload         4
+     307: ldc           #124                // String 2a29
+     309: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     312: ifeq          323
+     315: aload_0
+     316: aload_3
+     317: putfield      #126                // Field l:Landroid/bluetooth/BluetoothGattCharacteristic;
+     320: goto          257
+     323: aload         4
+     325: ldc           #128                // String 2a24
+     327: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     330: ifeq          257
+     333: aload_0
+     334: aload_3
+     335: putfield      #130                // Field f:Landroid/bluetooth/BluetoothGattCharacteristic;
+     338: goto          257
+     341: aload_3
+     342: ldc           #132                // String 180f
+     344: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     347: ifeq          402
+     350: aload_2
+     351: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     356: astore_2
+     357: aload_2
+     358: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     363: ifeq          11
+     366: aload_2
+     367: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     372: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     375: dup
+     376: astore_3
+     377: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     380: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     383: invokevirtual #60                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+     386: ldc           #134                // String 2a19
+     388: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     391: ifeq          357
+     394: aload_0
+     395: aload_3
+     396: putfield      #136                // Field d:Landroid/bluetooth/BluetoothGattCharacteristic;
+     399: goto          357
+     402: aload_3
+     403: ldc           #138                // String 180d
+     405: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     408: ifeq          460
+     411: aload_2
+     412: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     417: astore_2
+     418: aload_2
+     419: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     424: ifeq          11
+     427: aload_2
+     428: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     433: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     436: dup
+     437: astore_3
+     438: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     441: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     444: ldc           #140                // String 2a37
+     446: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     449: ifeq          418
+     452: aload_0
+     453: aload_3
+     454: putfield      #142                // Field g:Landroid/bluetooth/BluetoothGattCharacteristic;
+     457: goto          418
+     460: aload_3
+     461: ldc           #144                // String 3802
+     463: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     466: ifeq          11
+     469: aload_2
+     470: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     475: astore_2
+     476: aload_2
+     477: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     482: ifeq          11
+     485: aload_2
+     486: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     491: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     494: dup
+     495: astore_3
+     496: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     499: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     502: ldc           #146                // String 4a02
+     504: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     507: ifeq          476
+     510: aload_0
+     511: aload_3
+     512: putfield      #148                // Field m:Landroid/bluetooth/BluetoothGattCharacteristic;
+     515: goto          476
+     518: return
+
+  public android.bluetooth.BluetoothGattCharacteristic i();
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field a:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic m();
+    Code:
+       0: aload_0
+       1: getfield      #96                 // Field b:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic f();
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field c:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic a();
+    Code:
+       0: aload_0
+       1: getfield      #136                // Field d:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic b();
+    Code:
+       0: aload_0
+       1: getfield      #122                // Field e:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic c();
+    Code:
+       0: aload_0
+       1: getfield      #130                // Field f:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic e();
+    Code:
+       0: aload_0
+       1: getfield      #142                // Field g:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic k();
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field h:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic j();
+    Code:
+       0: aload_0
+       1: getfield      #108                // Field i:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic d();
+    Code:
+       0: aload_0
+       1: getfield      #112                // Field j:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: dup
+       5: astore_1
+       6: ifnull        11
+       9: aload_1
+      10: areturn
+      11: aload_0
+      12: getfield      #116                // Field k:Landroid/bluetooth/BluetoothGattCharacteristic;
+      15: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic h();
+    Code:
+       0: aload_0
+       1: getfield      #126                // Field l:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic l();
+    Code:
+       0: aload_0
+       1: getfield      #148                // Field m:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public java.util.List<android.bluetooth.BluetoothGattCharacteristic> g();
+    Code:
+       0: new           #152                // class java/util/ArrayList
+       3: dup
+       4: dup
+       5: astore_1
+       6: aload_0
+       7: aload_1
+       8: aload_0
+       9: aload_1
+      10: aload_0
+      11: aload_1
+      12: aload_0
+      13: aload_1
+      14: aload_0
+      15: aload_1
+      16: aload_0
+      17: aload_1
+      18: invokespecial #153                // Method java/util/ArrayList."<init>":()V
+      21: getfield      #100                // Field c:Landroid/bluetooth/BluetoothGattCharacteristic;
+      24: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      29: pop
+      30: getfield      #142                // Field g:Landroid/bluetooth/BluetoothGattCharacteristic;
+      33: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      38: pop
+      39: getfield      #112                // Field j:Landroid/bluetooth/BluetoothGattCharacteristic;
+      42: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      47: pop
+      48: getfield      #116                // Field k:Landroid/bluetooth/BluetoothGattCharacteristic;
+      51: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      56: pop
+      57: getfield      #92                 // Field a:Landroid/bluetooth/BluetoothGattCharacteristic;
+      60: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      65: pop
+      66: getfield      #148                // Field m:Landroid/bluetooth/BluetoothGattCharacteristic;
+      69: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      74: pop
+      75: areturn
+
+  public boolean n();
+    Code:
+       0: aload_0
+       1: getfield      #116                // Field k:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: ifnull        11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  public boolean o();
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field a:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: ifnull        26
+       7: aload_0
+       8: getfield      #96                 // Field b:Landroid/bluetooth/BluetoothGattCharacteristic;
+      11: ifnull        26
+      14: aload_0
+      15: getfield      #100                // Field c:Landroid/bluetooth/BluetoothGattCharacteristic;
+      18: ifnonnull     24
+      21: goto          26
+      24: iconst_1
+      25: ireturn
+      26: iconst_0
+      27: ireturn
+}
+===== com.crrepa.p.c =====
+Compiled from "SourceFile"
+public class com.crrepa.p.c {
+  private static final long e = 5000l;
+
+  private com.crrepa.p.b a;
+
+  private boolean b;
+
+  private long c;
+
+  private com.crrepa.m.e d;
+
+  private com.crrepa.p.c();
+    Code:
+       0: aload_0
+       1: dup
+       2: dup2
+       3: invokespecial #26                 // Method java/lang/Object."<init>":()V
+       6: new           #28                 // class com/crrepa/p/b
+       9: dup
+      10: astore_0
+      11: invokespecial #29                 // Method com/crrepa/p/b."<init>":()V
+      14: aload_0
+      15: putfield      #31                 // Field a:Lcom/crrepa/p/b;
+      18: iconst_1
+      19: putfield      #33                 // Field b:Z
+      22: lconst_0
+      23: putfield      #35                 // Field c:J
+      26: return
+
+  public static com.crrepa.p.c b();
+    Code:
+       0: invokestatic  #38                 // Method com/crrepa/p/c$b.a:()Lcom/crrepa/p/c;
+       3: areturn
+
+  private synchronized void c();
+    Code:
+       0: aload_0
+       1: getfield      #31                 // Field a:Lcom/crrepa/p/b;
+       4: invokevirtual #41                 // Method com/crrepa/p/b.c:()Z
+       7: ifne          17
+      10: ldc           #43                 // String message queue is null
+      12: invokestatic  #48                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+      15: pop
+      16: return
+      17: aload_0
+      18: new           #50                 // class java/lang/StringBuilder
+      21: dup
+      22: invokespecial #51                 // Method java/lang/StringBuilder."<init>":()V
+      25: ldc           #53                 // String isMessageHandleComplete:
+      27: invokevirtual #57                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      30: aload_0
+      31: invokevirtual #59                 // Method d:()Z
+      34: invokevirtual #62                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+      37: invokevirtual #66                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      40: invokestatic  #48                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+      43: pop
+      44: invokevirtual #59                 // Method d:()Z
+      47: ifne          66
+      50: aload_0
+      51: invokespecial #68                 // Method e:()Z
+      54: ifeq          65
+      57: aload_0
+      58: dup
+      59: invokevirtual #71                 // Method g:()V
+      62: invokevirtual #74                 // Method f:()V
+      65: return
+      66: aload_0
+      67: getfield      #31                 // Field a:Lcom/crrepa/p/b;
+      70: invokevirtual #77                 // Method com/crrepa/p/b.b:()Lcom/crrepa/p/a;
+      73: dup
+      74: astore_1
+      75: ifnonnull     85
+      78: ldc           #79                 // String ble message is null
+      80: invokestatic  #48                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+      83: pop
+      84: return
+      85: aload_1
+      86: aload_0
+      87: iconst_0
+      88: invokevirtual #84                 // Method a:(Z)V
+      91: invokevirtual #87                 // Method com/crrepa/p/a.b:()I
+      94: dup
+      95: istore_2
+      96: aload_1
+      97: invokevirtual #90                 // Method com/crrepa/p/a.a:()[B
+     100: astore_1
+     101: new           #50                 // class java/lang/StringBuilder
+     104: dup
+     105: invokespecial #51                 // Method java/lang/StringBuilder."<init>":()V
+     108: ldc           #92                 // String message type:
+     110: invokevirtual #57                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     113: iload_2
+     114: invokevirtual #95                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+     117: invokevirtual #66                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     120: invokestatic  #48                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+     123: pop
+     124: new           #50                 // class java/lang/StringBuilder
+     127: dup
+     128: invokespecial #51                 // Method java/lang/StringBuilder."<init>":()V
+     131: ldc           #97                 // String message content:
+     133: invokevirtual #57                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     136: aload_1
+     137: invokestatic  #102                // Method com/crrepa/p0/d.c:([B)Ljava/lang/String;
+     140: invokevirtual #57                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     143: invokevirtual #66                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     146: invokestatic  #48                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+     149: pop
+     150: bipush        38
+     152: if_icmpeq     308
+     155: iload_2
+     156: bipush        48
+     158: if_icmpeq     298
+     161: iload_2
+     162: tableswitch   { // 0 to 8
+                     0: 288
+                     1: 278
+                     2: 268
+                     3: 255
+                     4: 243
+                     5: 235
+                     6: 225
+                     7: 215
+                     8: 288
+               default: 212
+          }
+     212: goto          315
+     215: invokestatic  #109                // Method com/crrepa/v/a.d:()Lcom/crrepa/v/a;
+     218: aload_1
+     219: invokevirtual #112                // Method com/crrepa/v/a.d:([B)V
+     222: goto          315
+     225: invokestatic  #109                // Method com/crrepa/v/a.d:()Lcom/crrepa/v/a;
+     228: aload_1
+     229: invokevirtual #114                // Method com/crrepa/v/a.c:([B)V
+     232: goto          315
+     235: aload_0
+     236: aload_1
+     237: invokespecial #116                // Method a:([B)V
+     240: goto          315
+     243: invokestatic  #121                // Method com/crrepa/m/d.c:()Lcom/crrepa/m/d;
+     246: aload_1
+     247: iconst_0
+     248: baload
+     249: invokevirtual #124                // Method com/crrepa/m/d.a:(I)V
+     252: goto          315
+     255: aload_0
+     256: getfield      #126                // Field d:Lcom/crrepa/m/e;
+     259: aload_1
+     260: iconst_0
+     261: baload
+     262: invokevirtual #129                // Method com/crrepa/m/e.a:(I)V
+     265: goto          315
+     268: invokestatic  #134                // Method com/crrepa/m/f.d:()Lcom/crrepa/m/f;
+     271: aload_1
+     272: invokevirtual #137                // Method com/crrepa/m/f.j:([B)V
+     275: goto          315
+     278: invokestatic  #134                // Method com/crrepa/m/f.d:()Lcom/crrepa/m/f;
+     281: aload_1
+     282: invokevirtual #140                // Method com/crrepa/m/f.h:([B)V
+     285: goto          315
+     288: invokestatic  #134                // Method com/crrepa/m/f.d:()Lcom/crrepa/m/f;
+     291: aload_1
+     292: invokevirtual #142                // Method com/crrepa/m/f.g:([B)V
+     295: goto          315
+     298: invokestatic  #148                // Method com/crrepa/ble/ota/goodix/BleRestoreWriteCharacteristicProxy.getInstance:()Lcom/crrepa/ble/ota/goodix/BleRestoreWriteCharacteristicProxy;
+     301: aload_1
+     302: invokevirtual #151                // Method com/crrepa/ble/ota/goodix/BleRestoreWriteCharacteristicProxy.sendBleMessage:([B)V
+     305: goto          315
+     308: invokestatic  #134                // Method com/crrepa/m/f.d:()Lcom/crrepa/m/f;
+     311: aload_1
+     312: invokevirtual #154                // Method com/crrepa/m/f.i:([B)V
+     315: aload_0
+     316: invokespecial #156                // Method h:()V
+     319: return
+
+  private void a(byte[]);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: baload
+       3: aload_1
+       4: iconst_1
+       5: baload
+       6: invokestatic  #162                // Method com/crrepa/p0/d.b:(BB)I
+       9: istore_0
+      10: new           #50                 // class java/lang/StringBuilder
+      13: dup
+      14: invokespecial #51                 // Method java/lang/StringBuilder."<init>":()V
+      17: ldc           #164                // String requestMtu:
+      19: invokevirtual #57                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      22: iload_0
+      23: invokevirtual #95                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+      26: invokevirtual #66                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      29: invokestatic  #166                // Method com/crrepa/p0/b.a:(Ljava/lang/Object;)I
+      32: pop
+      33: invokestatic  #171                // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+      36: invokevirtual #174                // Method com/crrepa/l/a.a:()Landroid/bluetooth/BluetoothGatt;
+      39: iload_0
+      40: invokevirtual #180                // Method android/bluetooth/BluetoothGatt.requestMtu:(I)Z
+      43: pop
+      44: return
+
+  private boolean e();
+    Code:
+       0: invokestatic  #186                // Method java/lang/System.currentTimeMillis:()J
+       3: aload_0
+       4: getfield      #35                 // Field c:J
+       7: lsub
+       8: dup2
+       9: lstore_1
+      10: new           #50                 // class java/lang/StringBuilder
+      13: dup
+      14: invokespecial #51                 // Method java/lang/StringBuilder."<init>":()V
+      17: ldc           #188                // String period:
+      19: invokevirtual #57                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      22: lload_1
+      23: invokevirtual #191                // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+      26: invokevirtual #66                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      29: invokestatic  #48                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+      32: pop
+      33: ldc2_w        #15                 // long 5000l
+      36: lcmp
+      37: iflt          44
+      40: iconst_1
+      41: goto          45
+      44: iconst_0
+      45: ireturn
+
+  private void h();
+    Code:
+       0: aload_0
+       1: invokestatic  #186                // Method java/lang/System.currentTimeMillis:()J
+       4: putfield      #35                 // Field c:J
+       7: return
+
+  com.crrepa.p.c(com.crrepa.p.c$a);
+    Code:
+       0: aload_0
+       1: invokespecial #193                // Method "<init>":()V
+       4: return
+
+  public void a(com.crrepa.m.e);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #126                // Field d:Lcom/crrepa/m/e;
+       5: return
+
+  public void a(com.crrepa.p.a);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #31                 // Field a:Lcom/crrepa/p/b;
+       5: aload_1
+       6: invokevirtual #197                // Method com/crrepa/p/b.a:(Lcom/crrepa/p/a;)V
+       9: invokespecial #199                // Method c:()V
+      12: return
+
+  public void f();
+    Code:
+       0: aload_0
+       1: dup
+       2: iconst_1
+       3: invokevirtual #84                 // Method a:(Z)V
+       6: invokespecial #199                // Method c:()V
+       9: return
+
+  public void a();
+    Code:
+       0: aload_0
+       1: dup
+       2: iconst_1
+       3: invokevirtual #84                 // Method a:(Z)V
+       6: getfield      #31                 // Field a:Lcom/crrepa/p/b;
+       9: invokevirtual #201                // Method com/crrepa/p/b.a:()V
+      12: return
+
+  public void g();
+    Code:
+       0: invokestatic  #134                // Method com/crrepa/m/f.d:()Lcom/crrepa/m/f;
+       3: invokevirtual #202                // Method com/crrepa/m/f.f:()V
+       6: return
+
+  public boolean d();
+    Code:
+       0: aload_0
+       1: getfield      #33                 // Field b:Z
+       4: ireturn
+
+  public void a(boolean);
+    Code:
+       0: aload_0
+       1: iload_1
+       2: new           #50                 // class java/lang/StringBuilder
+       5: dup
+       6: invokespecial #51                 // Method java/lang/StringBuilder."<init>":()V
+       9: ldc           #204                // String setMessageHandleComplete:
+      11: invokevirtual #57                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      14: iload_1
+      15: invokevirtual #62                 // Method java/lang/StringBuilder.append:(Z)Ljava/lang/StringBuilder;
+      18: invokevirtual #66                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      21: invokestatic  #48                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+      24: pop
+      25: putfield      #33                 // Field b:Z
+      28: return
+}
+===== com.crrepa.p.a =====
+Compiled from "SourceFile"
+public class com.crrepa.p.a {
+  public static final int c = 0;
+
+  public static final int d = 1;
+
+  public static final int e = 2;
+
+  public static final int f = 3;
+
+  public static final int g = 4;
+
+  public static final int h = 5;
+
+  public static final int i = 38;
+
+  public static final int j = 6;
+
+  public static final int k = 7;
+
+  public static final int l = 8;
+
+  public static final byte m = 16;
+
+  public static final byte n = 17;
+
+  public static final byte o = 18;
+
+  public static final byte p = 19;
+
+  public static final byte q = 20;
+
+  public static final byte r = 32;
+
+  public static final int s = 48;
+
+  private byte[] a;
+
+  private int b;
+
+  public com.crrepa.p.a(int, byte[]);
+    Code:
+       0: aload_0
+       1: dup
+       2: dup
+       3: invokespecial #51                 // Method java/lang/Object."<init>":()V
+       6: iload_1
+       7: putfield      #53                 // Field b:I
+      10: aload_2
+      11: putfield      #55                 // Field a:[B
+      14: return
+
+  public byte[] a();
+    Code:
+       0: aload_0
+       1: getfield      #55                 // Field a:[B
+       4: areturn
+
+  public int b();
+    Code:
+       0: aload_0
+       1: getfield      #53                 // Field b:I
+       4: ireturn
+}
+===== com.crrepa.f.u1 =====
+Compiled from "SourceFile"
+public class com.crrepa.f.u1 {
+  private static final int a = 255;
+
+  private com.crrepa.f.u1();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static byte[] a(int, byte[]);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: istore_2
+       3: ifnull        9
+       6: aload_1
+       7: arraylength
+       8: istore_2
+       9: invokestatic  #18                 // Method a:()I
+      12: iload_2
+      13: iconst_5
+      14: iadd
+      15: dup
+      16: istore_3
+      17: newarray       byte
+      19: dup
+      20: astore        4
+      22: iload_3
+      23: aload         4
+      25: dup
+      26: iconst_0
+      27: bipush        -2
+      29: bastore
+      30: iconst_1
+      31: bipush        -22
+      33: bastore
+      34: i2b
+      35: iconst_3
+      36: swap
+      37: bastore
+      38: bipush        20
+      40: if_icmpne     52
+      43: aload         4
+      45: iconst_2
+      46: bipush        16
+      48: bastore
+      49: goto          81
+      52: sipush        255
+      55: iload_3
+      56: if_icmpge     75
+      59: aload         4
+      61: iload_3
+      62: bipush        8
+      64: ishr
+      65: bipush        32
+      67: iadd
+      68: i2b
+      69: iconst_2
+      70: swap
+      71: bastore
+      72: goto          81
+      75: aload         4
+      77: iconst_2
+      78: bipush        32
+      80: bastore
+      81: iload_2
+      82: aload         4
+      84: iload_0
+      85: i2b
+      86: iconst_4
+      87: swap
+      88: bastore
+      89: ifle          104
+      92: aload_1
+      93: dup
+      94: arraylength
+      95: istore_0
+      96: iconst_0
+      97: aload         4
+      99: iconst_5
+     100: iload_0
+     101: invokestatic  #26                 // Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+     104: aload         4
+     106: areturn
+
+  public static int a();
+    Code:
+       0: invokestatic  #32                 // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       3: invokevirtual #35                 // Method com/crrepa/l/a.c:()I
+       6: ireturn
+}
 ===== com.crrepa.l.a =====
 Compiled from "SourceFile"
 public class com.crrepa.l.a {
