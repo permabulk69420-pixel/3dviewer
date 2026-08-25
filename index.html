@@ -1,28 +1,85 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Anko firmware package finder</title>
-<style>:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}*{box-sizing:border-box}body{margin:0;padding:18px;max-width:860px;margin:auto}h1{font-size:1.45rem}.sub{color:#aeb7c4}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button,a.btn{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px;display:inline-block;text-decoration:none}button.secondary,a.secondary{background:#283246}button:disabled{opacity:.45}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:330px;max-height:680px;overflow:auto;font-size:.78rem}.links a{display:block;margin:8px 0;color:#9db9ff;word-break:break-all}</style></head>
-<body><h1>Anko firmware package finder</h1>
-<div class="sub">v13 — reads the watch identity with the validated read-only F1 and 5A/01 commands, then queries MoYoung factory + beta endpoints automatically. No DFU commands and no firmware writes.</div>
-<div class="card"><button id="run">Connect + find firmware package</button><button id="copy" class="secondary" disabled>Copy report</button><div id="status" class="warn" style="margin-top:12px">Ready</div><div id="links" class="links"></div></div>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Anko JieLi fingerprint</title>
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}*{box-sizing:border-box}body{margin:0 auto;padding:18px;max-width:820px}h1{font-size:1.45rem;margin-bottom:8px}.sub{color:#aeb7c4;line-height:1.45}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button.secondary{background:#283246}button:disabled{opacity:.45}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:300px;max-height:650px;overflow:auto;font-size:.8rem}
+</style>
+</head>
+<body>
+<h1>Anko JieLi device fingerprint</h1>
+<div class="sub">v14 — sends one read-only JieLi information query used by the Da Fit/CRP SDK. It does not enter update mode and does not send firmware data.</div>
+<div class="card">
+<button id="run">Connect + query JieLi info</button>
+<button id="copy" class="secondary" disabled>Copy report</button>
+<div id="status" class="warn" style="margin-top:12px">Ready</div>
+</div>
 <div class="card"><strong>Log</strong><pre id="log"></pre></div>
-<script>(()=>{'use strict';
-const FEEA=0xFEEA;let dev,server,fee2,lines=[],mac=null,otaVersion=null,fwRevision=null,running=false,waiters=[];
-const $=id=>document.getElementById(id);const hex=a=>Array.from(a,b=>b.toString(16).padStart(2,'0')).join(' ');const short=u=>{const m=u.toLowerCase().match(/^0000([0-9a-f]{4})-/);return m?m[1]:u};const txt=a=>{try{return new TextDecoder().decode(a).replace(/\0+$/g,'')}catch{return ''}};const macstr=a=>Array.from(a,b=>b.toString(16).padStart(2,'0').toUpperCase()).join(':');
+<script>
+(()=>{'use strict';
+const FEEA=0xFEEA;
+let lines=[],running=false,device,server,fee2,gotInfo=false;
+const $=id=>document.getElementById(id);
+const hex=a=>Array.from(a,b=>b.toString(16).padStart(2,'0')).join(' ');
+const short=u=>{const m=u.toLowerCase().match(/^0000([0-9a-f]{4})-/);return m?m[1]:u};
 function log(s){const line=`[${new Date().toLocaleTimeString()}] ${s}`;lines.push(line);$('log').textContent=lines.join('\n');$('log').scrollTop=$('log').scrollHeight;}
-function notify(ev){const ch=ev.target,v=ch.value,d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength),id=short(ch.uuid).toUpperCase();log(`RX ${id}: ${hex(d)}`);if(d.length>=5&&d[0]===0xfe&&d[1]===0xea){const cmd=d[4],p=d.slice(5);if(cmd===0xf1&&p.length===6){mac=macstr(p);log(`WATCH ADDRESS: ${mac}`);}if(cmd===0x5a&&p.length>=2&&p[0]===1){otaVersion=txt(p.slice(1));log(`OTA VERSION: ${otaVersion}`);}for(const w of waiters.slice())w();}}
-async function send(packet,label){log(`TX FEE2 ${label}: ${hex(packet)}`);if(fee2.properties.writeWithoutResponse)await fee2.writeValueWithoutResponse(packet);else if(fee2.properties.write)await fee2.writeValueWithResponse(packet);else throw Error('FEE2 not writable');log('  ATT write accepted');}
-function waitUntil(fn,ms=2500){return new Promise(resolve=>{if(fn())return resolve(true);const start=Date.now();const tick=()=>{if(fn())return resolve(true);if(Date.now()-start>=ms)return resolve(false);setTimeout(tick,50)};tick();});}
-function addLink(label,url){const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent=label+' — '+url;$('links').appendChild(a);}
-function findUrls(x,out=[]){if(!x||typeof x!=='object')return out;for(const [k,v] of Object.entries(x)){if(typeof v==='string'&&/^https?:\/\//i.test(v))out.push({key:k,url:v});else if(v&&typeof v==='object')findUrls(v,out);}return out;}
-async function queryEndpoint(kind,version){const base=`https://api.moyoung.com/v2/upgrade/${kind}`;const u=new URL(base);u.searchParams.set('version',version);u.searchParams.set('mac',mac);u.searchParams.set('app_version','1.0.2');log(`QUERY ${kind.toUpperCase()} version=${version}`);try{const r=await fetch(u.toString(),{cache:'no-store'});const body=await r.text();log(`  HTTP ${r.status}: ${body}`);let j=null;try{j=JSON.parse(body)}catch{};if(j){const urls=findUrls(j);for(const item of urls){log(`  FOUND URL (${item.key}): ${item.url}`);addLink(`${kind} ${version} ${item.key}`,item.url);}}return {ok:r.ok,body,json:j,url:u.toString()};}catch(e){log(`  Browser fetch blocked/failed: ${e.message}`);addLink(`Open ${kind} query for ${version}`,u.toString());return {ok:false,error:e,url:u.toString()};}}
-async function run(){if(running)return;running=true;lines=[];$('log').textContent='';$('links').textContent='';$('run').disabled=true;$('copy').disabled=false;$('status').textContent='Connecting…';$('status').className='warn';try{dev=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[FEEA,0x180A]});server=await dev.gatt.connect();log(`Connected: ${dev.name||'watch'}`);
- const dis=await server.getPrimaryService(0x180A);for(const ch of await dis.getCharacteristics()){const id=short(ch.uuid).toLowerCase();if(id==='2a26'&&ch.properties.read){const v=await ch.readValue();fwRevision=txt(new Uint8Array(v.buffer,v.byteOffset,v.byteLength));log(`DEVICE FW REVISION: ${fwRevision}`);}}
- const svc=await server.getPrimaryService(FEEA);for(const ch of await svc.getCharacteristics()){const id=short(ch.uuid).toLowerCase();if(id==='fee2')fee2=ch;if(ch.properties.notify||ch.properties.indicate){try{await ch.startNotifications();ch.addEventListener('characteristicvaluechanged',notify);}catch{}}}if(!fee2)throw Error('FEE2 missing');
- await send(Uint8Array.from([0xfe,0xea,0x20,0x06,0xf1,0x00]),'BT ADDRESS QUERY');await waitUntil(()=>!!mac);await send(Uint8Array.from([0xfe,0xea,0x20,0x06,0x5a,0x01]),'OTA VERSION QUERY');await waitUntil(()=>!!otaVersion);
- if(!mac||!otaVersion)throw Error(`identity incomplete: mac=${mac||'missing'} otaVersion=${otaVersion||'missing'}`);
- log(`IDENTITY READY: mac=${mac}, ota=${otaVersion}, fwrev=${fwRevision||'unknown'}`);
- const versions=[otaVersion];if(fwRevision&&fwRevision!==otaVersion)versions.push(fwRevision);
- let found=false;for(const version of versions){for(const kind of ['factory','beta']){const q=await queryEndpoint(kind,version);if(q.json&&findUrls(q.json).length)found=true;}}
- if(found){$('status').textContent='Firmware/package URL found — copy report';$('status').className='ok';log('RESULT: at least one firmware/package URL was returned.');}else{$('status').textContent='No package URL returned automatically — copy report';$('status').className='warn';log('RESULT: no package URL appeared in automatic factory/beta responses. If browser fetch was blocked, use the generated query links below.');}
- }catch(e){log('ERROR: '+(e.message||e));$('status').textContent='Finder error — copy report';$('status').className='bad';}finally{running=false;$('run').disabled=false;}}
-$('run').onclick=run;$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied';}catch(e){log('Clipboard failed: '+e.message)}};log('Ready — v13 automatic MoYoung firmware package finder.');})();</script></body></html>
+function setStatus(s,cls='warn'){$('status').textContent=s;$('status').className=cls;}
+function onNotify(ev){
+ const ch=ev.target,v=ch.value,d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength),id=short(ch.uuid).toUpperCase();
+ log(`RX ${id}: ${hex(d)}`);
+ if(d.length<5||d[0]!==0xfe||d[1]!==0xea)return;
+ const cmd=d[4],p=d.slice(5);
+ if(cmd===0xba){
+   log(`  CRP cmd=0xba payload=${hex(p)}`);
+   if(p.length>=3&&p[0]===0x02){
+     const apiVersion=p[1],feature=p[2];
+     gotInfo=true;
+     log(`  JIELI INFO: apiVersion=${apiVersion} (0x${apiVersion.toString(16).padStart(2,'0')}), feature=${feature} (0x${feature.toString(16).padStart(2,'0')})`);
+     setStatus(`JieLi info received — API ${apiVersion}, feature ${feature}`,'ok');
+   }
+ }
+}
+async function writeFEE2(packet,label){
+ log(`TX FEE2 ${label}: ${hex(packet)}`);
+ if(fee2.properties.writeWithoutResponse)await fee2.writeValueWithoutResponse(packet);
+ else if(fee2.properties.write)await fee2.writeValueWithResponse(packet);
+ else throw Error('FEE2 is not writable');
+ log('  ATT write accepted');
+}
+async function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+async function run(){
+ if(running)return;running=true;lines=[];$('log').textContent='';$('run').disabled=true;$('copy').disabled=false;gotInfo=false;setStatus('Connecting…');
+ try{
+   device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[FEEA]});
+   server=await device.gatt.connect();
+   log(`Connected: ${device.name||'watch'}`);
+   const svc=await server.getPrimaryService(FEEA);
+   const chars=await svc.getCharacteristics();
+   let fee3=null;
+   for(const ch of chars){
+     const id=short(ch.uuid).toLowerCase();
+     log(`${id.toUpperCase()} read=${ch.properties.read} write=${ch.properties.write} writeNR=${ch.properties.writeWithoutResponse} notify=${ch.properties.notify} indicate=${ch.properties.indicate}`);
+     if(id==='fee2')fee2=ch;
+     if(id==='fee3')fee3=ch;
+   }
+   if(!fee2)throw Error('FEE2 missing');
+   if(!fee3)throw Error('FEE3 missing');
+   await fee3.startNotifications();
+   fee3.addEventListener('characteristicvaluechanged',onNotify);
+   log('FEE3 notifications enabled');
+   await sleep(150);
+   await writeFEE2(Uint8Array.from([0xfe,0xea,0x20,0x06,0xba,0x02]),'JIELI INFO QUERY');
+   await sleep(2500);
+   if(!gotInfo){setStatus('No JieLi info response — copy report','warn');log('RESULT: no BA/02 information response received within 2.5 seconds.');}
+ }catch(e){log('ERROR: '+(e.message||e));setStatus('Probe error — copy report','bad');}
+ finally{running=false;$('run').disabled=false;}
+}
+$('run').onclick=run;
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));setStatus('Report copied','ok');}catch(e){log('Clipboard failed: '+e.message)}};
+log('Ready — v14 JieLi read-only information query.');
+})();
+</script>
+</body>
+</html>
