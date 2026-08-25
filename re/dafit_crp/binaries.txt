@@ -1,0 +1,13 @@
+/tmp/crp/classes.jar
+/tmp/crp/jni/x86_64/libRtkAesJni.so
+/tmp/crp/jni/x86_64/libminilzo.so
+/tmp/crp/jni/x86_64/libezip.so
+/tmp/crp/jni/x86/libRtkAesJni.so
+/tmp/crp/jni/x86/libminilzo.so
+/tmp/crp/jni/x86/libezip.so
+/tmp/crp/jni/arm64-v8a/libRtkAesJni.so
+/tmp/crp/jni/arm64-v8a/libminilzo.so
+/tmp/crp/jni/arm64-v8a/libezip.so
+/tmp/crp/jni/armeabi-v7a/libRtkAesJni.so
+/tmp/crp/jni/armeabi-v7a/libminilzo.so
+/tmp/crp/jni/armeabi-v7a/libezip.so
