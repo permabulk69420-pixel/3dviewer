@@ -1,0 +1,107 @@
+name: Extract Da Fit hardware ID protocol
+
+on:
+  push:
+    paths:
+      - '.github/workflows/re-dafit-target-id.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Extract command builders and parsers around 0x5A 0xBA 0xB7 0x2E
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
+          curl -fL "$URL" -o /tmp/crp.aar
+          rm -rf /tmp/crp /tmp/classes /tmp/javap
+          mkdir -p /tmp/crp /tmp/classes /tmp/javap "$GITHUB_WORKSPACE/re/dafit_crp"
+          cd /tmp/crp && unzip -q /tmp/crp.aar
+          cd /tmp/classes && jar xf /tmp/crp/classes.jar
+
+          # Dump every CRP class that is likely to build/parse device commands.
+          find /tmp/classes/com/crrepa -name '*.class' -type f \
+            \( -path '*/f/*' -o -path '*/q/*' -o -path '*/c0/*' -o -path '*/i0/*' -o -path '*/ble/conn/*' \) \
+            | sort > /tmp/candidates.txt
+
+          while IFS= read -r f; do
+            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
+            out="/tmp/javap/${c//./_}.txt"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" > "$out" 2>&1 || true
+          done < /tmp/candidates.txt
+
+          OUT="$GITHUB_WORKSPACE/re/dafit_crp/target-id-protocol.txt"
+          : > "$OUT"
+          echo 'Da Fit / CRP target-identification protocol extraction' >> "$OUT"
+          echo 'Interesting wire commands: 0x5A=90, 0xBA=186/-70, 0xB7=183/-73, 0x2E=46' >> "$OUT"
+          echo >> "$OUT"
+
+          # Public API names tell us what high-level queries exist.
+          echo '===== CRPBleConnection PUBLIC API =====' >> "$OUT"
+          javap -classpath /tmp/crp/classes.jar -p com.crrepa.ble.conn.CRPBleConnection >> "$OUT" 2>&1 || true
+          echo >> "$OUT"
+
+          echo '===== HIGH-LEVEL METHOD NAME HITS =====' >> "$OUT"
+          grep -RniE 'query|device|watch|firmware|version|platform|chip|mcu|storage|flash|display|screen|resolution|ui|api|hardware|firmware|type' /tmp/javap \
+            | head -n 1200 >> "$OUT" || true
+          echo >> "$OUT"
+
+          echo '===== COMMAND CONSTANT HITS WITH CONTEXT =====' >> "$OUT"
+          python3 - <<'PY' >> "$OUT"
+          import glob,re
+          pats = [
+              re.compile(r'\b(bipush|sipush)\s+90\b'),
+              re.compile(r'\b(bipush|sipush)\s+186\b'),
+              re.compile(r'\b(bipush|sipush)\s+-70\b'),
+              re.compile(r'\b(bipush|sipush)\s+183\b'),
+              re.compile(r'\b(bipush|sipush)\s+-73\b'),
+              re.compile(r'\b(bipush|sipush)\s+46\b'),
+          ]
+          for fn in sorted(glob.glob('/tmp/javap/*.txt')):
+              lines=open(fn,errors='replace').read().splitlines()
+              hits=[]
+              for i,l in enumerate(lines):
+                  if any(p.search(l) for p in pats): hits.append(i)
+              if not hits: continue
+              print('\n===== '+fn.rsplit('/',1)[-1]+' =====')
+              emitted=set()
+              for i in hits:
+                  a=max(0,i-28); b=min(len(lines),i+45)
+                  key=(a,b)
+                  if key in emitted: continue
+                  emitted.add(key)
+                  for j in range(a,b): print(f'{j+1:05d}: {lines[j]}')
+                  print('-----')
+          PY
+
+          echo >> "$OUT"
+          echo '===== BYTE ARRAY / FRAME BUILDERS (com.crrepa.f) =====' >> "$OUT"
+          for f in /tmp/javap/com_crrepa_f_*.txt; do
+            [ -e "$f" ] || continue
+            if grep -Eq 'byte\[\]|\[B|bipush|sipush' "$f"; then
+              echo >> "$OUT"; echo "===== $(basename "$f") =====" >> "$OUT"
+              cat "$f" >> "$OUT"
+            fi
+          done
+
+          wc -l "$OUT"
+      - name: Commit targeted extraction
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add re/dafit_crp/target-id-protocol.txt
+          git commit -m 'Add Da Fit hardware ID protocol dump' || exit 0
+          git push
