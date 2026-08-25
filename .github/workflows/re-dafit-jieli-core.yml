@@ -57,10 +57,18 @@ jobs:
             echo "===== $cls =====" >> "$OUT"
             javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT" 2>&1 || true
           done
+          mkdir -p /tmp/classes && cd /tmp/classes && jar xf /tmp/crp/classes.jar
+          echo '===== classes referencing CRPBtAddressCallback =====' >> "$OUT"
+          grep -RIl --binary-files=text 'CRPBtAddressCallback' com/crrepa --include='*.class' | sort | tee /tmp/btaddr-refs.txt >> "$OUT" || true
+          while read -r f; do
+            [ -n "$f" ] || continue
+            cls="${f%.class}"; cls="${cls//\//.}"
+            echo "===== BTADDR REF $cls =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT" 2>&1 || true
+          done < /tmp/btaddr-refs.txt
           echo '===== firmware/upgrade class list =====' >> "$OUT"
           jar tf /tmp/crp/classes.jar | grep -Ei '(firmware|upgrade|jieli|dfu)' | sort >> "$OUT" || true
           echo '===== URL-like strings in firmware/upgrade classes =====' >> "$OUT"
-          mkdir -p /tmp/classes && cd /tmp/classes && jar xf /tmp/crp/classes.jar
           find com/crrepa -type f -name '*.class' | grep -Ei '(firmware|upgrade|jieli|dfu)' | while read -r f; do
             strings "$f" | grep -E 'https?://|\.bin|\.zip|firmware|upgrade|version|md5|url|mac|app_version' | sed "s#^#$f: #" || true
           done >> "$OUT"
@@ -70,5 +78,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp/jieli-core.txt
-          git commit -m 'Add MoYoung firmware API analysis' || exit 0
+          git commit -m 'Add Bluetooth address query analysis' || exit 0
           git push
