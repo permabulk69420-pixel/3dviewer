@@ -2,24 +2,29 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Anko Watchface Uploader</title>
+<title>Anko Watch Probe</title>
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}
-*{box-sizing:border-box}body{margin:0;padding:18px;max-width:720px;margin-inline:auto}
-h1{font-size:1.4rem;margin:.2rem 0}.sub{color:#aeb7c4;margin:.2rem 0 1rem}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}
-button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:#fff}.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}button:disabled{opacity:.45}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px}.k{color:#9ca8b8}.ok{color:#78e7a2}.bad{color:#ff8c8c}.warn{color:#ffd37a}
-progress{width:100%;height:16px;margin-top:12px}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:150px;max-height:340px;overflow:auto;font-size:.82rem}small{color:#aeb7c4;line-height:1.45;display:block}
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}*{box-sizing:border-box}body{margin:0;padding:18px;max-width:760px;margin-inline:auto}h1{font-size:1.45rem;margin:.2rem 0}.sub{color:#aeb7c4;margin:.25rem 0 1rem}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button,.fileLabel{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:#fff}.secondary,.fileLabel{background:#283246}.fileLabel input{display:none}button:disabled{opacity:.45}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin-top:12px}.k{color:#9ca8b8}.ok{color:#78e7a2}.bad{color:#ff8c8c}.warn{color:#ffd37a}progress{width:100%;height:16px;margin-top:12px}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:170px;max-height:420px;overflow:auto;font-size:.78rem}small{color:#aeb7c4;line-height:1.45;display:block}details summary{cursor:pointer;font-weight:700}.pill{display:inline-block;padding:3px 8px;border-radius:999px;background:#243047;color:#cfe0ff;font-size:.78rem}
 </style></head><body>
-<h1>Anko MOYOUNG-V2 uploader</h1>
-<div class="sub">Protocol fix v5 — mirrors the captured Da Fit 10,240-byte block transport.</div>
-<div class="card"><strong>1. Connect</strong><div class="row" style="margin-top:12px"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div><div class="kv"><div class="k">Status</div><div id="status">Not connected</div><div class="k">Manufacturer</div><div id="manufacturer">—</div><div class="k">Software</div><div id="software">—</div><div class="k">Battery</div><div id="battery">—</div></div></div>
-<div class="card"><strong>2. Choose .bin</strong><div class="row" style="margin-top:12px"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div><div class="kv"><div class="k">Expected CRC</div><div id="expectedCrc">—</div></div></div>
-<div class="card"><strong>3. Upload</strong><small class="warn">Da Fit does not send one 244-byte chunk per request. Each watch request selects a 10,240-byte block, which is then streamed as 41 × 244 bytes + 236 bytes (or a shorter final block). v4 got this wrong; v5 matches the capture.</small><div class="row" style="margin-top:12px"><button id="upload" disabled>Upload + verify</button></div><progress id="progress" value="0" max="100"></progress><div id="progressText">0%</div></div>
-<div class="card"><strong>Log</strong><pre id="log"></pre></div>
+<h1>Anko MOYOUNG-V2 lab</h1>
+<div class="sub">v6 — safe hardware/firmware probe + the working watch-face uploader.</div>
+
+<div class="card"><strong>1. Connect</strong><div class="row" style="margin-top:12px"><button id="connect">Connect watch</button><button id="disconnect" class="secondary" disabled>Disconnect</button></div><div class="kv"><div class="k">Status</div><div id="status">Not connected</div><div class="k">Manufacturer</div><div id="manufacturer">—</div><div class="k">Model</div><div id="model">—</div><div class="k">Firmware</div><div id="firmware">—</div><div class="k">Software</div><div id="software">—</div><div class="k">Battery</div><div id="battery">—</div></div></div>
+
+<div class="card"><strong>2. Safe probe</strong><small>This only reads GATT characteristics and sends normal information queries. It does <b>not</b> enter DFU mode, erase flash, change settings, or upload firmware.</small><div class="row" style="margin-top:12px"><button id="probe" disabled>Run safe probe</button><button id="copyProbe" class="secondary" disabled>Copy probe report</button></div><div id="probeSummary" style="margin-top:12px" class="warn">Not run yet.</div></div>
+
+<div class="card"><strong>Probe / upload log</strong><pre id="log"></pre></div>
+
+<details class="card"><summary>Working watch-face uploader</summary>
+<div style="margin-top:14px"><strong>Choose .bin</strong><div class="row" style="margin-top:12px"><label class="fileLabel">Choose .bin<input id="file" type="file" accept=".bin,application/octet-stream"></label><span id="fileName">No file selected</span></div><div class="kv"><div class="k">Expected CRC</div><div id="expectedCrc">—</div></div></div>
+<div style="margin-top:18px"><strong>Upload</strong><small class="warn">Uses the captured Da Fit 10,240-byte block transport.</small><div class="row" style="margin-top:12px"><button id="upload" disabled>Upload + verify</button></div><progress id="progress" value="0" max="100"></progress><div id="progressText">0%</div></div>
+</details>
+
 <script>
 (()=>{'use strict';
-const SERVICE=0xFEEA,SEND=0xFEE2,SENDFILE=0xFEE6,NOTIFY=0xFEE3,INFO=0x180A,MAN=0x2A29,SOFT=0x2A28,BATT=0x180F,BATTLVL=0x2A19;
+const SERVICE=0xFEEA,SEND=0xFEE2,SENDFILE=0xFEE6,NOTIFY=0xFEE3;
+const INFO=0x180A,MODEL=0x2A24,SERIAL=0x2A25,FIRM=0x2A26,SOFT=0x2A28,MAN=0x2A29,BATT=0x180F,BATTLVL=0x2A19;
+const EXTRA_SERVICES=[0xFEE7,0x190E,0xAE00,0x180D];
 const ATT_CHUNK=244,BLOCK=10240,SIZE=444576;
 const PREP=new Uint8Array([0xFE,0xEA,0x20,0x09,0x74]);
 const READY=new Uint8Array([0xFE,0xEA,0x20,0x07,0x74]);
@@ -27,57 +32,35 @@ const SUCCESS=new Uint8Array([0xFE,0xEA,0x20,0x09,0x74,0x00,0x00,0x00,0x00]);
 const REGISTER=new Uint8Array([0xFE,0xEA,0x20,0x0A,0xB4,0x11,0x52,0x28,0x00,0x00]);
 const SELECT8=new Uint8Array([0xFE,0xEA,0x20,0x06,0x19,0x08]);
 const QUERYFACE=new Uint8Array([0xFE,0xEA,0x20,0x05,0x29]);
-let device=null,send=null,sendFile=null,notify=null,file=null,busy=false,fileBytes=null,expectedCrc=null;
+let device=null,server=null,send=null,sendFile=null,notify=null,file=null,busy=false,fileBytes=null,expectedCrc=null,probeLines=[];
 const $=x=>document.getElementById(x),logEl=$('log'),sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function log(s){logEl.textContent+=`[${new Date().toLocaleTimeString()}] ${s}\n`;logEl.scrollTop=logEl.scrollHeight}
+function plog(s){probeLines.push(s);log(s)}
 function text(v){return new TextDecoder().decode(v).replace(/\0+$/,'')}
+function bytes(v){return new Uint8Array(v.buffer,v.byteOffset,v.byteLength)}
+function hex(a){return Array.from(a,x=>x.toString(16).padStart(2,'0')).join(' ')}
+function printable(a){let s='';for(const b of a)s+=(b>=32&&b<127)?String.fromCharCode(b):'.';return s}
 function starts(a,h){if(a.length<h.length)return false;for(let i=0;i<h.length;i++)if(a[i]!==h[i])return false;return true}
 function crc16(data,initial=0xFEEA){let value=initial;for(const byte of data){let swapped=((((value&0x00ff)<<8)|((value&0xff00)>>8))^byte)&0xffff;let mixed=(swapped^((swapped&0xff)>>4))&0xffff;mixed=(mixed^(((mixed&0xff)<<8)<<4))&0xffff;value=(mixed^(((mixed&0xff)<<4)<<1))&0xffff}return value}
 function hx(n){return '0x'+n.toString(16).padStart(4,'0').toUpperCase()}
-function buttons(){const c=!!device?.gatt?.connected;$('upload').disabled=!(c&&file?.size===SIZE&&fileBytes&&expectedCrc!==null&&!busy)}
-function cleanup(disconnect=true){if(disconnect&&device?.gatt?.connected)device.gatt.disconnect();send=sendFile=notify=null;$('connect').disabled=false;$('disconnect').disabled=true;$('status').textContent='Not connected';buttons()}
-async function connect(){try{if(!('bluetooth'in navigator))throw Error('Web Bluetooth unavailable');log('Opening Bluetooth chooser…');device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SERVICE,INFO,BATT]});device.addEventListener('gattserverdisconnected',()=>cleanup(false));const s=await device.gatt.connect(),is=await s.getPrimaryService(INFO),bs=await s.getPrimaryService(BATT),ms=await s.getPrimaryService(SERVICE);const man=text(await(await is.getCharacteristic(MAN)).readValue()),soft=text(await(await is.getCharacteristic(SOFT)).readValue()),bat=(await(await bs.getCharacteristic(BATTLVL)).readValue()).getUint8(0);send=await ms.getCharacteristic(SEND);sendFile=await ms.getCharacteristic(SENDFILE);notify=await ms.getCharacteristic(NOTIFY);if(man!=='MOYOUNG-V2')throw Error('Wrong device: '+man);$('manufacturer').textContent=man;$('software').textContent=soft;$('battery').textContent=bat+'%';$('status').textContent='Connected to '+(device.name||'watch');$('status').className='ok';$('connect').disabled=true;$('disconnect').disabled=false;log(`Connected: ${man} / ${soft} / ${bat}%`);buttons()}catch(e){$('status').textContent='Connection failed';$('status').className='bad';log('ERROR: '+(e.message||e));cleanup(false)}}
+function shortUuid(u){const m=/^0000([0-9a-f]{4})-0000-1000-8000-00805f9b34fb$/i.exec(u);return m?'0x'+m[1].toUpperCase():u}
+function propList(p){return ['read','write','writeWithoutResponse','notify','indicate','broadcast','authenticatedSignedWrites','reliableWrite','writableAuxiliaries'].filter(k=>p[k]).join(',')||'none'}
+function packet(cmd,payload=[]){const p=Uint8Array.from(payload),n=5+p.length,o=new Uint8Array(n);o[0]=0xFE;o[1]=0xEA;o[2]=(0x20+(n>>8))&255;o[3]=n&255;o[4]=cmd;o.set(p,5);return o}
+function buttons(){const c=!!device?.gatt?.connected;$('upload').disabled=!(c&&file?.size===SIZE&&fileBytes&&expectedCrc!==null&&!busy);$('probe').disabled=!(c&&!busy)}
+function cleanup(disconnect=true){if(disconnect&&device?.gatt?.connected)device.gatt.disconnect();server=send=sendFile=notify=null;$('connect').disabled=false;$('disconnect').disabled=true;$('status').textContent='Not connected';buttons()}
+async function safeRead(service,uuid){try{const c=await service.getCharacteristic(uuid);if(!c.properties.read)return null;return await c.readValue()}catch{return null}}
+async function connect(){try{if(!('bluetooth'in navigator))throw Error('Web Bluetooth unavailable');log('Opening Bluetooth chooser…');device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SERVICE,INFO,BATT,...EXTRA_SERVICES]});device.addEventListener('gattserverdisconnected',()=>cleanup(false));server=await device.gatt.connect();const is=await server.getPrimaryService(INFO),bs=await server.getPrimaryService(BATT),ms=await server.getPrimaryService(SERVICE);const manV=await safeRead(is,MAN),modelV=await safeRead(is,MODEL),firmV=await safeRead(is,FIRM),softV=await safeRead(is,SOFT),batV=await safeRead(bs,BATTLVL);const man=manV?text(manV):'—',model=modelV?text(modelV):'—',firm=firmV?text(firmV):'—',soft=softV?text(softV):'—',bat=batV?batV.getUint8(0):null;send=await ms.getCharacteristic(SEND);sendFile=await ms.getCharacteristic(SENDFILE);notify=await ms.getCharacteristic(NOTIFY);if(man!=='MOYOUNG-V2')throw Error('Wrong device: '+man);$('manufacturer').textContent=man;$('model').textContent=model;$('firmware').textContent=firm;$('software').textContent=soft;$('battery').textContent=bat===null?'—':bat+'%';$('status').textContent='Connected to '+(device.name||'watch');$('status').className='ok';$('connect').disabled=true;$('disconnect').disabled=false;log(`Connected: ${man} / model ${model} / FW ${firm} / SW ${soft} / battery ${bat}%`);buttons()}catch(e){$('status').textContent='Connection failed';$('status').className='bad';log('ERROR: '+(e.message||e));cleanup(false)}}
 
-async function sendBlock(bytes,blockIndex){
- const start=blockIndex*BLOCK;
- if(start>=bytes.length)throw Error('Watch requested invalid block '+blockIndex);
- const end=Math.min(start+BLOCK,bytes.length);
- for(let off=start;off<end;off+=ATT_CHUNK){
-  const piece=bytes.subarray(off,Math.min(off+ATT_CHUNK,end));
-  await sendFile.writeValueWithoutResponse(piece);
- }
- const pct=Math.round(end*100/bytes.length);
- $('progress').value=pct;$('progressText').textContent=`${pct}% — block ${blockIndex+1}/${Math.ceil(bytes.length/BLOCK)}`;
-}
+function parseReply(d,state){if(d.length<5||d[0]!==0xFE||d[1]!==0xEA)return;const cmd=d[4],p=d.slice(5);plog(`REPLY cmd 0x${cmd.toString(16).padStart(2,'0').toUpperCase()} payload [${hex(p)}]`);if(cmd===0x25){const arr=Array.from(p).filter(x=>x!==0);if(arr[0]===0xFF){state.supported=arr.slice(1);plog('Supported menu/function IDs: '+state.supported.join(', '))}else{state.current=arr;plog('Currently enabled menu/function IDs: '+state.current.join(', '))}}else if(cmd===0x2E){state.deviceVersion=Array.from(p);plog('Device-version reply: '+hex(p))}else if(cmd===0x29&&p.length){state.activeFace=p[0];plog('Active watch-face index: '+p[0])}else if(cmd===0x84&&p.length>=2){state.faceCount=(p[0]<<8)|p[1];plog('Reported supported watch-face count: '+state.faceCount)}else if(cmd===0x2B){plog('Language/capability reply: '+hex(p))}else if(cmd===0x39){plog('Watch-face-layout reply: '+hex(p))}}
 
-async function upload(){
- if(!fileBytes||fileBytes.length!==SIZE||!send||!sendFile||!notify||expectedCrc===null)return;
- busy=true;buttons();$('progress').value=0;$('progressText').textContent='0%';
- try{
-  const bytes=fileBytes,totalBlocks=Math.ceil(bytes.length/BLOCK);
-  log(`Starting ${bytes.length.toLocaleString()}-byte transfer; ${totalBlocks} blocks; expected CRC ${hx(expectedCrc)}.`);
-  await notify.startNotifications();
-  const watchCrc=await new Promise((resolve,reject)=>{
-   let done=false,sending=false,pending=[];const timer=setTimeout(()=>end(Error('Timed out')),180000);
-   function end(err,result){if(done)return;done=true;clearTimeout(timer);notify.removeEventListener('characteristicvaluechanged',onv);err?reject(err):resolve(result)}
-   async function drain(){if(sending||done)return;sending=true;try{while(pending.length&&!done){const n=pending.shift();log(`Watch requests block ${n}/${totalBlocks-1}.`);await sendBlock(bytes,n)}}catch(e){end(e)}finally{sending=false}}
-   function onv(ev){const v=ev.target.value;if(!v)return;const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);
-    if(starts(d,READY)&&d.length>=7){const n=(d[5]<<8)|d[6];pending.push(n);drain();return}
-    if(starts(d,PREP)&&d.length>=9&&d[5]===0xFF&&d[6]===0xFF){const crc=(d[7]<<8)|d[8];log(`Watch final frame: FF FF ${d[7].toString(16).padStart(2,'0')} ${d[8].toString(16).padStart(2,'0')} → CRC ${hx(crc)}.`);if(sending||pending.length){log('Final CRC arrived while block queue still active; waiting briefly.');setTimeout(()=>end(null,crc),100)}else end(null,crc);return}
-   }
-   notify.addEventListener('characteristicvaluechanged',onv);
-   const p=new Uint8Array(9);p.set(PREP);new DataView(p.buffer).setUint32(5,bytes.length,false);send.writeValueWithoutResponse(p).catch(e=>end(e));
-  });
-  if(watchCrc!==expectedCrc){$('progressText').textContent=`REJECTED — watch ${hx(watchCrc)}, file ${hx(expectedCrc)}`;log(`REJECTED. Watch CRC ${hx(watchCrc)} does not match file CRC ${hx(expectedCrc)}. Not committing.`);return}
-  log(`CRC MATCH ${hx(watchCrc)}. Exact file accepted.`);
-  await send.writeValueWithoutResponse(SUCCESS);log('Success packet sent. Waiting 1.05 s.');await sleep(1050);
-  await send.writeValueWithoutResponse(REGISTER);log('Registration sent. Waiting 650 ms.');await sleep(650);
-  await send.writeValueWithoutResponse(SELECT8);await sleep(250);await send.writeValueWithoutResponse(QUERYFACE);
-  $('progress').value=100;$('progressText').textContent=`100% — ACCEPTED ${hx(watchCrc)}`;log('ACCEPTED + activated.');await sleep(500);
- }catch(e){log('UPLOAD ERROR: '+(e.message||e));$('progressText').textContent='ERROR'}finally{notify?.stopNotifications().catch(()=>{});busy=false;buttons()}
-}
-$('connect').onclick=connect;$('disconnect').onclick=()=>cleanup(true);$('upload').onclick=upload;
+async function runProbe(){if(!server||!send||!notify)return;busy=true;buttons();probeLines=[];$('copyProbe').disabled=true;$('probeSummary').textContent='Running…';const state={current:null,supported:null};try{plog('=== ANKO SAFE PROBE v6 ===');plog(`Device name: ${device.name||'unknown'}`);plog(`Manufacturer: ${$('manufacturer').textContent}`);plog(`Model: ${$('model').textContent}`);plog(`Firmware: ${$('firmware').textContent}`);plog(`Software: ${$('software').textContent}`);plog(`Battery: ${$('battery').textContent}`);plog('--- GATT services ---');const services=await server.getPrimaryServices();for(const s of services){plog(`SERVICE ${shortUuid(s.uuid)}`);let chars=[];try{chars=await s.getCharacteristics()}catch(e){plog(`  characteristic enumeration failed: ${e.message||e}`);continue}for(const c of chars){plog(`  CHAR ${shortUuid(c.uuid)} props=${propList(c.properties)}`);if(c.properties.read){try{const v=bytes(await c.readValue());plog(`    READ ${v.length}B: ${hex(v)} |${printable(v)}|`)}catch(e){plog(`    READ failed: ${e.message||e}`)}}}}
+plog('--- Normal MoYoung information queries ---');await notify.startNotifications();const listener=ev=>{const v=ev.target.value;if(v)parseReply(bytes(v),state)};notify.addEventListener('characteristicvaluechanged',listener);const queries=[['current menu/functions',0x25,[]],['all supported menu/functions',0x25,[0xFF]],['device version',0x2E,[]],['active watch face',0x29,[]],['device language/capabilities',0x2B,[]],['watch-face layout',0x39,[]],['supported watch faces',0x84,[]]];for(const [name,cmd,payload] of queries){plog(`QUERY ${name}: cmd 0x${cmd.toString(16).toUpperCase()} payload [${hex(Uint8Array.from(payload))}]`);await send.writeValueWithoutResponse(packet(cmd,payload));await sleep(650)}await sleep(600);notify.removeEventListener('characteristicvaluechanged',listener);await notify.stopNotifications().catch(()=>{});if(state.current&&state.supported){const hidden=state.supported.filter(x=>!state.current.includes(x));plog('Function IDs supported by firmware but not currently enabled: '+(hidden.length?hidden.join(', '):'none'));state.hidden=hidden}plog('DFU command 0x63 was NOT sent. No firmware write/erase commands were sent.');plog('=== END PROBE ===');$('probeSummary').innerHTML=state.hidden?.length?`Probe complete. <span class="pill">${state.hidden.length} hidden function ID(s)</span>`:'Probe complete.';$('copyProbe').disabled=false}catch(e){plog('PROBE ERROR: '+(e.message||e));$('probeSummary').textContent='Probe hit an error; the log is still useful.';$('copyProbe').disabled=probeLines.length===0}finally{busy=false;buttons()}}
+
+async function sendBlock(data,blockIndex){const start=blockIndex*BLOCK;if(start>=data.length)throw Error('Watch requested invalid block '+blockIndex);const end=Math.min(start+BLOCK,data.length);for(let off=start;off<end;off+=ATT_CHUNK){await sendFile.writeValueWithoutResponse(data.subarray(off,Math.min(off+ATT_CHUNK,end)))}const pct=Math.round(end*100/data.length);$('progress').value=pct;$('progressText').textContent=`${pct}% — block ${blockIndex+1}/${Math.ceil(data.length/BLOCK)}`}
+async function upload(){if(!fileBytes||fileBytes.length!==SIZE||!send||!sendFile||!notify||expectedCrc===null)return;busy=true;buttons();$('progress').value=0;$('progressText').textContent='0%';try{const data=fileBytes,totalBlocks=Math.ceil(data.length/BLOCK);log(`Starting ${data.length.toLocaleString()}-byte transfer; ${totalBlocks} blocks; expected CRC ${hx(expectedCrc)}.`);await notify.startNotifications();const watchCrc=await new Promise((resolve,reject)=>{let done=false,sending=false,pending=[];const timer=setTimeout(()=>end(Error('Timed out')),180000);function end(err,result){if(done)return;done=true;clearTimeout(timer);notify.removeEventListener('characteristicvaluechanged',onv);err?reject(err):resolve(result)}async function drain(){if(sending||done)return;sending=true;try{while(pending.length&&!done){const n=pending.shift();log(`Watch requests block ${n}/${totalBlocks-1}.`);await sendBlock(data,n)}}catch(e){end(e)}finally{sending=false}}function onv(ev){const v=ev.target.value;if(!v)return;const d=bytes(v);if(starts(d,READY)&&d.length>=7){pending.push((d[5]<<8)|d[6]);drain();return}if(starts(d,PREP)&&d.length>=9&&d[5]===0xFF&&d[6]===0xFF){const crc=(d[7]<<8)|d[8];log(`Watch final CRC ${hx(crc)}.`);if(sending||pending.length)setTimeout(()=>end(null,crc),100);else end(null,crc)}}notify.addEventListener('characteristicvaluechanged',onv);const p=new Uint8Array(9);p.set(PREP);new DataView(p.buffer).setUint32(5,data.length,false);send.writeValueWithoutResponse(p).catch(e=>end(e))});if(watchCrc!==expectedCrc){$('progressText').textContent=`REJECTED — watch ${hx(watchCrc)}, file ${hx(expectedCrc)}`;log(`REJECTED. Watch CRC ${hx(watchCrc)} != file CRC ${hx(expectedCrc)}.`);return}log(`CRC MATCH ${hx(watchCrc)}. Exact file accepted.`);await send.writeValueWithoutResponse(SUCCESS);await sleep(1050);await send.writeValueWithoutResponse(REGISTER);await sleep(650);await send.writeValueWithoutResponse(SELECT8);await sleep(250);await send.writeValueWithoutResponse(QUERYFACE);$('progress').value=100;$('progressText').textContent=`100% — ACCEPTED ${hx(watchCrc)}`;log('ACCEPTED + activated.')}catch(e){log('UPLOAD ERROR: '+(e.message||e));$('progressText').textContent='ERROR'}finally{notify?.stopNotifications().catch(()=>{});busy=false;buttons()}}
+
+$('connect').onclick=connect;$('disconnect').onclick=()=>cleanup(true);$('probe').onclick=runProbe;$('copyProbe').onclick=async()=>{try{await navigator.clipboard.writeText(probeLines.join('\n'));$('copyProbe').textContent='Copied';setTimeout(()=>$('copyProbe').textContent='Copy probe report',1200)}catch{log('Clipboard failed; long-press the log and copy it manually.')}};$('upload').onclick=upload;
 $('file').onchange=async()=>{file=$('file').files?.[0]||null;fileBytes=null;expectedCrc=null;$('expectedCrc').textContent='—';$('fileName').textContent=file?`${file.name} — ${file.size.toLocaleString()} bytes`:'No file selected';if(file){if(file.size!==SIZE){log(`Wrong size: ${file.size}; expected ${SIZE}`)}else{fileBytes=new Uint8Array(await file.arrayBuffer());expectedCrc=crc16(fileBytes);$('expectedCrc').textContent=hx(expectedCrc);log(`File loaded. CRC ${hx(expectedCrc)}.`)}}buttons()};
-log('Ready — protocol fix v5 (10 KiB block transport).');
+log('Ready — v6 safe probe.');
 })();
 </script></body></html>
