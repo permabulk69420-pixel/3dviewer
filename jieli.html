@@ -1,79 +1,28 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Anko JieLi probe</title>
-<style>
-:root{font-family:system-ui;color-scheme:dark;background:#0b0d10;color:#f4f7fb}body{margin:0;padding:18px;max-width:760px;margin:auto}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button:disabled{opacity:.45}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:260px;max-height:540px;overflow:auto}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}
-</style></head><body>
-<h1>Anko JieLi RCSP probe</h1>
-<p class="warn">v3 — reproduces JieLi's official JL_HashPair startup: reset-pair packet first, then the mutual challenge/response. Read-only feature queries only after authentication. No DFU, reboot, erase or firmware writes.</p>
-<div class="card"><button id="connect">Connect watch</button><button id="probe" disabled>Authenticate + query features</button><button id="copy" disabled>Copy report</button><div id="status">Not connected</div></div>
+<title>Anko JieLi auth test</title>
+<style>:root{font-family:system-ui;color-scheme:dark;background:#0b0d10;color:#f4f7fb}body{margin:0;padding:18px;max-width:760px;margin:auto}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button:disabled{opacity:.45}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:280px;max-height:560px;overflow:auto}.warn{color:#ffd37a}.ok{color:#78e7a2}.bad{color:#ff8c8c}</style></head><body>
+<h1>Anko JieLi RCSP auth test</h1>
+<p class="warn">v3.1 — exact reset-auth packet from JieLi RcspAuth, then the standard 17-byte authentication challenge. This does not enter OTA mode or write firmware.</p>
+<div class="card"><button id="connect">Connect watch</button><button id="probe" disabled>Run exact auth sequence</button><button id="copy" disabled>Copy report</button><div id="status">Not connected</div></div>
 <div class="card"><pre id="log"></pre></div>
 <script>
 (()=>{'use strict';
 const SVC=0xAE00,TX=0xAE01,RX=0xAE02;
-const HASH_RESET=Uint8Array.from([0xfe,0xdc,0xba,0xc0,0x06,0x00,0x02,0xff,0x01,0xef]);
-let dev,server,tx,rx,authApi=null,authState='idle',authResolve=null,authReject=null,lines=[],featureSeen=false;
-const $=id=>document.getElementById(id), sleep=ms=>new Promise(r=>setTimeout(r,ms));
+// Exact RcspAuth.getResetAuthFlagCmdData(): FEDCBAC00600020001EF
+const RESET=Uint8Array.from([0xfe,0xdc,0xba,0xc0,0x06,0x00,0x02,0x00,0x01,0xef]);
+let dev,server,tx,rx,authApi=null,state='idle',resolveAuth,rejectAuth,lines=[];
+const $=x=>document.getElementById(x),sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function log(s){lines.push(s);$('log').textContent=lines.join('\n');$('log').scrollTop=$('log').scrollHeight}
 function hex(a){return Array.from(a,b=>b.toString(16).padStart(2,'0')).join(' ')}
-function frame(flag,cmd,body){const b=Uint8Array.from(body);const o=new Uint8Array(8+b.length);o.set([0xfe,0xdc,0xba,flag,cmd,(b.length>>8)&255,b.length&255],0);o.set(b,7);o[o.length-1]=0xef;return o}
-async function write(d,label='TX'){log(label+': '+hex(d));await tx.writeValueWithoutResponse(Uint8Array.from(d))}
-async function loadAuth(){
-  if(authApi)return authApi;
-  log('Loading JieLi auth cipher…');
-  const url='https://cdn.jsdelivr.net/gh/hybridherbst/web-bluetooth-e87@9e8ba39f48ffb7ef447847b5bf35afc4fe522ed3/web/src/jl-auth.ts';
-  const r=await fetch(url,{cache:'no-store'}); if(!r.ok)throw Error('Auth module HTTP '+r.status);
-  let s=await r.text();
-  s=s.replace(/\bexport\s+/g,'').replace(/:\s*Record<number,\s*number>/g,'').replace(/:\s*number\[\]/g,'').replace(/:\s*Uint8Array/g,'').replace(/:\s*number/g,'').replace(/new Array<number>/g,'new Array');
-  authApi=(new Function(s+'\nreturn {getRandomAuthData,getEncryptedAuthData};'))();
-  log('Auth cipher loaded.'); return authApi;
-}
-function parseAttrs(a){
-  let i=0; const names={0:'protocol_version',1:'sys_info',2:'edr_addr',3:'platform',4:'function_info',5:'firmware_info',6:'sdk_type',7:'uboot_version',8:'double_partition',9:'update_status',10:'vid_pid',11:'authkey',12:'project_code',13:'protocol_mtu',19:'dev_support_func'};
-  while(i+2<=a.length){const n=a[i]; if(n<1||i+1+n>a.length){log('  attribute parse stop; remaining='+hex(a.slice(i)));break} const type=a[i+1],data=a.slice(i+2,i+1+n); log('  ATTR '+type+(names[type]?' '+names[type]:'')+': '+hex(data));
-    if(type===6&&data.length)log('    SDK type=0x'+data[0].toString(16).padStart(2,'0')+(data[0]===9?' -> AC701N/JL701N watch family':''));
-    if(type===8&&data.length>=3)log('    OTA double-bank='+!!data[0]+', loader-download='+!!data[1]+', channel='+data[2]);
-    if(type===10&&data.length>=4)log('    VID=0x'+((data[0]<<8)|data[1]).toString(16).padStart(4,'0')+' PID=0x'+((data[2]<<8)|data[3]).toString(16).padStart(4,'0'));
-    if(type===13&&data.length>=2)log('    RCSP MTU='+((data[0]<<8)|data[1]));
-    if(type===19&&data.length){const f=data[0];log('    Feature flags 0x'+f.toString(16).padStart(2,'0')+': GAME MODE='+!!(f&2)+', find_device='+!!(f&4)+', karaoke='+!!(f&8)+', extra_flash='+!!(f&32));}
-    i+=1+n;
-  }
-}
-function parseRcsp(d){if(d.length<8||d[0]!==0xfe||d[1]!==0xdc||d[2]!==0xba||d[d.length-1]!==0xef)return null;const len=(d[5]<<8)|d[6];if(d.length!==8+len)return null;return {flag:d[3],cmd:d[4],body:d.slice(7,7+len)}}
-function onNotify(ev){
-  const v=ev.target.value; const d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength); log('RX: '+hex(d));
-  const f=parseRcsp(d); if(f){log('RCSP frame flag=0x'+f.flag.toString(16)+' cmd=0x'+f.cmd.toString(16)+' body='+hex(f.body));
-    if(f.cmd===0x03&&f.body.length>=2){featureSeen=true;log('GET_TARGET_INFO status='+f.body[0]+' seq='+f.body[1]);parseAttrs(f.body.slice(2));$('copy').disabled=false;$('status').textContent='Got JieLi feature response';$('status').className='ok';}
-    if(f.cmd===0x02&&f.body.length>=2){log('GET_TARGET_FEATURE_MAP status='+f.body[0]+' seq='+f.body[1]+' payload='+hex(f.body.slice(2)));}
-    return;
-  }
-  if(authState==='wait_device_response'&&d.length===17&&d[0]===1){authState='wait_device_challenge';log('Device validated phone challenge.');write(Uint8Array.from([0x02,0x70,0x61,0x73,0x73]),'TX auth PASS').catch(e=>authReject&&authReject(e));return;}
-  if(authState==='wait_device_challenge'&&d.length===17&&d[0]===0){try{authState='wait_final_pass';log('Device sent its challenge.');write(authApi.getEncryptedAuthData(d),'TX encrypted device challenge').catch(e=>authReject&&authReject(e));}catch(e){authReject&&authReject(e)}return;}
-  if(authState==='wait_final_pass'&&d.length>=5&&d[0]===2&&d[1]===0x70&&d[2]===0x61&&d[3]===0x73&&d[4]===0x73){authState='done';log('AUTH SUCCESS.');authResolve&&authResolve();return;}
-}
-async function connect(){
-  try{dev=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SVC]});server=await dev.gatt.connect();const s=await server.getPrimaryService(SVC);tx=await s.getCharacteristic(TX);rx=await s.getCharacteristic(RX);await rx.startNotifications();rx.addEventListener('characteristicvaluechanged',onNotify);await sleep(300);$('probe').disabled=false;$('status').textContent='Connected: '+(dev.name||'watch');$('status').className='ok';log('Connected to AE00 / AE01 / AE02. Notifications enabled.');}
-  catch(e){$('status').textContent='Connect error: '+e.message;$('status').className='bad';log('CONNECT ERROR: '+e.message)}
-}
-async function authenticate(){
-  await loadAuth();
-  authState='idle';
-  await write(HASH_RESET,'TX official JL_HashPair reset');
-  await sleep(300);
-  authState='wait_device_response';
-  const p=new Promise((res,rej)=>{authResolve=res;authReject=rej;setTimeout(()=>{if(authState!=='done')rej(Error('Auth handshake timed out — no expected AE02 pairing response'));},10000)});
-  await write(authApi.getRandomAuthData(),'TX phone raw auth challenge');
-  await p;
-}
-async function sendReadQueries(){
-  featureSeen=false;
-  await write(frame(0xc0,0x02,[0x01]),'TX GET_TARGET_FEATURE_MAP'); await sleep(900);
-  await write(frame(0xc0,0x03,[0x02,0xff,0xff,0xff,0xff,0x00]),'TX GET_TARGET_INFO platform=0'); await sleep(1800);
-  if(!featureSeen){await write(frame(0xc0,0x03,[0x03,0xff,0xff,0xff,0xff,0x01]),'TX GET_TARGET_INFO platform=1'); await sleep(1800);}
-}
-$('connect').onclick=connect;
-$('probe').onclick=async()=>{try{$('probe').disabled=true;$('status').textContent='Authenticating…';log('--- v3 official JL_HashPair sequence ---');await authenticate();$('status').textContent='Authenticated; querying read-only features…';await sendReadQueries();if(!featureSeen){$('status').textContent='Authenticated, but feature query got no target-info reply';$('status').className='warn';$('copy').disabled=false;}}catch(e){$('status').textContent='Probe stopped: '+(e.message||e);$('status').className='bad';log('ERROR: '+(e.message||e));$('copy').disabled=false;}finally{$('probe').disabled=false}};
-$('copy').onclick=async()=>{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied';};
-log('Page JavaScript started successfully.');
+async function write(a,label){log(label+': '+hex(a));await tx.writeValueWithoutResponse(a)}
+async function loadAuth(){if(authApi)return authApi;log('Loading reverse-engineered libjl_auth implementation…');const u='https://cdn.jsdelivr.net/gh/hybridherbst/web-bluetooth-e87@9e8ba39f48ffb7ef447847b5bf35afc4fe522ed3/web/src/jl-auth.ts';const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw Error('auth module HTTP '+r.status);let s=await r.text();s=s.replace(/\bexport\s+/g,'').replace(/:\s*Record<number,\s*number>/g,'').replace(/:\s*number\[\]/g,'').replace(/:\s*Uint8Array/g,'').replace(/:\s*number/g,'').replace(/new Array<number>/g,'new Array');authApi=(new Function(s+'\nreturn {getRandomAuthData,getEncryptedAuthData};'))();log('Auth implementation loaded.');return authApi}
+function onNotify(ev){const v=ev.target.value,d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);log('RX: '+hex(d));
+ if(state==='wait1'&&d.length===17&&d[0]===1){state='waitChallenge';log('Device accepted phone challenge.');write(Uint8Array.from([0x02,0x70,0x61,0x73,0x73]),'TX PASS').catch(rejectAuth);return}
+ if(state==='waitChallenge'&&d.length===17&&d[0]===0){state='waitPass';log('Device challenge received.');write(authApi.getEncryptedAuthData(d),'TX encrypted device challenge').catch(rejectAuth);return}
+ if(state==='waitPass'&&d.length>=5&&d[0]===2&&d[1]===0x70&&d[2]===0x61&&d[3]===0x73&&d[4]===0x73){state='done';log('AUTH SUCCESS');resolveAuth();return}}
+async function connect(){try{dev=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[SVC]});server=await dev.gatt.connect();const s=await server.getPrimaryService(SVC);tx=await s.getCharacteristic(TX);rx=await s.getCharacteristic(RX);await rx.startNotifications();rx.addEventListener('characteristicvaluechanged',onNotify);$('probe').disabled=false;$('status').textContent='Connected: '+(dev.name||'watch');$('status').className='ok';log('Connected to AE00 / AE01 / AE02; AE02 notifications enabled.')}catch(e){$('status').textContent='Connect error';$('status').className='bad';log('CONNECT ERROR: '+e.message)}}
+async function probe(){try{$('probe').disabled=true;await loadAuth();log('--- v3.1 exact JieLi reset-auth sequence ---');state='idle';await write(RESET,'TX official RESET_AUTH_FLAG');await sleep(500);state='wait1';const p=new Promise((res,rej)=>{resolveAuth=res;rejectAuth=rej;setTimeout(()=>{if(state!=='done')rej(Error('No completed JieLi auth response in 8 seconds'));},8000)});const challenge=authApi.getRandomAuthData();await write(challenge,'TX official-format random auth challenge');await p;$('status').textContent='AUTH SUCCESS';$('status').className='ok'}catch(e){$('status').textContent='Auth did not complete';$('status').className='bad';log('RESULT: '+(e.message||e))}finally{$('probe').disabled=false;$('copy').disabled=false}}
+$('connect').onclick=connect;$('probe').onclick=probe;$('copy').onclick=async()=>{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied'};log('v3.1 loaded.');
 })();
 </script></body></html>
