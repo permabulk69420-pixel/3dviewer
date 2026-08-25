@@ -37,19 +37,18 @@ jobs:
             tail -c 1024 /tmp/sample.ufw | xxd -g1
             echo
             echo '===== PRINTABLE STRINGS ====='
-            strings -a -n 4 /tmp/sample.ufw | head -n 2000
+            strings -a -n 4 /tmp/sample.ufw | head -n 2000 || true
             echo
             echo '===== SIGNATURE OFFSETS ====='
-            python3 - <<'PY'
           } > "$OUT"
           python3 - <<'PY' >> "$OUT"
           from pathlib import Path
           import math, collections
           b=Path('/tmp/sample.ufw').read_bytes()
           sigs={
-            'ELF':b'\x7fELF','ZIP':b'PK\x03\x04','GZIP':b'\x1f\x8b','XZ':b'\xfd7zXZ\x00',
-            'PNG':b'\x89PNG\r\n\x1a\n','JIELI_ASCII':b'JIELI','JL_ASCII':b'JL',
-            'UF2':b'UF2','LZ4':b'\x04\x22\x4d\x18'
+              'ELF':b'\x7fELF','ZIP':b'PK\x03\x04','GZIP':b'\x1f\x8b','XZ':b'\xfd7zXZ\x00',
+              'PNG':b'\x89PNG\r\n\x1a\n','JIELI_ASCII':b'JIELI','JL_ASCII':b'JL',
+              'UF2':b'UF2','LZ4':b'\x04\x22\x4d\x18'
           }
           for name,s in sigs.items():
               offs=[]; p=0
