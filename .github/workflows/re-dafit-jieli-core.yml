@@ -34,7 +34,7 @@ jobs:
           : > "$OUT"
 
           echo '===== TARGET / UPDATE QUERY CALLERS =====' >> "$OUT"
-          mapfile -t MATCHES < <(grep -aRIl -E 'queryDfuType|queryDeviceVersion|queryDeviceDfuStatus|getProtocolVersion|CRPDeviceDfuTypeCallback|CRPDeviceVersionCallback|CRPDeviceDfuStatusCallback' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
+          mapfile -t MATCHES < <(grep -aRl -E 'queryDfuType|queryDeviceVersion|queryDeviceDfuStatus|getProtocolVersion|CRPDeviceDfuTypeCallback|CRPDeviceVersionCallback|CRPDeviceDfuStatusCallback' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
           for f in "${MATCHES[@]}"; do
             c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
             echo >> "$OUT"
@@ -73,7 +73,7 @@ jobs:
 
           echo >> "$OUT"
           echo '===== CLASSES REFERENCING OTA COMMAND 0x63 OR FEE5 PATH =====' >> "$OUT"
-          mapfile -t OTAM < <(grep -aRIl -E 'sendFileCheckResult|createFileManager|startTrans|setPacketLength|FEE5|fee5' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
+          mapfile -t OTAM < <(grep -aRl -E 'sendFileCheckResult|createFileManager|startTrans|setPacketLength|FEE5|fee5' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
           for f in "${OTAM[@]}"; do
             c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
             echo >> "$OUT"
