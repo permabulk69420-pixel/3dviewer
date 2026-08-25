@@ -1,0 +1,244 @@
+/tmp/JL_HashPair:
+Contents of (__DATA,__objc_classlist) section
+000000000000c450 0xca68 _OBJC_CLASS_$_JLHashHandler
+    isa        0xca90 _OBJC_METACLASS_$_JLHashHandler
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc7b0 __OBJC_CLASS_RO_$_JLHashHandler
+        flags          0x184 RO_HAS_CXX_STRUCTORS
+        instanceStart  8
+        instanceSize   80
+        reserved       0x0
+        ivarLayout     0x8b6f
+        layout map     0x16 
+        name           0x8b61 JLHashHandler
+        baseMethods    0xc4d0 __OBJC_$_INSTANCE_METHODS_JLHashHandler
+            entsize 24
+            count   17
+            name    0x87d4 init
+            types   0x8b82 @16@0:8
+            imp     0x4000 -[JLHashHandler init]
+            name    0x87c6 hashResetPair
+            types   0x8b7a v16@0:8
+            imp     0x407c -[JLHashHandler hashResetPair]
+            name    0x885b rcspMakePkg:needRes:Opcode:playload:
+            types   0x8b8a @36@0:8S16S20S24@28
+            imp     0x4180 -[JLHashHandler rcspMakePkg:needRes:Opcode:playload:]
+            name    0x86b8 bluetoothPairingKey:Result:
+            types   0x8b9e v32@0:8@16@?24
+            imp     0x4328 -[JLHashHandler bluetoothPairingKey:Result:]
+            name    0x87d9 inputPairData:
+            types   0x8bad v24@0:8@16
+            imp     0x44d8 -[JLHashHandler inputPairData:]
+            name    0x8939 stopAuthPair
+            types   0x8b7a v16@0:8
+            imp     0x485c -[JLHashHandler stopAuthPair]
+            name    0x88f4 sendCheckData:withCode:
+            types   0x8bb8 v28@0:8@16C24
+            imp     0x48b8 -[JLHashHandler sendCheckData:withCode:]
+            name    0x892c startTimeout
+            types   0x8b7a v16@0:8
+            imp     0x49d4 -[JLHashHandler startTimeout]
+            name    0x8946 stopTimeout
+            types   0x8b7a v16@0:8
+            imp     0x4a64 -[JLHashHandler stopTimeout]
+            name    0x898a timeoutAction
+            types   0x8b7a v16@0:8
+            imp     0x4a94 -[JLHashHandler timeoutAction]
+            name    0x8709 data:R:L:
+            types   0x8bc6 @40@0:8@16q24q32
+            imp     0x4b14 -[JLHashHandler data:R:L:]
+            name    0x8727 dataToInt:
+            types   0x8bd7 q24@0:8@16
+            imp     0x4bb8 -[JLHashHandler dataToInt:]
+            name    0x8713 dataChangeToString:
+            types   0x8be2 @24@0:8@16
+            imp     0x4c98 -[JLHashHandler dataChangeToString:]
+            name    0x8626 StringToInt:
+            types   0x8bed i24@0:8@16
+            imp     0x4da8 -[JLHashHandler StringToInt:]
+            name    0x87a7 delegate
+            types   0x8b82 @16@0:8
+            imp     0x4efc -[JLHashHandler delegate]
+            name    0x890c setDelegate:
+            types   0x8bad v24@0:8@16
+            imp     0x4f14 -[JLHashHandler setDelegate:]
+            name    0x863b .cxx_destruct
+            types   0x8b7a v16@0:8
+            imp     0x4f20 -[JLHashHandler .cxx_destruct]
+        baseProtocols  0x0
+        ivars          0xc670 __OBJC_$_INSTANCE_VARIABLES_JLHashHandler
+            entsize   32
+            count     9
+            offset    0xca40 _OBJC_IVAR_$_JLHashHandler.isEnable 8
+            name      0x87fc isEnable
+            type      0x8bf8 B
+            alignment 0
+            size      1
+            offset    0xca44 _OBJC_IVAR_$_JLHashHandler.ble_block 16
+            name      0x86ae ble_block
+            type      0x8bfa @?
+            alignment 3
+            size      8
+            offset    0xca48 _OBJC_IVAR_$_JLHashHandler.rand_Me 24
+            name      0x8633 rand_Me
+            type      0x8bfd @"NSData"
+            alignment 3
+            size      8
+            offset    0xca4c _OBJC_IVAR_$_JLHashHandler.rand_It 32
+            name      0x8649 rand_It
+            type      0x8bfd @"NSData"
+            alignment 3
+            size      8
+            offset    0xca50 _OBJC_IVAR_$_JLHashHandler.result_Me 40
+            name      0x889e result_Me
+            type      0x8bfd @"NSData"
+            alignment 3
+            size      8
+            offset    0xca54 _OBJC_IVAR_$_JLHashHandler.result_It 48
+            name      0x8894 result_It
+            type      0x8bfd @"NSData"
+            alignment 3
+            size      8
+            offset    0xca58 _OBJC_IVAR_$_JLHashHandler.pairTimer 56
+            name      0x8834 pairTimer
+            type      0x8c07 @"NSTimer"
+            alignment 3
+            size      8
+            offset    0xca5c _OBJC_IVAR_$_JLHashHandler.timeout_1 64
+            name      0x8998 timeout_1
+            type      0x8c12 i
+            alignment 2
+            size      4
+            offset    0xca60 _OBJC_IVAR_$_JLHashHandler._delegate 72
+            name      0x867c _delegate
+            type      0x8c14 @"<JLHashHandlerDelegate>"
+            alignment 3
+            size      8
+        weakIvarLayout 0x8b71
+        layout map     0x81 
+        baseProperties 0xc798 __OBJC_$_PROP_LIST_JLHashHandler
+            entsize    16
+            count      1
+            name       0x87a7 delegate
+            attributes 0x8651 T@"<JLHashHandlerDelegate>",W,N,V_delegate
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc488 __OBJC_METACLASS_RO_$_JLHashHandler
+        flags          0x185 RO_META RO_HAS_CXX_STRUCTORS
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x8b61 JLHashHandler
+        baseMethods    0xc468 __OBJC_$_CLASS_METHODS_JLHashHandler
+            entsize 24
+            count   1
+            name    0x88e9 sdkVersion
+            types   0x8b7a v16@0:8
+            imp     0x4034 +[JLHashHandler sdkVersion]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+000000000000c458 0xcab8 _OBJC_CLASS_$_BtHash
+    isa        0xcae0 _OBJC_METACLASS_$_BtHash
+    superclass 0x0 _OBJC_CLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc898 __OBJC_CLASS_RO_$_BtHash
+        flags          0x80
+        instanceStart  8
+        instanceSize   8
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x8b73 BtHash
+        baseMethods    0xc878 __OBJC_$_INSTANCE_METHODS_BtHash
+            entsize 24
+            count   1
+            name    0x86d4 btCon:andPlaintextLen:andKey:andKeyLen:andMac:
+            types   0x8c46 v48@0:8*16i24*28i36*40
+            imp     0x4fe8 -[BtHash btCon:andPlaintextLen:andKey:andKeyLen:andMac:]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Meta Class
+    isa        0x0 _OBJC_METACLASS_$_NSObject
+    superclass 0x0 _OBJC_METACLASS_$_NSObject
+    cache      0x0 __objc_empty_cache
+    vtable     0x0
+    data       0xc830 __OBJC_METACLASS_RO_$_BtHash
+        flags          0x81 RO_META
+        instanceStart  40
+        instanceSize   40
+        reserved       0x0
+        ivarLayout     0x0
+        name           0x8b73 BtHash
+        baseMethods    0xc7f8 __OBJC_$_CLASS_METHODS_BtHash
+            entsize 24
+            count   2
+            name    0x8926 share
+            types   0x8b82 @16@0:8
+            imp     0x4f88 +[BtHash share]
+            name    0x875b decryptWithPlaintext:andPlaintextLen:andKey:andKeyLen:andMac:
+            types   0x8c2f i48@0:8*16i24*28i36*40
+            imp     0x5000 +[BtHash decryptWithPlaintext:andPlaintextLen:andKey:andKeyLen:andMac:]
+        baseProtocols  0x0
+        ivars          0x0
+        weakIvarLayout 0x0
+        baseProperties 0x0
+Contents of (__DATA,__objc_classrefs) section
+000000000000c9f0 0x0 _OBJC_CLASS_$_JLLogManager
+000000000000c9f8 0x0 _OBJC_CLASS_$_NSMutableData
+000000000000ca00 0x0 _OBJC_CLASS_$_NSData
+000000000000ca08 0x0 _OBJC_CLASS_$_NSNotificationCenter
+000000000000ca10 0x0 _OBJC_CLASS_$_NSDate
+000000000000ca18 0x0 _OBJC_CLASS_$_NSTimer
+000000000000ca20 0x0 _OBJC_CLASS_$_NSMutableString
+000000000000ca28 0x0 _OBJC_CLASS_$_NSString
+000000000000ca30 0xcab8 _OBJC_CLASS_$_BtHash
+Contents of (__DATA,__objc_superrefs) section
+000000000000ca38 0xca68 _OBJC_CLASS_$_JLHashHandler
+Contents of (__DATA,__objc_selrefs) section
+    0x898a timeoutAction
+    0x8626 StringToInt:
+    0x8686 appendData:
+    0x8692 appendFormat:
+    0x86a0 appendString:
+    0x86d4 btCon:andPlaintextLen:andKey:andKeyLen:andMac:
+    0x8703 bytes
+    0x8709 data:R:L:
+    0x8713 dataChangeToString:
+    0x8727 dataToInt:
+    0x8732 dataWithBytes:length:
+    0x8748 dataWithData:
+    0x8756 date
+    0x8799 defaultCenter
+    0x87b0 hashOnPairOutputData:
+    0x87d4 init
+    0x87e8 intValue
+    0x87f1 invalidate
+    0x8805 isEqual:
+    0x880e length
+    0x8815 logLevel:funcName:line:format:
+    0x8622 new
+    0x883e postNotificationName:object:
+    0x885b rcspMakePkg:needRes:Opcode:playload:
+    0x8880 respondsToSelector:
+    0x88a8 scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+    0x88f4 sendCheckData:withCode:
+    0x8919 setFireDate:
+    0x8926 share
+    0x892c startTimeout
+    0x8946 stopTimeout
+    0x8952 stringWithFormat:
+    0x8964 subdataWithRange:
+    0x8976 substringWithRange:
+Contents of (__DATA,__objc_imageinfo) section
+    version 0
+    flags   0x40

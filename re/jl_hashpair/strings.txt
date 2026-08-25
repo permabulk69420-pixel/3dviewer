@@ -1,0 +1,275 @@
+4511 "@9h
+5113 *Jhh8
+53af J:nA)<
+5467 ZOYy
+5493 )MYv
+54bf ZJYs
+54fb )Kil8
+5501 ik8-il8
+55a9 ji8Ki(8?
+55c9 jh8ij(8
+5601 jh8kjh8,ih8j
+5614 jj(8
+568d "@9)
+56c1 2@9i
+575e @8K}
+5763 Si1IJ
+5769 Yix)
+5778 J1KJ
+577d YjxB
+5807 =J!JJ 
+5828 mil8
+5833 *mi,8
+5854 oin8
+5860 /i,8
+5941 jh8jjh8I
+594b Jij(8
+5961 jh8jjh8I
+5989 kh8jjh8I
+5993 Jij(8
+59a8 ijh8
+59ad kh8I
+59be @9Iki8i
+59ca @9Iki8i
+59d6 @9Iki8i
+59e2 @9Iki8i
+59eb 9i"@9Iki8i"
+59f7 9i.@9Iki8i.
+5a03 9i2@9Iki8i2
+5a0f 9i>@9Iki8i>
+5a1e @9iki8i
+5a2a @9iki8i
+5a36 @9iki8i
+5a42 @9iki8i
+5a4b 9i&@9iki8i&
+5a57 9i*@9iki8i*
+5a63 9i6@9iki8i6
+5a6f 9i:@9iki8i:
+5a8f Tijh8
+5a98 JA@9I
+5aa0 ij(8
+5ab8 )A@9jjh8I
+5b67 Tljh8-ih8
+5b72 Jlj(8
+5b88 ljh8-ih8
+5be1 @9
+6260 @(#)PROGRAM:JL_HashPair  PROJECT:JL_BLEKit-1
+62b8 P00`
+62c4 }++V
+6323 =j&&LZ66lA??~
+6338 \44h
+6350 S11b?
+6360 e##F^
+638c i''N
+63a0 t,,X.
+63bc M;;va
+63c7 }{))R>
+63d0 q//^
+63e8 `  @
+6403 gK99r
+6430 U33f
+644c D<<x
+646f !H88p
+6484 c!!B0
+64c4 G==z
+64e8 f""D~**T
+651c V22dN::t
+652f l$$H
+6560 Y77n
+65a0 o%%Jr..\$
+65dc B>>|
+65fc _55j
+6650 x((Pz
+667f )w--Z
+66b7 T00`P
+66c4 ++V}
+6724 &&Lj66lZ??~A
+6737 O44h\
+674f s11bS
+675f R##Fe
+678b &''Ni
+67a0 ,,Xt
+67aa 6-nn
+67bc ;;vM
+67c8 ))R{
+67cf >//^q
+67e7 ,  @`
+6804 99rKJJ
+6830 33fU
+684c <<xD
+6870 88pH
+6883 u!!Bc
+68c4 ==zGdd
+68d2 2+ss
+68e8 ""Df**T~
+691b ;22dV::tN
+6930 $$Hl\\
+695f C77nYmm
+69a0 %%Jo..\r
+69c6 >!KK
+69dc >>|B
+69fc 55j_WW
+6a26 "3ii
+6a50 ((Px
+6a80 --Zw
+6ab8 0`P0
+6ac3 g+V}+
+6b24 &Lj&6lZ6?~A?
+6b38 4h\4
+6b50 1bS1
+6b60 #Fe#
+6b8c 'Ni'
+6ba0 ,Xt,
+6bbb R;vM;
+6bc8 )R{)
+6bd0 /^q/
+6be8  @` 
+6c04 9rK9J
+6c2f M3fU3
+6c4b P<xD<
+6c70 8pH8
+6c84 !Bc!
+6cc3 ~=zG=d
+6ce8 "Df"*T~*
+6d1c 2dV2:tN:
+6d30 $Hl$\
+6d60 7nY7m
+6d9f x%Jo%.\r.
+6ddb p>|B>
+6dfb a5j_5W
+6e4f U(Px(
+6e80 -Zw-
+6eb8 `P00
+6ec2 ggV}++
+6f24 Lj&&lZ66~A??
+6f38 h\44Q
+6f50 bS11*?
+6f60 Fe##
+6f8c Ni''
+6fa0 Xt,,4.
+6fba RRvM;;
+6fc8 R{))
+6fd0 ^q//
+6fe8 @`  
+7004 rK99
+702e MMfU33
+704a PPxD<<%
+7070 pH88
+7084 Bc!! 0
+709e &5
+70b2 DD.9
+70c2 ~~zG==
+70ce ]]2+
+70e8 Df""T~**;
+711c dV22tN::
+7130 Hl$$
+7160 nY77
+719e xxJo%%\r..8$
+71c2 tt>!
+71da pp|B>>q
+71fa aaj_55
+724e UUPx((
+7280 Zw--
+82bf 6JL_btcon_ENCRYPTJL_btcon_ENCRYPT
+82f6 B c0
+8314 V$~G
+8391 :3r.O
+83a7 zl/'
+83d4 NKiH
+83ea J<%
+8403 V$~G
+8446 Q/;U
+84cb Ab).
+84ea y0h6u}
+8516 XicV
+85a3 PY?Mb4
+85ad VL.k
+8613 @x-:
+8626 StringToInt:
+8633 rand_Me
+863b .cxx_destruct
+8649 rand_It
+8651 T@"<JLHashHandlerDelegate>",W,N,V_delegate
+867c _delegate
+8686 appendData:
+8692 appendFormat:
+86a0 appendString:
+86ae ble_block
+86b8 bluetoothPairingKey:Result:
+86d4 btCon:andPlaintextLen:andKey:andKeyLen:andMac:
+8703 bytes
+8709 data:R:L:
+8713 dataChangeToString:
+8727 dataToInt:
+8732 dataWithBytes:length:
+8748 dataWithData:
+8756 date
+875b decryptWithPlaintext:andPlaintextLen:andKey:andKeyLen:andMac:
+8799 defaultCenter
+87a7 delegate
+87b0 hashOnPairOutputData:
+87c6 hashResetPair
+87d4 init
+87d9 inputPairData:
+87e8 intValue
+87f1 invalidate
+87fc isEnable
+8805 isEqual:
+880e length
+8815 logLevel:funcName:line:format:
+8834 pairTimer
+883e postNotificationName:object:
+885b rcspMakePkg:needRes:Opcode:playload:
+8880 respondsToSelector:
+8894 result_It
+889e result_Me
+88a8 scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:
+88e9 sdkVersion
+88f4 sendCheckData:withCode:
+890c setDelegate:
+8919 setFireDate:
+8926 share
+892c startTimeout
+8939 stopAuthPair
+8946 stopTimeout
+8952 stringWithFormat:
+8964 subdataWithRange:
+8976 substringWithRange:
+898a timeoutAction
+8998 timeout_1
+89a2 +[JLHashHandler sdkVersion]
+89be ---> The version of Hash pair SDK is %@ 
+89e7 v1.0.3
+89ee -[JLHashHandler hashResetPair]
+8a0d auth reset Pair:%@
+8a20 -[JLHashHandler bluetoothPairingKey:Result:]
+8a4d BLE Pairing...
+8a5c -[JLHashHandler inputPairData:]
+8a7c Pair get ----> %@
+8a8e Pair get result...
+8aa1 Err: check result fail.
+8ab9 Pair get rand...
+8aca Pair get pass ok!
+8adc Pair Err: pair cmd fault.
+8af6 JL_RCSP_SEND
+8b03 -[JLHashHandler timeoutAction]
+8b22 Error: BLE Pair timeout.
+8b5b v8@?0
+8b61 JLHashHandler
+8b73 BtHash
+8b7a v16@0:8
+8b82 @16@0:8
+8b8a @36@0:8S16S20S24@28
+8b9e v32@0:8@16@?24
+8bad v24@0:8@16
+8bb8 v28@0:8@16C24
+8bc6 @40@0:8@16q24q32
+8bd7 q24@0:8@16
+8be2 @24@0:8@16
+8bed i24@0:8@16
+8bfd @"NSData"
+8c07 @"NSTimer"
+8c14 @"<JLHashHandlerDelegate>"
+8c2f i48@0:8*16i24*28i36*40
+8c46 v48@0:8*16i24*28i36*40
+cb09 "33"

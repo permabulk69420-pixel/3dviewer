@@ -1,0 +1,48 @@
+/tmp/JL_HashPair:
+Indirect symbols for (__TEXT,__stubs) 19 entries
+address            index name
+0x0000000000005c5c   299 ___stack_chk_fail
+0x0000000000005c68   302 _dispatch_once
+0x0000000000005c74   303 _exp2
+0x0000000000005c80   304 _free
+0x0000000000005c8c   305 _malloc
+0x0000000000005c98   306 _objc_alloc
+0x0000000000005ca4   307 _objc_autoreleaseReturnValue
+0x0000000000005cb0   308 _objc_destroyWeak
+0x0000000000005cbc   309 _objc_loadWeakRetained
+0x0000000000005cc8   311 _objc_msgSendSuper2
+0x0000000000005cd4   312 _objc_release
+0x0000000000005ce0   313 _objc_retain
+0x0000000000005cec   314 _objc_retainAutorelease
+0x0000000000005cf8   315 _objc_retainAutoreleaseReturnValue
+0x0000000000005d04   316 _objc_retainAutoreleasedReturnValue
+0x0000000000005d10   317 _objc_retainBlock
+0x0000000000005d1c   318 _objc_storeStrong
+0x0000000000005d28   319 _objc_storeWeak
+0x0000000000005d34   320 _random
+Indirect symbols for (__DATA,__got) 3 entries
+address            index name
+0x000000000000c000   310 _objc_msgSend
+0x000000000000c008   300 ___stack_chk_guard
+0x000000000000c010   321 dyld_stub_binder
+Indirect symbols for (__DATA,__la_symbol_ptr) 19 entries
+address            index name
+0x000000000000c018   299 ___stack_chk_fail
+0x000000000000c020   302 _dispatch_once
+0x000000000000c028   303 _exp2
+0x000000000000c030   304 _free
+0x000000000000c038   305 _malloc
+0x000000000000c040   306 _objc_alloc
+0x000000000000c048   307 _objc_autoreleaseReturnValue
+0x000000000000c050   308 _objc_destroyWeak
+0x000000000000c058   309 _objc_loadWeakRetained
+0x000000000000c060   311 _objc_msgSendSuper2
+0x000000000000c068   312 _objc_release
+0x000000000000c070   313 _objc_retain
+0x000000000000c078   314 _objc_retainAutorelease
+0x000000000000c080   315 _objc_retainAutoreleaseReturnValue
+0x000000000000c088   316 _objc_retainAutoreleasedReturnValue
+0x000000000000c090   317 _objc_retainBlock
+0x000000000000c098   318 _objc_storeStrong
+0x000000000000c0a0   319 _objc_storeWeak
+0x000000000000c0a8   320 _random
