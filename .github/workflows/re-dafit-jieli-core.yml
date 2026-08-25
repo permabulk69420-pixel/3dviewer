@@ -1,4 +1,4 @@
-name: Trace Da Fit forced update and target builders
+name: Trace JieLi watch information query
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Extract focused classes
+      - name: Extract JieLi watch-info query and parser
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
@@ -30,26 +30,36 @@ jobs:
           cd /tmp/crp && unzip -q /tmp/crp.aar
           cd /tmp/classes && jar xf /tmp/crp/classes.jar
 
-          OUT="$GITHUB_WORKSPACE/re/dafit_crp/forced-update-and-builders.txt"
+          OUT="$GITHUB_WORKSPACE/re/dafit_crp/jieli-watch-info-trace.txt"
           : > "$OUT"
+
+          echo '===== PUBLIC TYPES =====' >> "$OUT"
           for c in \
-            com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter \
-            com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo \
-            com.crrepa.ble.conn.type.CRPFirmwareUpgradeType \
-            com.crrepa.f.w \
-            com.crrepa.f.u \
-            com.crrepa.e.e \
-            com.crrepa.e.c; do
+            com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo \
+            com.crrepa.ble.conn.bean.CRPJieliSupportWatchFaceInfo \
+            com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback \
+            com.crrepa.ble.conn.callback.CRPJieliDfuPackageLengthCallback; do
             echo >> "$OUT"
             echo "===== $c =====" >> "$OUT"
             javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
           done
+
+          echo >> "$OUT"
+          echo '===== CLASSES REFERENCING JIELI INFO CALLBACKS =====' >> "$OUT"
+          mapfile -t MATCHES < <(grep -aRl -E 'queryJieliWatchFaceInfo|CRPJieliWatchFaceCallback|CRPJieliDfuPackageLengthCallback|CRPJieliSupportWatchFaceInfo|CRPJieliWatchFaceInfo' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
+          for f in "${MATCHES[@]}"; do
+            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
+            echo >> "$OUT"
+            echo "===== $c =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$OUT" 2>&1 || true
+          done
+
           wc -l "$OUT"
-      - name: Commit focused dump
+      - name: Commit trace
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/forced-update-and-builders.txt
-          git commit -m 'Add forced-update and target-builder trace' || exit 0
+          git add re/dafit_crp/jieli-watch-info-trace.txt
+          git commit -m 'Add JieLi watch-info query trace' || exit 0
           git push
