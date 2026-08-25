@@ -26,14 +26,14 @@ jobs:
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
           mkdir -p /tmp/crp && cd /tmp/crp && unzip -q /tmp/crp.aar
+          mkdir -p /tmp/classes && cd /tmp/classes && jar xf /tmp/crp/classes.jar
           mkdir -p "$GITHUB_WORKSPACE/re/dafit_crp"
           javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.f.w > "$GITHUB_WORKSPACE/re/dafit_crp/firmware-version-builder.txt"
           : > "$GITHUB_WORKSPACE/re/dafit_crp/queryFirmwareVersion-implementation.txt"
-          jar tf /tmp/crp/classes.jar | grep '\.class$' | sed 's#/#.#g;s#\.class$##' | while read c; do
-            if javap -classpath /tmp/crp/classes.jar -p "$c" 2>/dev/null | grep -q 'queryFirmwareVersion'; then
-              echo "===== $c =====" >> "$GITHUB_WORKSPACE/re/dafit_crp/queryFirmwareVersion-implementation.txt"
-              javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$GITHUB_WORKSPACE/re/dafit_crp/queryFirmwareVersion-implementation.txt"
-            fi
+          grep -aRl -E 'queryFrimwareVersion|queryFirmwareVersion' /tmp/classes/com/crrepa --include='*.class' | while read f; do
+            c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
+            echo "===== $c =====" >> "$GITHUB_WORKSPACE/re/dafit_crp/queryFirmwareVersion-implementation.txt"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" >> "$GITHUB_WORKSPACE/re/dafit_crp/queryFirmwareVersion-implementation.txt"
           done
       - name: Commit focused dump
         run: |
