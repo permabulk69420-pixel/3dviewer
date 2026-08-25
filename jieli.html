@@ -5,12 +5,13 @@
 :root{font-family:system-ui;color-scheme:dark;background:#0b0d10;color:#f4f7fb}body{margin:0;padding:18px;max-width:760px;margin:auto}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button:disabled{opacity:.45}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:260px;max-height:540px;overflow:auto}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}
 </style></head><body>
 <h1>Anko JieLi RCSP probe</h1>
-<p class="warn">v2.2 — corrected auth order. Raw JieLi handshake first, then read-only feature queries. No DFU, reboot, erase or firmware writes.</p>
+<p class="warn">v3 — reproduces JieLi's official JL_HashPair startup: reset-pair packet first, then the mutual challenge/response. Read-only feature queries only after authentication. No DFU, reboot, erase or firmware writes.</p>
 <div class="card"><button id="connect">Connect watch</button><button id="probe" disabled>Authenticate + query features</button><button id="copy" disabled>Copy report</button><div id="status">Not connected</div></div>
 <div class="card"><pre id="log"></pre></div>
 <script>
 (()=>{'use strict';
 const SVC=0xAE00,TX=0xAE01,RX=0xAE02;
+const HASH_RESET=Uint8Array.from([0xfe,0xdc,0xba,0xc0,0x06,0x00,0x02,0xff,0x01,0xef]);
 let dev,server,tx,rx,authApi=null,authState='idle',authResolve=null,authReject=null,lines=[],featureSeen=false;
 const $=id=>document.getElementById(id), sleep=ms=>new Promise(r=>setTimeout(r,ms));
 function log(s){lines.push(s);$('log').textContent=lines.join('\n');$('log').scrollTop=$('log').scrollHeight}
@@ -46,8 +47,8 @@ function onNotify(ev){
     if(f.cmd===0x02&&f.body.length>=2){log('GET_TARGET_FEATURE_MAP status='+f.body[0]+' seq='+f.body[1]+' payload='+hex(f.body.slice(2)));}
     return;
   }
-  if(authState==='wait_device_response'&&d.length===17&&d[0]===1){authState='wait_device_challenge';log('Device answered raw auth challenge.');write(Uint8Array.from([0x02,0x70,0x61,0x73,0x73]),'TX auth PASS').catch(e=>authReject&&authReject(e));return;}
-  if(authState==='wait_device_challenge'&&d.length===17&&d[0]===0){try{authState='wait_final_pass';write(authApi.getEncryptedAuthData(d),'TX encrypted device challenge').catch(e=>authReject&&authReject(e));}catch(e){authReject&&authReject(e)}return;}
+  if(authState==='wait_device_response'&&d.length===17&&d[0]===1){authState='wait_device_challenge';log('Device validated phone challenge.');write(Uint8Array.from([0x02,0x70,0x61,0x73,0x73]),'TX auth PASS').catch(e=>authReject&&authReject(e));return;}
+  if(authState==='wait_device_challenge'&&d.length===17&&d[0]===0){try{authState='wait_final_pass';log('Device sent its challenge.');write(authApi.getEncryptedAuthData(d),'TX encrypted device challenge').catch(e=>authReject&&authReject(e));}catch(e){authReject&&authReject(e)}return;}
   if(authState==='wait_final_pass'&&d.length>=5&&d[0]===2&&d[1]===0x70&&d[2]===0x61&&d[3]===0x73&&d[4]===0x73){authState='done';log('AUTH SUCCESS.');authResolve&&authResolve();return;}
 }
 async function connect(){
@@ -55,9 +56,12 @@ async function connect(){
   catch(e){$('status').textContent='Connect error: '+e.message;$('status').className='bad';log('CONNECT ERROR: '+e.message)}
 }
 async function authenticate(){
-  await loadAuth(); authState='wait_device_response';
-  const p=new Promise((res,rej)=>{authResolve=res;authReject=rej;setTimeout(()=>{if(authState!=='done')rej(Error('Auth handshake timed out — watch sent no expected raw AE02 auth packet'));},7000)});
-  await sleep(250);
+  await loadAuth();
+  authState='idle';
+  await write(HASH_RESET,'TX official JL_HashPair reset');
+  await sleep(300);
+  authState='wait_device_response';
+  const p=new Promise((res,rej)=>{authResolve=res;authReject=rej;setTimeout(()=>{if(authState!=='done')rej(Error('Auth handshake timed out — no expected AE02 pairing response'));},10000)});
   await write(authApi.getRandomAuthData(),'TX phone raw auth challenge');
   await p;
 }
@@ -68,7 +72,7 @@ async function sendReadQueries(){
   if(!featureSeen){await write(frame(0xc0,0x03,[0x03,0xff,0xff,0xff,0xff,0x01]),'TX GET_TARGET_INFO platform=1'); await sleep(1800);}
 }
 $('connect').onclick=connect;
-$('probe').onclick=async()=>{try{$('probe').disabled=true;$('status').textContent='Authenticating…';log('--- v2.2 exact raw-first JieLi auth sequence ---');await authenticate();$('status').textContent='Authenticated; querying read-only features…';await sendReadQueries();if(!featureSeen){$('status').textContent='Authenticated, but feature query got no target-info reply';$('status').className='warn';$('copy').disabled=false;}}catch(e){$('status').textContent='Probe stopped: '+(e.message||e);$('status').className='bad';log('ERROR: '+(e.message||e));$('copy').disabled=false;}finally{$('probe').disabled=false}};
+$('probe').onclick=async()=>{try{$('probe').disabled=true;$('status').textContent='Authenticating…';log('--- v3 official JL_HashPair sequence ---');await authenticate();$('status').textContent='Authenticated; querying read-only features…';await sendReadQueries();if(!featureSeen){$('status').textContent='Authenticated, but feature query got no target-info reply';$('status').className='warn';$('copy').disabled=false;}}catch(e){$('status').textContent='Probe stopped: '+(e.message||e);$('status').className='bad';log('ERROR: '+(e.message||e));$('copy').disabled=false;}finally{$('probe').disabled=false}};
 $('copy').onclick=async()=>{await navigator.clipboard.writeText(lines.join('\n'));$('status').textContent='Report copied';};
 log('Page JavaScript started successfully.');
 })();
