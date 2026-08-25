@@ -31,6 +31,11 @@ jobs:
           for cls in \
             com.crrepa.i0.b \
             com.crrepa.m.f \
+            com.crrepa.m.c \
+            com.crrepa.q.b \
+            com.crrepa.p.c \
+            com.crrepa.p.a \
+            com.crrepa.f.u1 \
             com.crrepa.l.a \
             com.crrepa.ble.ota.jieli.JieliDfuController \
             com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo \
@@ -44,5 +49,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp/jieli-core.txt
-          git commit -m 'Add focused Da Fit JieLi BLE core analysis' || exit 0
+          git commit -m 'Add CRP BLE characteristic routing analysis' || exit 0
           git push
