@@ -9946,6 +9946,240 @@ public class com.crrepa.ble.ota.jieli.JieliDfuController {
        3: invokevirtual #73                 // Method com/crrepa/i0/b.abort:()V
        6: return
 }
+===== com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter =====
+Compiled from "SourceFile"
+public class com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter {
+  private static final java.lang.String DEFAULT_APP_VERSION = "1.0.2";
+
+  private com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter();
+    Code:
+       0: aload_0
+       1: invokespecial #22                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter getInstance();
+    Code:
+       0: invokestatic  #27                 // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.a:()Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+       3: areturn
+
+  private void saveFirmwareInfo(com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+    Code:
+       0: invokestatic  #35                 // Method com/crrepa/l/b.b:()Lcom/crrepa/l/b;
+       3: aload_1
+       4: invokevirtual #37                 // Method com/crrepa/l/b.a:(Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)V
+       7: return
+
+  private com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo getFirmwareVersionInfo(com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+    Code:
+       0: aload_1
+       1: dup
+       2: dup2
+       3: dup2
+       4: new           #42                 // class com/crrepa/ble/conn/bean/CRPFirmwareVersionInfo
+       7: astore_0
+       8: invokevirtual #48                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getVersion:()Ljava/lang/String;
+      11: astore_1
+      12: invokevirtual #51                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getLog:()Ljava/lang/String;
+      15: astore_2
+      16: invokevirtual #54                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getLog_en:()Ljava/lang/String;
+      19: astore_3
+      20: invokevirtual #58                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getType:()I
+      23: istore        4
+      25: invokevirtual #61                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getMcu:()I
+      28: istore        5
+      30: invokevirtual #64                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getTp_bin:()I
+      33: ifle          42
+      36: iconst_1
+      37: istore        6
+      39: goto          45
+      42: iconst_0
+      43: istore        6
+      45: aload_0
+      46: dup
+      47: aload_1
+      48: aload_2
+      49: aload_3
+      50: iload         4
+      52: iload         5
+      54: iload         6
+      56: invokespecial #69                 // Method com/crrepa/ble/conn/bean/CRPFirmwareVersionInfo."<init>":(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIZ)V
+      59: areturn
+
+  private void startDownloadFirmwareFile(com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, com.crrepa.h0.a, com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+    Code:
+       0: aload_3
+       1: dup
+       2: invokevirtual #74                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getMd5:()Ljava/lang/String;
+       5: astore_3
+       6: invokevirtual #77                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getUrl:()Ljava/lang/String;
+       9: dup
+      10: aload_1
+      11: swap
+      12: dup
+      13: ldc           #79                 // String /
+      15: invokevirtual #83                 // Method java/lang/String.lastIndexOf:(Ljava/lang/String;)I
+      18: invokevirtual #87                 // Method java/lang/String.substring:(I)Ljava/lang/String;
+      21: astore        4
+      23: invokeinterface #92,  1           // InterfaceMethod com/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener.onFirmwareDownloadStarting:()V
+      28: new           #12                 // class com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b
+      31: dup
+      32: aload_0
+      33: getstatic     #96                 // Field com/crrepa/g0/c.a:Ljava/lang/String;
+      36: aload         4
+      38: aload_1
+      39: aload_3
+      40: aload_2
+      41: invokespecial #99                 // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b."<init>":(Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Ljava/lang/String;Ljava/lang/String;Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;Ljava/lang/String;Lcom/crrepa/h0/a;)V
+      44: invokestatic  #104                // Method com/crrepa/r/a.a:(Ljava/lang/String;Lcom/crrepa/s/a;)V
+      47: return
+
+  private void onNetError(com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, int, java.lang.String);
+    Code:
+       0: aload_1
+       1: iload_2
+       2: aload_3
+       3: invokeinterface #110,  3          // InterfaceMethod com/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener.onError:(ILjava/lang/String;)V
+       8: return
+
+  com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter$a);
+    Code:
+       0: aload_0
+       1: invokespecial #112                // Method "<init>":()V
+       4: return
+
+  static com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo access$200(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter, com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #116                // Method getFirmwareVersionInfo:(Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)Lcom/crrepa/ble/conn/bean/CRPFirmwareVersionInfo;
+       5: areturn
+
+  static void access$300(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter, com.crrepa.ble.trans.upgrade.bean.FirmwareVersionInfo);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #120                // Method saveFirmwareInfo:(Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)V
+       5: return
+
+  static void access$400(com.crrepa.ble.trans.upgrade.presenter.FirmwareUpgradePresenter, com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, int, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: aload_3
+       4: invokespecial #124                // Method onNetError:(Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;ILjava/lang/String;)V
+       7: return
+
+  public void checkFirmwareVersion(java.lang.String, int, com.crrepa.ble.conn.callback.CRPDeviceNewFirmwareVersionCallback);
+    Code:
+       0: aload_1
+       1: invokestatic  #132                // Method android/text/TextUtils.isEmpty:(Ljava/lang/CharSequence;)Z
+       4: ifne          83
+       7: invokestatic  #137                // Method com/crrepa/p0/n.a:()Z
+      10: ifne          16
+      13: goto          83
+      16: iload_2
+      17: invokestatic  #141                // Method com/crrepa/p0/e.b:()Ljava/lang/String;
+      20: astore_2
+      21: new           #143                // class java/util/HashMap
+      24: dup
+      25: dup
+      26: dup2
+      27: astore        4
+      29: invokespecial #144                // Method java/util/HashMap."<init>":()V
+      32: ldc           #146                // String version
+      34: aload_1
+      35: invokevirtual #150                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      38: pop
+      39: ldc           #152                // String mac
+      41: aload_2
+      42: invokevirtual #150                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      45: pop
+      46: ldc           #154                // String app_version
+      48: ldc           #18                 // String 1.0.2
+      50: invokevirtual #150                // Method java/util/HashMap.put:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+      53: pop
+      54: iconst_1
+      55: if_icmpne     63
+      58: ldc           #156                // String https://api.moyoung.com/v2/upgrade/beta
+      60: goto          65
+      63: ldc           #160                // String https://api.moyoung.com/v2/upgrade/factory
+      65: aload         4
+      67: new           #14                 // class com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a
+      70: dup
+      71: astore_2
+      72: aload_0
+      73: aload_3
+      74: aload_1
+      75: invokespecial #163                // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a."<init>":(Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/conn/callback/CRPDeviceNewFirmwareVersionCallback;Ljava/lang/String;)V
+      78: aload_2
+      79: invokestatic  #166                // Method com/crrepa/r/a.b:(Ljava/lang/String;Ljava/util/Map;Lcom/crrepa/s/a;)V
+      82: return
+      83: return
+
+  public void downloadNewFirmware(com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener, com.crrepa.h0.a);
+    Code:
+       0: invokestatic  #35                 // Method com/crrepa/l/b.b:()Lcom/crrepa/l/b;
+       3: invokevirtual #171                // Method com/crrepa/l/b.a:()Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;
+       6: dup
+       7: astore_3
+       8: ifnull        112
+      11: aload_3
+      12: invokevirtual #77                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getUrl:()Ljava/lang/String;
+      15: invokestatic  #132                // Method android/text/TextUtils.isEmpty:(Ljava/lang/CharSequence;)Z
+      18: ifne          112
+      21: aload_3
+      22: invokevirtual #74                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getMd5:()Ljava/lang/String;
+      25: invokestatic  #132                // Method android/text/TextUtils.isEmpty:(Ljava/lang/CharSequence;)Z
+      28: ifeq          34
+      31: goto          112
+      34: aload_3
+      35: invokevirtual #74                 // Method com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.getMd5:()Ljava/lang/String;
+      38: astore        4
+      40: new           #173                // class java/io/File
+      43: dup
+      44: astore        5
+      46: aload         4
+      48: aload         5
+      50: getstatic     #96                 // Field com/crrepa/g0/c.a:Ljava/lang/String;
+      53: invokespecial #176                // Method java/io/File."<init>":(Ljava/lang/String;)V
+      56: invokestatic  #181                // Method com/crrepa/p0/i.a:(Ljava/io/File;Ljava/lang/String;)Ljava/io/File;
+      59: dup
+      60: astore        4
+      62: ifnull        86
+      65: aload_2
+      66: aload         4
+      68: aload_1
+      69: invokeinterface #184,  1          // InterfaceMethod com/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener.onFirmwareDownloadComplete:()V
+      74: invokevirtual #187                // Method java/io/File.getPath:()Ljava/lang/String;
+      77: invokeinterface #192,  2          // InterfaceMethod com/crrepa/h0/a.onComplete:(Ljava/lang/String;)V
+      82: return
+      83: invokevirtual #199                // Method java/lang/Throwable.printStackTrace:()V
+      86: aload         5
+      88: dup
+      89: invokestatic  #202                // Method com/crrepa/p0/i.a:(Ljava/io/File;)V
+      92: invokevirtual #205                // Method java/io/File.exists:()Z
+      95: ifne          104
+      98: aload         5
+     100: invokevirtual #208                // Method java/io/File.mkdir:()Z
+     103: pop
+     104: aload_0
+     105: aload_1
+     106: aload_2
+     107: aload_3
+     108: invokespecial #210                // Method startDownloadFirmwareFile:(Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;Lcom/crrepa/h0/a;Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)V
+     111: return
+     112: aload_0
+     113: aload_1
+     114: bipush        21
+     116: ldc           #212                // String Already the latest firmware version!
+     118: invokespecial #124                // Method onNetError:(Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;ILjava/lang/String;)V
+     121: return
+    Exception table:
+       from    to  target type
+          56    59    83   Class java/io/IOException
+          65    82    83   Class java/io/IOException
+}
 ===== com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo =====
 Compiled from "SourceFile"
 public class com.crrepa.ble.conn.bean.CRPFirmwareVersionInfo {
@@ -10077,3 +10311,635 @@ public interface com.crrepa.ble.conn.type.CRPFirmwareUpgradeType {
   public static final int NEW_UPGRADE_TYPE = 3;
 
 }
+===== com.crrepa.h0.a =====
+Compiled from "SourceFile"
+public interface com.crrepa.h0.a {
+  public abstract void onComplete(java.lang.String);
+}
+===== firmware/upgrade class list =====
+com/crrepa/ble/conn/bean/CRPFirmwareVersionInfo.class
+com/crrepa/ble/conn/bean/CRPJieliSupportWatchFaceInfo.class
+com/crrepa/ble/conn/bean/CRPJieliWatchFaceInfo.class
+com/crrepa/ble/conn/callback/CRPDeviceDfuAddressCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceDfuStatusCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceDfuTypeCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceFirmwareVersionCallback.class
+com/crrepa/ble/conn/callback/CRPDeviceNewFirmwareVersionCallback.class
+com/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback.class
+com/crrepa/ble/conn/callback/CRPJieliWatchFaceCallback.class
+com/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener.class
+com/crrepa/ble/conn/type/CRPFirmwareUpgradeType.class
+com/crrepa/ble/nrf/dfu/BaseButtonlessDfuImpl$ButtonlessBluetoothCallback.class
+com/crrepa/ble/nrf/dfu/BaseButtonlessDfuImpl.class
+com/crrepa/ble/nrf/dfu/BaseCustomDfuImpl$BaseCustomBluetoothCallback.class
+com/crrepa/ble/nrf/dfu/BaseCustomDfuImpl.class
+com/crrepa/ble/nrf/dfu/BaseDfuImpl$BaseBluetoothGattCallback.class
+com/crrepa/ble/nrf/dfu/BaseDfuImpl.class
+com/crrepa/ble/nrf/dfu/ButtonlessDfuImpl.class
+com/crrepa/ble/nrf/dfu/ButtonlessDfuWithBondSharingImpl.class
+com/crrepa/ble/nrf/dfu/ButtonlessDfuWithoutBondSharingImpl.class
+com/crrepa/ble/nrf/dfu/DfuBaseService$1.class
+com/crrepa/ble/nrf/dfu/DfuBaseService$2.class
+com/crrepa/ble/nrf/dfu/DfuBaseService$3.class
+com/crrepa/ble/nrf/dfu/DfuBaseService$4.class
+com/crrepa/ble/nrf/dfu/DfuBaseService.class
+com/crrepa/ble/nrf/dfu/DfuCallback$DfuGattCallback.class
+com/crrepa/ble/nrf/dfu/DfuCallback.class
+com/crrepa/ble/nrf/dfu/DfuController.class
+com/crrepa/ble/nrf/dfu/DfuLogListener.class
+com/crrepa/ble/nrf/dfu/DfuProgressInfo$ProgressListener.class
+com/crrepa/ble/nrf/dfu/DfuProgressInfo.class
+com/crrepa/ble/nrf/dfu/DfuProgressListener.class
+com/crrepa/ble/nrf/dfu/DfuProgressListenerAdapter.class
+com/crrepa/ble/nrf/dfu/DfuService.class
+com/crrepa/ble/nrf/dfu/DfuServiceController.class
+com/crrepa/ble/nrf/dfu/DfuServiceInitiator.class
+com/crrepa/ble/nrf/dfu/DfuServiceListenerHelper$1.class
+com/crrepa/ble/nrf/dfu/DfuServiceListenerHelper$LogBroadcastReceiver.class
+com/crrepa/ble/nrf/dfu/DfuServiceListenerHelper$ProgressBroadcastsReceiver.class
+com/crrepa/ble/nrf/dfu/DfuServiceListenerHelper.class
+com/crrepa/ble/nrf/dfu/DfuServiceProvider.class
+com/crrepa/ble/nrf/dfu/DfuSettingsConstants.class
+com/crrepa/ble/nrf/dfu/ExperimentalButtonlessDfuImpl.class
+com/crrepa/ble/nrf/dfu/LegacyButtonlessDfuImpl.class
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl$LegacyBluetoothCallback.class
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl.class
+com/crrepa/ble/nrf/dfu/SecureDfuImpl$1.class
+com/crrepa/ble/nrf/dfu/SecureDfuImpl$ObjectChecksum.class
+com/crrepa/ble/nrf/dfu/SecureDfuImpl$ObjectInfo.class
+com/crrepa/ble/nrf/dfu/SecureDfuImpl$SecureBluetoothCallback.class
+com/crrepa/ble/nrf/dfu/SecureDfuImpl.class
+com/crrepa/ble/nrf/dfu/UuidHelper.class
+com/crrepa/ble/nrf/dfu/internal/ArchiveInputStream.class
+com/crrepa/ble/nrf/dfu/internal/HexInputStream.class
+com/crrepa/ble/nrf/dfu/internal/exception/DeviceDisconnectedException.class
+com/crrepa/ble/nrf/dfu/internal/exception/DfuException.class
+com/crrepa/ble/nrf/dfu/internal/exception/HexFileValidationException.class
+com/crrepa/ble/nrf/dfu/internal/exception/RemoteDfuException.class
+com/crrepa/ble/nrf/dfu/internal/exception/RemoteDfuExtendedErrorException.class
+com/crrepa/ble/nrf/dfu/internal/exception/SizeValidationException.class
+com/crrepa/ble/nrf/dfu/internal/exception/UnknownResponseException.class
+com/crrepa/ble/nrf/dfu/internal/exception/UploadAbortedException.class
+com/crrepa/ble/nrf/dfu/internal/manifest/FileInfo.class
+com/crrepa/ble/nrf/dfu/internal/manifest/Manifest.class
+com/crrepa/ble/nrf/dfu/internal/manifest/ManifestFile.class
+com/crrepa/ble/nrf/dfu/internal/manifest/SoftDeviceBootloaderFileInfo.class
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScanner.class
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerFactory.class
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerJB$1.class
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerJB.class
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerLollipop$1.class
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerLollipop.class
+com/crrepa/ble/nrf/error/LegacyDfuError.class
+com/crrepa/ble/nrf/error/SecureDfuError.class
+com/crrepa/ble/ota/goodix/RestoreFirmwareChangeListener.class
+com/crrepa/ble/ota/goodix/RestoreFirmwareController$1.class
+com/crrepa/ble/ota/goodix/RestoreFirmwareController$Holder.class
+com/crrepa/ble/ota/goodix/RestoreFirmwareController.class
+com/crrepa/ble/ota/goodix/RestoreFirmwareControllerImpl$1.class
+com/crrepa/ble/ota/goodix/RestoreFirmwareControllerImpl$BleConnectionStateListener.class
+com/crrepa/ble/ota/goodix/RestoreFirmwareControllerImpl$BootInfoChangeListener.class
+com/crrepa/ble/ota/goodix/RestoreFirmwareControllerImpl.class
+com/crrepa/ble/ota/hs/HsDfuController$a.class
+com/crrepa/ble/ota/hs/HsDfuController$b.class
+com/crrepa/ble/ota/hs/HsDfuController.class
+com/crrepa/ble/ota/jieli/JieliDfuController.class
+com/crrepa/ble/ota/realtek/RtkDfuController.class
+com/crrepa/ble/ota/sifli/SifliDfuController.class
+com/crrepa/ble/scan/bean/CRPScanRecordInfo$BandFunction.class
+com/crrepa/ble/sifli/dfu/CurrentSendFile.class
+com/crrepa/ble/sifli/dfu/DFUImagePath$1.class
+com/crrepa/ble/sifli/dfu/DFUImagePath.class
+com/crrepa/ble/sifli/dfu/DFUState.class
+com/crrepa/ble/sifli/dfu/Error.class
+com/crrepa/ble/sifli/dfu/FileProcess.class
+com/crrepa/ble/sifli/dfu/OTAFile.class
+com/crrepa/ble/sifli/dfu/OTAFileComparator.class
+com/crrepa/ble/sifli/dfu/OTAImageComparator.class
+com/crrepa/ble/sifli/dfu/Protocol.class
+com/crrepa/ble/sifli/dfu/SifliDFUService$1.class
+com/crrepa/ble/sifli/dfu/SifliDFUService$2.class
+com/crrepa/ble/sifli/dfu/SifliDFUService$3.class
+com/crrepa/ble/sifli/dfu/SifliDFUService$4.class
+com/crrepa/ble/sifli/dfu/SifliDFUService$5.class
+com/crrepa/ble/sifli/dfu/SifliDFUService$6.class
+com/crrepa/ble/sifli/dfu/SifliDFUService$bleHandlerCallback.class
+com/crrepa/ble/sifli/dfu/SifliDFUService.class
+com/crrepa/ble/sifli/dfu/Utils.class
+com/crrepa/ble/sifli/dfu/constants/General.class
+com/crrepa/ble/sifli/dfu/constants/SerialTrans.class
+com/crrepa/ble/sifli/dfu/constants/Timeout.class
+com/crrepa/ble/trans/upgrade/DfuService.class
+com/crrepa/ble/trans/upgrade/NotificationActivity.class
+com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class
+com/crrepa/ble/trans/upgrade/bean/HSFirmwareInfo.class
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b.class
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.class
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class
+com/crrepa/ble/trans/watchface/entity/NewJieliWatchFaceListEntity$DataBean.class
+com/crrepa/ble/trans/watchface/entity/NewJieliWatchFaceListEntity.class
+com/realsil/sdk/dfu/DfuConstants.class
+com/realsil/sdk/dfu/DfuException$Type.class
+com/realsil/sdk/dfu/DfuException.class
+com/realsil/sdk/dfu/DfuService$a.class
+com/realsil/sdk/dfu/DfuService$b.class
+com/realsil/sdk/dfu/DfuService$c.class
+com/realsil/sdk/dfu/DfuService$d.class
+com/realsil/sdk/dfu/DfuService.class
+com/realsil/sdk/dfu/RtkDfu.class
+com/realsil/sdk/dfu/a$a$a.class
+com/realsil/sdk/dfu/a$a.class
+com/realsil/sdk/dfu/a.class
+com/realsil/sdk/dfu/a/a.class
+com/realsil/sdk/dfu/b$a$a.class
+com/realsil/sdk/dfu/b$a.class
+com/realsil/sdk/dfu/b.class
+com/realsil/sdk/dfu/b/a.class
+com/realsil/sdk/dfu/b/b.class
+com/realsil/sdk/dfu/b/c.class
+com/realsil/sdk/dfu/b/d.class
+com/realsil/sdk/dfu/b/e.class
+com/realsil/sdk/dfu/b/f.class
+com/realsil/sdk/dfu/b/g.class
+com/realsil/sdk/dfu/b/h.class
+com/realsil/sdk/dfu/batch/BatchDfuCallback.class
+com/realsil/sdk/dfu/batch/BatchDfuManager$a.class
+com/realsil/sdk/dfu/batch/BatchDfuManager.class
+com/realsil/sdk/dfu/c/a.class
+com/realsil/sdk/dfu/c/b.class
+com/realsil/sdk/dfu/d/a.class
+com/realsil/sdk/dfu/d/b.class
+com/realsil/sdk/dfu/e/a.class
+com/realsil/sdk/dfu/exception/ConnectionException.class
+com/realsil/sdk/dfu/exception/LoadFileException.class
+com/realsil/sdk/dfu/exception/OtaException.class
+com/realsil/sdk/dfu/f/a.class
+com/realsil/sdk/dfu/g/a.class
+com/realsil/sdk/dfu/g/b.class
+com/realsil/sdk/dfu/g/c.class
+com/realsil/sdk/dfu/g/d.class
+com/realsil/sdk/dfu/h/a.class
+com/realsil/sdk/dfu/i/a.class
+com/realsil/sdk/dfu/i/b.class
+com/realsil/sdk/dfu/image/BinFactory.class
+com/realsil/sdk/dfu/image/BinIndicator.class
+com/realsil/sdk/dfu/image/FirmwareLoaderX.class
+com/realsil/sdk/dfu/image/LoadParams$1.class
+com/realsil/sdk/dfu/image/LoadParams$Builder.class
+com/realsil/sdk/dfu/image/LoadParams.class
+com/realsil/sdk/dfu/image/constants/SubBinId$Bbpro.class
+com/realsil/sdk/dfu/image/constants/SubBinId.class
+com/realsil/sdk/dfu/image/constants/VersionFormat.class
+com/realsil/sdk/dfu/image/pack/SubFileInfo.class
+com/realsil/sdk/dfu/image/stream/BaseBinInputStream.class
+com/realsil/sdk/dfu/image/wrapper/BinImageWrapper$1.class
+com/realsil/sdk/dfu/image/wrapper/BinImageWrapper$Builder.class
+com/realsil/sdk/dfu/image/wrapper/BinImageWrapper.class
+com/realsil/sdk/dfu/image/wrapper/SocImageWrapper$1.class
+com/realsil/sdk/dfu/image/wrapper/SocImageWrapper$Builder.class
+com/realsil/sdk/dfu/image/wrapper/SocImageWrapper.class
+com/realsil/sdk/dfu/internal/base/BaseDfuTask.class
+com/realsil/sdk/dfu/internal/base/DfuThreadCallback.class
+com/realsil/sdk/dfu/internal/constants/OtaMode.class
+com/realsil/sdk/dfu/j/a.class
+com/realsil/sdk/dfu/j/b.class
+com/realsil/sdk/dfu/j/c.class
+com/realsil/sdk/dfu/j/d.class
+com/realsil/sdk/dfu/j/e.class
+com/realsil/sdk/dfu/k/a.class
+com/realsil/sdk/dfu/l/a$a.class
+com/realsil/sdk/dfu/l/a$b.class
+com/realsil/sdk/dfu/l/a$c.class
+com/realsil/sdk/dfu/l/a.class
+com/realsil/sdk/dfu/l/b.class
+com/realsil/sdk/dfu/l/c$a.class
+com/realsil/sdk/dfu/l/c$b.class
+com/realsil/sdk/dfu/l/c.class
+com/realsil/sdk/dfu/l/d$a.class
+com/realsil/sdk/dfu/l/d$b.class
+com/realsil/sdk/dfu/l/d.class
+com/realsil/sdk/dfu/l/e.class
+com/realsil/sdk/dfu/l/f$a.class
+com/realsil/sdk/dfu/l/f$b.class
+com/realsil/sdk/dfu/l/f.class
+com/realsil/sdk/dfu/l/g.class
+com/realsil/sdk/dfu/l/h.class
+com/realsil/sdk/dfu/l/i.class
+com/realsil/sdk/dfu/l/j.class
+com/realsil/sdk/dfu/l/k$a.class
+com/realsil/sdk/dfu/l/k$b.class
+com/realsil/sdk/dfu/l/k.class
+com/realsil/sdk/dfu/l/l$a.class
+com/realsil/sdk/dfu/l/l$b.class
+com/realsil/sdk/dfu/l/l.class
+com/realsil/sdk/dfu/l/m$a.class
+com/realsil/sdk/dfu/l/m$b.class
+com/realsil/sdk/dfu/l/m.class
+com/realsil/sdk/dfu/l/n$a.class
+com/realsil/sdk/dfu/l/n$b.class
+com/realsil/sdk/dfu/l/n.class
+com/realsil/sdk/dfu/l/o.class
+com/realsil/sdk/dfu/l/p$a.class
+com/realsil/sdk/dfu/l/p$b.class
+com/realsil/sdk/dfu/l/p.class
+com/realsil/sdk/dfu/l/q$a.class
+com/realsil/sdk/dfu/l/q$b.class
+com/realsil/sdk/dfu/l/q.class
+com/realsil/sdk/dfu/m/a.class
+com/realsil/sdk/dfu/m/b.class
+com/realsil/sdk/dfu/m/c.class
+com/realsil/sdk/dfu/m/d$a.class
+com/realsil/sdk/dfu/m/d.class
+com/realsil/sdk/dfu/m/e.class
+com/realsil/sdk/dfu/m/f.class
+com/realsil/sdk/dfu/m/g.class
+com/realsil/sdk/dfu/model/BinInfo.class
+com/realsil/sdk/dfu/model/CharacteristicInfo$1.class
+com/realsil/sdk/dfu/model/CharacteristicInfo.class
+com/realsil/sdk/dfu/model/ConnectionParameters$1.class
+com/realsil/sdk/dfu/model/ConnectionParameters$Builder.class
+com/realsil/sdk/dfu/model/ConnectionParameters.class
+com/realsil/sdk/dfu/model/DeviceInfo.class
+com/realsil/sdk/dfu/model/DeviceInfoParser.class
+com/realsil/sdk/dfu/model/DeviceInfoWrapper.class
+com/realsil/sdk/dfu/model/DfuConfig$1.class
+com/realsil/sdk/dfu/model/DfuConfig.class
+com/realsil/sdk/dfu/model/DfuProgressInfo$1.class
+com/realsil/sdk/dfu/model/DfuProgressInfo.class
+com/realsil/sdk/dfu/model/FileTypeInfo.class
+com/realsil/sdk/dfu/model/ImageVersionInfo$1.class
+com/realsil/sdk/dfu/model/ImageVersionInfo.class
+com/realsil/sdk/dfu/model/OtaDeviceInfo.class
+com/realsil/sdk/dfu/model/OtaModeInfo.class
+com/realsil/sdk/dfu/model/Throughput$1.class
+com/realsil/sdk/dfu/model/Throughput.class
+com/realsil/sdk/dfu/n/a.class
+com/realsil/sdk/dfu/n/b$a.class
+com/realsil/sdk/dfu/n/b.class
+com/realsil/sdk/dfu/n/c.class
+com/realsil/sdk/dfu/n/d.class
+com/realsil/sdk/dfu/n/e.class
+com/realsil/sdk/dfu/n/f.class
+com/realsil/sdk/dfu/n/g.class
+com/realsil/sdk/dfu/o/a.class
+com/realsil/sdk/dfu/o/b$a.class
+com/realsil/sdk/dfu/o/b$b.class
+com/realsil/sdk/dfu/o/b.class
+com/realsil/sdk/dfu/o/c$a.class
+com/realsil/sdk/dfu/o/c.class
+com/realsil/sdk/dfu/o/d.class
+com/realsil/sdk/dfu/o/e.class
+com/realsil/sdk/dfu/o/f.class
+com/realsil/sdk/dfu/p/a.class
+com/realsil/sdk/dfu/p/b.class
+com/realsil/sdk/dfu/p/c$a.class
+com/realsil/sdk/dfu/p/c.class
+com/realsil/sdk/dfu/p/d.class
+com/realsil/sdk/dfu/p/e.class
+com/realsil/sdk/dfu/p/f.class
+com/realsil/sdk/dfu/params/QcConfig$1.class
+com/realsil/sdk/dfu/params/QcConfig$Builder.class
+com/realsil/sdk/dfu/params/QcConfig.class
+com/realsil/sdk/dfu/q/a.class
+com/realsil/sdk/dfu/q/b$a.class
+com/realsil/sdk/dfu/q/b.class
+com/realsil/sdk/dfu/q/c.class
+com/realsil/sdk/dfu/q/d.class
+com/realsil/sdk/dfu/q/e.class
+com/realsil/sdk/dfu/q/f.class
+com/realsil/sdk/dfu/q/g.class
+com/realsil/sdk/dfu/q/h.class
+com/realsil/sdk/dfu/r/a.class
+com/realsil/sdk/dfu/r/b$a.class
+com/realsil/sdk/dfu/r/b$b.class
+com/realsil/sdk/dfu/r/b.class
+com/realsil/sdk/dfu/r/c$a.class
+com/realsil/sdk/dfu/r/c$b.class
+com/realsil/sdk/dfu/r/c.class
+com/realsil/sdk/dfu/r/d.class
+com/realsil/sdk/dfu/r/e.class
+com/realsil/sdk/dfu/r/f$a.class
+com/realsil/sdk/dfu/r/f.class
+com/realsil/sdk/dfu/r/g.class
+com/realsil/sdk/dfu/r/h.class
+com/realsil/sdk/dfu/r/i.class
+com/realsil/sdk/dfu/r/j.class
+com/realsil/sdk/dfu/s/a$a.class
+com/realsil/sdk/dfu/s/a.class
+com/realsil/sdk/dfu/s/b.class
+com/realsil/sdk/dfu/s/c$a.class
+com/realsil/sdk/dfu/s/c$b.class
+com/realsil/sdk/dfu/s/c$c.class
+com/realsil/sdk/dfu/s/c.class
+com/realsil/sdk/dfu/t/a$a.class
+com/realsil/sdk/dfu/t/a$b.class
+com/realsil/sdk/dfu/t/a.class
+com/realsil/sdk/dfu/t/b$a.class
+com/realsil/sdk/dfu/t/b.class
+com/realsil/sdk/dfu/u/a$a.class
+com/realsil/sdk/dfu/u/a$b.class
+com/realsil/sdk/dfu/u/a.class
+com/realsil/sdk/dfu/u/b$a.class
+com/realsil/sdk/dfu/u/b$b.class
+com/realsil/sdk/dfu/u/b.class
+com/realsil/sdk/dfu/u/c$a.class
+com/realsil/sdk/dfu/u/c.class
+com/realsil/sdk/dfu/utils/AesJni.class
+com/realsil/sdk/dfu/utils/BluetoothDfuAdapter$a.class
+com/realsil/sdk/dfu/utils/BluetoothDfuAdapter$b.class
+com/realsil/sdk/dfu/utils/BluetoothDfuAdapter.class
+com/realsil/sdk/dfu/utils/ConnectParams$1.class
+com/realsil/sdk/dfu/utils/ConnectParams$Builder.class
+com/realsil/sdk/dfu/utils/ConnectParams.class
+com/realsil/sdk/dfu/utils/DfuAdapter$1.class
+com/realsil/sdk/dfu/utils/DfuAdapter$BackConnectState.class
+com/realsil/sdk/dfu/utils/DfuAdapter$ConnectState.class
+com/realsil/sdk/dfu/utils/DfuAdapter$DfuHelperCallback.class
+com/realsil/sdk/dfu/utils/DfuAdapter$IInnerHandler.class
+com/realsil/sdk/dfu/utils/DfuAdapter$InnerHandler.class
+com/realsil/sdk/dfu/utils/DfuAdapter$InnerHandler2.class
+com/realsil/sdk/dfu/utils/DfuAdapter.class
+com/realsil/sdk/dfu/utils/DfuHelper.class
+com/realsil/sdk/dfu/utils/DfuUtils.class
+com/realsil/sdk/dfu/utils/GattDfuAdapter$a.class
+com/realsil/sdk/dfu/utils/GattDfuAdapter$b.class
+com/realsil/sdk/dfu/utils/GattDfuAdapter$c.class
+com/realsil/sdk/dfu/utils/GattDfuAdapter$d.class
+com/realsil/sdk/dfu/utils/GattDfuAdapter$e.class
+com/realsil/sdk/dfu/utils/GattDfuAdapter.class
+com/realsil/sdk/dfu/utils/HeadsetDfuAdapter$a.class
+com/realsil/sdk/dfu/utils/HeadsetDfuAdapter$b.class
+com/realsil/sdk/dfu/utils/HeadsetDfuAdapter$c.class
+com/realsil/sdk/dfu/utils/HeadsetDfuAdapter$d.class
+com/realsil/sdk/dfu/utils/HeadsetDfuAdapter.class
+com/realsil/sdk/dfu/utils/HidDfuAdapter$a.class
+com/realsil/sdk/dfu/utils/HidDfuAdapter$b.class
+com/realsil/sdk/dfu/utils/HidDfuAdapter$c.class
+com/realsil/sdk/dfu/utils/HidDfuAdapter$d.class
+com/realsil/sdk/dfu/utils/HidDfuAdapter$e.class
+com/realsil/sdk/dfu/utils/HidDfuAdapter.class
+com/realsil/sdk/dfu/utils/SppDfuAdapter$a.class
+com/realsil/sdk/dfu/utils/SppDfuAdapter$b.class
+com/realsil/sdk/dfu/utils/SppDfuAdapter.class
+com/realsil/sdk/dfu/utils/UsbGattDfuAdapter$a.class
+com/realsil/sdk/dfu/utils/UsbGattDfuAdapter$b.class
+com/realsil/sdk/dfu/utils/UsbGattDfuAdapter$c.class
+com/realsil/sdk/dfu/utils/UsbGattDfuAdapter$d.class
+com/realsil/sdk/dfu/utils/UsbGattDfuAdapter$e.class
+com/realsil/sdk/dfu/utils/UsbGattDfuAdapter.class
+com/realsil/sdk/dfu/v/a$a.class
+com/realsil/sdk/dfu/v/a$b.class
+com/realsil/sdk/dfu/v/a.class
+com/realsil/sdk/dfu/v/b.class
+com/realsil/sdk/dfu/v/c$a.class
+com/realsil/sdk/dfu/v/c$b.class
+com/realsil/sdk/dfu/v/c.class
+com/realsil/sdk/dfu/v/d$a.class
+com/realsil/sdk/dfu/v/d$b.class
+com/realsil/sdk/dfu/v/d.class
+com/realsil/sdk/dfu/v/e$a.class
+com/realsil/sdk/dfu/v/e$b.class
+com/realsil/sdk/dfu/v/e.class
+com/realsil/sdk/dfu/v/f.class
+com/realsil/sdk/dfu/v/g.class
+com/realsil/sdk/dfu/v/h.class
+com/realsil/sdk/dfu/v/i$a.class
+com/realsil/sdk/dfu/v/i$b.class
+com/realsil/sdk/dfu/v/i$c.class
+com/realsil/sdk/dfu/v/i.class
+com/realsil/sdk/dfu/v/j$a.class
+com/realsil/sdk/dfu/v/j$b.class
+com/realsil/sdk/dfu/v/j.class
+com/realsil/sdk/dfu/v/k.class
+com/realsil/sdk/dfu/v/l.class
+com/realsil/sdk/dfu/v/m$a.class
+com/realsil/sdk/dfu/v/m.class
+com/realsil/sdk/dfu/v/n.class
+com/realsil/sdk/dfu/v/o.class
+com/realsil/sdk/dfu/v/p.class
+com/realsil/sdk/dfu/v/q.class
+com/realsil/sdk/dfu/v/r$a.class
+com/realsil/sdk/dfu/v/r$b.class
+com/realsil/sdk/dfu/v/r.class
+com/realsil/sdk/dfu/w/a$a.class
+com/realsil/sdk/dfu/w/a$b.class
+com/realsil/sdk/dfu/w/a.class
+com/realsil/sdk/dfu/w/b$a.class
+com/realsil/sdk/dfu/w/b$b.class
+com/realsil/sdk/dfu/w/b.class
+com/realsil/sdk/dfu/w/c.class
+com/realsil/sdk/dfu/w/d$a.class
+com/realsil/sdk/dfu/w/d.class
+com/realsil/sdk/dfu/w/e$a.class
+com/realsil/sdk/dfu/w/e.class
+com/realsil/sdk/dfu/w/f$a.class
+com/realsil/sdk/dfu/w/f.class
+com/realsil/sdk/dfu/x/a$a.class
+com/realsil/sdk/dfu/x/a$b.class
+com/realsil/sdk/dfu/x/a.class
+com/realsil/sdk/dfu/x/b.class
+com/realsil/sdk/dfu/y/a.class
+===== URL-like strings in firmware/upgrade classes =====
+com/crrepa/ble/nrf/error/SecureDfuError.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/error/SecureDfuError.class: SD version failure
+com/crrepa/ble/nrf/error/SecureDfuError.class: HW version failure
+com/crrepa/ble/nrf/error/SecureDfuError.class: FW version failure
+com/crrepa/ble/nrf/error/LegacyDfuError.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/SecureDfuImpl$SecureBluetoothCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/ButtonlessDfuWithoutBondSharingImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/BaseCustomDfuImpl$BaseCustomBluetoothCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl$LegacyBluetoothCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuServiceListenerHelper$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuServiceListenerHelper$ProgressBroadcastsReceiver.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuProgressListenerAdapter.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuServiceListenerHelper$LogBroadcastReceiver.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuServiceController.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/exception/RemoteDfuException.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/exception/SizeValidationException.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/exception/UnknownResponseException.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/exception/HexFileValidationException.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/exception/RemoteDfuExtendedErrorException.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/exception/UploadAbortedException.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/exception/DfuException.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/exception/DeviceDisconnectedException.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/HexInputStream.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/manifest/FileInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/manifest/SoftDeviceBootloaderFileInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/manifest/ManifestFile.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/manifest/Manifest.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerLollipop.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerFactory.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerJB$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScanner.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerLollipop$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/scanner/BootloaderScannerJB.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/ArchiveInputStream.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/internal/ArchiveInputStream.class: softdevice.bin
+com/crrepa/ble/nrf/dfu/internal/ArchiveInputStream.class: bootloader.bin
+com/crrepa/ble/nrf/dfu/internal/ArchiveInputStream.class: application.bin
+com/crrepa/ble/nrf/dfu/DfuServiceListenerHelper.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuProgressListener.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuCallback$DfuGattCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuSettingsConstants.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/BaseButtonlessDfuImpl$ButtonlessBluetoothCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuBaseService$2.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuBaseService$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/SecureDfuImpl$ObjectChecksum.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuService.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/ButtonlessDfuWithBondSharingImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl.class: 3Init packet not set for the DFU Bootloader version 
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl.class: :The Init packet is required by this version DFU Bootloader
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl.class: 2Secure DFU is required to upload selected firmware
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl.class: +The device does not support given firmware.
+com/crrepa/ble/nrf/dfu/LegacyDfuImpl.class: Uploading firmware...
+com/crrepa/ble/nrf/dfu/SecureDfuImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/SecureDfuImpl.class: #Error while reading firmware stream
+com/crrepa/ble/nrf/dfu/SecureDfuImpl.class: Uploading firmware...
+com/crrepa/ble/nrf/dfu/SecureDfuImpl.class: Resuming uploading firmware...
+com/crrepa/ble/nrf/dfu/SecureDfuImpl.class: )Error while resetting the firmware stream
+com/crrepa/ble/nrf/dfu/SecureDfuImpl.class: :The Init packet is required by this version DFU Bootloader
+com/crrepa/ble/nrf/dfu/DfuServiceInitiator.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuServiceInitiator.class: >You must specify the firmware file before starting the service
+com/crrepa/ble/nrf/dfu/SecureDfuImpl$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/ButtonlessDfuImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuBaseService.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuBaseService.class: )Application firmware is not word-aligned.
+com/crrepa/ble/nrf/dfu/DfuBaseService.class: (Bootloader firmware is not word-aligned.
+com/crrepa/ble/nrf/dfu/DfuBaseService.class: )Soft Device firmware is not word-aligned.
+com/crrepa/ble/nrf/dfu/DfuBaseService.class: %The new firmware is not word-aligned.
+com/crrepa/ble/nrf/dfu/DfuBaseService.class: IAn exception occurred while opening files. Did you set the firmware file?
+com/crrepa/ble/nrf/dfu/LegacyButtonlessDfuImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/LegacyButtonlessDfuImpl.class: Reading DFU version number...
+com/crrepa/ble/nrf/dfu/LegacyButtonlessDfuImpl.class: 2Unable to read version number: device disconnected
+com/crrepa/ble/nrf/dfu/LegacyButtonlessDfuImpl.class: Unable to read version number
+com/crrepa/ble/nrf/dfu/LegacyButtonlessDfuImpl.class: Unknown version
+com/crrepa/ble/nrf/dfu/DfuBaseService$4.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuServiceProvider.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/BaseDfuImpl$BaseBluetoothGattCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/UuidHelper.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/BaseButtonlessDfuImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuBaseService$3.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuLogListener.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/BaseDfuImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuProgressInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/ExperimentalButtonlessDfuImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuController.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/SecureDfuImpl$ObjectInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/DfuProgressInfo$ProgressListener.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/BaseCustomDfuImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/nrf/dfu/BaseCustomDfuImpl.class: #Sending firmware to characteristic 
+com/crrepa/ble/conn/type/CRPFirmwareUpgradeType.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/callback/CRPJieliDfuPackageLengthCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/callback/CRPDeviceDfuStatusCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/callback/CRPDeviceFirmwareVersionCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/callback/CRPDeviceDfuAddressCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/callback/CRPJieliWatchFaceCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/callback/CRPDeviceNewFirmwareVersionCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/callback/CRPDeviceDfuTypeCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/bean/CRPJieliWatchFaceInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/bean/CRPJieliSupportWatchFaceInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/bean/CRPFirmwareVersionInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/conn/bean/CRPFirmwareVersionInfo.class: version
+com/crrepa/ble/conn/bean/CRPFirmwareVersionInfo.class:  CRPFirmwareVersionInfo{version='
+com/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/hs/HsDfuController.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/hs/HsDfuController$b.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/hs/HsDfuController$a.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/realtek/RtkDfuController.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/goodix/RestoreFirmwareController$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/goodix/RestoreFirmwareController.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/goodix/RestoreFirmwareControllerImpl$BootInfoChangeListener.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/goodix/RestoreFirmwareControllerImpl.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/goodix/RestoreFirmwareControllerImpl$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/goodix/RestoreFirmwareChangeListener.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/goodix/RestoreFirmwareController$Holder.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/goodix/RestoreFirmwareControllerImpl$BleConnectionStateListener.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/sifli/SifliDfuController.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/jieli/JieliDfuController.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/ota/jieli/JieliDfuController.class: upgradeListener
+com/crrepa/ble/ota/jieli/JieliDfuController.class: ?com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter
+com/crrepa/ble/ota/jieli/JieliDfuController.class: C()Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+com/crrepa/ble/sifli/dfu/OTAFile.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/CurrentSendFile.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/FileProcess.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/DFUState.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/DFUImagePath$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/Utils.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService.class: no image upgrade
+com/crrepa/ble/sifli/dfu/SifliDFUService.class: remote dfu version 
+com/crrepa/ble/sifli/dfu/Error.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService$4.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/DFUImagePath.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService$bleHandlerCallback.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/Protocol.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService$1.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/OTAFileComparator.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService$2.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService$3.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/OTAImageComparator.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/constants/Timeout.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/constants/General.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/constants/SerialTrans.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService$6.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/sifli/dfu/SifliDFUService$5.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/scan/bean/CRPScanRecordInfo$BandFunction.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/watchface/entity/NewJieliWatchFaceListEntity.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/watchface/entity/NewJieliWatchFaceListEntity$DataBean.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/NotificationActivity.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/NotificationActivity.class: 1com/crrepa/ble/trans/upgrade/NotificationActivity
+com/crrepa/ble/trans/upgrade/DfuService.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/DfuService.class: 'com/crrepa/ble/trans/upgrade/DfuService
+com/crrepa/ble/trans/upgrade/DfuService.class: 1com/crrepa/ble/trans/upgrade/NotificationActivity
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b.class: Acom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b.class: ?com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b.class: (Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;Lcom/crrepa/h0/a;Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b.class: ALcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b.class: (Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Ljava/lang/String;Ljava/lang/String;Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;Ljava/lang/String;Lcom/crrepa/h0/a;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b.class: (Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;ILjava/lang/String;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.class: Acom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.class: ?com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.class: Acom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.class: ALcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.class: C()Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c.class: F(Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: ?com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: Acom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$c
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: Acom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$b
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: Acom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: C()Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: :(Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: j(Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)Lcom/crrepa/ble/conn/bean/CRPFirmwareVersionInfo;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: 5com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: (Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;Lcom/crrepa/h0/a;Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: (Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Ljava/lang/String;Ljava/lang/String;Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;Ljava/lang/String;Lcom/crrepa/h0/a;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: F(Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: (Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)Lcom/crrepa/ble/conn/bean/CRPFirmwareVersionInfo;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: {(Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: (Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;ILjava/lang/String;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: version
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: app_version
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: 'https://api.moyoung.com/v2/upgrade/beta
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: *https://api.moyoung.com/v2/upgrade/factory
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: (Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/conn/callback/CRPDeviceNewFirmwareVersionCallback;Ljava/lang/String;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: 9()Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.class: $Already the latest firmware version!
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: Acom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: ?com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: ALcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: (Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/conn/callback/CRPDeviceNewFirmwareVersionCallback;Ljava/lang/String;)V
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: 5com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: (Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)Lcom/crrepa/ble/conn/bean/CRPFirmwareVersionInfo;
+com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter$a.class: {(Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;Lcom/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo;)V
+com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: 5com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo
+com/crrepa/ble/trans/upgrade/bean/FirmwareVersionInfo.class: version
+com/crrepa/ble/trans/upgrade/bean/HSFirmwareInfo.class: ~~R8{"backend":"cf","compilation-mode":"release","has-checksums":false,"pg-map-id":"cc824b3","r8-mode":"compatibility","version":"4.0.52"}
+com/crrepa/ble/trans/upgrade/bean/HSFirmwareInfo.class: 0com/crrepa/ble/trans/upgrade/bean/HSFirmwareInfo
