@@ -1,0 +1,84 @@
+name: Extract Da Fit fingerprint response parsers
+
+on:
+  push:
+    paths:
+      - '.github/workflows/re-dafit-fingerprint-parsers.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Extract callback signatures and parser methods
+        run: |
+          set -euxo pipefail
+          URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
+          curl -fL "$URL" -o /tmp/crp.aar
+          rm -rf /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-parsers"
+          mkdir -p /tmp/crp /tmp/classes "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-parsers/callbacks"
+          cd /tmp/crp && unzip -q /tmp/crp.aar
+          cd /tmp/classes && jar xf /tmp/crp/classes.jar
+
+          callbacks=(
+            com.crrepa.ble.conn.callback.CRPDeviceVersionCallback
+            com.crrepa.ble.conn.callback.CRPDeviceDfuTypeCallback
+            com.crrepa.ble.conn.callback.CRPDeviceDfuStatusCallback
+            com.crrepa.ble.conn.callback.CRPAvailableStorageCallback
+            com.crrepa.ble.conn.callback.CRPDeviceUIVersionCodeCallback
+            com.crrepa.ble.conn.callback.CRPJieliWatchFaceCallback
+            com.crrepa.ble.conn.callback.CRPDeviceTestModeCallback
+            com.crrepa.ble.conn.callback.CRPDeviceFirmwareVersionCallback
+            com.crrepa.ble.conn.bean.CRPJieliWatchFaceInfo
+            com.crrepa.ble.conn.type.CRPProtocolVersion
+          )
+          for c in "${callbacks[@]}"; do
+            safe="${c//./_}"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" > "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-parsers/callbacks/$safe.txt" 2>&1 || true
+          done
+
+          for c in com.crrepa.m.a com.crrepa.e.c com.crrepa.e.e; do
+            safe="${c//./_}"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$c" > "/tmp/$safe.txt" 2>&1 || true
+            python3 - "$c" "/tmp/$safe.txt" "$GITHUB_WORKSPACE/re/dafit_crp/fingerprint-parsers/$safe-focus.txt" <<'PY'
+          import sys
+          from pathlib import Path
+          cls,src,dst=sys.argv[1:]
+          targets=('CRPDeviceVersionCallback','CRPDeviceDfuTypeCallback','CRPDeviceDfuStatusCallback',
+                   'CRPAvailableStorageCallback','CRPDeviceUIVersionCodeCallback','CRPJieliWatchFaceCallback',
+                   'CRPDeviceTestModeCallback','CRPDeviceFirmwareVersionCallback','CRPJieliWatchFaceInfo',
+                   'DFU','Dfu','availableStorage','uiVersion','UIVersion')
+          lines=Path(src).read_text(errors='replace').splitlines()
+          sections=[]; cur=[]
+          for line in lines:
+              if (line.startswith('  public ') or line.startswith('  private ') or line.startswith('  protected ') or line.startswith('  static ')) and cur:
+                  sections.append(cur); cur=[line]
+              else:
+                  cur.append(line)
+          if cur: sections.append(cur)
+          keep=[]
+          for sec in sections:
+              s='\n'.join(sec)
+              if any(t in s for t in targets): keep.append(s)
+          Path(dst).write_text(('\n\n===== NEXT METHOD =====\n\n').join(keep))
+          PY
+          done
+
+      - name: Commit parser dump
+        run: |
+          set -euxo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add re/dafit_crp/fingerprint-parsers
+          git commit -m 'Add fingerprint response parser decompile' || exit 0
+          git push
