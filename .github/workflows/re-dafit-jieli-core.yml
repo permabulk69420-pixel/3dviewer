@@ -30,6 +30,9 @@ jobs:
           : > "$OUT"
           for cls in \
             com.crrepa.i0.b \
+            com.crrepa.c0.c \
+            com.crrepa.c0.d \
+            com.crrepa.c0.e \
             com.crrepa.m.f \
             com.crrepa.m.c \
             com.crrepa.q.b \
@@ -49,5 +52,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add re/dafit_crp/jieli-core.txt
-          git commit -m 'Add CRP BLE characteristic routing analysis' || exit 0
+          git commit -m 'Add CRP firmware transfer state-machine analysis' || exit 0
           git push
