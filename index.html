@@ -3,82 +3,94 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Anko JieLi fingerprint</title>
+<title>Anko JieLi target fingerprint</title>
 <style>
-:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}*{box-sizing:border-box}body{margin:0 auto;padding:18px;max-width:820px}h1{font-size:1.45rem;margin-bottom:8px}.sub{color:#aeb7c4;line-height:1.45}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button.secondary{background:#283246}button:disabled{opacity:.45}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:300px;max-height:650px;overflow:auto;font-size:.8rem}
+:root{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color-scheme:dark;background:#0b0d10;color:#f4f7fb}*{box-sizing:border-box}body{margin:0 auto;padding:18px;max-width:840px}h1{font-size:1.45rem;margin-bottom:8px}.sub{color:#aeb7c4;line-height:1.45}.card{background:#151922;border:1px solid #283040;border-radius:16px;padding:16px;margin:12px 0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:700;background:#4e7cff;color:white;margin:4px}button.secondary{background:#283246}button:disabled{opacity:.45}.ok{color:#78e7a2}.warn{color:#ffd37a}.bad{color:#ff8c8c}pre{white-space:pre-wrap;word-break:break-word;background:#090b0f;border-radius:12px;padding:12px;min-height:330px;max-height:680px;overflow:auto;font-size:.79rem}
 </style>
 </head>
 <body>
-<h1>Anko JieLi device fingerprint</h1>
-<div class="sub">v14 — sends one read-only JieLi information query used by the Da Fit/CRP SDK. It does not enter update mode and does not send firmware data.</div>
+<h1>Anko JieLi target fingerprint</h1>
+<div class="sub">v15 — one read-only pass using exact Da Fit/CRP query packets recovered from the vendor library. No DFU start, no FEE5 data, no reset, no settings writes.</div>
 <div class="card">
-<button id="run">Connect + query JieLi info</button>
+<button id="run">Connect + fingerprint target</button>
 <button id="copy" class="secondary" disabled>Copy report</button>
 <div id="status" class="warn" style="margin-top:12px">Ready</div>
 </div>
 <div class="card"><strong>Log</strong><pre id="log"></pre></div>
 <script>
 (()=>{'use strict';
-const FEEA=0xFEEA;
-let lines=[],running=false,device,server,fee2,gotInfo=false;
+const FEEA=0xFEEA, DEVICE_INFO=0x180A;
+let lines=[],running=false,device,server,fee2,responses=[];
 const $=id=>document.getElementById(id);
 const hex=a=>Array.from(a,b=>b.toString(16).padStart(2,'0')).join(' ');
 const short=u=>{const m=u.toLowerCase().match(/^0000([0-9a-f]{4})-/);return m?m[1]:u};
+const text=a=>{try{return new TextDecoder().decode(a).replace(/\0+$/g,'')}catch{return ''}};
 function log(s){const line=`[${new Date().toLocaleTimeString()}] ${s}`;lines.push(line);$('log').textContent=lines.join('\n');$('log').scrollTop=$('log').scrollHeight;}
 function setStatus(s,cls='warn'){$('status').textContent=s;$('status').className=cls;}
+function frame(cmd,payload=[]){const p=Uint8Array.from(payload),d=new Uint8Array(5+p.length);d[0]=0xfe;d[1]=0xea;d[2]=0x20;d[3]=d.length;d[4]=cmd;d.set(p,5);return d;}
 function onNotify(ev){
  const ch=ev.target,v=ch.value,d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength),id=short(ch.uuid).toUpperCase();
  log(`RX ${id}: ${hex(d)}`);
  if(d.length<5||d[0]!==0xfe||d[1]!==0xea)return;
- const cmd=d[4],p=d.slice(5);
- if(cmd===0xba){
-   log(`  CRP cmd=0xba payload=${hex(p)}`);
-   if(p.length>=3&&p[0]===0x02){
-     const apiVersion=p[1],feature=p[2];
-     gotInfo=true;
-     log(`  JIELI INFO: apiVersion=${apiVersion} (0x${apiVersion.toString(16).padStart(2,'0')}), feature=${feature} (0x${feature.toString(16).padStart(2,'0')})`);
-     setStatus(`JieLi info received — API ${apiVersion}, feature ${feature}`,'ok');
-   }
- }
+ const cmd=d[4],p=d.slice(5);responses.push({cmd,p:Array.from(p)});
+ let extra=`  CRP cmd=0x${cmd.toString(16).padStart(2,'0')} payload=${hex(p)}`;
+ if(cmd===0x5a&&p.length)extra+=` | sub=0x${p[0].toString(16).padStart(2,'0')} rest=${hex(p.slice(1))}`;
+ if(cmd===0x2e&&p.length)extra+=` | device-version raw=${hex(p)}`;
+ if(cmd===0xba&&p.length)extra+=` | JieLi raw=${hex(p)}`;
+ if(cmd===0xb7&&p.length)extra+=` | storage/raw=${hex(p)}`;
+ const t=text(p).replace(/[\x00-\x1f\x7f]/g,'').trim();if(t)extra+=` | text=${JSON.stringify(t)}`;
+ log(extra);
 }
-async function writeFEE2(packet,label){
+async function write(packet,label){
  log(`TX FEE2 ${label}: ${hex(packet)}`);
  if(fee2.properties.writeWithoutResponse)await fee2.writeValueWithoutResponse(packet);
  else if(fee2.properties.write)await fee2.writeValueWithResponse(packet);
  else throw Error('FEE2 is not writable');
  log('  ATT write accepted');
 }
-async function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
-async function run(){
- if(running)return;running=true;lines=[];$('log').textContent='';$('run').disabled=true;$('copy').disabled=false;gotInfo=false;setStatus('Connecting…');
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+async function readIdentity(){
  try{
-   device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[FEEA]});
-   server=await device.gatt.connect();
-   log(`Connected: ${device.name||'watch'}`);
-   const svc=await server.getPrimaryService(FEEA);
-   const chars=await svc.getCharacteristics();
-   let fee3=null;
-   for(const ch of chars){
-     const id=short(ch.uuid).toLowerCase();
-     log(`${id.toUpperCase()} read=${ch.properties.read} write=${ch.properties.write} writeNR=${ch.properties.writeWithoutResponse} notify=${ch.properties.notify} indicate=${ch.properties.indicate}`);
-     if(id==='fee2')fee2=ch;
-     if(id==='fee3')fee3=ch;
+   const svc=await server.getPrimaryService(DEVICE_INFO);
+   for(const ch of await svc.getCharacteristics()){
+     if(!ch.properties.read)continue;
+     try{const v=await ch.readValue(),d=new Uint8Array(v.buffer,v.byteOffset,v.byteLength);log(`READ ${short(ch.uuid).toUpperCase()}: ${hex(d)}${text(d).trim()?` | ${JSON.stringify(text(d))}`:''}`)}catch(e){log(`READ ${short(ch.uuid).toUpperCase()} failed: ${e.message}`)}
    }
-   if(!fee2)throw Error('FEE2 missing');
-   if(!fee3)throw Error('FEE3 missing');
-   await fee3.startNotifications();
-   fee3.addEventListener('characteristicvaluechanged',onNotify);
-   log('FEE3 notifications enabled');
-   await sleep(150);
-   await writeFEE2(Uint8Array.from([0xfe,0xea,0x20,0x06,0xba,0x02]),'JIELI INFO QUERY');
-   await sleep(2500);
-   if(!gotInfo){setStatus('No JieLi info response — copy report','warn');log('RESULT: no BA/02 information response received within 2.5 seconds.');}
- }catch(e){log('ERROR: '+(e.message||e));setStatus('Probe error — copy report','bad');}
+ }catch(e){log('Device-info service unavailable: '+e.message)}
+}
+async function run(){
+ if(running)return;running=true;lines=[];responses=[];$('log').textContent='';$('run').disabled=true;$('copy').disabled=false;setStatus('Connecting…');
+ try{
+   device=await navigator.bluetooth.requestDevice({acceptAllDevices:true,optionalServices:[FEEA,DEVICE_INFO,0x180F]});
+   server=await device.gatt.connect();log(`Connected: ${device.name||'watch'}`);
+   await readIdentity();
+   const svc=await server.getPrimaryService(FEEA),chars=await svc.getCharacteristics();let fee3=null;
+   for(const ch of chars){const id=short(ch.uuid).toLowerCase();if(id==='fee2')fee2=ch;if(id==='fee3')fee3=ch;}
+   if(!fee2||!fee3)throw Error('FEE2/FEE3 missing');
+   await fee3.startNotifications();fee3.addEventListener('characteristicvaluechanged',onNotify);log('FEE3 notifications enabled');await sleep(150);
+
+   const qs=[
+     ['FIRMWARE VERSION (baseline)',frame(0x5a,[0x01])],
+     ['DEVICE VERSION',frame(0x2e)],
+     ['UI VERSION CODE',frame(0x5a,[0x04])],
+     ['DFU TYPE / STATUS',frame(0x5a,[0x02,0x00,0x00])],
+     ['AVAILABLE STORAGE A',frame(0x5a,[0x08])],
+     ['AVAILABLE STORAGE B',frame(0xb7,[0x06])],
+     ['JIELI WATCH INFO',frame(0xba,[0x02])],
+     ['TEST MODE STATE',frame(0x5a,[0x09])]
+   ];
+   for(const [label,pkt] of qs){await write(pkt,label);await sleep(500);}
+   await sleep(1500);
+   log('=== FINGERPRINT COMPLETE ===');
+   log(`CRP responses captured: ${responses.length}`);
+   log('No update/DFU-start/file-transfer command was sent.');
+   setStatus('Fingerprint complete — copy report','ok');
+ }catch(e){log('ERROR: '+(e.message||e));setStatus('Fingerprint error — copy report','bad');}
  finally{running=false;$('run').disabled=false;}
 }
 $('run').onclick=run;
-$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));setStatus('Report copied','ok');}catch(e){log('Clipboard failed: '+e.message)}};
-log('Ready — v14 JieLi read-only information query.');
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(lines.join('\n'));setStatus('Report copied','ok')}catch(e){log('Clipboard failed: '+e.message)}};
+log('Ready — v15 exact read-only target fingerprint.');
 })();
 </script>
 </body>
