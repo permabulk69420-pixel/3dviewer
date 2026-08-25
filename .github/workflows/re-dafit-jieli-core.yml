@@ -20,20 +20,37 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Download and inspect CRP core
+      - name: Trace firmware-version API callers
         run: |
           set -euxo pipefail
           URL='https://raw.githubusercontent.com/momochan32/dafit_moyoung_ble_plugin-1.2.22/a6c97885098696ccc94d75cc2587e794052f6367/android/libs/crpblelib-1.8.3-0321.aar'
           curl -fL "$URL" -o /tmp/crp.aar
           mkdir -p /tmp/crp && cd /tmp/crp && unzip -q /tmp/crp.aar
-          mkdir -p "$GITHUB_WORKSPACE/re/dafit_crp"
-          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.f.m > "$GITHUB_WORKSPACE/re/dafit_crp/bt-address-builder.txt"
-          javap -classpath /tmp/crp/classes.jar -c -p -constants com.crrepa.j.a > "$GITHUB_WORKSPACE/re/dafit_crp/bt-address-decoder.txt"
+          mkdir -p /tmp/classes && cd /tmp/classes && jar xf /tmp/crp/classes.jar
+          OUT="$GITHUB_WORKSPACE/re/dafit_crp/firmware-version-callers.txt"
+          : > "$OUT"
+          echo '===== classes containing checkFirmwareVersion =====' >> "$OUT"
+          grep -RIl --binary-files=text 'checkFirmwareVersion' com --include='*.class' | sort | tee /tmp/refs.txt >> "$OUT" || true
+          echo >> "$OUT"
+          while read -r f; do
+            [ -n "$f" ] || continue
+            cls="${f%.class}"; cls="${cls//\//.}"
+            echo "===== $cls =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT" 2>&1 || true
+          done < /tmp/refs.txt
+          echo '===== classes referencing FirmwareUpgradePresenter =====' >> "$OUT"
+          grep -RIl --binary-files=text 'FirmwareUpgradePresenter' com --include='*.class' | sort | tee /tmp/prefs.txt >> "$OUT" || true
+          while read -r f; do
+            [ -n "$f" ] || continue
+            cls="${f%.class}"; cls="${cls//\//.}"
+            echo "===== PRESENTER REF $cls =====" >> "$OUT"
+            javap -classpath /tmp/crp/classes.jar -c -p -constants "$cls" >> "$OUT" 2>&1 || true
+          done < /tmp/prefs.txt
       - name: Commit focused dump
         run: |
           set -euxo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add re/dafit_crp/bt-address-builder.txt re/dafit_crp/bt-address-decoder.txt
-          git commit -m 'Add exact Bluetooth address query classes' || exit 0
+          git add re/dafit_crp/firmware-version-callers.txt
+          git commit -m 'Add firmware version caller analysis' || exit 0
           git push
