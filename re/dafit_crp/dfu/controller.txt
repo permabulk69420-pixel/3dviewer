@@ -1,0 +1,60 @@
+Compiled from "SourceFile"
+public class com.crrepa.ble.ota.jieli.JieliDfuController {
+  private com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener upgradeListener;
+
+  public com.crrepa.ble.ota.jieli.JieliDfuController();
+    Code:
+       0: aload_0
+       1: invokespecial #18                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  private void lambda$start$0(java.lang.String);
+    Code:
+       0: aload_0
+       1: new           #22                 // class java/io/File
+       4: dup
+       5: astore_0
+       6: aload_1
+       7: invokespecial #24                 // Method java/io/File."<init>":(Ljava/lang/String;)V
+      10: aload_0
+      11: invokevirtual #28                 // Method start:(Ljava/io/File;)V
+      14: return
+
+  public void setUpgradeListener(com.crrepa.ble.conn.listener.CRPBleFirmwareUpgradeListener);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: putfield      #32                 // Field upgradeListener:Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;
+       5: invokestatic  #38                 // Method com/crrepa/i0/b.a:()Lcom/crrepa/i0/b;
+       8: aload_1
+       9: invokevirtual #40                 // Method com/crrepa/i0/b.a:(Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;)V
+      12: return
+
+  public void start(java.io.File);
+    Code:
+       0: invokestatic  #38                 // Method com/crrepa/i0/b.a:()Lcom/crrepa/i0/b;
+       3: aload_1
+       4: invokevirtual #42                 // Method com/crrepa/i0/b.a:(Ljava/io/File;)V
+       7: invokestatic  #38                 // Method com/crrepa/i0/b.a:()Lcom/crrepa/i0/b;
+      10: invokevirtual #45                 // Method com/crrepa/i0/b.b:()V
+      13: return
+
+  public void start();
+    Code:
+       0: invokestatic  #51                 // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.getInstance:()Lcom/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter;
+       3: aload_0
+       4: dup
+       5: getfield      #32                 // Field upgradeListener:Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;
+       8: astore_0
+       9: invokedynamic #66,  0             // InvokeDynamic #0:onComplete:(Lcom/crrepa/ble/ota/jieli/JieliDfuController;)Lcom/crrepa/h0/a;
+      14: aload_0
+      15: swap
+      16: invokevirtual #70                 // Method com/crrepa/ble/trans/upgrade/presenter/FirmwareUpgradePresenter.downloadNewFirmware:(Lcom/crrepa/ble/conn/listener/CRPBleFirmwareUpgradeListener;Lcom/crrepa/h0/a;)V
+      19: return
+
+  public void abort();
+    Code:
+       0: invokestatic  #38                 // Method com/crrepa/i0/b.a:()Lcom/crrepa/i0/b;
+       3: invokevirtual #73                 // Method com/crrepa/i0/b.abort:()V
+       6: return
+}

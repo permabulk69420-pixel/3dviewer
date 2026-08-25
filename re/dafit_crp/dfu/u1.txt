@@ -1,0 +1,92 @@
+Compiled from "SourceFile"
+public class com.crrepa.f.u1 {
+  private static final int a = 255;
+
+  private com.crrepa.f.u1();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static byte[] a(int, byte[]);
+    Code:
+       0: aload_1
+       1: iconst_0
+       2: istore_2
+       3: ifnull        9
+       6: aload_1
+       7: arraylength
+       8: istore_2
+       9: invokestatic  #18                 // Method a:()I
+      12: iload_2
+      13: iconst_5
+      14: iadd
+      15: dup
+      16: istore_3
+      17: newarray       byte
+      19: dup
+      20: astore        4
+      22: iload_3
+      23: aload         4
+      25: dup
+      26: iconst_0
+      27: bipush        -2
+      29: bastore
+      30: iconst_1
+      31: bipush        -22
+      33: bastore
+      34: i2b
+      35: iconst_3
+      36: swap
+      37: bastore
+      38: bipush        20
+      40: if_icmpne     52
+      43: aload         4
+      45: iconst_2
+      46: bipush        16
+      48: bastore
+      49: goto          81
+      52: sipush        255
+      55: iload_3
+      56: if_icmpge     75
+      59: aload         4
+      61: iload_3
+      62: bipush        8
+      64: ishr
+      65: bipush        32
+      67: iadd
+      68: i2b
+      69: iconst_2
+      70: swap
+      71: bastore
+      72: goto          81
+      75: aload         4
+      77: iconst_2
+      78: bipush        32
+      80: bastore
+      81: iload_2
+      82: aload         4
+      84: iload_0
+      85: i2b
+      86: iconst_4
+      87: swap
+      88: bastore
+      89: ifle          104
+      92: aload_1
+      93: dup
+      94: arraylength
+      95: istore_0
+      96: iconst_0
+      97: aload         4
+      99: iconst_5
+     100: iload_0
+     101: invokestatic  #26                 // Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+     104: aload         4
+     106: areturn
+
+  public static int a();
+    Code:
+       0: invokestatic  #32                 // Method com/crrepa/l/a.b:()Lcom/crrepa/l/a;
+       3: invokevirtual #35                 // Method com/crrepa/l/a.c:()I
+       6: ireturn
+}

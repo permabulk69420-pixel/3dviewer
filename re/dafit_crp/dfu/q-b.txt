@@ -1,0 +1,398 @@
+Compiled from "SourceFile"
+public class com.crrepa.q.b {
+  private android.bluetooth.BluetoothGattCharacteristic a;
+
+  private android.bluetooth.BluetoothGattCharacteristic b;
+
+  private android.bluetooth.BluetoothGattCharacteristic c;
+
+  private android.bluetooth.BluetoothGattCharacteristic d;
+
+  private android.bluetooth.BluetoothGattCharacteristic e;
+
+  private android.bluetooth.BluetoothGattCharacteristic f;
+
+  private android.bluetooth.BluetoothGattCharacteristic g;
+
+  private android.bluetooth.BluetoothGattCharacteristic h;
+
+  private android.bluetooth.BluetoothGattCharacteristic i;
+
+  private android.bluetooth.BluetoothGattCharacteristic j;
+
+  private android.bluetooth.BluetoothGattCharacteristic k;
+
+  private android.bluetooth.BluetoothGattCharacteristic l;
+
+  private android.bluetooth.BluetoothGattCharacteristic m;
+
+  public com.crrepa.q.b(java.util.List<android.bluetooth.BluetoothGattService>);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokespecial #27                 // Method java/lang/Object."<init>":()V
+       5: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      10: astore_1
+      11: aload_1
+      12: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      17: ifeq          518
+      20: aload_1
+      21: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      26: checkcast     #45                 // class android/bluetooth/BluetoothGattService
+      29: dup
+      30: astore_2
+      31: invokevirtual #49                 // Method android/bluetooth/BluetoothGattService.getUuid:()Ljava/util/UUID;
+      34: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+      37: invokevirtual #60                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+      40: dup
+      41: astore_3
+      42: aload_2
+      43: new           #62                 // class java/lang/StringBuilder
+      46: dup
+      47: invokespecial #63                 // Method java/lang/StringBuilder."<init>":()V
+      50: ldc           #65                 // String serviceUuid:
+      52: invokevirtual #69                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      55: aload_3
+      56: invokevirtual #69                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      59: invokevirtual #70                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      62: invokestatic  #75                 // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+      65: pop
+      66: invokevirtual #79                 // Method android/bluetooth/BluetoothGattService.getCharacteristics:()Ljava/util/List;
+      69: astore_2
+      70: ldc           #81                 // String feea
+      72: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      75: ifeq          241
+      78: aload_2
+      79: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      84: astore_2
+      85: aload_2
+      86: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      91: ifeq          11
+      94: aload_2
+      95: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     100: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     103: dup
+     104: astore_3
+     105: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     108: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     111: invokevirtual #60                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+     114: dup
+     115: astore        4
+     117: ldc           #90                 // String fee1
+     119: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     122: ifeq          133
+     125: aload_0
+     126: aload_3
+     127: putfield      #92                 // Field a:Landroid/bluetooth/BluetoothGattCharacteristic;
+     130: goto          85
+     133: aload         4
+     135: ldc           #94                 // String fee2
+     137: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     140: ifeq          151
+     143: aload_0
+     144: aload_3
+     145: putfield      #96                 // Field b:Landroid/bluetooth/BluetoothGattCharacteristic;
+     148: goto          85
+     151: aload         4
+     153: ldc           #98                 // String fee3
+     155: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     158: ifeq          169
+     161: aload_0
+     162: aload_3
+     163: putfield      #100                // Field c:Landroid/bluetooth/BluetoothGattCharacteristic;
+     166: goto          85
+     169: aload         4
+     171: ldc           #102                // String fee5
+     173: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     176: ifeq          187
+     179: aload_0
+     180: aload_3
+     181: putfield      #104                // Field h:Landroid/bluetooth/BluetoothGattCharacteristic;
+     184: goto          85
+     187: aload         4
+     189: ldc           #106                // String fee6
+     191: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     194: ifeq          205
+     197: aload_0
+     198: aload_3
+     199: putfield      #108                // Field i:Landroid/bluetooth/BluetoothGattCharacteristic;
+     202: goto          85
+     205: aload         4
+     207: ldc           #110                // String fee7
+     209: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     212: ifeq          223
+     215: aload_0
+     216: aload_3
+     217: putfield      #112                // Field j:Landroid/bluetooth/BluetoothGattCharacteristic;
+     220: goto          85
+     223: aload         4
+     225: ldc           #114                // String fee8
+     227: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     230: ifeq          85
+     233: aload_0
+     234: aload_3
+     235: putfield      #116                // Field k:Landroid/bluetooth/BluetoothGattCharacteristic;
+     238: goto          85
+     241: aload_3
+     242: ldc           #118                // String 180a
+     244: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     247: ifeq          341
+     250: aload_2
+     251: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     256: astore_2
+     257: aload_2
+     258: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     263: ifeq          11
+     266: aload_2
+     267: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     272: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     275: dup
+     276: astore_3
+     277: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     280: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     283: invokevirtual #60                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+     286: dup
+     287: astore        4
+     289: ldc           #120                // String 2a28
+     291: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     294: ifeq          305
+     297: aload_0
+     298: aload_3
+     299: putfield      #122                // Field e:Landroid/bluetooth/BluetoothGattCharacteristic;
+     302: goto          257
+     305: aload         4
+     307: ldc           #124                // String 2a29
+     309: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     312: ifeq          323
+     315: aload_0
+     316: aload_3
+     317: putfield      #126                // Field l:Landroid/bluetooth/BluetoothGattCharacteristic;
+     320: goto          257
+     323: aload         4
+     325: ldc           #128                // String 2a24
+     327: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     330: ifeq          257
+     333: aload_0
+     334: aload_3
+     335: putfield      #130                // Field f:Landroid/bluetooth/BluetoothGattCharacteristic;
+     338: goto          257
+     341: aload_3
+     342: ldc           #132                // String 180f
+     344: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     347: ifeq          402
+     350: aload_2
+     351: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     356: astore_2
+     357: aload_2
+     358: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     363: ifeq          11
+     366: aload_2
+     367: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     372: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     375: dup
+     376: astore_3
+     377: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     380: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     383: invokevirtual #60                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+     386: ldc           #134                // String 2a19
+     388: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     391: ifeq          357
+     394: aload_0
+     395: aload_3
+     396: putfield      #136                // Field d:Landroid/bluetooth/BluetoothGattCharacteristic;
+     399: goto          357
+     402: aload_3
+     403: ldc           #138                // String 180d
+     405: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     408: ifeq          460
+     411: aload_2
+     412: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     417: astore_2
+     418: aload_2
+     419: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     424: ifeq          11
+     427: aload_2
+     428: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     433: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     436: dup
+     437: astore_3
+     438: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     441: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     444: ldc           #140                // String 2a37
+     446: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     449: ifeq          418
+     452: aload_0
+     453: aload_3
+     454: putfield      #142                // Field g:Landroid/bluetooth/BluetoothGattCharacteristic;
+     457: goto          418
+     460: aload_3
+     461: ldc           #144                // String 3802
+     463: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     466: ifeq          11
+     469: aload_2
+     470: invokeinterface #33,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     475: astore_2
+     476: aload_2
+     477: invokeinterface #39,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+     482: ifeq          11
+     485: aload_2
+     486: invokeinterface #43,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     491: checkcast     #87                 // class android/bluetooth/BluetoothGattCharacteristic
+     494: dup
+     495: astore_3
+     496: invokevirtual #88                 // Method android/bluetooth/BluetoothGattCharacteristic.getUuid:()Ljava/util/UUID;
+     499: invokevirtual #55                 // Method java/util/UUID.toString:()Ljava/lang/String;
+     502: ldc           #146                // String 4a02
+     504: invokevirtual #85                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+     507: ifeq          476
+     510: aload_0
+     511: aload_3
+     512: putfield      #148                // Field m:Landroid/bluetooth/BluetoothGattCharacteristic;
+     515: goto          476
+     518: return
+
+  public android.bluetooth.BluetoothGattCharacteristic i();
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field a:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic m();
+    Code:
+       0: aload_0
+       1: getfield      #96                 // Field b:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic f();
+    Code:
+       0: aload_0
+       1: getfield      #100                // Field c:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic a();
+    Code:
+       0: aload_0
+       1: getfield      #136                // Field d:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic b();
+    Code:
+       0: aload_0
+       1: getfield      #122                // Field e:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic c();
+    Code:
+       0: aload_0
+       1: getfield      #130                // Field f:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic e();
+    Code:
+       0: aload_0
+       1: getfield      #142                // Field g:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic k();
+    Code:
+       0: aload_0
+       1: getfield      #104                // Field h:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic j();
+    Code:
+       0: aload_0
+       1: getfield      #108                // Field i:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic d();
+    Code:
+       0: aload_0
+       1: getfield      #112                // Field j:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: dup
+       5: astore_1
+       6: ifnull        11
+       9: aload_1
+      10: areturn
+      11: aload_0
+      12: getfield      #116                // Field k:Landroid/bluetooth/BluetoothGattCharacteristic;
+      15: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic h();
+    Code:
+       0: aload_0
+       1: getfield      #126                // Field l:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public android.bluetooth.BluetoothGattCharacteristic l();
+    Code:
+       0: aload_0
+       1: getfield      #148                // Field m:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: areturn
+
+  public java.util.List<android.bluetooth.BluetoothGattCharacteristic> g();
+    Code:
+       0: new           #152                // class java/util/ArrayList
+       3: dup
+       4: dup
+       5: astore_1
+       6: aload_0
+       7: aload_1
+       8: aload_0
+       9: aload_1
+      10: aload_0
+      11: aload_1
+      12: aload_0
+      13: aload_1
+      14: aload_0
+      15: aload_1
+      16: aload_0
+      17: aload_1
+      18: invokespecial #153                // Method java/util/ArrayList."<init>":()V
+      21: getfield      #100                // Field c:Landroid/bluetooth/BluetoothGattCharacteristic;
+      24: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      29: pop
+      30: getfield      #142                // Field g:Landroid/bluetooth/BluetoothGattCharacteristic;
+      33: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      38: pop
+      39: getfield      #112                // Field j:Landroid/bluetooth/BluetoothGattCharacteristic;
+      42: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      47: pop
+      48: getfield      #116                // Field k:Landroid/bluetooth/BluetoothGattCharacteristic;
+      51: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      56: pop
+      57: getfield      #92                 // Field a:Landroid/bluetooth/BluetoothGattCharacteristic;
+      60: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      65: pop
+      66: getfield      #148                // Field m:Landroid/bluetooth/BluetoothGattCharacteristic;
+      69: invokeinterface #157,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      74: pop
+      75: areturn
+
+  public boolean n();
+    Code:
+       0: aload_0
+       1: getfield      #116                // Field k:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: ifnull        11
+       7: iconst_1
+       8: goto          12
+      11: iconst_0
+      12: ireturn
+
+  public boolean o();
+    Code:
+       0: aload_0
+       1: getfield      #92                 // Field a:Landroid/bluetooth/BluetoothGattCharacteristic;
+       4: ifnull        26
+       7: aload_0
+       8: getfield      #96                 // Field b:Landroid/bluetooth/BluetoothGattCharacteristic;
+      11: ifnull        26
+      14: aload_0
+      15: getfield      #100                // Field c:Landroid/bluetooth/BluetoothGattCharacteristic;
+      18: ifnonnull     24
+      21: goto          26
+      24: iconst_1
+      25: ireturn
+      26: iconst_0
+      27: ireturn
+}
