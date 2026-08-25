@@ -1,0 +1,486 @@
+===== cmd 90 dispatch context =====
+400-      12: if_icmpge     18
+401-      15: goto          1414
+402-      18: aload_1
+403-      19: iconst_4
+404-      20: baload
+405-      21: dup
+406-      22: istore_2
+407-      23: aload_1
+408-      24: dup
+409-      25: arraylength
+410-      26: iconst_5
+411-      27: isub
+412-      28: dup
+413-      29: istore_1
+414-      30: newarray       byte
+415-      32: astore_3
+416-      33: iconst_5
+417-      34: aload_3
+418-      35: iconst_0
+419-      36: iload_1
+420-      37: invokestatic  #356                // Method java/lang/System.arraycopy:(Ljava/lang/Object;ILjava/lang/Object;II)V
+421-      40: new           #358                // class java/lang/StringBuilder
+422-      43: dup
+423-      44: invokespecial #359                // Method java/lang/StringBuilder."<init>":()V
+424-      47: ldc_w         #361                // String cmd:
+425-      50: invokevirtual #365                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+426-      53: iload_2
+427-      54: invokevirtual #368                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+428-      57: invokevirtual #372                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+429-      60: invokestatic  #377                // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+430-      63: pop
+431-      64: bipush        -121
+432-      66: if_icmpeq     1408
+433-      69: iload_2
+434-      70: bipush        -120
+435-      72: if_icmpeq     1400
+436-      75: iload_2
+437-      76: tableswitch   { // -127 to -123
+438-                  -127: 1391
+439-                  -126: 1382
+440-                  -125: 1374
+441-                  -124: 1366
+442-                  -123: 1358
+443-               default: 112
+444-          }
+445-     112: iload_2
+446-     113: tableswitch   { // -116 to -113
+447-                  -116: 1350
+448-                  -115: 1342
+449-                  -114: 1334
+450-                  -113: 1326
+451-               default: 144
+452-          }
+453-     144: iload_2
+454-     145: lookupswitch  { // 43
+455-                   -95: 1319
+456-                    -9: 1311
+457-                    33: 1303
+458-                    36: 1295
+459-                    37: 1287
+460-                    38: 1279
+461-                    39: 1271
+462-                    40: 1263
+463-                    41: 1255
+464-                    42: 1247
+465-                    43: 1239
+466-                    44: 1231
+467-                    45: 1223
+468-                    46: 1215
+469-                    47: 1207
+470-                    57: 1199
+471-                    58: 1191
+472-                    59: 1183
+473-                    60: 1175
+474-                    61: 1167
+475-                    62: 1159
+476-                    63: 1151
+477-                    83: 1143
+478-                    87: 1135
+479-                    89: 1127
+480:                    90: 1119
+481-                    92: 1111
+482-                    93: 1103
+483-                    98: 1095
+484-                    99: 1074
+485-                   100: 1067
+486-                   101: 1059
+487-                   102: 1052
+488-                   103: 1044
+489-                   104: 1036
+490-                   105: 1021
+491-                   107: 1013
+492-                   108: 1005
+493-                   109: 997
+494-                   110: 989
+495-                   111: 981
+496-                   116: 973
+497-                   119: 965
+498-               default: 500
+499-          }
+500-     500: iload_2
+501-     501: tableswitch   { // -92 to -90
+502-                   -92: 957
+503-                   -91: 949
+504-                   -90: 941
+505-               default: 528
+506-          }
+507-     528: iload_2
+508-     529: tableswitch   { // -86 to -84
+509-                   -86: 933
+510-                   -85: 925
+511-                   -84: 917
+512-               default: 556
+513-          }
+514-     556: iload_2
+515-     557: tableswitch   { // -78 to -76
+516-                   -78: 909
+517-                   -77: 901
+518-                   -76: 893
+519-               default: 584
+520-          }
+521-     584: iload_2
+522-     585: tableswitch   { // -74 to -68
+523-                   -74: 885
+524-                   -73: 877
+525-                   -72: 869
+526-                   -71: 861
+527-                   -70: 853
+528-                   -69: 845
+529-                   -68: 837
+530-               default: 628
+531-          }
+532-     628: iload_2
+533-     629: tableswitch   { // -15 to -12
+534-                   -15: 829
+535-                   -14: 821
+536-                   -13: 989
+537-                   -12: 813
+538-               default: 660
+539-          }
+540-     660: iload_2
+541-     661: tableswitch   { // 50 to 55
+542-                    50: 805
+543-                    51: 797
+544-                    52: 789
+545-                    53: 774
+546-                    54: 735
+547-                    55: 727
+548-               default: 700
+549-          }
+550-     700: new           #358                // class java/lang/StringBuilder
+551-     703: dup
+552-     704: invokespecial #359                // Method java/lang/StringBuilder."<init>":()V
+553-     707: ldc_w         #379                // String default cmd:
+554-     710: invokevirtual #365                // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+555-     713: iload_2
+556-     714: invokevirtual #368                // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+557-     717: invokevirtual #372                // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+558-     720: invokestatic  #377                // Method com/crrepa/p0/b.c:(Ljava/lang/Object;)I
+559-     723: pop
+560-     724: goto          1413
+561-     727: aload_0
+562-     728: aload_3
+563-     729: invokespecial #381                // Method j0:([B)V
+564-     732: goto          1413
+565-     735: aload_0
+566-     736: getfield      #251                // Field e:Lcom/crrepa/j/r;
+567-     739: aload_3
+568-     740: invokevirtual #384                // Method com/crrepa/j/r.d:([B)Ljava/util/List;
+569-     743: dup
+570-     744: astore_1
+571-     745: ifnull        1413
+572-     748: aload_0
+573-     749: dup
+574-     750: dup2
+575-     751: getfield      #251                // Field e:Lcom/crrepa/j/r;
+576-     754: aload_1
+577-     755: invokevirtual #387                // Method com/crrepa/j/r.a:(Ljava/util/List;)Lcom/crrepa/ble/conn/bean/CRPHeartRateInfo;
+578-     758: invokespecial #390                // Method a:(Lcom/crrepa/ble/conn/bean/CRPHeartRateInfo;)V
+579-     761: getfield      #251                // Field e:Lcom/crrepa/j/r;
+580-     764: aload_1
+581-     765: invokevirtual #392                // Method com/crrepa/j/r.b:(Ljava/util/List;)Lcom/crrepa/ble/conn/bean/CRPHeartRateInfo;
+582-     768: invokespecial #390                // Method a:(Lcom/crrepa/ble/conn/bean/CRPHeartRateInfo;)V
+583-     771: goto          1413
+584-     774: aload_0
+585-     775: dup
+586-     776: getfield      #251                // Field e:Lcom/crrepa/j/r;
+587-     779: aload_3
+588-     780: invokevirtual #395                // Method com/crrepa/j/r.i:([B)Lcom/crrepa/ble/conn/bean/CRPHeartRateInfo;
+589-     783: invokespecial #390                // Method a:(Lcom/crrepa/ble/conn/bean/CRPHeartRateInfo;)V
+590-     786: goto          1413
+591-     789: aload_0
+592-     790: aload_3
+593-     791: invokespecial #397                // Method k:([B)V
+594-     794: goto          1413
+595-     797: aload_0
+596-     798: aload_3
+597-     799: invokespecial #399                // Method b0:([B)V
+598-     802: goto          1413
+599-     805: aload_0
+600-     806: aload_3
+601-     807: invokespecial #401                // Method K0:([B)V
+602-     810: goto          1413
+603-     813: aload_0
+604-     814: aload_3
+605-     815: invokespecial #403                // Method j:([B)V
+606-     818: goto          1413
+607-     821: aload_0
+608-     822: aload_3
+609-     823: invokespecial #405                // Method B0:([B)V
+610-     826: goto          1413
+611-     829: aload_0
+612-     830: aload_3
+613-     831: invokespecial #407                // Method v:([B)V
+614-     834: goto          1413
+615-     837: aload_0
+616-     838: aload_3
+617-     839: invokespecial #409                // Method s0:([B)V
+618-     842: goto          1413
+619-     845: aload_0
+620-     846: aload_3
+621-     847: invokespecial #411                // Method r0:([B)V
+622-     850: goto          1413
+623-     853: aload_0
+624-     854: aload_3
+625-     855: invokespecial #413                // Method f0:([B)V
+626-     858: goto          1413
+627-     861: aload_0
+628-     862: aload_3
+629-     863: invokespecial #415                // Method q0:([B)V
+630-     866: goto          1413
+631-     869: aload_0
+632-     870: aload_3
+633-     871: invokespecial #417                // Method n0:([B)V
+634-     874: goto          1413
+635-     877: aload_0
+636-     878: aload_3
+637-     879: invokespecial #419                // Method J0:([B)V
+638-     882: goto          1413
+639-     885: aload_0
+640-     886: aload_3
+641-     887: invokespecial #421                // Method o0:([B)V
+642-     890: goto          1413
+643-     893: aload_0
+644-     894: aload_3
+645-     895: invokespecial #423                // Method t0:([B)V
+646-     898: goto          1413
+647-     901: aload_0
+648-     902: aload_3
+649-     903: invokespecial #425                // Method Y:([B)V
+650-     906: goto          1413
+651-     909: aload_0
+652-     910: aload_3
+653-     911: invokespecial #427                // Method W0:([B)V
+654-     914: goto          1413
+655-     917: aload_0
+656-     918: aload_3
+657-     919: invokespecial #429                // Method S0:([B)V
+658-     922: goto          1413
+659-     925: aload_0
+660-     926: aload_3
+661-     927: invokespecial #431                // Method w0:([B)V
+662-     930: goto          1413
+663-     933: aload_0
+664-     934: aload_3
+665-     935: invokespecial #433                // Method A0:([B)V
+666-     938: goto          1413
+667-     941: aload_0
+668-     942: aload_3
+669-     943: invokespecial #436                // Method d1:([B)V
+670-     946: goto          1413
+671-     949: aload_0
+672-     950: aload_3
+673-     951: invokespecial #438                // Method c0:([B)V
+674-     954: goto          1413
+675-     957: aload_0
+676-     958: aload_3
+677-     959: invokespecial #440                // Method p:([B)V
+678-     962: goto          1413
+679-     965: aload_0
+680-     966: aload_3
+681-     967: invokespecial #442                // Method y0:([B)V
+682-     970: goto          1413
+683-     973: aload_0
+684-     974: aload_3
+685-     975: invokespecial #444                // Method b1:([B)V
+686-     978: goto          1413
+687-     981: aload_0
+688-     982: aload_3
+689-     983: invokespecial #446                // Method S:([B)V
+690-     986: goto          1413
+691-     989: aload_0
+692-     990: aload_3
+693-     991: invokespecial #448                // Method e0:([B)V
+694-     994: goto          1413
+695-     997: aload_0
+696-     998: aload_3
+697-     999: invokespecial #450                // Method v0:([B)V
+698-    1002: goto          1413
+699-    1005: aload_0
+700-    1006: aload_3
+701-    1007: invokespecial #452                // Method Y0:([B)V
+702-    1010: goto          1413
+703-    1013: aload_0
+704-    1014: aload_3
+705-    1015: invokespecial #454                // Method r:([B)V
+706-    1018: goto          1413
+707-    1021: aload_0
+708-    1022: getfield      #281                // Field l:Lcom/crrepa/j/f;
+709-    1025: aload_3
+710-    1026: aload_0
+711-    1027: getfield      #456                // Field p:Lcom/crrepa/ble/conn/listener/CRPBloodPressureChangeListener;
+712-    1030: invokevirtual #459                // Method com/crrepa/j/f.a:([BLcom/crrepa/ble/conn/listener/CRPBloodPressureChangeListener;)V
+713-    1033: goto          1413
+714-    1036: aload_0
+715-    1037: aload_3
+716-    1038: invokespecial #461                // Method Z:([B)V
+717-    1041: goto          1413
+718-    1044: aload_0
+719-    1045: aload_3
+720-    1046: invokespecial #463                // Method k0:([B)V
+===== methods referencing firmware callback singleton =====
+4063-      89: aload_3
+4064-      90: iconst_0
+4065-      91: baload
+4066-      92: iconst_1
+4067-      93: if_icmpne     101
+4068-      96: iconst_1
+4069-      97: istore_1
+4070-      98: goto          103
+4071-     101: iconst_0
+4072-     102: istore_1
+4073-     103: aload_0
+4074-     104: iload_1
+4075-     105: invokeinterface #1614,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPDeviceTestModeCallback.onTestMode:(Z)V
+4076-     110: goto          186
+4077-     113: aload_0
+4078-     114: getfield      #1616               // Field J0:Lcom/crrepa/ble/conn/callback/CRPAvailableStorageCallback;
+4079-     117: dup
+4080-     118: astore_0
+4081-     119: ifnull        186
+4082-     122: aload_0
+4083-     123: aload_3
+4084-     124: invokestatic  #1619               // Method com/crrepa/j/d.a:([B)I
+4085-     127: invokeinterface #1624,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPAvailableStorageCallback.onAvailableSize:(I)V
+4086-     132: goto          186
+4087-     135: aload_0
+4088-     136: invokestatic  #1629               // Method com/crrepa/y/c.b:()Lcom/crrepa/y/c;
+4089-     139: aload_1
+4090-     140: invokevirtual #1631               // Method com/crrepa/y/c.a:(Ljava/lang/String;)V
+4091-     143: getfield      #1633               // Field N0:Lcom/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback;
+4092-     146: dup
+4093-     147: astore_0
+4094-     148: ifnull        186
+4095-     151: aload_0
+4096-     152: aload_1
+4097-     153: invokeinterface #1638,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPDeviceUIVersionCodeCallback.onUIVersionCode:(Ljava/lang/String;)V
+4098-     158: goto          186
+4099-     161: aload_0
+4100-     162: aload_3
+4101-     163: invokespecial #1640               // Method K:([B)V
+4102-     166: goto          186
+4103:     169: invokestatic  #1645               // Method com/crrepa/e/e.a:()Lcom/crrepa/e/e;
+4104-     172: aload_1
+4105:     173: invokevirtual #1646               // Method com/crrepa/e/e.a:(Ljava/lang/String;)V
+4106-     176: goto          186
+4107-     179: invokestatic  #1651               // Method com/crrepa/e/g.a:()Lcom/crrepa/e/g;
+4108-     182: aload_1
+4109-     183: invokevirtual #1652               // Method com/crrepa/e/g.a:(Ljava/lang/String;)V
+4110-     186: return
+4111-     187: return
+4112-
+4113-  private void K(byte[]);
+4114-    Code:
+4115-       0: aload_1
+4116-       1: iconst_0
+4117-       2: istore_0
+4118-       3: arraylength
+4119-       4: iconst_1
+4120-       5: swap
+4121-       6: if_icmpne     17
+4122-       9: aload_1
+4123-      10: iconst_0
+4124-      11: baload
+4125-      12: ifle          17
+4126-      15: iconst_1
+4127-      16: istore_0
+4128-      17: aload_1
+4129-      18: invokestatic  #1657               // Method com/crrepa/e/c.a:()Lcom/crrepa/e/c;
+4130-      21: iload_0
+4131-      22: invokevirtual #1658               // Method com/crrepa/e/c.a:(I)V
+4132-      25: arraylength
+4133-      26: iconst_2
+4134-      27: swap
+4135-      28: if_icmpne     40
+4136-      31: invokestatic  #1657               // Method com/crrepa/e/c.a:()Lcom/crrepa/e/c;
+4137-      34: aload_1
+4138-      35: iconst_1
+4139-      36: baload
+4140-      37: invokevirtual #1660               // Method com/crrepa/e/c.b:(I)V
+4141-      40: return
+4142-
+4143-  private void F0(byte[]);
+4144-    Code:
+4145-       0: aload_1
+4146-       1: invokestatic  #311                // Method com/crrepa/p0/d.f:([B)Z
+4147-       4: ifeq          8
+4148-       7: return
+4149-       8: aload_1
+4150-       9: iconst_0
+4151-      10: baload
+4152-      11: tableswitch   { // 1 to 4
+4153-                     1: 67
+4154-                     2: 59
+4155-                     3: 51
+4156-                     4: 43
+4157-               default: 40
+4158-          }
+4159-      40: goto          72
+4160-      43: aload_0
+4161-      44: aload_1
+4162-      45: invokespecial #1661               // Method b:([B)V
+4163-      48: goto          72
+4164-      51: aload_0
+4165-      52: aload_1
+4166-      53: invokespecial #1663               // Method d:([B)V
+4167-      56: goto          72
+4168-      59: aload_0
+4169-      60: aload_1
+4170-      61: invokespecial #1665               // Method e:([B)V
+4171-      64: goto          72
+4172-      67: aload_0
+4173-      68: aload_1
+4174-      69: invokespecial #1667               // Method c:([B)V
+4175-      72: return
+4176-
+4177-  private void b(byte[]);
+4178-    Code:
+4179-       0: aload_1
+4180-       1: arraylength
+4181-       2: iconst_2
+4182-       3: if_icmpge     7
+4183-       6: return
+4184-       7: aload_0
+4185-       8: getfield      #579                // Field y0:Lcom/crrepa/ble/conn/callback/CRPDeviceBondStateCallback;
+4186-      11: dup
+4187-      12: astore_2
+4188-      13: ifnull        25
+4189-      16: aload_2
+4190-      17: aload_1
+4191-      18: iconst_1
+4192-      19: baload
+4193-      20: invokeinterface #584,  2          // InterfaceMethod com/crrepa/ble/conn/callback/CRPDeviceBondStateCallback.onBondState:(I)V
+4194-      25: aload_0
+4195-      26: getfield      #1669               // Field T0:Lcom/crrepa/ble/conn/callback/CRPConnectivityCheckCallback;
+4196-      29: dup
+4197-      30: astore_0
+4198-      31: ifnull        43
+4199-      34: aload_0
+4200-      35: aload_1
+4201-      36: iconst_1
+4202-      37: baload
+4203-      38: invokeinterface #1674,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPConnectivityCheckCallback.onConnectivityCheck:(I)V
+4204-      43: return
+4205-
+4206-  private void d(byte[]);
+4207-    Code:
+4208-       0: aload_0
+4209-       1: aload_1
+4210-       2: invokestatic  #1679               // Method com/crrepa/j/q.a:([B)Lcom/crrepa/ble/conn/bean/CRPHandWashingPeriodInfo;
+4211-       5: astore_0
+4212-       6: getfield      #1681               // Field u0:Lcom/crrepa/ble/conn/callback/CRPDeviceHandWashingPeriodCallback;
+4213-       9: dup
+4214-      10: astore_1
+4215-      11: ifnull        25
+4216-      14: aload_0
+4217-      15: ifnull        25
+4218-      18: aload_1
+4219-      19: aload_0
+4220-      20: invokeinterface #1687,  2         // InterfaceMethod com/crrepa/ble/conn/callback/CRPDeviceHandWashingPeriodCallback.onHandWashingPeriod:(Lcom/crrepa/ble/conn/bean/CRPHandWashingPeriodInfo;)V
+4221-      25: return
+4222-
+4223-  private void e(byte[]);
+4224-    Code:
+4225-       0: aload_0
