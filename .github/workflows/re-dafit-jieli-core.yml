@@ -34,16 +34,17 @@ jobs:
           : > "$OUT"
 
           echo '===== URL / DOMAIN STRINGS =====' >> "$OUT"
-          strings -a /tmp/crp/classes.jar | grep -Eio 'https?://[^[:space:]"<>]+' | sort -u >> "$OUT" || true
-          grep -aRhoE 'https?://[^[:space:]"<>]+' /tmp/classes | sort -u >> "$OUT" || true
+          (strings -a /tmp/crp/classes.jar | grep -Eio 'https?://[^[:space:]"<>]+' || true) | sort -u >> "$OUT"
+          (grep -aRhoE 'https?://[^[:space:]"<>]+' /tmp/classes || true) | sort -u >> "$OUT"
 
           echo >> "$OUT"
           echo '===== MOYOUNG / UPGRADE / FIRMWARE STRING HITS =====' >> "$OUT"
-          strings -a /tmp/crp/classes.jar | grep -Ei 'moyoung|upgrade|firmware|factory|beta|download|\.ufw|uploads/jieli' | sort -u >> "$OUT" || true
+          (strings -a /tmp/crp/classes.jar | grep -Ei 'moyoung|upgrade|firmware|factory|beta|download|\.ufw|uploads/jieli' || true) | sort -u >> "$OUT"
 
           echo >> "$OUT"
           echo '===== MATCHING CLASSES (FULL JAVAP) =====' >> "$OUT"
-          grep -aRIl -E 'moyoung|upgrade|factory|beta|FirmwareVersionInfo|FirmwareUpgradePresenter|downloadNewFirmware' /tmp/classes/com/crrepa --include='*.class' | sort -u | while read f; do
+          mapfile -t MATCHES < <(grep -aRIl -E 'moyoung|upgrade|factory|beta|FirmwareVersionInfo|FirmwareUpgradePresenter|downloadNewFirmware' /tmp/classes/com/crrepa --include='*.class' 2>/dev/null | sort -u || true)
+          for f in "${MATCHES[@]}"; do
             c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
             echo >> "$OUT"
             echo "===== $c =====" >> "$OUT"
@@ -52,7 +53,8 @@ jobs:
 
           echo >> "$OUT"
           echo '===== ALL com.crrepa.r NETWORK HELPERS =====' >> "$OUT"
-          find /tmp/classes/com/crrepa/r -name '*.class' -type f 2>/dev/null | sort | while read f; do
+          mapfile -t NETS < <(find /tmp/classes/com/crrepa/r -name '*.class' -type f 2>/dev/null | sort || true)
+          for f in "${NETS[@]}"; do
             c="${f#/tmp/classes/}"; c="${c%.class}"; c="${c//\//.}"
             echo >> "$OUT"
             echo "===== $c =====" >> "$OUT"
