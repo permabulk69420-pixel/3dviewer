@@ -1,0 +1,17 @@
+{
+  "chip_key": "0x1607",
+  "entries": [
+    {"address": 1024, "aligned_length": 1015808, "calculated_crc16": 3801, "crc_ok": true, "encrypted_length": 0, "encrypted_offset": 0, "file_type": 0, "index": 0, "length": 1015808, "name": "flash.bin", "stored_crc16": 3801, "type_name": "flash", "version": 0},
+    {"address": 1016832, "aligned_length": 0, "calculated_crc16": 0, "crc_ok": true, "encrypted_length": 0, "encrypted_offset": 0, "file_type": 2, "index": 1, "length": 0, "name": "info.log", "stored_crc16": 0, "type_name": "info-log", "version": 0},
+    {"address": 1016832, "aligned_length": 32, "calculated_crc16": 61360, "crc_ok": true, "encrypted_length": 32, "encrypted_offset": 0, "file_type": 55, "index": 2, "length": 32, "name": "uboot.version", "stored_crc16": 61360, "type_name": "unknown", "version": 0},
+    {"address": 1016864, "aligned_length": 1152, "calculated_crc16": 28843, "crc_ok": true, "encrypted_length": 1152, "encrypted_offset": 0, "file_type": 52, "index": 3, "length": 1124, "name": "isd_config.ini", "stored_crc16": 28843, "type_name": "unknown", "version": 0},
+    {"address": 1018016, "aligned_length": 64, "calculated_crc16": 13435, "crc_ok": true, "encrypted_length": 64, "encrypted_offset": 0, "file_type": 56, "index": 4, "length": 64, "name": "v_ota.bin", "stored_crc16": 13435, "type_name": "unknown", "version": 0},
+    {"address": 1018080, "aligned_length": 14080, "calculated_crc16": 19996, "crc_ok": true, "encrypted_length": 0, "encrypted_offset": 0, "file_type": 100, "index": 5, "length": 14080, "name": "ota.bin", "stored_crc16": 19996, "type_name": "test-box-ota", "version": 0},
+    {"address": 1032160, "aligned_length": 32, "calculated_crc16": 33554, "crc_ok": true, "encrypted_length": 32, "encrypted_offset": 0, "file_type": 251, "index": 6, "length": 5, "name": "farg.cfg", "stored_crc16": 33554, "type_name": "invisible-data", "version": 0},
+    {"address": 1032192, "aligned_length": 160, "calculated_crc16": 59167, "crc_ok": true, "encrypted_length": 160, "encrypted_offset": 0, "file_type": 161, "index": 7, "length": 144, "name": "blimit.bin", "stored_crc16": 59167, "type_name": "burn-count-limit", "version": 0},
+    {"address": 1032352, "aligned_length": 64, "calculated_crc16": 27279, "crc_ok": true, "encrypted_length": 0, "encrypted_offset": 0, "file_type": 255, "index": 8, "length": 64, "name": "tail.bin", "stored_crc16": 27279, "type_name": "tail", "version": 0}
+  ],
+  "header": {"calculated_crc16": 17140, "calculated_directory_crc16": 34600, "chip_name": "JL701N", "crc_ok": true, "directory_crc_ok": true, "file_count": 9, "file_length": 1032416, "stored_crc16": 17140, "stored_directory_crc16": 34600, "version": 4},
+  "sha256": "d66143816817e897fcff5a346976676599710fa9a5ae694bd984ba897ca156ad",
+  "size": 1032416
+}
